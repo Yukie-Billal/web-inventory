@@ -10,7 +10,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('App');
+        return view('pages.dashboard');
     }
 
     public function login()
@@ -38,6 +38,22 @@ class PageController extends Controller
             
         }
 
+        
         return redirect('/login')->with('failed','Login Failed, Username or Pasword wrong');
+    }
+
+    public function barang()
+    {
+        return view('pages.barang.barang');
+    }
+
+    public function barangKeluar()
+    {
+        return view('pages.barang.barang-keluar');
+    }
+
+    public function barangMasuk()
+    {
+        return view('pages.barang.barang-masuk');
     }
 }

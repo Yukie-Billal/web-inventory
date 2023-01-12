@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    /* Neutral Color */
+    --neutral-10: #FFFFFF;
+    --neutral-20: #F5F5F5;
+    --neutral-30: #EDEDED;
+    --neutral-40: #E0E0E0;
+    --neutral-50: #C2C2C2;
+    --neutral-60: #9E9E9E;
+    --neutral-70: #757575;
+    --neutral-80: #616161;
+    --neutral-90: #404040;
+    --neutral-100: #0A0A0A;
+    /* Primary Color */
+    --primary-main: #4C4DDC;
+    --primary-surface: #DFE0F3;
+    --primary-border: #F5F5FF;
+    --primary-hover: #3334CC;
+    --primary-pressed: #21217A;
+    --primary-focus: #4C4DDC33;
+    /* Danger Color */
+    --danger-main: #CB3A31;
+    --danger-surface: #FFF4F2;
+    --danger-border: #EEB4B0;
+    --danger-hover: #BD251C;
+    --danger-pressed: #731912;
+    /* Warning Color */
+    --warning-main: #CD7B2E;
+    --warning-surface: #FFF9F2;
+    --warning-border: #EECEB0;
+    --warning-hover: #BF6919;
+    --warning-pressed: #734011;
+    /* Succes Color */
+    --success-main: #43936C;
+    --success-surface: #F7F7F7;
+    --success-border: #B8DBCA;
+    --success-hover: #367A59;
+    --success-pressed: #20573D;
+    /* Info Color */
+    --warning-main: #3267E3;
+    --warning-surface: #F0F3FF;
+    --warning-border: #B1C5F6;
+    --warning-hover: #114CD6;
+    --warning-pressed: #11317D;
+
+    /* effect styles */
+    --shadow-1: 0 1px 2px #0000001f;
+    --shadow-2: 0 4px 8px #0000001a;
+    --shadow-3: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
+
+    /* Text Styles */
+    --header-s: 500 20px/28px 'Inter';
+    --header-m: 500 28px/36px 'Inter';
+    --header-l: 500 36px/44px 'Inter';
+    --text-s-regular: 400 12px/16px 'Inter';
+    --text-s-medium: 500 12px/16px 'Inter';
+    --text-m-regular: 400 14px/20px 'Inter';
+    --text-m-medium: 500 14px/20px 'Inter';
+    --text-l-regular: 400 16px/24px 'Inter';
+    --text-l-medium: 500 16px/24px 'Inter';
+}
+
+body {
+    background: #ededed;
+}
+td {
+    font-size: 12px;
+}
+a {
+    text-decoration: none;
+}
+.container {
+    margin-top: 48px;
+}
+#navbarMenu .span {
+    height: 24px;
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid var(--primary-hover);
+    border-radius: 30px;
+    padding: 6px;
+    transition: .3s;
+}
+#navbarMenu .span:hover {
+    background: var(--primary-surface);
+}
+
+#navbarMenu .span i {
+    font-size: 14px;
+    transform: translateY(.5px);
+}
+
+#navbarMenu .navbar-menu-focus {
+    background: var(--primary-surface);
+}
+
+.btn-filter {
+    border-radius: 30px; 
+    width: 74px; 
+    background-color: var(--primary-hover); 
+    letter-spacing: .03em;
+    box-shadow: var(--shadow-1);
+}
+.btn-filter:hover {
+    background-color: var(--primary-main);
+}
+
+.btn-edit {
+    width: 75px;
+    height: 20px;
+    background-color: #f7f7f7;
+    font-size: 12px;
+    border: 1px solid #b8dbca;
+    color: #43936c;
+    padding: 3px 8px;
+    font-weight: 500; 
+}
+
+.btn-status {
+    background: #F5F5FF; 
+    border: 1px solid #B8DBCA; 
+    padding: 3px 8px; 
+    font-size: 12px; 
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.btn-delete {
+    width: 75px;
+    height: 20px;
+    background-color: #fff4f2;
+    font-size: 12px;
+    border: 1px solid #eeb4b0;
+    color: #cb3a31;
+    padding: 3px 8px;
+    font-weight: 500;
+}
+
+.modal-add-title {
+    font-size: 20px;
+    text-align: center;
+}
+
+.btn-add-data {
+    background-color: #3131a3;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 12px;
+    gap: 4px;
+
+    width: 240px;
+    height: 32px;
+    border: 1px solid #C2C2C2;
+
+    /* Shadow 3 */
+    box-shadow: var(--shadow-3);
+    border-radius: 6px;
+}
+
+.invalid-input {
+    border: 1px solid var(--danger-hover);
+}
+.invalid-input:focus {
+    outline: 1px solid var(--danger-main);
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 16px;
+    gap: 4px;
+
+    height: 32px;
+    border-radius: 6px;
+    box-shadow: var(--shadow-1);
+    border: none;
+    transition: .3s;
+}
+
+.button-primary {
+    background-color: var(--primary-main);
+}
+.button-success {
+    background-color: var(--success-main);
+}
+.button-warning {
+    background-color: var(--warning-main);
+}
+.button-danger {
+    background-color: var(--danger-main);
+}
+.button-info {
+    background-color: var(--info-main);
+}
+
+.button-primary:hover {
+    background-color: var(--primary-hover);
+}
+.button-success:hover {
+    background-color: var(--success-hover);
+}
+.button-warning:hover {
+    background-color: var(--warning-hover);
+}
+.button-danger:hover {
+    background-color: var(--danger-hover);
+}
+.button-info:hover {
+    background-color: var(--info-hover);
+}
+
+.button-primary:focus {
+    background-color: var(--primary-hover);
+}
+.button-success:focus {
+    background-color: var(--success-hover);
+}
+.button-warning:focus {
+    background-color: var(--warning-hover);
+}
+.button-danger:focus {
+    background-color: var(--danger-hover);
+}
+.button-info:focus {
+    background-color: var(--info-hover);
+}
+
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 8px;
+    gap: 10px;
+
+    height: 20px;
+    border-radius: 6px;
+}
+
+.tags-primary {
+    background-color: var(--primary-surface);
+    border: 1px solid var(--primary-border);
+}
+
+.text-neutral-100 {
+    color: var(--neutral-100);
+}
+.text-neutral-90 {
+    color: var(--neutral-90);
+}
+.text-neutral-80 {
+    color: var(--neutral-80);
+}
+.text-neutral-70 {
+    color: var(--neutral-70);
+}
+.text-neutral-60 {
+    color: var(--neutral-60);
+}
+.text-neutral-50 {
+    color: var(--neutral-50);
+}
+.text-neutral-40 {
+    color: var(--neutral-40);
+}
+.text-neutral-30 {
+    color: var(--neutral-30);
+}
+.text-neutral-20 {
+    color: var(--neutral-20);
+}
+.text-neutral-10 {
+    color: var(--neutral-10);
+}
+
+.text-l-regular {
+    font: var(--text-l-regular);
+}
+.text-l-medium {
+    font: var(--text-l-medium);
+}
+.text-m-regular {
+    font: var(--text-m-regular);
+}
+.text-m-medium {
+    font: var(--text-m-medium);
+}
+.text-s-regular {
+    font: var(--text-s-regular);
+}
+.text-s-medium {
+    font: var(--text-s-medium);
+}

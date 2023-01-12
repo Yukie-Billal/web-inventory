@@ -14,7 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PageController::class, 'index']);
-Route::get('/login', [PageController::class, 'login']);
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [PageController::class, 'login'])->name('login');
+    Route::post('/login/act', [PageController::class, 'loginAct']);
+});
 
-Route::post('/login/act', [PageController::class, 'loginAct']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [PageController::class, 'index'])->name('home');
+});
+
+Route::get('/barang', [PageController::class, 'barang']);
+Route::get('/barang/masuk', [PageController::class, 'barangMasuk']);
+Route::get('/barang/keluar', [PageController::class, 'barangKeluar']);
