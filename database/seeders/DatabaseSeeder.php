@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Barang;
 use App\Models\Barangkeluar;
+use App\Models\BarangMasuk;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -29,5 +30,6 @@ class DatabaseSeeder extends Seeder
 
         Barang::factory(10)->create();
         Barangkeluar::factory(5)->create();
+        BarangMasuk::factory(5)->create();
     }
 }

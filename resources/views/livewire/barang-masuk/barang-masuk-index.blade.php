@@ -44,26 +44,26 @@
                         <th>Nama Barang</th>
                         <th>QTY</th>
                         <th>Tanggal</th>
-                        <th>Status</th>
+                        {{-- <th>Status</th> --}}
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach ($barangKeluars as $barangKeluar)                    
+                        @foreach ($barangMasuks as $barangMasuk)                    
                         <tr>
-                            @if ($barangKeluar->barang == '')                                
-                                <td scope="row">{{ $barangKeluar->kode_barang }}</td>
-                                <td>{{ $barangKeluar->nama_barang }}</td>
+                            @if ($barangMasuk->barang == '')                                
+                                <td scope="row">{{ $barangMasuk->kode_barang }}</td>
+                                <td>{{ $barangMasuk->nama_barang }}</td>
                             @else                                
-                                <td scope="row">{{ $barangKeluar->barang->kode }}</td>
-                                <td>{{ $barangKeluar->barang->nama_barang }}</td>
+                                <td scope="row">{{ $barangMasuk->barang->kode }}</td>
+                                <td>{{ $barangMasuk->barang->nama_barang }}</td>
                             @endif
-                            <td>{{ $barangKeluar->jumlah_keluar }}</td>
-                            <td>{{ $barangKeluar->tanggal_keluar }}</td>
-                            <td>
-                                @if ($barangKeluar->status == 'Di Pinjam')
-                                    <span class="badge text-dark fw-normal btn-status" style="">{{ $barangKeluar->status }}</span>
+                            <td>{{ $barangMasuk->jumlah_masuk }}</td>
+                            <td>{{ $barangMasuk->tanggal_masuk }}</td>
+                            {{-- <td>
+                                @if ($barangMasuk->status == 'Di Pinjam')
+                                    <span class="badge text-dark fw-normal btn-status" style="">{{ $barangMasuk->status }}</span>
                                 @endif
-                            </td>
+                            </td> --}}
                         </tr>
                         @endforeach
                     </tbody>

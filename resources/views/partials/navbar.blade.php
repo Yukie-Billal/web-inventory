@@ -1,8 +1,8 @@
 <div class="navbar bg-white px-3" style="height: 58px; border-radius: 0 0 24px 24px">
-    <div class="col-3" style="padding-left: 88px">
+    <div class="col-md-2" style="padding-left: 88px">
         <h3>LOGO</h3>
     </div>
-    <div class="col-5 d-flex justify-content-around align-items-center" id="navbarMenu">
+    <div class="col-md-6 d-flex justify-content-around align-items-center" id="navbarMenu">
         <a href="/home">
             <span class="btn text-dark span d-flex align-items-center px-3 py-2 {{ Request::is('home') ? 'navbar-menu-focus' : '' }}">
                 <i class="fa fa-home me-1" aria-hidden="true"></i>
@@ -28,8 +28,8 @@
             </span>
         </a>
     </div>
-    <div class="col-3">
-        <div class="input-group" style="height: 38px; width: 324px;">
+    <div class="col-md-3">
+        <div class="input-group" style="height: 38px; width: 300px;">
             <input type="text" class="form-control border border-end-0" placeholder="Search . . ." aria-describedby="btnGroupAddon">
             <button class="input-group-text bg-transparent border border-start-0" id="btnGroupAddon">
                 <i class="fa fa-search" aria-hidden="true"></i>

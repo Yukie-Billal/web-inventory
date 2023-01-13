@@ -6,7 +6,7 @@
     </div> --}}
     <div class="form-group my-3">
       <label for="email" class="ms-1 mb-1">Email</label>
-      <input type="email" wire:model='email' name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email Anda">
+      <input type="email" wire:model.lazy='email' name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email Anda">
       @error('email')
       <div class="invalid-feedback">
         {{ $message }}
@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
         <label for="password" class="ms-1 mb-1">Password</label>
-        <input type="password" wire:model='password' name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password Anda">
+        <input type="password" wire:model.lazy='password' name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password Anda">
         @error('password')
         <div class="invalid-feedback">
           {{ $message }}

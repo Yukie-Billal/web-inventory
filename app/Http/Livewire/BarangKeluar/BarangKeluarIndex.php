@@ -14,6 +14,15 @@ class BarangKeluarIndex extends Component
         'search' => ['except' => ''],
     ];
 
+    protected $listeners = [
+        'BarangkeluarAdded',
+    ];
+
+    public function BarangkeluarAdded()
+    {
+        # code...
+    }
+
     public function render()
     {
         $barangs = BarangKeluar::orderByDesc('tanggal_keluar');
@@ -27,7 +36,7 @@ class BarangKeluarIndex extends Component
         }
 
         if ($this->search != null) {
-            $barangs = $barangs->where('tanggal_keluar', 'like', '%'.$this->search. '%')->orWhere('kode_keluar', 'like', '%' .$this->search. '%' );
+            $barangs = $barangs->where('tanggal_keluar', 'like', '%'.$this->search. '%')->orWhere('kode_barang', 'like', '%' .$this->search. '%' );
         }
 
 

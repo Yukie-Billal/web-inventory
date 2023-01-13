@@ -10,13 +10,13 @@
             <div class="col-6 p-0">
                 <div class="form-group">
                   <label for="kode" class="text-neutral-80">Kode Barang</label>
-                  <input type="text" wire:model.lazy='kode' class="input-form invalid-input" id="kode" placeholder="Masukkan Kode Barang">
+                  <input type="text" wire:model.lazy='kode' name="kode" class="input-form invalid-input" id="kode" placeholder="Masukkan Kode Barang">
                 </div>
             </div>
             <div class="col-6 p-0 d-flex justify-content-end">
                 <div class="form-group">
                     <label for="nama" class="text-neutral-80">Nama Barang</label>
-                    <input type="text" wire:model.lazy='NamaBarang' class="input-form is-invalid" id="nama" placeholder="Masukkan Nama Barang">
+                    <input type="text" wire:model.lazy='NamaBarang' name="NamaBarang" class="input-form is-invalid" id="nama" placeholder="Masukkan Nama Barang">
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="col-6 p-0">
                 <div class="form-group">
                     <label for="stok" class="text-neutral-80">Stok Barang</label>
-                    <input type="text" wire:model.lazy='stok' class="input-form" id="stok" placeholder="Masukkan Stok Barang">
+                    <input type="text" wire:model.lazy='stok' name="stok" class="input-form" id="stok" placeholder="Masukkan Stok Barang">
                 </div>
             </div>
             <div class="col-6">

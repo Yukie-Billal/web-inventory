@@ -15,13 +15,19 @@ return new class extends Migration
     {
         Schema::create('barang_keluars', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_keluar');
+            // $table->bigInteger('barang_id')->unigned()->index();
             $table->foreignId('barang_id')->nullable();
+            $table->string('kode_barang');
+            $table->string('nama_barang');
             $table->date('tanggal_keluar');
             $table->integer('jumlah_keluar');
             $table->string('status');
             $table->timestamps();
         });
+
+        // Schema::table('barang_keluars', function ($table) {
+        //     $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('casecade')->onUpdate('casecade');
+        // });
     }
 
     /**

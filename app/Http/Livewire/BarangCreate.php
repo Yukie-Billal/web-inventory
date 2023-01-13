@@ -12,10 +12,15 @@ class BarangCreate extends Component
     public $stok;
 
     protected $rules = [
-        'kode' => 'required|min:6',
+        'kode' => 'required|min:6|unique:barang',
         'NamaBarang' => 'required',
         'stok' => 'required',
     ];
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function addBarang()
     {

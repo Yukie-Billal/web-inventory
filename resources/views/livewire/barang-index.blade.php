@@ -6,6 +6,7 @@
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     Tambah Data Baru
                 </button>
+                
             </div>
             <div class="col-4">
                 @if (session()->has('message'))
