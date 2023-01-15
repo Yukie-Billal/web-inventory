@@ -358,7 +358,9 @@ a {
 }
 
 
-
+.icon-qty {
+    cursor: pointer;
+}
 
 .cursor-pointer {
     cursor: pointer;

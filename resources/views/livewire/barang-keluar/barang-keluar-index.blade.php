@@ -62,6 +62,13 @@
                             <td>
                                 @if ($barangKeluar->status == 'Di Pinjam')
                                     <span class="badge text-dark fw-normal btn-status" style="">{{ $barangKeluar->status }}</span>
+                                @else
+                                    @if ($barangKeluar->status == 'Pinjam')
+                                        <span class="badge text-dark fw-normal btn-status" style="">{{ $barangKeluar->status }}</span>                                        
+                                    @endif
+                                    @if ($barangKeluar->status == 'Rusak')
+                                        <span class="badge text-dark fw-normal btn-status" style="">{{ $barangKeluar->status }}</span>                                        
+                                    @endif
                                 @endif
                             </td>
                         </tr>

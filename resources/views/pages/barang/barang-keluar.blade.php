@@ -16,8 +16,11 @@
 
 <div class="modal fade" id="ModalDataBarang">
     <div class="modal-dialog">
+        @php
+            Request::is('barang/masuk') ? $where = 'm' : $where = 'k';
+        @endphp
         <div class="modal-content rounded-1" style="width: 544px; padding:20px;">
-            <livewire:barang-keluar.barang-list >
+            <livewire:barang-keluar.barang-list :where='$where'>
         </div>
     </div>
 </div>

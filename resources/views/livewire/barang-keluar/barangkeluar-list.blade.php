@@ -21,7 +21,7 @@
                         <th>Kode Barang</th>
                         <th>Nama Barang</th>
                         <th>Tanggal</th>
-                        <th>Jumlah</th>
+                        <th class="text-center">Jumlah</th>
                         <th>Status</th>
                         <th></th>
                     </tr>
@@ -29,7 +29,7 @@
                     <tbody>
                         @foreach ($barangKeluarKeranjangs as $barangKeluarKeranjang)                    
                         <tr>
-                            @if ($barangKeluarKeranjang->barang == '')                                
+                            @if ($barangKeluarKeranjang->barang == '')
                                 <td scope="row">{{ $barangKeluarKeranjang->kode_barang }}</td>
                                 <td>{{ $barangKeluarKeranjang->nama_barang }}</td>
                             @else                                
@@ -37,12 +37,17 @@
                                 <td>{{ $barangKeluarKeranjang->barang->nama_barang }}</td>
                             @endif
                             <td>{{ $barangKeluarKeranjang->tanggal_keluar }}</td>
-                            <td>{{ $barangKeluarKeranjang->jumlah_keluar }}</td>
+                            <td class="text-center">
+                                <i wire:click='qtyMinus({{ $barangKeluarKeranjang->id }})' class="fa fa-minus icon-qty" aria-hidden="true"></i>
+                                <span class="mx-2">{{ $barangKeluarKeranjang->jumlah_keluar }}</span>
+                                <i wire:click='qtyPlus({{ $barangKeluarKeranjang->id }})' class="fa fa-plus icon-qty" aria-hidden="true"></i>
+                            </td>
                             <td>
-                                <select wire:model.lazy='status' name="status" class="select-form">
-                                    <option value="Pinjam" selected>Pinjam</option>
-                                    <option value="Rusak">Rusak</option>
+                                <select wire:model.lazy='status' wire:change='statusCovery({{ $barangKeluarKeranjang->id }})' class="select-form">
+                                    <option value="Pinjam" {{ $barangKeluarKeranjang->status == 'Pinjam' || $barangKeluarKeranjang->status == 'Di Pinjam' ? 'selected' : '' }}>Pinjam</option>
+                                    <option value="Rusak" {{ $barangKeluarKeranjang->status == 'Rusak' ? 'selected' : '' }}>Rusak</option>
                                 </select>
+                                {{-- <livewire:barang-keluar.barang-keluar-status :data='$barangKeluarKeranjang'> --}}
                             </td>
                             <td>
                                 <span wire:click='deleteBarangKeluarList({{ $barangKeluarKeranjang->id }})' class="tags tags-danger cursor-pointer">

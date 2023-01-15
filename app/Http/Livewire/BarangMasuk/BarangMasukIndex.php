@@ -14,6 +14,15 @@ class BarangMasukIndex extends Component
         'search' => ['except' => ''],
     ];
 
+    protected $listeners = [
+        'BarangMasukAdded',
+    ];
+
+    public function BarangMasukAdded()
+    {
+        # code...
+    }
+
     public function render()
     {
         $barangs = BarangMasuk::orderByDesc('tanggal_masuk');

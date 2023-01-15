@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Barang;
+use App\Models\BarangKeluar;
+use App\Models\BarangMasuk;
 use Livewire\Component;
 
 class BarangIndex extends Component
@@ -34,15 +36,19 @@ class BarangIndex extends Component
 
     public function deleteBarang($id)
     {
-        $barang = Barang::find($id);
-        $barangkeluar = BarangKeluar::find($barang);
+        $barang = Barang::find($id);        
+        $barangkeluar = BarangKeluar::where('barang_id', $barang->id)->get();
+        $barangMasuk = BarangMasuk::where('barang_id', $barang->id)->get();
 
-        dd($barangkeluar);
-        if ($barang) {
-            Barang::destroy($id);
+        if ($barangkeluar->count() > 0 || $barangMasuk->count() > 0) {
+            session()->flash('message', 'Gagal Menghapus Data');
+        } else {
+            if ($barang) {
+                Barang::destroy($id);
+            }
+            session()->flash('message', 'Berhasil Menghapus Data');
         }
         $this->render();
-        session()->flash('message', 'Berhasil Menghapus Data');
     }
 
     public function render()

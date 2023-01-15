@@ -12,7 +12,7 @@ class BarangCreate extends Component
     public $stok;
 
     protected $rules = [
-        'kode' => 'required|min:6|unique:barang',
+        'kode' => 'required|min:6|unique:barangs',
         'NamaBarang' => 'required',
         'stok' => 'required',
     ];

@@ -44,7 +44,6 @@
                         <th>Nama Barang</th>
                         <th>QTY</th>
                         <th>Tanggal</th>
-                        {{-- <th>Status</th> --}}
                     </tr>
                     </thead>
                     <tbody>
@@ -59,11 +58,6 @@
                             @endif
                             <td>{{ $barangMasuk->jumlah_masuk }}</td>
                             <td>{{ $barangMasuk->tanggal_masuk }}</td>
-                            {{-- <td>
-                                @if ($barangMasuk->status == 'Di Pinjam')
-                                    <span class="badge text-dark fw-normal btn-status" style="">{{ $barangMasuk->status }}</span>
-                                @endif
-                            </td> --}}
                         </tr>
                         @endforeach
                     </tbody>
