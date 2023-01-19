@@ -11,10 +11,13 @@ use Illuminate\Support\Facades\Blade;
 class BarangkeluarList extends Component
 {
     public $status = '';
+    public $kodeBarang;
+    public BarangKeluarKeranjang $barangKeluarKeranjang;
 
     protected $listeners = [
         'AddedKeranjangKeluar',
         'kodeSlipper',
+        'setStatus'
     ];
 
     public function updated()
@@ -24,6 +27,55 @@ class BarangkeluarList extends Component
         // }
     }
 
+    public function searchKode()
+    {
+        $barang = Barang::where('kode', $this->kodeBarang)->get();
+        if ($barang->count() == 1) {
+            $barangList = $barang[0];
+            if ($barangList) {
+                $cek = BarangKeluarKeranjang::where('barang_id', $barangList->id)->where('kode_barang', $barangList->kode)->where('nama_barang', $barangList->nama_barang)->get();
+
+                if ($cek == '[]') {
+                    BarangKeluarKeranjang::create([
+                        'barang_id' => $barangList->id,
+                        'kode_barang' => $barangList->kode,
+                        'nama_barang' => $barangList->nama_barang,
+                        'jumlah_keluar' => 1,
+                        'tanggal_keluar' => date('Y-m-d'),
+                        'status' => 'Pinjam',
+                    ]);
+                } else {
+                    if ($cek[0]->kode_barang == $barangList->kode) {
+                        foreach ($cek as $item) {
+                            $kondisi = null;
+                            $item->status == 'Pinjam' ? $kondisi = 1 : '';
+                            if ($item->status == 'Pinjam') {
+                                $item->update([
+                                    'jumlah_keluar' => $item->jumlah_keluar + 1,
+                                ]);
+                            } elseif ($kondisi == null) {
+                                BarangKeluarKeranjang::create([
+                                    'barang_id' => $barangList->id,
+                                    'kode_barang' => $barangList->kode,
+                                    'nama_barang' => $barangList->nama_barang,
+                                    'jumlah_keluar' => 1,
+                                    'tanggal_keluar' => date('Y-m-d'),
+                                    'status' => 'Pinjam',
+                                ]);
+                            }
+                        }                        
+                    }
+                }
+            }
+            $this->emit('AddedKeranjangMasuk');
+        }
+        if ($barang->count()  <= 0) {
+            session()->flash('message', 'Barang Tidak Ditemukan');
+        }
+        $this->kodeBarang = '';
+        $this->render();  
+    }
+
     public function kodeSlipper($keranjang)
     {
         $this->kodeSlipper = $keranjang;
@@ -31,14 +83,28 @@ class BarangkeluarList extends Component
 
     public function statusCovery($id)
     {
+        $this->emit('change-status', $id);
+    }
+
+    public function setStatus($params)
+    {
+        $id = $params[0];
+        $value = $params[1];
         $bkk = BarangKeluarKeranjang::find($id);
-        if ($bkk) {
-            $bkk->update([
-                'status' => $this->status
-            ]);
+
+        $barangList = Barang::find($bkk->barang_id);
+
+        $cek = BarangKeluarKeranjang::where('barang_id', $barangList->id)->where('kode_barang', $barangList->kode)->where('nama_barang', $barangList->nama_barang)->get();
+
+        foreach ($cek as $data) {
+            if ($data->status == $value) {                
+                $data->update(['jumlah_keluar' => $data->jumlah_keluar + $bkk->jumlah_keluar]);
+                $bkk->destroy($id);
+            }
+            if ($data->status != $value) {
+                $bkk ? $bkk->update(['status' => $value]) : '' ;
+            }
         }
-        $this->status = '';
-        $this->render();
     }
 
     public function qtyPlus($id)

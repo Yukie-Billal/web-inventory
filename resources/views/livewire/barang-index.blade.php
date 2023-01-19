@@ -12,13 +12,13 @@
                 @if (session()->has('message'))
                     <div class="alert alert-success">
                         {{ session('message') }}
-                    </div>        
+                    </div>
                 @endif        
             </div>
             <div class="col-4 d-flex justify-content-end">
-                <div class="input-group" style="height: 38px; width: 204px;">
-                    <input type="text" wire:model.debounce.500ms='search' class="form-control border-end-0 is-invalid" placeholder="Search . . ." aria-describedby="btnGroupAddon">
-                    <button wire:click='$refresh' class="input-group-text bg-transparent border border-start-0" id="btnGroupAddon">
+                <div class="group-form" style="height: 38px; width: 204px;">
+                    <input type="text" wire:model.debounce.500ms='search' class="input-form bg-transparent h-100 w-100" placeholder="Search . . .">
+                    <button wire:click='$refresh' class="group-form-text bg-transparent">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -63,11 +63,11 @@
 </div>
 
 @push('body-script')
-    @if (session()->has('message'))     
+    @if (session()->has('message'))        
         <script>
             Swal.fire({
                 icon: 'success',
-                title: {{ session('message') }},
+                title: '{{ session('message') }}',
                 showConfirmButton: false,
                 timer: 5000
             })

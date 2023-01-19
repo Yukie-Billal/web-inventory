@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/login', [PageController::class, 'login'])->name('login');
+    Route::get('/', [PageController::class, 'login'])->name('login');
     Route::post('/login/act', [PageController::class, 'loginAct']);
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [PageController::class, 'index'])->name('home');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::get('/barang', [PageController::class, 'barang']);

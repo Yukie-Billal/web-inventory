@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
+    /*  Color Styles  */
+
     /* Neutral Color */
     --neutral-10: #FFFFFF;
     --neutral-20: #F5F5F5;
@@ -10,7 +12,7 @@
     --neutral-60: #9E9E9E;
     --neutral-70: #757575;
     --neutral-80: #616161;
-    --neutral-90: #404040;
+    --neutral-90: #424242;
     --neutral-100: #0A0A0A;
     /* Primary Color */
     --primary-main: #4C4DDC;
@@ -33,7 +35,7 @@
     --warning-hover: #BF6919;
     --warning-pressed: #734011;
     --warning-focus: #CD7B2E33;
-    /* Succes Color */
+    /* Success Color */
     --success-main: #43936C;
     --success-surface: #F7F7F7;
     --success-border: #B8DBCA;
@@ -47,14 +49,21 @@
     --info-hover: #114CD6;
     --info-pressed: #11317D;
     --info-focus: #3267E333;
-    /*  Color Styles  */
-    --border-invalid-input: #BD251C;
-
+    /*  Dark Color  */
+    --dark-main: #424242;
+    --dark-surface: #C2C2C2;
+    --dark-border: #616161;
+    --dark-hover: #0A0A0ADD;
+    --dark-pressed: #0A0A0A;
+    --dark-focus: #42424233;
 
     /* effect styles */
     --shadow-1: 0 1px 2px #0000001f;
     --shadow-2: 0 4px 8px #0000001a;
     --shadow-3: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
+
+    --shadow-input-group-text: inset -1px 2px 2px rgba(0, 0, 0, 0.08);
+    --border-invalid-input: #BD251C;
 
     /* Text Styles */
     --header-s: 500 20px/28px 'Inter';
@@ -76,6 +85,7 @@ td {
 }
 a {
     text-decoration: none;
+    transition: .3s;
 }
 .container {
     margin-top: 48px;
@@ -86,8 +96,9 @@ a {
     background: transparent;
     border: 1px solid var(--primary-hover);
     border-radius: 30px;
-    padding: 6px;
+    padding: 10px;
     transition: .3s;
+    color: var(--neutral-90);
 }
 #navbarMenu .span:hover {
     background: var(--primary-surface);
@@ -96,12 +107,169 @@ a {
 #navbarMenu .span i {
     font-size: 14px;
     transform: translateY(.5px);
+    color: var(--neutral-90);
 }
 
 #navbarMenu .navbar-menu-focus {
     background: var(--primary-surface);
 }
 
+/*   Form Styles   */
+.input-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 12px;
+    gap: 4px;
+
+    width: 240px;
+    height: 32px;
+    border: 1px solid var(--neutral-50);
+
+    /* Shadow 3 */
+    box-shadow: var(--shadow-3);
+    border-radius: 6px;
+    transition: .03s;
+    outline: none;
+    color: var(--neutral-90);
+}
+
+.input-form::placeholder {
+    color: var(--neutral-70);
+    font: var(--text-s-medium);
+}
+
+.input-form:focus {
+    outline: 3px solid var(--primary-focus);
+}
+
+.select-form {
+    width: 70px;
+    background-color: var(--neutral-10);
+    border: 1px solid var(--neutral-40);
+    border-radius: 6px;
+    box-shadow: var(--shadow-1);
+}
+
+.group-form {
+    display: flex;
+    background-color: white;
+    width: 100%;
+}
+
+.group-form .input-form {
+    border-radius: 30px 0 0 30px;
+    border-right: none;
+    background-color: transparent;
+}
+
+.group-form .group-form-text {
+    outline: none;
+    border: none;
+    border-right: 1px solid var(--neutral-50);
+    border-bottom: 1px solid var(--neutral-50);
+    border-top: 1px solid var(--neutral-50);
+    width: 36px;
+    border-radius: 0 30px 30px 0;
+    box-shadow: var(--shadow-input-group-text);
+    cursor: default;
+    padding-right: 14px;
+    display: flex;
+    align-items: center;
+    color: var(--neutral-90);
+}
+
+.group-form input[type="date"] {
+    color: var(--neutral-90);
+}
+
+.group-form input[type="date"]:focus {
+    color: var(--neutral-70);
+}
+
+.invalid-input {
+    border: 1px solid var(--danger-hover);
+    transition: .03s;
+}
+.invalid-input:focus {
+    outline: 3px solid var(--danger-focus);
+}
+
+
+/*  button Styles  */
+    .button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 16px;
+        gap: 4px;
+
+        height: 32px;
+        border-radius: 6px;
+        box-shadow: var(--shadow-1);
+        border: none;
+        transition: .3s;
+        cursor: default;
+    }
+
+    .button-primary {
+        background-color: var(--primary-main);
+    }
+    .button-success {
+        background-color: var(--success-main);
+    }
+    .button-warning {
+        background-color: var(--warning-main);
+    }
+    .button-danger {
+        background-color: var(--danger-main);
+    }
+    .button-info {
+        background-color: var(--info-main);
+    }
+    .button-dark {
+        background-color: var(--dark-main);
+    }
+
+    .button-primary:hover {
+        background-color: var(--primary-hover);
+    }
+    .button-success:hover {
+        background-color: var(--success-hover);
+    }
+    .button-warning:hover {
+        background-color: var(--warning-hover);
+    }
+    .button-danger:hover {
+        background-color: var(--danger-hover);
+    }
+    .button-info:hover {
+        background-color: var(--info-hover);
+    }
+    .button-dark:hover {
+        background-color: var(--dark-hover);
+    }
+
+    .button-primary:focus {
+        background-color: var(--primary-hover);
+    }
+    .button-success:focus {
+        background-color: var(--success-hover);
+    }
+    .button-warning:focus {
+        background-color: var(--warning-hover);
+    }
+    .button-danger:focus {
+        background-color: var(--danger-hover);
+    }
+    .button-info:focus {
+        background-color: var(--info-hover);
+    }
+    .button-dark:focus {
+        background-color: var(--neutral-60);
+    }
+/*   close   */
 .btn-filter {
     border-radius: 30px; 
     width: 74px; 
@@ -152,109 +320,6 @@ a {
 
 .btn-add-data {
     background-color: #3131a3;
-}
-
-/*   Form Styles   */
-.input-form {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 6px 12px;
-    gap: 4px;
-
-    width: 240px;
-    height: 32px;
-    border: 1px solid var(--text-neutral-50);
-
-    /* Shadow 3 */
-    box-shadow: var(--shadow-3);
-    border-radius: 6px;
-    transition: .03s;
-    outline: none;
-}
-
-.input-form:focus {
-    outline: 3px solid var(--primary-focus);
-}
-
-.invalid-input {
-    border: 1px solid var(--danger-hover);
-    transition: .03s;
-}
-.invalid-input:focus {
-    outline: 3px solid var(--danger-focus);
-}
-
-.select-form {
-    width: 70px;
-    background-color: var(--neutral-10);
-    border: 1px solid var(--neutral-40);
-    border-radius: 6px;
-    box-shadow: var(--shadow-1);
-}
-
-/*  button Styles  */
-.button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 6px 16px;
-    gap: 4px;
-
-    height: 32px;
-    border-radius: 6px;
-    box-shadow: var(--shadow-1);
-    border: none;
-    transition: .3s;
-}
-
-.button-primary {
-    background-color: var(--primary-main);
-}
-.button-success {
-    background-color: var(--success-main);
-}
-.button-warning {
-    background-color: var(--warning-main);
-}
-.button-danger {
-    background-color: var(--danger-main);
-}
-.button-info {
-    background-color: var(--info-main);
-}
-
-.button-primary:hover {
-    background-color: var(--primary-hover);
-}
-.button-success:hover {
-    background-color: var(--success-hover);
-}
-.button-warning:hover {
-    background-color: var(--warning-hover);
-}
-.button-danger:hover {
-    background-color: var(--danger-hover);
-}
-.button-info:hover {
-    background-color: var(--info-hover);
-}
-
-.button-primary:focus {
-    background-color: var(--primary-hover);
-}
-.button-success:focus {
-    background-color: var(--success-hover);
-}
-.button-warning:focus {
-    background-color: var(--warning-hover);
-}
-.button-danger:focus {
-    background-color: var(--danger-hover);
-}
-.button-info:focus {
-    background-color: var(--info-hover);
 }
 
 .tags-button {
@@ -357,6 +422,17 @@ a {
     font: var(--text-s-medium);
 }
 
+.header-m {
+    font: var(--header-m);
+}
+
+.header-s {
+    font: var(--header-s);
+}
+
+.header-l {
+    font: var(--header-l);
+}
 
 .icon-qty {
     cursor: pointer;
@@ -364,4 +440,39 @@ a {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.my-shadow-1 {
+    box-shadow: var(--shadow-1);
+}
+.my-shadow-2 {
+    box-shadow: var(--shadow-2);
+}
+.my-shadow-3 {
+    box-shadow: var(--shadow-3);
+}
+
+.my-rounded {
+    border-radius: 30px;
+}
+
+.border-1 {
+    !important
+    border: 1px solid var(--neutral-60);
+}
+
+.my-rounded.rounded-start {
+    border-radius: 30px 0 0 30px;
+}
+
+.my-rounded.rounded-end {
+    border-radius: 0 30px 30px 0;
+}
+
+.my-rounded.rounded-top {
+    border-radius: 30px 30px 0 0;
+}
+
+.my-rounded.rounded-end {
+    border-radius: 0 0 30px 30px;
 }

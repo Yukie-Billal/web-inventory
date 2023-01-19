@@ -23,7 +23,11 @@
         <div class="row">
             <div class="col-6 p-0">
                 <div class="form-group">
-                    <label for="stok" class="text-neutral-80">Stok Barang</label>
+                    @if (Request::is('barang/masuk'))
+                        <label for="stok" class="text-neutral-80">Jumlah Barang</label>
+                    @else
+                        <label for="stok" class="text-neutral-80">Stok Barang</label>
+                    @endif                    
                     <input type="text" wire:model.lazy='stok' name="stok" class="input-form @error('NamaBarang') invalid-input @enderror" id="stok" placeholder="Masukkan Stok Barang">
                 </div>
             </div>

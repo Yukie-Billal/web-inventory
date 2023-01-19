@@ -10,6 +10,7 @@ use Livewire\Component;
 class BarangMasukList extends Component
 {
     public $search;
+    public $kodeBarang;
     protected $queryString = [
         'search' => ['except' => ''],
     ];
@@ -21,6 +22,41 @@ class BarangMasukList extends Component
     public function AddedKeranjangMasuk()
     {
         # code...
+    }
+
+    public function searchKode()
+    {
+        $barang = Barang::where('kode', $this->kodeBarang)->get();
+        if ($barang->count() == 1) {
+            $barang = $barang[0];
+            if ($barang) {
+                $cek = BarangMasukKeranjang::where('barang_id', $barang->id)->where('kode_barang', $barang->kode)->where('nama_barang', $barang->nama_barang)->get();
+
+                if ($cek == '[]') {
+                    BarangMasukKeranjang::create([
+                        'barang_id' => $barang->id,
+                        'kode_barang' => $barang->kode,
+                        'nama_barang' => $barang->nama_barang,
+                        'jumlah_masuk' => 1,
+                        'tanggal_masuk' => date('Y-m-d'),
+                    ]);
+                } else {
+                    if ($cek[0]->kode_barang == $barang->kode) {
+                        foreach ($cek as $item) {
+                            $item->update([
+                                'jumlah_masuk' => $item->jumlah_masuk + 1,
+                            ]);
+                        }                        
+                    }
+                }
+            }
+            $this->emit('AddedKeranjangMasuk');
+        }
+        if ($barang->count()  <= 0) {
+            session()->flash('message', 'Barang Tidak Ditemukan');
+        }
+        $this->kodeBarang = '';
+        $this->render();        
     }
 
     public function qtyPlus($id)

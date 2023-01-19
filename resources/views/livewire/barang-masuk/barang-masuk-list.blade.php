@@ -6,11 +6,16 @@
                     Pilih Data Barang
                 </button>
             </div>
-            <div class="col-4 d-flex justify-content-end">
-                <button wire:click='confirm' class="button button-success text-white text-m-medium">
-                    Confirmasi
-                </button>
-            </div>
+            <div class="col-4">
+                <form wire:submit.prevent='searchKode'>
+                    <div class="group-form">
+                        <input type="text" wire:model.debounce.500ms='kodeBarang' class="input-form bg-transparent" placeholder="Masukkan Kode Barang">
+                        <button class="group-form-text bg-transparent">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </form>     
+            </div>            
         </div>
     </div>
     <div class="card-body p-0">
@@ -51,5 +56,19 @@
                     </tbody>
             </table>
         </div>
+
+        <div class="col-12 d-flex justify-content-end mt-2">
+            <button wire:click='confirm' class="button button-success text-white text-m-medium">
+                Confirmasi
+            </button>
+        </div>
+        @if(session()->has('message'))
+            <!-- <h1>{{ session('message') }}</h1> -->
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $("#dataNotFound").modal('show');
+                });
+            </script>
+        @endif
     </div>
 </div>

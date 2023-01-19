@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Barang;
+use App\Models\BarangMasuk;
+use Illuminate\Support\Str;
 
 class BarangCreate extends Component
 {
@@ -25,21 +27,33 @@ class BarangCreate extends Component
     public function addBarang()
     {
         $this->validate();
-        Barang::create([
+        $baru = Barang::create([
             'kode' => $this->kode,
             'nama_barang' => $this->NamaBarang,
             'stok' => $this->stok
+        ]);
+
+        BarangMasuk::create([
+            'barang_id' => $baru->id,
+            'kode_barang' => $this->kode,
+            'nama_barang' => $this->NamaBarang,
+            'jumlah_masuk' => $this->stok,
+            'tanggal_masuk' => date('Y-m-d'),
         ]);
 
         $this->kode = '';
         $this->NamaBarang = '';
         $this->stok = '';
         
+        session()->flash('message', 'Berhasil Menambah Data');
         $this->emit('barangAdded');
     }
 
     public function render()
     {
+        // Kalau Pake Scanner Komentarin kodingan di bawah
+        $this->kode = Str::random(20);
+
         return view('livewire.barang-create');
     }
 }

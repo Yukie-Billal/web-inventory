@@ -31,7 +31,7 @@
                             <td>{{ $barangKeluar->jumlah_keluar }}</td>
                             <td>{{ $barangKeluar->tanggal_keluar }}</td>
                             <td>
-                                @if ($barangKeluar->status == 'Di Pinjam')
+                                @if ($barangKeluar->status == 'Di Pinjam' || $barangKeluar->status == 'Pinjam' || $barangKeluar->status == 'Rusak')
                                     <span class="badge text-dark fw-normal" style="background: #F5F5FF; border: 1px solid #B8DBCA; padding: 2px 8px; font-size: 12px; line-height: 16px;">{{ $barangKeluar->status }}</span>
                                 @endif
                             </td>

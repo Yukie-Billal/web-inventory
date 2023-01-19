@@ -3,18 +3,18 @@
         <div class="col-12 d-flex justify-content-between align-items-center p-0">
             <div class="col-8 d-flex align-items-center p-0">
                 <div class="col-4">
-                    <div class="input-group">
-                        <input type="date" wire:model.debounce.500ms='filterFrom' class="form-control border border-end-0" name="from" id="from">
-                        <label for="from" class="input-group-text bg-transparent border border-start-0">
+                    <div class="group-form">
+                        <input type="date" wire:model.debounce.500ms='filterFrom' class="input-form bg-transparent h-100 w-100" name="from" id="from">
+                        <label for="from" class="group-form-text bg-transparent">
                             <i class="fa fa-calendar" aria-hidden="true"></i>
                         </label>
                     </div>
                 </div>
                 <span class="mx-3">s/d</span>
                 <div class="col-4">
-                    <div class="input-group">
-                        <input type="date" wire:model.debounce.500ms='filterTo' class="form-control border border-end-0" name="to" id="to">
-                        <label for="from" class="input-group-text bg-transparent border border-start-0">
+                    <div class="group-form">
+                        <input type="date" wire:model.debounce.500ms='filterTo' class="input-form bg-transparent h-100 w-100" name="to" id="to">
+                        <label for="from" class="group-form-text bg-transparent">
                             <i class="fa fa-calendar" aria-hidden="true"></i>
                         </label>
                     </div>
@@ -26,9 +26,9 @@
                 </div>
             </div>
             <div class="col-4 d-flex justify-content-end">
-                <div class="input-group" style="height: 38px; width: 204px;">
-                    <input type="text" wire:model.debounce.500ms='search' class="form-control border border-end-0" placeholder="Search . . ." aria-describedby="btnGroupAddon">
-                    <button wire:click='$refresh' class="input-group-text bg-transparent border border-start-0" id="btnGroupAddon">
+                <div class="group-form" style="height: 38px; width: 204px;">
+                    <input type="text" wire:model.debounce.500ms='search' class="input-form bg-transparent w-100 h-100" placeholder="Search . . .">
+                    <button wire:click='$refresh' class="group-form-text bg-transparent">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                 </div>

@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="row justify-content-center px-4 py-4">
-        <div class="col-md-10">
+    <div class="row justify-content-center px-4 py-0">
+        <div class="col-md-10 bg-white py-4 px-4 rounded my-shadow-1">
             <livewire:barang-index>
         </div>
     </div>
@@ -26,17 +26,3 @@
     </div>
 
 @endsection
-
-@push('body-script')
-    @if (session()->has('message'))        
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: {{ session('message') }},
-            showConfirmButton: false,
-            timer: 5000
-        })
-    </script>
-    @endif
-    @stack('body-script')
-@endpush

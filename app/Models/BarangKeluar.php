@@ -13,6 +13,6 @@ class BarangKeluar extends Model
 
     public function barang()
     {
-        return $this->belongsTo(Barang::class);
+        return $this->belongsTo(Barang::class);        
     }
 }

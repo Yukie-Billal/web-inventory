@@ -16,6 +16,7 @@ class BarangMasukIndex extends Component
 
     protected $listeners = [
         'BarangMasukAdded',
+        'barangAdded',
     ];
 
     public function BarangMasukAdded()
@@ -23,9 +24,14 @@ class BarangMasukIndex extends Component
         # code...
     }
 
+    public function barangAdded()
+    {
+        // code...
+    }
+
     public function render()
     {
-        $barangs = BarangMasuk::orderByDesc('tanggal_masuk');
+        $barangs = BarangMasuk::orderByDesc('created_at')->orderByDesc('tanggal_masuk');
 
         if ($this->filterFrom != null) {
             $barangs = $barangs->where('tanggal_masuk', '>', $this->filterFrom);

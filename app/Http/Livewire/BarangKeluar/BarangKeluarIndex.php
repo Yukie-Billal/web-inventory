@@ -22,10 +22,17 @@ class BarangKeluarIndex extends Component
     {
         # code...
     }
+    public function deleteData($id)
+    {
+        $data = BarangKeluar::find($id);
+        $data->destroy($id);
+
+        $this->render();
+    }
 
     public function render()
     {
-        $barangs = BarangKeluar::orderByDesc('tanggal_keluar');
+        $barangs = BarangKeluar::orderByDesc('created_at')->orderByDesc('tanggal_keluar');
 
         if ($this->filterFrom != null) {
             $barangs = $barangs->where('tanggal_keluar', '>', $this->filterFrom);

@@ -6,10 +6,15 @@
                     Pilih Data Barang
                 </button>
             </div>
-            <div class="col-4 d-flex justify-content-end">
-                <button wire:click='confirm' class="button button-success text-white text-m-medium">
-                    Confirmasi
-                </button>
+            <div class="col-5 d-flex justify-content-end">
+                <form wire:submit.prevent='searchKode'>
+                    <div class="group-form">
+                        <input type="text" wire:model.debounce.500ms='kodeBarang' class="input-form " placeholder="Masukkan Kode Barang">
+                        <button class="group-form-text bg-transparent ">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </form>     
             </div>
         </div>
     </div>
@@ -27,7 +32,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach ($barangKeluarKeranjangs as $barangKeluarKeranjang)                    
+                        @foreach ($barangKeluarKeranjangs as $key => $barangKeluarKeranjang)                    
                         <tr>
                             @if ($barangKeluarKeranjang->barang == '')
                                 <td scope="row">{{ $barangKeluarKeranjang->kode_barang }}</td>
@@ -43,11 +48,12 @@
                                 <i wire:click='qtyPlus({{ $barangKeluarKeranjang->id }})' class="fa fa-plus icon-qty" aria-hidden="true"></i>
                             </td>
                             <td>
-                                <select wire:model.lazy='status' wire:change='statusCovery({{ $barangKeluarKeranjang->id }})' class="select-form">
-                                    <option value="Pinjam" {{ $barangKeluarKeranjang->status == 'Pinjam' || $barangKeluarKeranjang->status == 'Di Pinjam' ? 'selected' : '' }}>Pinjam</option>
-                                    <option value="Rusak" {{ $barangKeluarKeranjang->status == 'Rusak' ? 'selected' : '' }}>Rusak</option>
-                                </select>
-                                {{-- <livewire:barang-keluar.barang-keluar-status :data='$barangKeluarKeranjang'> --}}
+                                <div wire:ignore>
+                                    <select data-id="{{ $barangKeluarKeranjang->id }}" wire:change='statusCovery({{ $barangKeluarKeranjang->id }})' class="select-form">
+                                        <option value="Pinjam" {{ $barangKeluarKeranjang->status == 'Pinjam' || $barangKeluarKeranjang->status == 'Di Pinjam' ? 'selected' : '' }}>Pinjam</option>
+                                        <option value="Rusak" {{ $barangKeluarKeranjang->status == 'Rusak' ? 'selected' : '' }}>Rusak</option>
+                                    </select>
+                                </div>
                             </td>
                             <td>
                                 <span wire:click='deleteBarangKeluarList({{ $barangKeluarKeranjang->id }})' class="tags tags-danger cursor-pointer">
@@ -59,5 +65,23 @@
                     </tbody>
             </table>
         </div>
+        <div class="col-12 d-flex justify-content-end mt-2">
+            <div class="col-5 me-3 px-2">
+                <input type="text" class="input-form my-rounded" placeholder="Masukkan nama siapa yang meminjam . . . ." style="width: 100%;">
+            </div>
+            <button wire:click='confirm' class="button button-success text-white text-m-medium">
+                Confirmasi
+            </button>
+        </div>
     </div>
 </div>
+
+@push('script-livewire')
+    <script>
+        Livewire.on('change-status', postId => {
+            var value = document.querySelector('[data-id="'+postId+'"]').value
+            var params = [postId, value]
+            Livewire.emit('setStatus', params);
+        })
+    </script>
+@endpush
