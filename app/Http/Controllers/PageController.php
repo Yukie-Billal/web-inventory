@@ -44,16 +44,31 @@ class PageController extends Controller
 
     public function barang()
     {
-        return view('pages.barang.barang');
+        return view('pages.data.barang');
     }
 
     public function barangKeluar()
     {
-        return view('pages.barang.barang-keluar');
+        return view('pages.data.barang-keluar');
     }
 
     public function barangMasuk()
     {
-        return view('pages.barang.barang-masuk');
+        return view('pages.data.barang-masuk');
+    }
+
+    public function peminjaman()
+    {
+        return view('pages.kegiatan.peminjaman');
+    }
+
+    public function pengembalian()
+    {
+        return view('pages.kegiatan.pengembalian');
+    }
+
+    public function masuk_barang()
+    {
+        return view('pages.kegiatan.masuk-barang');
     }
 }

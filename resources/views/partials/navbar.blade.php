@@ -1,3 +1,24 @@
+<div class="navbar bg-white align-items-center px-4 justify-content-around" style="height: 80px;">
+    <div class="col-5">
+        <div class="group-form" style="height: 38px; width: 300px;">
+            <input type="text" class="input-form h-100" placeholder="Search . . .">
+            <button class="group-form-text bg-transparent">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <div class="col-5 d-flex justify-content-end">
+        <i class="fa fa-user-friends d-flex align-items-center me-1" aria-hidden="true"></i>
+        <span class="text-dark">
+            @if(auth()->user() == null)
+            Nama / Username    
+            @else
+            {{ auth()->user()->email }}
+            @endif
+        </span>
+    </div>
+</div>
+
 {{-- <div class="navbar bg-white px-3 align-items-center" style="height: 58px; border-radius: 0 0 24px 24px">
     <div class="col-md-2 h-100" style="padding-left: 88px;">
         <span class="header-l">logo</span>
@@ -47,20 +68,3 @@
         </form>
     </div>
 </div> --}}
-
-<div class="navbar bg-white align-items-center">
-    <div class="col-3">
-        <div class="group-form" style="height: 38px; width: 300px;">
-            <input type="text" class="input-form h-100" placeholder="Search . . .">
-            <button class="group-form-text bg-transparent">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-        </div>
-    </div>
-    <div class="col-3">
-        <img src="" alt="..." class="img-fluid">
-        <span class="text-dark">
-            {{ auth()->user()->nama }}
-        </span>
-    </div>
-</div>

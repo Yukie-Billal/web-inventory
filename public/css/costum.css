@@ -476,3 +476,80 @@ a {
 .my-rounded.rounded-end {
     border-radius: 0 0 30px 30px;
 }
+
+
+
+
+
+/* Component */
+.sidebar {
+    border-right: 2px solid var(--neutral-50);
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-body {
+    font: var(--text-m-medium);
+    padding: 20px 8px;
+}
+
+.sidebar-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font: var(--text-m-medium);
+    padding: 2px 12px;
+    margin: 3px 0;
+}
+
+.sidebar-menu .menu {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    padding: 0 6px 0 6px;
+    cursor: pointer;
+}
+
+.sidebar-menu .menu span {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    min-width: 80%;
+    max-width: 85%;
+    height: 100%;
+}
+
+.sidebar-menu .sub-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    padding: 6px 0 0 42px;
+    overflow: hidden;
+}
+
+.sidebar-menu .sub-menu.hide {
+    display: none;
+    overflow: hidden;
+    animation: hide 3s;
+}
+
+.sidebar-menu .sub-menu a {
+    color: var(--neutral-100);
+    font: var(--text-m-regular);
+    margin: 6px 0;
+}
+
+/* Animate */
+@keyframes hide {
+    from {display: none;}
+    to {display: none;}
+}

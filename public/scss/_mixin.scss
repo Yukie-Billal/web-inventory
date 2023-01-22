@@ -1,0 +1,11 @@
+@mixin flex-box($justify: start, $align: start, $direct: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direct;
+}
+
+@mixin shadow-inner {
+    border: 1px solid $my-neutral-60;
+    box-shadow: $my-shadow-3;
+}

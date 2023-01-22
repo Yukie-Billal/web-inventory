@@ -1,0 +1,424 @@
+@import 'variabel';
+@import 'mixin';
+@import 'utility-class';
+@import 'component';
+
+body {
+   background: $my-neutral-30;
+}
+
+td {
+   font-size: 12px;
+}
+a {
+   text-decoration: none;
+   transition: .3s;
+}
+
+// Utility Class
+
+
+// Component Class
+.container {
+   margin-top: 48px;
+}
+
+#navbarMenu {
+   .span {
+      height: 24px;
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid $my-primary-hover;
+      border-radius: 30px;
+      padding: 10px;
+      transition: .3s;
+      color: $my-neutral-90;
+
+      i {
+         font-size: 14px;
+         transform: translateY(.5px);
+         color: $my-neutral-90;
+      }
+
+      &:hover {
+         background: $my-primary-surface;
+      }
+   }
+   .navbar-menu-focus {
+      background: $my-primary-surface;
+   }
+}
+
+/*   Form Styles   */
+.input-form {
+   @include flex-box(start, center, row);
+   padding: 6px 12px;
+   gap: 4px;
+
+   width: 240px;
+   height: 32px;
+   border: 1px solid $my-neutral-50;
+
+   /* Shadow 3 */
+   box-shadow: $my-shadow-3;
+   border-radius: 6px;
+   transition: .03s;
+   outline: none;
+   color: $my-neutral-90;
+
+   &:focus {
+      outline: 3px solid $my-primary-focus;
+   }
+
+   &::placeholder {
+      color: $my-neutral-70;
+      font: $my-text-s-medium;
+   }
+}
+
+.select-form {
+   width: 70px;
+   background-color: $my-neutral-10;
+   border: 1px solid $my-neutral-40;
+   border-radius: 6px;
+   box-shadow: $my-shadow-1;
+}
+
+.group-form {
+   display: flex;
+   background-color: white;
+   width: 100%;
+
+   .input-form {
+      border-radius: 30px 0 0 30px;
+      border-right: none;
+      background-color: transparent;
+   }
+
+   .group-form-text {
+      display: flex;
+      align-items: center;
+      outline: none;
+      border: none;
+      border-right: 1px solid $my-neutral-50;
+      border-bottom: 1px solid $my-neutral-50;
+      border-top: 1px solid $my-neutral-50;
+      width: 36px;
+      border-radius: 0 30px 30px 0;
+      box-shadow: $my-shadow-input-group-text;
+      cursor: default;
+      padding-right: 14px;
+      color: $my-neutral-90;
+   }
+
+   input[type="date"] {
+      color: $my-neutral-90;
+
+      &:focus {
+         color: $my-neutral-70;
+      }
+   }
+}
+
+.invalid-input {
+   border: 1px solid $my-danger-hover;
+   transition: .03s;
+
+   &:focus {
+      outline: 3px solid $my-danger-focus;
+   }
+}
+
+
+/*  button Styles  */
+.button {
+   @include flex-box(center, center, row);
+   padding: 6px 16px;
+   gap: 4px;
+
+   height: 32px;
+   border-radius: 6px;
+   box-shadow: $my-shadow-1;
+   border: none;
+   transition: .3s;
+   cursor: default;
+}
+
+.button-primary {
+   background-color: $my-primary-main;
+
+   &:hover {
+      background-color: $my-primary-hover;
+   }
+
+   &:focus {
+      background-color: $my-primary-hover;
+   }
+}
+.button-success {
+   background-color: $my-success-main;
+
+   &:hover {
+      background-color: $my-success-hover;
+   }
+   &:focus {
+      background-color: $my-success-hover;
+   }
+}
+.button-warning {
+   background-color: $my-warning-main;
+
+   &:hover {
+      background-color: $my-warning-hover;
+   }
+   &:focus {
+      background-color: $my-warning-hover;
+   }
+}
+.button-danger {
+   background-color: $my-danger-main;
+
+   &:hover {
+      background-color: $my-danger-hover;
+   }
+   &:focus {
+      background-color: $my-danger-hover;
+   }
+}
+.button-info {
+   background-color: $my-info-main;
+
+   &:hover {
+      background-color: $my-info-hover;
+   }
+   &:focus {
+      background-color: $my-info-hover;
+   }
+}
+.button-dark {
+   background-color: $my-dark-main;
+
+   &:hover {
+      background-color: $my-dark-hover;
+   }
+   &:focus {
+      background-color: $my-neutral-60;
+   }
+}
+
+
+.btn-filter {
+   border-radius: 30px; 
+   width: 74px; 
+   background-color: $my-primary-hover; 
+   letter-spacing: .03em;
+   box-shadow: shadow-1;
+
+   &:hover {
+      background-color: $my-primary-main;
+   }
+}
+
+.btn-edit {
+   width: 75px;
+   height: 20px;
+   background-color: #f7f7f7;
+   font-size: 12px;
+   border: 1px solid #b8dbca;
+   color: #43936c;
+   padding: 3px 8px;
+   font-weight: 500; 
+}
+
+.btn-status {
+   background: #F5F5FF; 
+   border: 1px solid #B8DBCA; 
+   padding: 3px 8px; 
+   font-size: 12px; 
+   line-height: 16px;
+   font-weight: 500;
+}
+
+.btn-delete {
+   width: 75px;
+   height: 20px;
+   background-color: #fff4f2;
+   font-size: 12px;
+   border: 1px solid #eeb4b0;
+   color: #cb3a31;
+   padding: 3px 8px;
+   font-weight: 500;
+}
+
+.modal-add-title {
+   font-size: 20px;
+   text-align: center;
+}
+
+.btn-add-data {
+   background-color: #3131a3;
+}
+
+.tags-button {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   padding: 2px 8px;
+   gap: 10px;
+
+   height: 20px;
+   border-radius: 6px;
+}
+
+.tags {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   padding: 2px 8px;
+   gap: 10px;
+
+   height: 20px;
+   border-radius: 6px;
+}
+
+.tags-primary {
+   background-color: $my-primary-surface;
+   border: 1px solid $my-primary-border;
+}
+
+.tags-danger {
+   background-color: $my-danger-surface;
+   border: 1px solid $my-danger-border;      
+}
+
+.tags-warning {
+   background-color: $my-warning-surface;
+   border: 1px solid $my-warning-border;      
+}
+
+.tags-info {
+   background-color: $my-info-surface;
+   border: 1px solid $my-info-border;      
+}
+
+.tags-success {
+   background-color: $my-success-surface;
+   border: 1px solid $my-success-border;      
+}
+
+.icon-qty {
+   cursor: pointer;
+}
+
+.cursor-pointer {
+   cursor: pointer;
+}
+
+.my-shadow-1 {
+   box-shadow: $my-shadow-1;
+}
+.my-shadow-2 {
+   box-shadow: $my-shadow-2;
+}
+.my-shadow-3 {
+   box-shadow: $my-shadow-3;
+}
+
+.my-rounded {
+   border-radius: 30px;
+}
+
+.border-1 {
+   border: 1px solid $my-neutral-60;
+}
+
+.my-rounded.rounded-start {
+   border-radius: 30px 0 0 30px;
+}
+
+.my-rounded.rounded-end {
+   border-radius: 0 30px 30px 0;
+}
+
+.my-rounded.rounded-top {
+   border-radius: 30px 30px 0 0;
+}
+
+.my-rounded.rounded-end {
+   border-radius: 0 0 30px 30px;
+}
+
+
+
+
+
+/* Component */
+.sidebar {
+   border-right: 2px solid $my-neutral-50;
+
+   .sidebar-header {
+      @include flex-box(center, center, row);
+   }
+
+   .sidebar-body {
+      font: $my-text-m-medium;
+      padding: 20px 8px;
+
+      .sidebar-menu {
+         position: relative;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         font: $my-text-m-medium;
+         padding: 2px 12px;
+         margin: 3px 0;
+
+         .menu {
+            position: relative;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            height: 40px;
+            width: 100%;
+            padding: 0 6px 0 6px;
+            cursor: pointer;
+
+            span {
+               display: flex;
+               justify-content: start;
+               align-items: center;
+               min-width: 80%;
+               max-width: 85%;
+               height: 100%;
+            }
+         }
+
+         .sub-menu {
+            @include flex-box(start, start, column);
+            width: 100%;
+            padding: 6px 0 0 42px;
+            overflow: hidden;
+
+            a {
+               color: $my-neutral-100;
+               font: $my-text-m-regular;
+               margin: 6px 0;
+            }
+
+            &.hide {
+               display: none;
+               overflow: hidden;
+               animation: hide 3s;
+            }                
+         }
+      }
+   }
+}
+
+/* Animate */
+@keyframes hide {
+   from {display: none;}
+   to {display: none;}
+}
