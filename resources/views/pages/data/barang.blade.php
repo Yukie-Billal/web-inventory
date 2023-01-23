@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <div class="row justify-content-center px-4 py-0">
-        <div class="col-md-10 bg-white py-4 px-4">
+    {{-- <div class="row justify-content-center px-4 py-0">
+        <div class="col-md-10 bg-white py-4 px-4"> --}}
             <livewire:barang-index>
-        </div>
-    </div>
+        {{-- </div>
+    </div> --}}
 
 
     <div class="modal fade" id="modalTambahDataBarang">

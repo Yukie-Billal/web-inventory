@@ -39,49 +39,214 @@
 }
 
 .text-l-regular {
-  font: 400 16px/24px "Inter";
+  font: 400 16px/24px "Inter", sans-serif;
 }
 
 .text-l-medium {
-  font: 500 16px/24px "Inter";
+  font: 500 16px/24px "Inter", sans-serif;
 }
 
 .text-m-regular {
-  font: 400 14px/20px "Inter";
+  font: 400 14px/20px "Inter", sans-serif;
 }
 
 .text-m-medium {
-  font: 500 14px/20px "Inter";
+  font: 500 14px/20px "Inter", sans-serif;
 }
 
 .text-s-regular {
-  font: 400 12px/16px "Inter";
+  font: 400 12px/16px "Inter", sans-serif;
 }
 
 .text-s-medium {
-  font: 500 12px/16px "Inter";
+  font: 500 12px/16px "Inter", sans-serif;
 }
 
 .header-m {
-  font: 500 28px/36px "Inter";
+  font: 500 28px/36px "Inter", sans-serif;
 }
 
 .header-s {
-  font: 500 20px/28px "Inter";
+  font: 500 20px/28px "Inter", sans-serif;
 }
 
 .header-l {
-  font: 500 36px/44px "Inter";
+  font: 500 36px/44px "Inter", sans-serif;
 }
 
 .x-border {
-  border-left: 1px solid #C2C2C2;
   border-right: 1px solid #C2C2C2;
+  border-left: 1px solid #C2C2C2;
 }
 
 .y-border {
-  border-top: 1px solid #C2C2C2;
   border-bottom: 1px solid #C2C2C2;
+  border-top: 1px solid #C2C2C2;
+}
+
+.border-neutral-100-1 {
+  border: 1px solid #0A0A0A;
+}
+
+.border-neutral-90-1 {
+  border: 1px solid #424242;
+}
+
+.border-neutral-80-1 {
+  border: 1px solid #616161;
+}
+
+.border-neutral-70-1 {
+  border: 1px solid #757575;
+}
+
+.border-neutral-60-1 {
+  border: 1px solid #9E9E9E;
+}
+
+.border-neutral-50-1 {
+  border: 1px solid #C2C2C2;
+}
+
+.border-neutral-40-1 {
+  border: 1px solid #E0E0E0;
+}
+
+.border-neutral-30-1 {
+  border: 1px solid #EDEDED;
+}
+
+.border-neutral-20-1 {
+  border: 1px solid #F5F5F5;
+}
+
+.border-neutral-10-1 {
+  border: 1px solid #FFFFFF;
+}
+
+.border-neutral-100-2 {
+  border: 2px solid #0A0A0A;
+}
+
+.border-neutral-90-2 {
+  border: 2px solid #424242;
+}
+
+.border-neutral-80-2 {
+  border: 2px solid #616161;
+}
+
+.border-neutral-70-2 {
+  border: 2px solid #757575;
+}
+
+.border-neutral-60-2 {
+  border: 2px solid #9E9E9E;
+}
+
+.border-neutral-50-2 {
+  border: 2px solid #C2C2C2;
+}
+
+.border-neutral-40-2 {
+  border: 2px solid #E0E0E0;
+}
+
+.border-neutral-30-2 {
+  border: 2px solid #EDEDED;
+}
+
+.border-neutral-20-2 {
+  border: 2px solid #F5F5F5;
+}
+
+.border-neutral-10-2 {
+  border: 2px solid #FFFFFF;
+}
+
+.input-form.placeholder-s-r::-moz-placeholder {
+  font: 400 12px/16px "Inter", sans-serif;
+}
+
+.input-form.placeholder-s-r:-ms-input-placeholder {
+  font: 400 12px/16px "Inter", sans-serif;
+}
+
+.input-form.placeholder-s-r::placeholder {
+  font: 400 12px/16px "Inter", sans-serif;
+}
+.input-form.placeholder-s-m::-moz-placeholder {
+  font: 500 12px/16px "Inter", sans-serif;
+}
+.input-form.placeholder-s-m:-ms-input-placeholder {
+  font: 500 12px/16px "Inter", sans-serif;
+}
+.input-form.placeholder-s-m::placeholder {
+  font: 500 12px/16px "Inter", sans-serif;
+}
+.input-form.placeholder-m-r::-moz-placeholder {
+  font: 400 14px/20px "Inter", sans-serif;
+}
+.input-form.placeholder-m-r:-ms-input-placeholder {
+  font: 400 14px/20px "Inter", sans-serif;
+}
+.input-form.placeholder-m-r::placeholder {
+  font: 400 14px/20px "Inter", sans-serif;
+}
+.input-form.placeholder-m-m::-moz-placeholder {
+  font: 500 14px/20px "Inter", sans-serif;
+}
+.input-form.placeholder-m-m:-ms-input-placeholder {
+  font: 500 14px/20px "Inter", sans-serif;
+}
+.input-form.placeholder-m-m::placeholder {
+  font: 500 14px/20px "Inter", sans-serif;
+}
+.input-form.placeholder-l-r::-moz-placeholder {
+  font: 400 16px/24px "Inter", sans-serif;
+}
+.input-form.placeholder-l-r:-ms-input-placeholder {
+  font: 400 16px/24px "Inter", sans-serif;
+}
+.input-form.placeholder-l-r::placeholder {
+  font: 400 16px/24px "Inter", sans-serif;
+}
+.input-form.placeholder-l-m::-moz-placeholder {
+  font: 500 16px/24px "Inter", sans-serif;
+}
+.input-form.placeholder-l-m:-ms-input-placeholder {
+  font: 500 16px/24px "Inter", sans-serif;
+}
+.input-form.placeholder-l-m::placeholder {
+  font: 500 16px/24px "Inter", sans-serif;
+}
+
+.card {
+  min-height: 300px;
+}
+.card .table {
+  height: 100%;
+}
+.card .table tr:last-child td {
+  border-bottom: 0;
+}
+
+.table thead tr th {
+  font: 500 14px/20px "Inter", sans-serif;
+}
+.table tbody tr td {
+  font: 500 12px/16px "Inter", sans-serif;
+}
+
+ol.my-breadcumb {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  font: 500 14px/20px "Inter", sans-serif;
+}
+ol.my-breadcumb .my-breadcrumb-item.parent {
+  font: 500 16px/24px "Inter", sans-serif;
 }
 
 body {
@@ -131,7 +296,7 @@ a {
   flex-direction: row;
   padding: 6px 12px;
   gap: 4px;
-  width: 240px;
+  width: 100%;
   height: 32px;
   border: 1px solid #C2C2C2;
   /* Shadow 3 */
@@ -146,23 +311,38 @@ a {
 }
 .input-form::-moz-placeholder {
   color: #757575;
-  font: 500 12px/16px "Inter";
+  font: 500 12px/16px "Inter", sans-serif;
 }
 .input-form:-ms-input-placeholder {
   color: #757575;
-  font: 500 12px/16px "Inter";
+  font: 500 12px/16px "Inter", sans-serif;
 }
 .input-form::placeholder {
   color: #757575;
-  font: 500 12px/16px "Inter";
+  font: 500 12px/16px "Inter", sans-serif;
+}
+.input-form .input-form-sm {
+  height: 28px;
+}
+.input-form .input-form-normal {
+  height: 32px;
+}
+.input-form .input-form-md {
+  height: 36px;
+}
+.input-form .input-form-lg {
+  height: 40px;
 }
 
 .select-form {
-  width: 70px;
+  width: 100%;
   background-color: #FFFFFF;
   border: 1px solid #E0E0E0;
   border-radius: 6px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1215686275);
+  height: 36px;
+  color: #424242;
+  padding: 6px 12px;
 }
 
 .group-form {
@@ -434,7 +614,7 @@ a {
   flex-direction: row;
 }
 .sidebar .sidebar-body {
-  font: 500 14px/20px "Inter";
+  font: 500 14px/20px "Inter", sans-serif;
   padding: 20px 8px;
 }
 .sidebar .sidebar-body .sidebar-menu {
@@ -442,7 +622,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font: 500 14px/20px "Inter";
+  font: 500 14px/20px "Inter", sans-serif;
   padding: 2px 12px;
   margin: 3px 0;
 }
@@ -475,8 +655,8 @@ a {
 }
 .sidebar .sidebar-body .sidebar-menu .sub-menu a {
   color: #0A0A0A;
-  font: 400 14px/20px "Inter";
-  margin: 6px 0;
+  font: 400 14px/20px "Inter", sans-serif;
+  margin: 8px 0;
 }
 .sidebar .sidebar-body .sidebar-menu .sub-menu.hide {
   display: none;

@@ -1,0 +1,32 @@
+.card {
+    min-height: 300px;
+    .table {
+        height: 100%;
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+    }
+}
+.table {
+    thead tr th {
+        font: $my-text-m-medium;
+    }
+    tbody tr td {
+        font: $my-text-s-medium;
+    }
+}
+
+
+ol {
+    &.my-breadcumb {
+        @include flex-box($align: center);
+        font: $my-text-m-medium;
+
+        .my-breadcrumb-item {
+            &.parent {
+                font: $my-text-l-medium;
+            }
+        }
+    }
+} 

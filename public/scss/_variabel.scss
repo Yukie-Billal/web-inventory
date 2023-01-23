@@ -59,12 +59,12 @@ $my-shadow-input-group-text: inset -1px 2px 2px rgba(0, 0, 0, 0.08);
 $my-border-invalid-input: #BD251C;
 
 
-$my-header-s: 500 20px/28px 'Inter';
-$my-header-m: 500 28px/36px 'Inter';
-$my-header-l: 500 36px/44px 'Inter';
-$my-text-s-regular: 400 12px/16px 'Inter';
-$my-text-s-medium: 500 12px/16px 'Inter';
-$my-text-m-regular: 400 14px/20px 'Inter';
-$my-text-m-medium: 500 14px/20px 'Inter';
-$my-text-l-regular: 400 16px/24px 'Inter';
-$my-text-l-medium: 500 16px/24px 'Inter';
+$my-header-s: 500 20px/28px 'Inter', sans-serif;
+$my-header-m: 500 28px/36px 'Inter', sans-serif;
+$my-header-l: 500 36px/44px 'Inter', sans-serif;
+$my-text-s-regular: 400 12px/16px 'Inter', sans-serif;
+$my-text-s-medium: 500 12px/16px 'Inter', sans-serif;
+$my-text-m-regular: 400 14px/20px 'Inter', sans-serif;
+$my-text-m-medium: 500 14px/20px 'Inter', sans-serif;
+$my-text-l-regular: 400 16px/24px 'Inter', sans-serif;
+$my-text-l-medium: 500 16px/24px 'Inter', sans-serif;

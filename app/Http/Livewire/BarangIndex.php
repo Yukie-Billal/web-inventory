@@ -36,7 +36,7 @@ class BarangIndex extends Component
 
     public function deleteBarang($id)
     {
-        $barang = Barang::find($id);        
+        $barang = Barang::find($id);
         $barangkeluar = BarangKeluar::where('barang_id', $barang->id)->get();
         $barangMasuk = BarangMasuk::where('barang_id', $barang->id)->get();
 

@@ -55,7 +55,7 @@ a {
    padding: 6px 12px;
    gap: 4px;
 
-   width: 240px;
+   width: 100%;
    height: 32px;
    border: 1px solid $my-neutral-50;
 
@@ -74,14 +74,35 @@ a {
       color: $my-neutral-70;
       font: $my-text-s-medium;
    }
+
+   .input-form-sm {
+      height: 28px;
+   }
+
+   .input-form-normal {
+      height: 32px;
+   }
+
+   .input-form-md {
+      height: 36px;
+   }
+
+   .input-form-lg {
+      height: 40px;
+   }
+
 }
 
 .select-form {
-   width: 70px;
+   width: 100%;
    background-color: $my-neutral-10;
    border: 1px solid $my-neutral-40;
    border-radius: 6px;
    box-shadow: $my-shadow-1;
+
+   height: 36px;
+   color: $my-neutral-90;
+   padding: 6px 12px;
 }
 
 .group-form {
@@ -404,7 +425,7 @@ a {
             a {
                color: $my-neutral-100;
                font: $my-text-m-regular;
-               margin: 6px 0;
+               margin: 8px 0;
             }
 
             &.hide {

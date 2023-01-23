@@ -48,9 +48,9 @@
 				@endphp
 			@endif
 			<div class="sub-menu {{ $kegiatan }}">
-				<a href="/peminjamans">Peminjaman</a>
-				<a href="/pengembalians">Pengembalian</a>
-				<a href="/masuk-barangs">Masuk Barang</a>
+				<a href="/peminjamans" class="{{ Request::is('peminjamans') ? 'text-primary' : '' }}">Peminjaman</a>
+				<a href="/pengembalians"  class="{{ Request::is('pengembalians') ? 'text-primary' : '' }}">Pengembalian</a>
+				<a href="/masuk-barangs"  class="{{ Request::is('masuk-barangs') ? 'text-primary' : '' }}">Masuk Barang</a>
 			</div>
 		</div>
 	</div>
