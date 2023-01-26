@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('alamat');
+            $table->string('no_tlp');
             $table->timestamps();
         });
     }

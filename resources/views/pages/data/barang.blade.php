@@ -2,11 +2,14 @@
 
 @section('content')
 
-    {{-- <div class="row justify-content-center px-4 py-0">
-        <div class="col-md-10 bg-white py-4 px-4"> --}}
-            <livewire:barang-index>
-        {{-- </div>
-    </div> --}}
+    <ol class="breadcrumb align-items-center pb-2 ms-4">
+        <li class="breadcrumb-item header-m">Data</li>
+        <li class="breadcrumb-item active">Barang</li>
+    </ol>
+
+    <div class="col-md-12 p-2">
+        <livewire:barang-index>
+    </div>
 
 
     <div class="modal fade" id="modalTambahDataBarang">

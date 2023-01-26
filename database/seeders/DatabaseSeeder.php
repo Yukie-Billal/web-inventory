@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Email',
             'email' => 'email@gmail.com',
             'password' => Hash::make(1234),
+            'alamat' => 'Indonesia Cimahi Barat',
+            'no_tlp' => '+6281238812938'
         ]);
 
         Kategori::create([

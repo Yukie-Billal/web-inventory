@@ -39,7 +39,7 @@ class PageController extends Controller
         }
 
         
-        return redirect('/login')->with('failed','Login Failed, Username or Pasword wrong');
+        return redirect('/')->with('failed','Login Failed, Username or Pasword wrong');
     }
 
     public function barang()
@@ -57,9 +57,9 @@ class PageController extends Controller
         return view('pages.data.barang-masuk');
     }
 
-    public function supplier()
+    public function supplier_user()
     {
-        return 'Ini supplier';
+        return view('pages.data.supplier_user');
     }
 
     public function peminjaman()

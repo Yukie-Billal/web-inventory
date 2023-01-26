@@ -20,10 +20,18 @@
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
 
+    <style>
+        table tbody tr {
+            height: 36px;
+        }
+        table tbody tr td {
+            height: 36px;
+        }
+    </style>
     @livewireStyles
 </head>
 <body>
-    <div class="container-fluid" style="min-height: calc(100vh - 80px); height: 100vh;">
+    <div class="container-fluid" style="min-height: calc(100vh - 80px);">
         <div class="row h-100">
             <div class="col-2 p-0 bg-white">
                 @include('partials.sidebar')

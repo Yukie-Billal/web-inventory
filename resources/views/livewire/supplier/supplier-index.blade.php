@@ -6,17 +6,17 @@
                     <div class="col-6 pe-2">
                         <select class="select-form" id="filterKategori" wire:change='$emit("filter-kategori")'>
                             <option selected disabled>-- Pilih Kategori --</option>
-                            @foreach ($kategoris as $kategori)
+                            {{-- @foreach ($kategoris as $kategori)
                                 <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
-                            @endforeach                            
+                            @endforeach    --}}                         
                         </select>
                     </div>
                     <div class="col-6 ps-2">
                         <select class="select-form" id="filterMerek" wire:change='$emit("filter-merek")'>
                             <option selected disabled>-- Pilih Merek --</option>
-                            @foreach ($barang_mereks as $merek)
+                            {{-- @foreach ($barang_mereks as $merek)
                                 <option value="{!! $merek->merek !!}">{!! $merek->merek !!}</option>
-                            @endforeach                            
+                            @endforeach --}}                            
                         </select>
                     </div>
                 </div>
@@ -30,14 +30,9 @@
         </div>
         <div class="row justify-content-end align-items-center">
             <div class="col-3">
-                {{-- <div class="group-form">
-                    <input type="text" wire:model.debounce.500ms='search' class="input-form bg-transparent h-100 w-100" placeholder="Search . . .">
-                    <button wire:click='$refresh' class="group-form-text bg-transparent">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                </div> --}}
+
             </div>
-           {{--  <div class="col-9 d-flex justify-content-end align-items-end">
+            {{-- <div class="col-9 d-flex justify-content-end align-items-end">
                 <div class="col-3 d-flex justify-content-end align-items-center" style="height: 55%">
                     <button class="button button-white px-2" wire:click="previousPage('page')">
                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
@@ -56,7 +51,7 @@
                     </form>           
                 </div>                
             </div> --}}
-            <livewire:pagination-view :pageCount='$pageCount' :page='$page' :pageName='$pageName' :wire:key='$page'/>
+            <livewire:pagination-view :page='$page' :pageCount='$pageCount' :pageName='$pageName' />
         </div>
     </div>
     <div class="card-body p-0">
@@ -64,35 +59,25 @@
             <table class="table table-hover table-responsive mb-0">
                 <thead class="">
                     <tr>
-                        <th class="px-3">Serial Number</th>
-                        <th>Nama Barang</th>
-                        <th>Merek</th>
-                        <th>Warna</th>
-                        <th>Kategori</th>
-                        <th>Satuan</th>                        
-                        <th>Stok</th>
-                        <th style="min-width: 50px;"></th>
+                        <th>Nama Supplier</th>
+                        <th>Nama Perusahaan</th>
+                        <th>No Telephone</th>                    
+                        <th>Alamat</th>
+                        <th style="min-width: 50px; max-width: 50px;"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barangs as $barang)                    
-                    <tr>
+                    @foreach ($suppliers as $supplier)                    
+                    <tr class="">
                         <td class="px-3 py-2">
-                            {{ $barang->serial_number }}
+                            {{ $supplier->nama_supplier }}
                         </td>
-                        <td class="px-2 py-2">{{ $barang->nama_barang }}</td>
-                        <td class="px-2 py-2">{{ $barang->merek }}</td>
-                        <td class="px-2 py-2">{{ $barang->warna }}</td>
-                        @if ($barang->kategori != null)
-                            <td class="px-2 py-2">{{ $barang->kategori->nama_kategori }}</td>
-                        @else
-                            <td class="px-2 py-2">Tidak Ada</td>
-                        @endif                        
-                        <td class="px-2 py-2">{{ $barang->satuan }}</td>
-                        <td class="px-2 py-2">{{ $barang->stok }}</td>
-                        <td style="max-width: 100px;" class="py-2">
-                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editBarang({{ $barang->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2">
-                            <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteBarang({{ $barang->id }})'>
+                        <td class="px-2">{{ $supplier->nama_perusahaan }}</td>
+                        <td class="px-2">{{ $supplier->no_tlp }}</td>
+                        <td class="px-2">{{ $supplier->alamat }}</td>
+                        <td style="max-width: 50px;">
+                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editBarang({{ $supplier->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2">
+                            <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteBarang({{ $supplier->id }})'>
                         </td>
                     </tr>
                     @endforeach

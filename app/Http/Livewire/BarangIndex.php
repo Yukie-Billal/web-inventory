@@ -14,10 +14,11 @@ class BarangIndex extends Component
 {
     use WithPagination;
 
-    public $pageCount = 2;
+    public $pageCount;
+    public $pageName = 'page';
     public $filter_kategori;
     public $filter_merek;
-    public $search;
+    public $search;    
 
     protected $paginationTheme = 'bootstrap';
 
@@ -31,8 +32,19 @@ class BarangIndex extends Component
         'barangAdded',
         'barangEdited',
         'setFilter',
+        'next-page' => 'next',
+        'previous-page' => 'previous',
     ];
 
+    public function next($page)
+    {
+        $this->nextPage($page);
+    }
+    public function previous($page)
+    {
+        $this->previousPage($page);
+    }
+    
     public function barangAdded()
     {
         session()->flash('message', 'Data Berhasil Ditambahkan');
@@ -87,6 +99,8 @@ class BarangIndex extends Component
 
     public function render()
     {
+        // $this->paginate_pageCount();
+
         $merek = DB::table('barangs')->select('merek')->groupBy('merek');
         $barangs = Barang::orderByDesc('nama_barang')->orderByDesc('id');
         if ($this->filter_merek != null) {
@@ -95,7 +109,19 @@ class BarangIndex extends Component
         if ($this->filter_kategori != null) {
             $barangs->where('kategori_id', $this->filter_kategori);
             $merek->where('kategori_id', $this->filter_kategori);
-        }        
+        }
+        // Menghitung Page Dari Pagination
+        $barang_all = $barangs->count();
+        $sisa = $barang_all % 10;
+        if ($sisa <= 0) {
+            $count = 1;
+        } else if ($sisa >= 1) {
+            $count = (($barang_all - $sisa) / 10) + 1;
+        }
+        $this->pageCount = $count;
+        if ($this->page > $count) {
+            $this->page = 1;
+        }
         return view('livewire.barang-index', [
             'barangs' => $this->search == null 
                             ? $barangs->paginate(10)
