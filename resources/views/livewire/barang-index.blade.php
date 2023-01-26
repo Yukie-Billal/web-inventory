@@ -4,19 +4,19 @@
             <div class="col-12 d-flex justify-content-between align-items-center p-0">
                 <div class="col-4 d-flex justify-content-start">
                     <div class="col-6 pe-2">
-                        <select class="select-form" name="" id="">
-                            <option selected>Select one</option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
+                        <select class="select-form" id="filterKategori" wire:change='$emit("filter-kategori")'>
+                            <option selected disabled>-- Pilih Kategori --</option>
+                            @foreach ($kategoris as $kategori)
+                                <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                            @endforeach                            
                         </select>
                     </div>
                     <div class="col-6 ps-2">
-                        <select class="select-form" name="" id="">
-                            <option selected>Select one</option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
+                        <select class="select-form" id="filterMerek" wire:change='$emit("filter-merek")'>
+                            <option selected disabled>-- Pilih Merek --</option>
+                            @foreach ($barang_mereks as $merek)
+                                <option value="{!! $merek->merek !!}">{!! $merek->merek !!}</option>
+                            @endforeach                            
                         </select>
                     </div>
                 </div>
@@ -30,20 +30,20 @@
         </div>
         <div class="row justify-content-end align-items-center">
             <div class="col-3">
-                <div class="group-form">
+                {{-- <div class="group-form">
                     <input type="text" wire:model.debounce.500ms='search' class="input-form bg-transparent h-100 w-100" placeholder="Search . . .">
                     <button wire:click='$refresh' class="group-form-text bg-transparent">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
-                </div>
+                </div> --}}
             </div>
             <div class="col-9 d-flex justify-content-end align-items-end">
                 <div class="col-3 d-flex justify-content-end align-items-center" style="height: 55%">
-                    <button class="button button-white px-2">
+                    <button class="button button-white px-2" wire:click="previousPage('page')">
                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     </button>
-                    <span class="d-inline-block mx-2">1 / 12</span>
-                    <button class="button button-outline button-white px-2">
+                    <span class="d-inline-block mx-2">{{ $page }} / {{ $pageCount }}</span>
+                    <button class="button button-outline button-white px-2" wire:click="nextPage('page')">
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -51,39 +51,47 @@
                     Go To
                 </div>
                 <div class="col-1">
-                    <input type="text" class="input-form w-100" placeholder="Page">
-                </div>
+                    <form wire:submit.prevent="$emit('page-change')">
+                        <input type="text" id="pageChanger" name="page" class="input-form w-100" placeholder="Page">    
+                    </form>           
+                </div>                
             </div>
         </div>
     </div>
     <div class="card-body p-0">
         <div class="col-12 p-0 border rounded border-neutral-40-2">
             <table class="table table-hover table-responsive mb-0">
-                <thead class="thead-inverse">
+                <thead class="">
                     <tr>
-                        <th class="px-3">Kode Barang</th>
+                        <th class="px-3">Serial Number</th>
                         <th>Nama Barang</th>
-                        <th>QTY</th>
-                        <th></th>
+                        <th>Merek</th>
+                        <th>Warna</th>
+                        <th>Kategori</th>
+                        <th>Satuan</th>                        
+                        <th>Stok</th>
+                        <th style="min-width: 50px;"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($barangs as $barang)                    
-                    <tr>
+                    <tr class="">
                         <td class="px-3 py-2">
-                            {{ $barang->kode }}
+                            {{ $barang->serial_number }}
                         </td>
                         <td class="px-3">{{ $barang->nama_barang }}</td>
-                        <td class="px-3">{{ $barang->stok }}</td>
-                        <td class="px-3">
-                            <button class="badge btn-edit" wire:click='editBarang({{ $barang->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang">
-                                <i class="fas fa-edit"></i>
-                                Edit
-                            </button>
-                            <button class="badge btn-delete" wire:click='deleteBarang({{ $barang->id }})'>
-                                <i class="fas fa-trash-alt"></i>
-                                Hapus
-                            </button>
+                        <td class="px-2">{{ $barang->merek }}</td>
+                        <td class="px-2">{{ $barang->warna }}</td>
+                        @if ($barang->kategori != null)
+                            <td class="px-2">{{ $barang->kategori->nama_kategori }}</td>
+                        @else
+                            <td class="px-2">Tidak Ada</td>
+                        @endif                        
+                        <td class="px-2">{{ $barang->satuan }}</td>
+                        <td class="px-2">{{ $barang->stok }}</td>
+                        <td style="max-width: 100px;">
+                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editBarang({{ $barang->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2">
+                            <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteBarang({{ $barang->id }})'>
                         </td>
                     </tr>
                     @endforeach
@@ -104,4 +112,29 @@
             })
         </script>
     @endif
+@endpush
+
+@push('script-livewire')
+    <script>
+        Livewire.on('page-change', function () {
+            const tag = document.querySelector('#pageChanger');
+            const value = tag.value;
+            const pageName = "page";
+            const params = [value, pageName];
+            console.log(params);
+            Livewire.emit('pageSet', params);
+        });
+
+        Livewire.on('filter-kategori', function () {
+            const value = document.querySelector('#filterKategori').value;
+            const params = ['kategori', value];
+            Livewire.emit('setFilter', params);
+        });
+
+        Livewire.on('filter-merek', function () {
+            const value = document.querySelector('#filterMerek').value;
+            const params = ['merek', value];
+            Livewire.emit('setFilter', params);
+        });
+    </script>
 @endpush

@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Kategori;
+use App\Models\Supplier;
 use App\Models\Barang;
 use App\Models\Barangkeluar;
 use App\Models\BarangMasuk;
@@ -28,6 +30,23 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make(1234),
         ]);
 
+        Kategori::create([
+            'nama_kategori' => 'Laptop',
+        ]);
+        Kategori::create([
+            'nama_kategori' => 'Mouse',
+        ]);
+        Kategori::create([
+            'nama_kategori' => 'Keyboard',
+        ]);
+
+        Supplier::create([
+            'nama_supplier' => 'Fauzi Rizky',
+            'nama_perusahaan' => 'PT Tali Cahaya Buana',
+            'no_tlp' => '0019283291',
+            'alamat' => 'Baros Cimahi Tengah'
+        ]);
+        
         Barang::factory(10)->create();
         Barangkeluar::factory(5)->create();
         BarangMasuk::factory(5)->create();

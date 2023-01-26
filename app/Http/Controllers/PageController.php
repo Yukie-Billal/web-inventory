@@ -57,6 +57,11 @@ class PageController extends Controller
         return view('pages.data.barang-masuk');
     }
 
+    public function supplier()
+    {
+        return 'Ini supplier';
+    }
+
     public function peminjaman()
     {
         return view('pages.kegiatan.peminjaman');

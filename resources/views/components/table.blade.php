@@ -6,6 +6,7 @@
          <th>Warna</th>
          <th>Kategori</th>
          <th>Satuan</th>
+         <th style="min-width: 50px;"></th>
       </tr>
    </thead>
    <tbody>
@@ -16,6 +17,7 @@
             <td>Hitam</td>
             <td>Elektronik</td>
             <td>Pcs</td>
+            <td>Pcs</td>
          </tr>
          <tr>
             <td>Laptop asus</td>
@@ -23,6 +25,9 @@
             <td>Hitam</td>
             <td>Elektronik</td>
             <td>Pcs</td>
+            <td>
+               <i class="fa fa-search"></i>
+            </td>
          </tr>
       {{-- @endforeach --}}
    </tbody>

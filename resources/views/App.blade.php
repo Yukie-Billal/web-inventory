@@ -19,28 +19,24 @@
     
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
-    
+
     @livewireStyles
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="min-height: calc(100vh - 80px); height: 100vh;">
         <div class="row h-100">
-            <div class="col-2 p-0">
+            <div class="col-2 p-0 bg-white">
                 @include('partials.sidebar')
             </div>
-            <div class="col-10 p-0">
+            <div class="col-10 p-0 h-100 bg-white">
                 @include('partials.navbar')
-                <div class="col-md-12 bg-white px-3 py-4 my-shadow-1">
+                <div class="col-12 px-3 py-4 my-shadow-1" style="min-height: calc(100vh - 80px);">
                     @yield('content')
                 </div>
             </div>
         </div>
     </div>
-    {{-- <div class="container bg-transparent py-0">
-        
-    </div> --}}
     {{-- @include('partials.footer') --}}
-
     
     @stack('body-script')
     {{-- <script type="text/javascript">

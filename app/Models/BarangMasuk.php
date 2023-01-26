@@ -11,8 +11,18 @@ class BarangMasuk extends Model
 
     protected $guarded = ['id'];
 
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
+
     public function barang()
     {
         return $this->belongsTo(Barang::class);
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(supplier::class);
     }
 }

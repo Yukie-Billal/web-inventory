@@ -1,4 +1,4 @@
-<div class="sidebar h-100 col-2 fixed-top">
+<div class="sidebar h-100 col-2 fixed-top" style="background: #F5F5F5; border-radius: 0 30px 30px 0; border: 2px solid #C2C2C2; border-left: 0;">
 	<div class="sidebar-header" style="height: 80px;">
 		<span class="text-dark fw-semibold header-l">Kodet</span>
 	</div>
@@ -14,7 +14,7 @@
 				<i class="fa fa-box me-2"></i>
 				<span>Data</span>
 				<i class="fa-solid fa-chevron-down"></i>
-			</div>			
+			</div>
 			@if (Request::is('barangs') || Request::is('barang-keluars') || Request::is('barang-masuks') || Request::is('suppliers') || Request::is('users'))
 				@php
 					$data = '';
@@ -25,11 +25,11 @@
 				@endphp
 			@endif
 			<div class="sub-menu {{ $data }}">
-				<a href="/barangs">Barang</a>
-				<a href="/barang-keluars">Barang keluar</a>
-				<a href="/barang-masuks">Barang Masuk</a>
-				<a href="/suppliers">Supplier</a>
-				<a href="/users">User</a>
+				<a href="/barangs" class="{{ Request::is('barangs') ? 'text-primary' : '' }}">Barang</a>
+				<a href="/barang-keluars" class="{{ Request::is('barang-keluars') ? 'text-primary' : '' }}">Barang keluar</a>
+				<a href="/barang-masuks" class="{{ Request::is('barang-masuks') ? 'text-primary' : '' }}">Barang Masuk</a>
+				<a href="/suppliers" class="{{ Request::is('suppliers') ? 'text-primary' : '' }}">Supplier</a>
+				<a href="/users" class="{{ Request::is('users') ? 'text-primary' : '' }}">User</a>
 			</div>
 		</div>
 		<div class="sidebar-menu">

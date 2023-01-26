@@ -2,11 +2,11 @@
 
 @section('content')
 
-<div class="row justify-content-start px-3 py-0">
+{{-- <div class="row justify-content-start px-3 py-0">
     <div class="col-md-8 bg-white px-3 py-4 my-shadow-1"  style="min-height: 350px;">
         <livewire:barang-masuk.barang-masuk-list>
     </div>
-</div>
+</div> --}}
 
 <div class="row justify-content-center px-3 py-4">
     <div class="col-md-12 bg-white px-3 py-4 my-shadow-1">

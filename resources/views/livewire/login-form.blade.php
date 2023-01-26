@@ -8,7 +8,7 @@
       <label for="email" class="ms-1 mb-1">Email</label>
       <input type="email" wire:model.lazy='email' name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email Anda">
       @error('email')
-      <div class="invalid-feedback">
+      <div class="invalid-feedback" style="font-size: 12px;">
         {{ $message }}
       </div>
       @enderror
@@ -17,7 +17,7 @@
         <label for="password" class="ms-1 mb-1">Password</label>
         <input type="password" wire:model.lazy='password' name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password Anda">
         @error('password')
-        <div class="invalid-feedback">
+        <div class="invalid-feedback" style="font-size: 12px;">
           {{ $message }}
         </div>
         @enderror

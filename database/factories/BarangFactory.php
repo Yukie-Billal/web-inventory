@@ -18,9 +18,13 @@ class BarangFactory extends Factory
     public function definition()
     {
         return [
-            'kode' => Str::random(20),
-            'nama_barang' => 'Barang ' . fake()->unique()->randomNumber(2, false),
-            // 'gambar' => 'Url Tidak Tersedia',
+            'serial_number' => fake()->unique()->randomNumber(6, false),
+            'barcode' => fake()->unique()->numerify('L###A###'),
+            'nama_barang' => 'Laptop ' . fake()->unique()->randomNumber(2, false),
+            'merek' => 'Asus',
+            'warna' => 'Hitam',
+            'satuan' => 'Pcs / Buah',
+            'kategori_id' => 1,
             'stok' => 20,
         ];
     }

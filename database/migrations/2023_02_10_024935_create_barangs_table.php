@@ -13,13 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('barang_masuk_keranjangs', function (Blueprint $table) {
+        Schema::create('barangs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('barang_id')->nullable();
-            $table->string('kode_barang');
+            $table->string('serial_number');
+            $table->string('barcode');
             $table->string('nama_barang');
-            $table->string('jumlah_masuk');
-            $table->string('tanggal_masuk');
+            $table->string('merek');
+            $table->string('warna');
+            $table->string('satuan');
+            $table->foreignId('kategori_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
+            $table->string('stok');
             $table->timestamps();
         });
     }
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('barang_masuk_keranjangs');
+        Schema::dropIfExists('barangs');
     }
 };

@@ -9,11 +9,14 @@ class Barang extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'kode',
-        'nama_barang',
-        'stok',
+    protected $guarded = [
+        'id'
     ];
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 
     public function barangkeluar()
     {
