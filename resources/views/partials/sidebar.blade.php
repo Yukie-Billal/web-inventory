@@ -1,21 +1,21 @@
-<div class="sidebar h-100 col-2 fixed-top" style="background: #EDEDED; border-radius: 0 30px 30px 0; border: 2px solid #C2C2C2; border-left: 0;">
+<div class="sidebar h-100 col-2 fixed-top p-0" style="background: #EDEDED; border-radius: 0 30px 30px 0; border: 2px solid #C2C2C2; border-left: 0;">
 	<div class="sidebar-header" style="height: 80px;">
 		<span class="text-dark fw-semibold header-l">Kodet</span>
 	</div>
 	<div class="sidebar-body h-100">
 		<div class="sidebar-menu">
 			<div class="menu">
-				<i class="fa fa-box me-2"></i>
+				<img src="{{ asset('icon/home.png') }}" alt=".." class="me-2" style="width: 20px; height: 20px;">
 				<a href="/home" class="text-dark">Halaman Utama</a>
 			</div>
 		</div>
 		<div class="sidebar-menu d-flex flex-column align-items-start">
 			<div class="menu">
-				<i class="fa fa-box me-2"></i>
+				<img src="{{ asset('icon/data.png') }}" alt=".." class="me-2" style="width: 20px; height: 20px;">
 				<span>Data</span>
 				<i class="fa-solid fa-chevron-down"></i>
 			</div>
-			@if (Request::is('barangs') || Request::is('barang-keluars') || Request::is('barang-masuks') || Request::is('suppliers') || Request::is('users'))
+			@if (Request::is('barangs') || Request::is('suppliers-users') || Request::is('barang-masuks') || Request::is('pinjams-kembalis'))
 				@php
 					$data = '';
 				@endphp
@@ -33,7 +33,7 @@
 		</div>
 		<div class="sidebar-menu">
 			<div class="menu">
-				<i class="fa fa-box me-2"></i>
+				<img src="{{ asset('icon/list.png') }}" alt=".." class="me-2" style="width: 20px; height: 20px;">
 				<span>Kegiatan</span>
 				<i class="fa-solid fa-chevron-down"></i>		
 			</div>

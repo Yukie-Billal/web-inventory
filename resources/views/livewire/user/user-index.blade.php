@@ -9,7 +9,7 @@
             <div class="col-3">
 
             </div>
-            <livewire:pagination-view :page='$page' :pageCount='$pageCount' :pageName='$pageName' />
+            <livewire:pagination-view :col='9' :page='$page' :pageCount='$pageCount' :pageName='$pageName' />
         </div>
     </div>
     <div class="card-body p-0">

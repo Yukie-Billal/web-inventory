@@ -8,6 +8,8 @@
     	<livewire:supplier.supplier-index>
     </div>
 
+    <hr class="text-neutral-60 my-5">
+
     <div class="col-12 p-2">
         <livewire:user.user-index />
     </div>

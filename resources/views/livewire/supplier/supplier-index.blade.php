@@ -6,17 +6,17 @@
             </div>
         </div>
         <div class="row justify-content-end align-items-center">
-            <livewire:pagination-view :page='$page' :pageCount='$pageCount' :pageName='$pageName' />
+            <livewire:pagination-view :col='9' :page='$page' :pageCount='$pageCount' :pageName='$pageName' />
         </div>
     </div>
     <div class="card-body p-0">
-        <div class="col-12 p-0 border rounded border-neutral-40-2">
+        <div class="col-12 p-0 border rounded border-neutral-40-2" style="min-height: 300px;">
             <table class="table table-hover table-responsive mb-0">
                 <thead class="">
                     <tr>
                         <th>Nama Supplier</th>
                         <th>Nama Perusahaan</th>
-                        <th>No Telephone</th>                    
+                        <th>No Telephone</th>
                         <th>Alamat</th>
                         <th style="min-width: 50px; max-width: 50px;"></th>
                     </tr>
@@ -41,19 +41,6 @@
         </div>
     </div>
 </div>
-
-@push('body-script')
-    @if (session()->has('message'))        
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: '{{ session('message') }}',
-                showConfirmButton: false,
-                timer: 5000
-            })
-        </script>
-    @endif
-@endpush
 
 @push('script-livewire')
     <script>

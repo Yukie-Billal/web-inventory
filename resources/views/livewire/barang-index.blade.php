@@ -28,7 +28,7 @@
                 </div>                
             </div>
         </div>
-        <div class="row justify-content-end align-items-center">
+        <div class="row justify-content-end align-items-center bg-primary">
             <div class="col-3">
                 {{-- <div class="group-form">
                     <input type="text" wire:model.debounce.500ms='search' class="input-form bg-transparent h-100 w-100" placeholder="Search . . .">
@@ -37,7 +37,7 @@
                     </button>
                 </div> --}}
             </div>
-           {{--  <div class="col-9 d-flex justify-content-end align-items-end">
+            {{-- <div class="col-9 d-flex justify-content-end align-items-end">
                 <div class="col-3 d-flex justify-content-end align-items-center" style="height: 55%">
                     <button class="button button-white px-2" wire:click="previousPage('page')">
                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
@@ -56,7 +56,7 @@
                     </form>           
                 </div>                
             </div> --}}
-            <livewire:pagination-view :pageCount='$pageCount' :page='$page' :pageName='$pageName' :wire:key='$page'/>
+            <livewire:pagination-view :col="9" :pageCount='$pageCount' :page='$page' :pageName='$pageName' :wire:key='$page'/>
         </div>
     </div>
     <div class="card-body p-0">
