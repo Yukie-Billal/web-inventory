@@ -15,18 +15,21 @@ class DataBarang extends Component
 
     public function render()
     {
-        $barangs = Barang::all();
+        $barangs = Barang::orderByDesc('created_at')->orderByDesc('nama_barang');
         $barang_all = $barangs->count();
-        $sisa = $barang_all % 10;
+        $sisa = $barang_all % 6;
         if ($sisa <= 0) {
             $count = 1;
         } else if ($sisa >= 1) {
-            $count = (($barang_all - $sisa) / 10) + 1;
+            $count = (($barang_all - $sisa) / 6) + 1;
         }
         $this->pageCount = $count;
         if ($this->page > $count) {
             $this->page = 1;
         }
-        return view('livewire.peminjaman.data-barang');
+
+        return view('livewire.peminjaman.data-barang', [
+            'barangs' => $barangs->paginate(6),
+        ]);
     }
 }

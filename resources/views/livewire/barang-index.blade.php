@@ -28,7 +28,7 @@
                 </div>                
             </div>
         </div>
-        <div class="row justify-content-end align-items-center bg-primary">
+        <div class="row justify-content-end align-items-center">
             <div class="col-3">
                 {{-- <div class="group-form">
                     <input type="text" wire:model.debounce.500ms='search' class="input-form bg-transparent h-100 w-100" placeholder="Search . . .">

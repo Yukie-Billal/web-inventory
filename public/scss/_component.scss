@@ -1,13 +1,25 @@
 .card {
-    min-height: 300px;
+    min-height: 250px;
     .table {
         height: 100%;
-
         tr:last-child td {
             border-bottom: 0;
+            margin-bottom: 0;
         }
     }
 }
+
+.card {
+    .card-body {
+        .border {
+            min-height: 250px;
+        }
+        .border-neutral-40-2 {
+            min-height: 250px;
+        }
+    }
+}
+
 .table {
     thead tr th {
         font: $my-text-m-medium;
@@ -16,7 +28,6 @@
         font: $my-text-s-medium;
     }
 }
-
 
 ol {
     &.my-breadcumb {
@@ -30,6 +41,12 @@ ol {
         }
     }
 } 
+
+// For Icon
+.icon-normal {
+    width: 20px;
+    height: 20px;
+}
 
 /*   Form Styles   */
 .input-form {
@@ -486,16 +503,4 @@ background-color: #3131a3;
          }
       }
    }
-}
-
-
-.card {
-    .card-body {
-        .border {
-            min-height: 300px;
-        }
-        .border-neutral-40-2 {
-            min-height: 300px;
-        }
-    }
 }

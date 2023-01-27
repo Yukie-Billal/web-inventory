@@ -102,7 +102,7 @@ class BarangIndex extends Component
         // $this->paginate_pageCount();
 
         $merek = DB::table('barangs')->select('merek')->groupBy('merek');
-        $barangs = Barang::orderByDesc('nama_barang')->orderByDesc('id');
+        $barangs = Barang::orderByDesc('nama_barang')->orderByDesc('created_at');
         if ($this->filter_merek != null) {
             $barangs->where('merek', $this->filter_merek);
         }
@@ -123,7 +123,7 @@ class BarangIndex extends Component
             $this->page = 1;
         }
         return view('livewire.barang-index', [
-            'barangs' => $this->search == null 
+            'barangs' => $this->search == null
                             ? $barangs->paginate(10)
                             : $barangs->where('nama_barang', 'like', '%' .$this->search. '%')->orWhere('kode', 'like', '%' .$this->search. '%')->orWhere('stok', 'like', '%' .$this->search. '%')->paginate(10),
             'kategoris' => Kategori::orderByDesc('nama_kategori')->get(),

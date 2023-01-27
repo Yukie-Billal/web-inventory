@@ -10,19 +10,11 @@
     </div>
 {{-- </div> --}}
 
-<div class="row my-5">
-    <div class="col-11">
-        <div class="card flex-fill border-0">
-            <div class="card-header bg-white border-0 d-flex flex-column">
-                <span class="header-m mb-2">Data Barang</span>
-                <p>Data - Data barang yang akan Dipinjam !!</p>
-            </div>
-            <div class="card-body p-0 border-neutral-40-2 rounded">
-                <x-table />
-            </div>
-        </div>
+{{-- <div class="row my-5"> --}}
+    <div class="col-12 p-2">
+        <livewire:peminjaman.pinjam-keranjang />
     </div>
-</div>    
+{{-- </div>     --}}
 
 <div class="row">
     <div class="col-12">
