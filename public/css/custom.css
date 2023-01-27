@@ -39,6 +39,150 @@
   background-color: #FFFFFF;
 }
 
+.bg-primary-main {
+  background-color: #4C4DDC;
+}
+
+.bg-primary-surface {
+  background-color: #DFE0F3;
+}
+
+.bg-primary-border {
+  background-color: #F5F5FF;
+}
+
+.bg-primary-hover {
+  background-color: #3334CC;
+}
+
+.bg-primary-pressed {
+  background-color: #21217A;
+}
+
+.bg-primary-focus {
+  background-color: rgba(76, 77, 220, 0.2);
+}
+
+.bg-success-main {
+  background-color: #43936C;
+}
+
+.bg-success-surface {
+  background-color: #F7F7F7;
+}
+
+.bg-success-border {
+  background-color: #B8DBCA;
+}
+
+.bg-success-hover {
+  background-color: #367A59;
+}
+
+.bg-success-pressed {
+  background-color: #20573D;
+}
+
+.bg-success-focus {
+  background-color: rgba(67, 147, 108, 0.2);
+}
+
+.bg-danger-main {
+  background-color: #CB3A31;
+}
+
+.bg-danger-surface {
+  background-color: #FFF4F2;
+}
+
+.bg-danger-border {
+  background-color: #EEB4B0;
+}
+
+.bg-danger-hover {
+  background-color: #BD251C;
+}
+
+.bg-danger-pressed {
+  background-color: #731912;
+}
+
+.bg-danger-focus {
+  background-color: rgba(203, 58, 49, 0.2);
+}
+
+.bg-warning-main {
+  background-color: #CD7B2E;
+}
+
+.bg-warning-surface {
+  background-color: #FFF9F2;
+}
+
+.bg-warning-border {
+  background-color: #EECEB0;
+}
+
+.bg-warning-hover {
+  background-color: #BF6919;
+}
+
+.bg-warning-pressed {
+  background-color: #734011;
+}
+
+.bg-warning-focus {
+  background-color: rgba(205, 123, 46, 0.2);
+}
+
+.bg-info-main {
+  background-color: #3267E3;
+}
+
+.bg-info-surface {
+  background-color: #F0F3FF;
+}
+
+.bg-info-border {
+  background-color: #B1C5F6;
+}
+
+.bg-info-hover {
+  background-color: #114CD6;
+}
+
+.bg-info-pressed {
+  background-color: #11317D;
+}
+
+.bg-info-focus {
+  background-color: rgba(50, 103, 227, 0.2);
+}
+
+.bg-dark-main {
+  background-color: #424242;
+}
+
+.bg-dark-surface {
+  background-color: #C2C2C2;
+}
+
+.bg-dark-border {
+  background-color: #616161;
+}
+
+.bg-dark-hover {
+  background-color: rgba(10, 10, 10, 0.8666666667);
+}
+
+.bg-dark-pressed {
+  background-color: #0A0A0A;
+}
+
+.bg-dark-focus {
+  background-color: rgba(66, 66, 66, 0.2);
+}
+
 .text-neutral-100 {
   color: #0A0A0A;
 }
@@ -77,6 +221,150 @@
 
 .text-neutral-10 {
   color: #FFFFFF;
+}
+
+.text-primary-main {
+  color: #4C4DDC;
+}
+
+.text-primary-surface {
+  color: #DFE0F3;
+}
+
+.text-primary-border {
+  color: #F5F5FF;
+}
+
+.text-primary-hover {
+  color: #3334CC;
+}
+
+.text-primary-pressed {
+  color: #21217A;
+}
+
+.text-primary-focus {
+  color: rgba(76, 77, 220, 0.2);
+}
+
+.text-success-main {
+  color: #43936C;
+}
+
+.text-success-surface {
+  color: #F7F7F7;
+}
+
+.text-success-border {
+  color: #B8DBCA;
+}
+
+.text-success-hover {
+  color: #367A59;
+}
+
+.text-success-pressed {
+  color: #20573D;
+}
+
+.text-success-focus {
+  color: rgba(67, 147, 108, 0.2);
+}
+
+.text-danger-main {
+  color: #CB3A31;
+}
+
+.text-danger-surface {
+  color: #FFF4F2;
+}
+
+.text-danger-border {
+  color: #EEB4B0;
+}
+
+.text-danger-hover {
+  color: #BD251C;
+}
+
+.text-danger-pressed {
+  color: #731912;
+}
+
+.text-danger-focus {
+  color: rgba(203, 58, 49, 0.2);
+}
+
+.text-warning-main {
+  color: #CD7B2E;
+}
+
+.text-warning-surface {
+  color: #FFF9F2;
+}
+
+.text-warning-border {
+  color: #EECEB0;
+}
+
+.text-warning-hover {
+  color: #BF6919;
+}
+
+.text-warning-pressed {
+  color: #734011;
+}
+
+.text-warning-focus {
+  color: rgba(205, 123, 46, 0.2);
+}
+
+.text-info-main {
+  color: #3267E3;
+}
+
+.text-info-surface {
+  color: #F0F3FF;
+}
+
+.text-info-border {
+  color: #B1C5F6;
+}
+
+.text-info-hover {
+  color: #114CD6;
+}
+
+.text-info-pressed {
+  color: #11317D;
+}
+
+.text-info-focus {
+  color: rgba(50, 103, 227, 0.2);
+}
+
+.text-dark-main {
+  color: #424242;
+}
+
+.text-dark-surface {
+  color: #C2C2C2;
+}
+
+.text-dark-border {
+  color: #616161;
+}
+
+.text-dark-hover {
+  color: rgba(10, 10, 10, 0.8666666667);
+}
+
+.text-dark-pressed {
+  color: #0A0A0A;
+}
+
+.text-dark-focus {
+  color: rgba(66, 66, 66, 0.2);
 }
 
 .text-l-regular {
@@ -434,6 +722,15 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-dark:focus {
   background-color: #9E9E9E;
+}
+.button.button-light {
+  background-color: #E0E0E0;
+}
+.button.button-light:hover {
+  background-color: #d1d1d1;
+}
+.button.button-light:focus {
+  background-color: #d1d1d1;
 }
 .button.button-outline-primary {
   background-color: #FFFFFF;
