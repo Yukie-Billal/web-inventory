@@ -1,6 +1,7 @@
 <div class="card flex-fill border-0">
     <div class="card-header border-0 bg-white px-1">
-        <div class="col-12 d-flex justify-content-between align-items-center p-0">
+        {{-- Ini Filter Tanggal --}}
+        {{-- <div class="col-12 d-flex justify-content-between align-items-center p-0">
             <div class="col-8 d-flex align-items-center p-0">
                 <div class="col-4">
                     <div class="group-form">
@@ -33,30 +34,44 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> --}}
+        <div class="row justify-content-end align-items-center">
+            <livewire:pagination-view :page='$page' :pageName='$pageName' :pageCount='$pageCount' />
+        </div>        
     </div>
     <div class="card-body p-0">
-        <div class="col-12 p-0 border" style="border-radius: 18px">
+        <div class="col-12 p-0 border-neutral-40-2 rounded">
             <table class="table table-hover table-responsive mb-0">
-                <thead class="thead-inverse">
+                <thead>
                     <tr>
-                        <th>Kode Barang</th>
+                        <th>Serial Number</th>
                         <th>Nama Barang</th>
-                        <th>QTY</th>
+                        <th>Merek</th>
+                        <th>Warna</th>
+                        <th>Kategori</th>
+                        <th>Qty</th>
+                        <th>Satuan</th>
+                        <th>Nama Supplier</th>
+                        <th>Nama Perusahaan</th>
                         <th>Tanggal</th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach ($barangMasuks as $barangMasuk)                    
                         <tr>
-                            @if ($barangMasuk->barang == '')                                
-                                <td scope="row">{{ $barangMasuk->kode_barang }}</td>
-                                <td>{{ $barangMasuk->nama_barang }}</td>
-                            @else                                
-                                <td scope="row">{{ $barangMasuk->barang->kode }}</td>
-                                <td>{{ $barangMasuk->barang->nama_barang }}</td>
+                            <td>{{ $barangMasuk->serial_number }}</td>
+                            <td>{{ $barangMasuk->nama_barang }}</td>
+                            <td>{{ $barangMasuk->merek }}</td>
+                            <td>{{ $barangMasuk->warna }}</td>
+                            @if ($barangMasuk->kategori != '')
+                                <td>{{ $barangMasuk->kategori->nama_kategori }}</td>
                             @endif
-                            <td>{{ $barangMasuk->jumlah_masuk }}</td>
+                            <td>{{ $barangMasuk->qty }}</td>
+                            <td>{{ $barangMasuk->satuan }}</td>
+                            @if ($barangMasuk->supplier != '')
+                                <td>{{ $barangMasuk->supplier->nama_supplier }}</td>
+                                <td>{{ $barangMasuk->supplier->nama_perusahaan }}</td>
+                            @endif
                             <td>{{ $barangMasuk->tanggal_masuk }}</td>
                         </tr>
                         @endforeach

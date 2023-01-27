@@ -47,9 +47,9 @@ class PageController extends Controller
         return view('pages.data.barang');
     }
 
-    public function barangKeluar()
+    public function pinjam_kembali()
     {
-        return view('pages.data.barang-keluar');
+        return view('pages.data.pinjam-kembali');
     }
 
     public function barangMasuk()
@@ -62,6 +62,7 @@ class PageController extends Controller
         return view('pages.data.supplier_user');
     }
 
+    // Kegiatan 
     public function peminjaman()
     {
         return view('pages.kegiatan.peminjaman');

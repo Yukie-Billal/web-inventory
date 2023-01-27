@@ -30,3 +30,359 @@ ol {
         }
     }
 } 
+
+/*  button Styles  */
+.button {
+    @include flex-box(center, center, row);
+    padding: 10px 16px;
+    gap: 4px;
+
+    height: 32px;
+    border-radius: 6px;
+    box-shadow: $my-shadow-1;
+    border: none;
+    transition: .3s;
+    cursor: pointer;
+
+    &.button-sm {
+        height: 28px;
+        padding: 6px 12px;
+    }
+    &.button-md {
+        height: 36px;
+        padding: 14px 20px;
+    }
+    &.button-lg {
+        height: 40px;
+        padding: 16px 24px;
+    }
+
+    &.button-primary {
+        background-color: $my-primary-main;
+
+        &:hover {
+            background-color: $my-primary-hover;
+        }
+
+        &:focus {
+            background-color: $my-primary-hover;
+        }
+    }
+    &.button-success {
+        background-color: $my-success-main;
+
+        &:hover {
+            background-color: $my-success-hover;
+        }
+        &:focus {
+            background-color: $my-success-hover;
+        }
+    }
+    &.button-warning {
+        background-color: $my-warning-main;
+
+        &:hover {
+            background-color: $my-warning-hover;
+        }
+        &:focus {
+            background-color: $my-warning-hover;
+        }
+    }
+    &.button-danger {
+        background-color: $my-danger-main;
+
+        &:hover {
+            background-color: $my-danger-hover;
+        }
+        &:focus {
+            background-color: $my-danger-hover;
+        }
+    }
+    &.button-info {
+        background-color: $my-info-main;
+
+        &:hover {
+            background-color: $my-info-hover;
+        }
+        &:focus {
+            background-color: $my-info-hover;
+        }
+    }
+    &.button-dark {
+        background-color: $my-dark-main;
+
+        &:hover {
+            background-color: $my-dark-hover;
+        }
+        &:focus {
+            background-color: $my-neutral-60;
+        }
+    }
+
+    &.button-outline-primary {
+        background-color: $my-neutral-10;
+        border: 1px solid $my-primary-hover;
+
+        &:hover {
+            background-color: $my-primary-main;
+            color: white;
+        }
+
+        &:focus {
+            background-color: $my-primary-main;
+            color: white;
+        }
+    }
+    &.button-outline-success {
+        background-color: $my-neutral-10;
+        border: 1px solid $my-success-hover;
+
+        &:hover {
+            background-color: $my-success-main;
+            color: white;
+        }
+
+        &:focus {
+            background-color: $my-success-main;
+            color: white;
+        }
+    }
+    &.button-outline-warning {
+        background-color: $my-neutral-10;
+        border: 1px solid $my-warning-hover;
+
+        &:hover {
+            background-color: $my-warning-main;
+        }
+
+        &:focus {
+            background-color: $my-warning-main;
+        }
+    }
+    &.button-outline-info {
+        background-color: $my-neutral-10;
+        border: 1px solid $my-info-hover;
+
+        &:hover {
+            background-color: $my-info-main;
+        }
+
+        &:focus {
+            background-color: $my-info-main;
+        }
+    }
+    &.button-outline-danger {
+        background-color: $my-neutral-10;
+        border: 1px solid $my-danger-hover;
+
+        &:hover {
+            background-color: $my-danger-main;
+        }
+
+        &:focus {
+            background-color: $my-danger-main;
+        }
+    }
+    &.button-outline-secondary {
+        background-color: $my-neutral-10;
+        border: 1px solid $my-neutral-60;
+
+        &:hover {
+            background-color: $my-neutral-60;
+        }
+
+        &:focus {
+            background-color: $my-neutral-60;
+        }
+    }
+    &.button-outline-light {
+        background-color: $my-neutral-10;
+        border: 1px solid $my-neutral-40;
+
+        &:hover {
+            background-color: darken($my-neutral-40, 6);
+        }
+
+        &:focus {
+            background-color: darken($my-neutral-40, 6);
+        }
+    }
+    &.button-outline-dark {
+        background-color: $my-neutral-10;
+        border: 1px solid $my-dark-hover;
+
+        &:hover {
+            background-color: $my-dark-main;
+        }
+
+        &:focus {
+            background-color: $my-dark-main;
+        }
+    }
+}
+
+
+.btn-filter {
+    border-radius: 30px; 
+    width: 74px; 
+    background-color: $my-primary-hover; 
+    letter-spacing: .03em;
+    box-shadow: shadow-1;
+
+    &:hover {
+        background-color: $my-primary-main;
+    }
+}
+
+.btn-edit {
+    width: 75px;
+    height: 20px;
+    background-color: #f7f7f7;
+    font-size: 12px;
+    border: 1px solid #b8dbca;
+    color: #43936c;
+    padding: 3px 8px;
+    font-weight: 500; 
+}
+
+.btn-status {
+    background: #F5F5FF; 
+    border: 1px solid #B8DBCA; 
+    padding: 3px 8px; 
+    font-size: 12px; 
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.btn-delete {
+    width: 75px;
+    height: 20px;
+    background-color: #fff4f2;
+    font-size: 12px;
+    border: 1px solid #eeb4b0;
+    color: #cb3a31;
+    padding: 3px 8px;
+    font-weight: 500;
+}
+
+.modal-add-title {
+    font-size: 20px;
+    text-align: center;
+}
+
+.btn-add-data {
+background-color: #3131a3;
+}
+
+.tags-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 8px;
+    gap: 10px;
+
+    height: 20px;
+    border-radius: 6px;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 8px;
+    gap: 10px;
+
+    height: 20px;
+    border-radius: 6px;
+}
+
+.tags-primary {
+    background-color: $my-primary-surface;
+    border: 1px solid $my-primary-border;
+}
+
+.tags-danger {
+    background-color: $my-danger-surface;
+    border: 1px solid $my-danger-border;      
+}
+
+.tags-warning {
+    background-color: $my-warning-surface;
+    border: 1px solid $my-warning-border;      
+}
+
+.tags-info {
+    background-color: $my-info-surface;
+    border: 1px solid $my-info-border;      
+}
+
+.tags-success {
+    background-color: $my-success-surface;
+    border: 1px solid $my-success-border;      
+}
+ 
+
+/* Component */
+.sidebar {
+   border-right: 2px solid $my-neutral-50;
+
+   .sidebar-header {
+      @include flex-box(center, center, row);
+   }
+
+   .sidebar-body {
+      font: $my-text-m-medium;
+      padding: 20px 8px;
+
+      .sidebar-menu {
+         position: relative;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         font: $my-text-m-medium;
+         padding: 2px 12px;
+         margin: 3px 0;
+
+         .menu {
+            position: relative;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            height: 40px;
+            width: 100%;
+            padding: 0 6px 0 6px;
+            cursor: pointer;
+
+            span {
+               display: flex;
+               justify-content: start;
+               align-items: center;
+               min-width: 80%;
+               max-width: 85%;
+               height: 100%;
+            }
+         }
+
+         .sub-menu {
+            @include flex-box(start, start, column);
+            width: 100%;
+            padding: 6px 0 0 42px;
+            overflow: hidden;
+
+            a {
+               color: $my-neutral-100;
+               font: $my-text-m-regular;
+               margin: 8px 0;
+            }
+
+            &.hide {
+               display: none;
+               overflow: hidden;
+               animation: hide 3s;
+            }                
+         }
+      }
+   }
+}

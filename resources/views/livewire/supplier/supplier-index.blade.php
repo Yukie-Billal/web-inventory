@@ -1,56 +1,11 @@
 <div class="card flex-fill border-0">
     <div class="card-header border-0 bg-white px-1 mb-1">
         <div class="row px-2 mb-3">
-            <div class="col-12 d-flex justify-content-between align-items-center p-0">
-                <div class="col-4 d-flex justify-content-start">
-                    <div class="col-6 pe-2">
-                        <select class="select-form" id="filterKategori" wire:change='$emit("filter-kategori")'>
-                            <option selected disabled>-- Pilih Kategori --</option>
-                            {{-- @foreach ($kategoris as $kategori)
-                                <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
-                            @endforeach    --}}                         
-                        </select>
-                    </div>
-                    <div class="col-6 ps-2">
-                        <select class="select-form" id="filterMerek" wire:change='$emit("filter-merek")'>
-                            <option selected disabled>-- Pilih Merek --</option>
-                            {{-- @foreach ($barang_mereks as $merek)
-                                <option value="{!! $merek->merek !!}">{!! $merek->merek !!}</option>
-                            @endforeach --}}                            
-                        </select>
-                    </div>
-                </div>
-                <div class="col-6 d-flex justify-content-end h-100 align-items-center">
-                    <button class="button button-info text-white text-m-medium" data-bs-toggle="modal" data-bs-target="#modalTambahDataBarang">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        Tambah Data Baru
-                    </button>
-                </div>                
+            <div class="col-12 d-flex align-items-center p-0 header-s">
+                Data - Data Suppliers
             </div>
         </div>
         <div class="row justify-content-end align-items-center">
-            <div class="col-3">
-
-            </div>
-            {{-- <div class="col-9 d-flex justify-content-end align-items-end">
-                <div class="col-3 d-flex justify-content-end align-items-center" style="height: 55%">
-                    <button class="button button-white px-2" wire:click="previousPage('page')">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                    </button>
-                    <span class="d-inline-block mx-2">{{ $page }} / {{ $pageCount }}</span>                    
-                    <button class="button button-outline button-white px-2" @if ($page != $pageCount) wire:click="nextPage('page')" @endif>
-                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </button>
-                </div>
-                <div class="col-1 d-flex justify-content-center align-items-center pb-1 mx-1 text-m-medium">
-                    Go To
-                </div>
-                <div class="col-1">
-                    <form wire:submit.prevent="$emit('page-change')">
-                        <input type="text" id="pageChanger" name="page" class="input-form w-100" placeholder="Page">    
-                    </form>           
-                </div>                
-            </div> --}}
             <livewire:pagination-view :page='$page' :pageCount='$pageCount' :pageName='$pageName' />
         </div>
     </div>

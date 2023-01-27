@@ -60,7 +60,7 @@
         </div>
     </div>
     <div class="card-body p-0">
-        <div class="col-12 p-0 border rounded border-neutral-40-2">
+        <div class="col-12 p-0 rounded border-neutral-40-2">
             <table class="table table-hover table-responsive mb-0">
                 <thead class="">
                     <tr>

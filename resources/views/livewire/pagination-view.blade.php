@@ -1,11 +1,11 @@
-<div class="col-9 d-flex justify-content-end align-items-end">
+<div class="col-9 d-flex justify-content-end align-items-center">
     <div class="col-3 d-flex justify-content-end align-items-center" style="height: 55%">
-        <button class="button button-white px-2" wire:click="$emit('previous-page', 'page')">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        <button class="button button-outline-light button-sm px-2" wire:click="$emit('previous-page', 'page')">
+            <i class="fa fa-chevron-left" style="font-size: 12px;"></i>
         </button>
-        <span class="d-inline-block mx-2">{{ $page }} / {{ $pageCount }}</span>                   
-        <button class="button button-outline button-white px-2" @if ($page != $pageCount) wire:click="$emit('next-page', 'page')" @endif>
-            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        <span class="d-inline-block mx-3">{{ $page }} / {{ $pageCount }}</span>                   
+        <button class="button button-outline-light button-sm px-2" @if ($page != $pageCount) wire:click="$emit('next-page', 'page')" @endif>
+            <i class="fa fa-chevron-right" style="font-size: 12px;"></i>
         </button>
     </div>
     <div class="col-1 d-flex justify-content-center align-items-center pb-1 mx-1 text-m-medium">

@@ -26,9 +26,9 @@
 			@endif
 			<div class="sub-menu {{ $data }}">
 				<a href="/barangs" class="{{ Request::is('barangs') ? 'text-primary' : '' }}">Barang</a>
-				<a href="/barang-keluars" class="{{ Request::is('barang-keluars') ? 'text-primary' : '' }}">Barang keluar</a>
-				<a href="/barang-masuks" class="{{ Request::is('barang-masuks') ? 'text-primary' : '' }}">Barang Masuk</a>
 				<a href="/suppliers-users" class="{{ Request::is('suppliers-users') ? 'text-primary' : '' }}">Supplier & User</a>
+				<a href="/barang-masuks" class="{{ Request::is('barang-masuks') ? 'text-primary' : '' }}">Barang Masuk</a>
+				<a href="/pinjams-kembalis" class="{{ Request::is('pinjams-kembalis') ? 'text-primary' : '' }}">Pinjam & Kembali</a>
 			</div>
 		</div>
 		<div class="sidebar-menu">
