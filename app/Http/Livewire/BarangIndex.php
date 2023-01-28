@@ -103,6 +103,8 @@ class BarangIndex extends Component
 
         $merek = DB::table('barangs')->select('merek')->groupBy('merek');
         $barangs = Barang::orderByDesc('nama_barang')->orderByDesc('created_at');
+
+        // Filter
         if ($this->filter_merek != null) {
             $barangs->where('merek', $this->filter_merek);
         }
@@ -110,8 +112,15 @@ class BarangIndex extends Component
             $barangs->where('kategori_id', $this->filter_kategori);
             $merek->where('kategori_id', $this->filter_kategori);
         }
-        // Menghitung Page Dari Pagination
+
+        if ($this->search != null) {
+            $barangs = $barangs->where('nama_barang', 'like', '%' .$this->search. '%')->orWhere('kode', 'like', '%' .$this->search. '%')->orWhere('stok', 'like', '%' .$this->search. '%');
+        }
+
+        // cek Barang
         $barang_all = $barangs->count();
+        
+        // Menghitung Page Dari Pagination
         $sisa = $barang_all % 10;
         if ($sisa <= 0) {
             $count = 1;
@@ -120,12 +129,11 @@ class BarangIndex extends Component
         }
         $this->pageCount = $count;
         if ($this->page > $count) {
-            $this->page = 1;
+            $this->pageCount = 1;
         }
+
         return view('livewire.barang-index', [
-            'barangs' => $this->search == null
-                            ? $barangs->paginate(10)
-                            : $barangs->where('nama_barang', 'like', '%' .$this->search. '%')->orWhere('kode', 'like', '%' .$this->search. '%')->orWhere('stok', 'like', '%' .$this->search. '%')->paginate(10),
+            'barangs' => $barangs->paginate(10),
             'kategoris' => Kategori::orderByDesc('nama_kategori')->get(),
             'barang_mereks' => $merek->get(),
         ]);

@@ -11,36 +11,7 @@ class PageController extends Controller
     public function index()
     {
         return view('pages.dashboard');
-    }
-
-    public function login()
-    {
-        return view('pages.Auth.login');
-    }
-
-    public function loginAct(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:4'
-        ]);
-        // $level = User::where('email', $credentials['email'])->get('level');
-        // $credentials['level'] = $level;
-       
-        if (Auth::attempt($credentials)) {
-
-            $request->session()->regenerate();
-            return redirect()->intended('/')->with('message', 'Selamat Berhasil Login');
-
-        } elseif (Auth::check()) {
-
-            return redirect('/');
-            
-        }
-
-        
-        return redirect('/')->with('failed','Login Failed, Username or Pasword wrong');
-    }
+    }   
 
     public function barang()
     {

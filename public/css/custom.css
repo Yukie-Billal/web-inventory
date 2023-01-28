@@ -984,10 +984,6 @@ a {
   transition: 0.3s;
 }
 
-.container {
-  margin-top: 48px;
-}
-
 #navbarMenu .span {
   height: 24px;
   text-decoration: none;
