@@ -236,6 +236,16 @@ ol {
             background-color: $my-neutral-60;
         }
     }
+    &.button-light {
+        background-color: $my-neutral-40;
+
+        &:hover {
+            background-color: darken($my-neutral-40, 6);
+        }
+        &:focus {
+            background-color: darken($my-neutral-40, 6);
+        }
+    }
 
     &.button-outline-primary {
         background-color: $my-neutral-10;

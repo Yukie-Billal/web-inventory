@@ -42,15 +42,15 @@ class DatabaseSeeder extends Seeder
             'nama_kategori' => 'Keyboard',
         ]);
 
-        Supplier::create([
-            'nama_supplier' => 'Fauzi Rizky',
-            'nama_perusahaan' => 'PT Tali Cahaya Buana',
-            'no_tlp' => '0019283291',
-            'alamat' => 'Baros Cimahi Tengah'
-        ]);
+        // Supplier::create([
+        //     'nama_supplier' => 'Fauzi Rizky',
+        //     'nama_perusahaan' => 'PT Tali Cahaya Buana',
+        //     'no_tlp' => '0019283291',
+        //     'alamat' => 'Baros Cimahi Tengah'
+        // ]);
         
-        Barang::factory(10)->create();
-        Barangkeluar::factory(5)->create();
-        BarangMasuk::factory(5)->create();
+        // Barang::factory(10)->create();
+        // Barangkeluar::factory(5)->create();
+        // BarangMasuk::factory(5)->create();
     }
 }

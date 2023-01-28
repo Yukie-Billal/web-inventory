@@ -29,6 +29,121 @@
    background-color: $my-neutral-10;
 }
 
+.bg-primary-main {
+   background-color: $my-primary-main;
+}
+.bg-primary-surface {
+   background-color: $my-primary-surface;
+}
+.bg-primary-border {
+   background-color: $my-primary-border;
+}
+.bg-primary-hover {
+   background-color: $my-primary-hover;
+}
+.bg-primary-pressed {
+   background-color: $my-primary-pressed;
+}
+.bg-primary-focus {
+   background-color: $my-primary-focus;
+}
+
+.bg-success-main {
+   background-color: $my-success-main;
+}
+.bg-success-surface {
+   background-color: $my-success-surface;
+}
+.bg-success-border {
+   background-color: $my-success-border;
+}
+.bg-success-hover {
+   background-color: $my-success-hover;
+}
+.bg-success-pressed {
+   background-color: $my-success-pressed;
+}
+.bg-success-focus {
+   background-color: $my-success-focus;
+}
+
+.bg-danger-main {
+   background-color: $my-danger-main;
+}
+.bg-danger-surface {
+   background-color: $my-danger-surface;
+}
+.bg-danger-border {
+   background-color: $my-danger-border;
+}
+.bg-danger-hover {
+   background-color: $my-danger-hover;
+}
+.bg-danger-pressed {
+   background-color: $my-danger-pressed;
+}
+.bg-danger-focus {
+   background-color: $my-danger-focus;
+}
+
+.bg-warning-main {
+   background-color: $my-warning-main;
+}
+.bg-warning-surface {
+   background-color: $my-warning-surface;
+}
+.bg-warning-border {
+   background-color: $my-warning-border;
+}
+.bg-warning-hover {
+   background-color: $my-warning-hover;
+}
+.bg-warning-pressed {
+   background-color: $my-warning-pressed;
+}
+.bg-warning-focus {
+   background-color: $my-warning-focus;
+}
+
+.bg-info-main {
+   background-color: $my-info-main;
+}
+.bg-info-surface {
+   background-color: $my-info-surface;
+}
+.bg-info-border {
+   background-color: $my-info-border;
+}
+.bg-info-hover {
+   background-color: $my-info-hover;
+}
+.bg-info-pressed {
+   background-color: $my-info-pressed;
+}
+.bg-info-focus {
+   background-color: $my-info-focus;
+}
+
+.bg-dark-main {
+   background-color: $my-dark-main;
+}
+.bg-dark-surface {
+   background-color: $my-dark-surface;
+}
+.bg-dark-border {
+   background-color: $my-dark-border;
+}
+.bg-dark-hover {
+   background-color: $my-dark-hover;
+}
+.bg-dark-pressed {
+   background-color: $my-dark-pressed;
+}
+.bg-dark-focus {
+   background-color: $my-dark-focus;
+}
+
+// Text Color
 .text-neutral-100 {
    color: $my-neutral-100;
 }
@@ -59,7 +174,123 @@
 .text-neutral-10 {
    color: $my-neutral-10;
 }
+.text-primary-main {
+   color: $my-primary-main;
+}
+.text-primary-surface {
+   color: $my-primary-surface;
+}
+.text-primary-border {
+   color: $my-primary-border;
+}
+.text-primary-hover {
+   color: $my-primary-hover;
+}
+.text-primary-pressed {
+   color: $my-primary-pressed;
+}
+.text-primary-focus {
+   color: $my-primary-focus;
+}
 
+.text-success-main {
+   color: $my-success-main;
+}
+.text-success-surface {
+   color: $my-success-surface;
+}
+.text-success-border {
+   color: $my-success-border;
+}
+.text-success-hover {
+   color: $my-success-hover;
+}
+.text-success-pressed {
+   color: $my-success-pressed;
+}
+.text-success-focus {
+   color: $my-success-focus;
+}
+
+.text-danger-main {
+   color: $my-danger-main;
+}
+.text-danger-surface {
+   color: $my-danger-surface;
+}
+.text-danger-border {
+   color: $my-danger-border;
+}
+.text-danger-hover {
+   color: $my-danger-hover;
+}
+.text-danger-pressed {
+   color: $my-danger-pressed;
+}
+.text-danger-focus {
+   color: $my-danger-focus;
+}
+
+.text-warning-main {
+   color: $my-warning-main;
+}
+.text-warning-surface {
+   color: $my-warning-surface;
+}
+.text-warning-border {
+   color: $my-warning-border;
+}
+.text-warning-hover {
+   color: $my-warning-hover;
+}
+.text-warning-pressed {
+   color: $my-warning-pressed;
+}
+.text-warning-focus {
+   color: $my-warning-focus;
+}
+
+.text-info-main {
+   color: $my-info-main;
+}
+.text-info-surface {
+   color: $my-info-surface;
+}
+.text-info-border {
+   color: $my-info-border;
+}
+.text-info-hover {
+   color: $my-info-hover;
+}
+.text-info-pressed {
+   color: $my-info-pressed;
+}
+.text-info-focus {
+   color: $my-info-focus;
+}
+
+.text-dark-main {
+   color: $my-dark-main;
+}
+.text-dark-surface {
+   color: $my-dark-surface;
+}
+.text-dark-border {
+   color: $my-dark-border;
+}
+.text-dark-hover {
+   color: $my-dark-hover;
+}
+.text-dark-pressed {
+   color: $my-dark-pressed;
+}
+.text-dark-focus {
+   color: $my-dark-focus;
+}
+
+
+
+// Typografi
 .text-l-regular {
    font: $my-text-l-regular;
 }

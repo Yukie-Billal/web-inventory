@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Peminjaman;
 
 use Livewire\Component;
+use App\Models\PeminjamanKeranjang;
 
 class PinjamKeranjang extends Component
 {
@@ -17,8 +18,9 @@ class PinjamKeranjang extends Component
     
     public function render()
     {
+        $keranjangs = PeminjamanKeranjang::orderByDesc('created_at');
         return view('livewire.peminjaman.pinjam-keranjang', [
-            'pinjam_keranjangs' => PinjamKeranjang::orderByDesc('created_at')->orderByDesc('nama_barang'),
+            'pinjam_keranjangs' => $keranjangs->get(),
         ]);
     }
 }
