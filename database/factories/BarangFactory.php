@@ -25,7 +25,7 @@ class BarangFactory extends Factory
             'warna' => 'Hitam',
             'satuan' => 'Pcs / Buah',
             'kategori_id' => 1,
-            'stok' => 20,
+            'stok' => 10,
         ];
     }
 }

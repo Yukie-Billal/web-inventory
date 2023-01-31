@@ -1,6 +1,6 @@
 <div class="sidebar h-100 col-2 fixed-top p-0" style="background: #EDEDED; border-radius: 0 30px 30px 0; border: 2px solid #C2C2C2; border-left: 0;">
 	<div class="sidebar-header" style="height: 80px;">
-		<span class="text-dark fw-semibold header-l">Kodet</span>
+		<span class="text-dark fw-semibold header-l">B - TAK</span>
 	</div>
 	<div class="sidebar-body h-100">
 		<div class="sidebar-menu">

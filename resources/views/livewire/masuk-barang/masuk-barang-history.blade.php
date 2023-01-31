@@ -18,28 +18,34 @@
                </tr>
             </thead>
             <tbody>
+                @if ($masuk_barangs->count() <= 0)
+                <tr class="text-center">
+                    <td colspan="9" style="font-size: 16px">Tidak Ada Barang Masuk Hari ini</td>
+                </tr>
+                @else                    
                 @foreach ($masuk_barangs as $masuk_barang)
-                    <tr>
-                        <td>{{ $masuk_barang->serial_number }}</td>
-                        <td>{{ $masuk_barang->nama_barang }}</td>
-                        <td>{{ $masuk_barang->merek }}</td>
-                        <td>{{ $masuk_barang->warna }}</td>
-                        <td>{{ $masuk_barang->qty }}</td>
-                        <td>{{ $masuk_barang->satuan }}</td>
-                        @if ($masuk_barang->kategori != null)
-                            <td>{{ $masuk_barang->kategori->nama_kategori }}</td>
-                        @else
-                            <td><i>null</i></td>
-                        @endif
-                        @if ($masuk_barang->supplier != null)
-                            <td>{{ $masuk_barang->supplier->nama_supplier }}</td>
-                            <td>{{ $masuk_barang->supplier->nama_perusahaan }}</td>
-                        @else
-                            <td>null</td>
-                            <td>null</td>
-                        @endif
-                    </tr>
+                <tr>
+                    <td>{{ $masuk_barang->serial_number }}</td>
+                    <td>{{ $masuk_barang->nama_barang }}</td>
+                    <td>{{ $masuk_barang->merek }}</td>
+                    <td>{{ $masuk_barang->warna }}</td>
+                    <td>{{ $masuk_barang->qty }}</td>
+                    <td>{{ $masuk_barang->satuan }}</td>
+                    @if ($masuk_barang->kategori != null)
+                        <td>{{ $masuk_barang->kategori->nama_kategori }}</td>
+                    @else
+                        <td><i>null</i></td>
+                    @endif
+                    @if ($masuk_barang->supplier != null)
+                        <td>{{ $masuk_barang->supplier->nama_supplier }}</td>
+                        <td>{{ $masuk_barang->supplier->nama_perusahaan }}</td>
+                    @else
+                        <td>null</td>
+                        <td>null</td>
+                    @endif
+                </tr>
                 @endforeach
+                @endif
             </tbody>
          </table>
     </div>

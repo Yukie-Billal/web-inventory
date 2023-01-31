@@ -2,15 +2,19 @@
 
 @section('content')
 
+<x-breadcrumb parent='Data' where='Pinjam & Kembali' />
+
 <div class="row justify-content-start px-3 py-0">
-    <div class="col-md-8 bg-white px-3 py-4 rounded my-shadow-1" style="min-height: 350px;">
-        <livewire:barang-keluar.barangkeluar-list>
+    <div class="col-md-12 px-3 py-4" style="min-height: 350px;">
+        {{-- <livewire:barang-keluar.barangkeluar-list> --}}
+        <livewire:data.pinjam-kembali.pinjam-index >
     </div>
 </div>
 
 <div class="row justify-content-center px-3 py-4">
-    <div class="col-md-12 bg-white px-3 py-4 rounded my-shadow-1">
-        <livewire:barang-keluar.barang-keluar-index>
+    <div class="col-md-12 px-3 py-4">
+        {{-- <livewire:barang-keluar.barang-keluar-index> --}}
+        <livewire:data.pinjam-kembali.kembali-index >
     </div>
 </div>
 

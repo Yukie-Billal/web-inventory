@@ -8,12 +8,22 @@ use App\Models\PeminjamanKeranjang;
 class PinjamKeranjang extends Component
 {
     protected $listeners = [
-        'addPinjamKeranjang', 
+        'addPinjamKeranjang',
+        'addPeminjaman' => 'render'
     ];
 
     public function addPinjamKeranjang()
     {
         // code...
+    }
+
+    public function deleteKeranjangPinjam($id)
+    {
+        $data = PeminjamanKeranjang::find($id);
+
+        $data->delete();
+
+        $this->render();
     }
     
     public function render()

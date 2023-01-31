@@ -590,6 +590,9 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 .input-form.input-form-lg {
   height: 40px;
 }
+.input-form.input-form-xl {
+  height: 44px;
+}
 
 .select-form {
   width: 100%;
@@ -600,6 +603,18 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   height: 36px;
   color: #424242;
   padding: 6px 12px;
+}
+.select-form.select-sm {
+  height: 32px;
+}
+.select-form.select-md {
+  height: 38px;
+}
+.select-form.select-lg {
+  height: 40px;
+}
+.select-form.select-xl {
+  height: 44px;
 }
 
 .group-form {

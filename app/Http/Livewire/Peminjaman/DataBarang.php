@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Peminjaman;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Barang;
+use App\Models\PeminjamanKeranjang;
 
 class DataBarang extends Component
 {
@@ -12,6 +13,32 @@ class DataBarang extends Component
 
     public $pageName = 'page';
     public $pageCount;
+
+    protected $listeners = [
+        'addPeminjaman' => 'render'
+    ];
+
+    public function addPinjamKeranjang($id)
+    {
+        $barang = Barang::find($id);
+        // dd($barang->nama_barang);
+
+        if ($barang) {      
+            // $cek = PeminjamanKeranjang::where('barang_id', $id)->get();
+
+            // if ($cek->count() > 0) {
+                // dd($cek[0]->barang;
+                // $cek[0]->update(['jumlah' => ($cek[0]->jumlah + 1)]);
+            // } else {
+                PeminjamanKeranjang::create([
+                    'barang_id' => $id
+                ]);                
+            // }
+        } else {
+            session()->flash('failed', 'Gagal menambah barang');
+        }
+        $this->emit('addPinjamKeranjang');        
+    }
 
     public function render()
     {

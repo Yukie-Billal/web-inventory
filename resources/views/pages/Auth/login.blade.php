@@ -17,7 +17,7 @@
             <div class="col-12">
                 <div class="card bg-white shadow-lg border-0">
                     <div class="card-body p-0 d-flex">
-                        <div class="col-6 my-5 p-3 py-5">
+                        <div class="col-6 my-5 p-md-4 p-sm-3 py-5">
                             <div class="row justify-content-center">
                                 <div class="col-8 my-2">
                                     <div class="row justify-content-center align-items-center mb-5 pt-5">

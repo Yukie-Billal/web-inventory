@@ -56,7 +56,7 @@
 						<td>{{ $barang->satuan }}</td>
 						<td>{{ $barang->stok }}</td>
 						<td style="max-width: 18px;">
-							<img src="{{ asset('icon/check.png') }}" alt=".." class="icon-normal">
+							<img src="{{ asset('icon/check.png') }}" alt=".." class="icon-normal cursor-pointer" wire:click='addPinjamKeranjang({{ $barang->id }})'>
 						</td>
 					</tr>
 					@endforeach

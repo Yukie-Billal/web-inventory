@@ -14,33 +14,39 @@
                         <th>Warna</th>
                         <th>Kategori</th>
                         <th>Satuan</th>                        
-                        <th>Stok</th>
-                        <th style="min-width: 50px;"></th>
+                        {{-- <th>Qty</th> --}}
+                        <th style="min-width: 40px;"></th>
                     </tr>
                 </thead>
-                {{-- <tbody>
-                    @foreach ($barangs as $barang)                    
+                <tbody>
+                    @if ($pinjam_keranjangs->count() <= 0)
+                    <tr class="text-center">
+                        <td colspan="7" style="font-size: 16px">Keranjang Kosong</td>
+                    </tr>
+                    @else
+                    @foreach ($pinjam_keranjangs as $pinjam_keranjang)                    
                     <tr>
                         <td class="px-3 py-2">
-                            {{ $barang->serial_number }}
+                            {{ $pinjam_keranjang->barang->serial_number }}
                         </td>
-                        <td class="px-2 py-2">{{ $barang->nama_barang }}</td>
-                        <td class="px-2 py-2">{{ $barang->merek }}</td>
-                        <td class="px-2 py-2">{{ $barang->warna }}</td>
-                        @if ($barang->kategori != null)
-                            <td class="px-2 py-2">{{ $barang->kategori->nama_kategori }}</td>
+                        <td class="px-2 py-2">{{ $pinjam_keranjang->barang->nama_barang }}</td>
+                        <td class="px-2 py-2">{{ $pinjam_keranjang->barang->merek }}</td>
+                        <td class="px-2 py-2">{{ $pinjam_keranjang->barang->warna }}</td>
+                        @if ($pinjam_keranjang->barang->kategori != null)
+                            <td class="px-2 py-2">{{ $pinjam_keranjang->barang->kategori->nama_kategori }}</td>
                         @else
                             <td class="px-2 py-2">Tidak Ada</td>
                         @endif                        
-                        <td class="px-2 py-2">{{ $barang->satuan }}</td>
-                        <td class="px-2 py-2">{{ $barang->stok }}</td>
-                        <td style="max-width: 100px;" class="py-2">
-                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editBarang({{ $barang->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2">
-                            <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteBarang({{ $barang->id }})'>
+                        <td class="px-2 py-2">{{ $pinjam_keranjang->barang->satuan }}</td>
+                        {{-- <td class="px-2 py-2">{{ $pinjam_keranjang->barang->stok }}</td> --}}
+                        <td style="max-width: 40px;" class="py-2">
+                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editKeranjangPinjam({{ $pinjam_keranjang->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2">
+                            <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteKeranjangPinjam({{ $pinjam_keranjang->id }})'>
                         </td>
                     </tr>
                     @endforeach
-                </tbody> --}}
+                    @endif
+                </tbody>
             </table>
         </div>
     </div>

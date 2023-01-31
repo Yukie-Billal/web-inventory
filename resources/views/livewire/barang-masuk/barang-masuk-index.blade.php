@@ -37,7 +37,7 @@
         </div> --}}
         <div class="row justify-content-end align-items-center">
             <livewire:pagination-view :page='$page' :pageName='$pageName' :pageCount='$pageCount' />
-        </div>        
+        </div>
     </div>
     <div class="card-body p-0">
         <div class="col-12 p-0 border-neutral-40-2 rounded">
@@ -57,6 +57,11 @@
                     </tr>
                     </thead>
                     <tbody>
+                        @if ($barangMasuks->count() <= 0)
+                        <tr class="text-center">
+                            <td colspan="10" style="font-size: 16px">Tidak Ada Barang Masuk</td>
+                        </tr>
+                        @else                            
                         @foreach ($barangMasuks as $barangMasuk)                    
                         <tr>
                             <td>{{ $barangMasuk->serial_number }}</td>
@@ -75,6 +80,7 @@
                             <td>{{ $barangMasuk->tanggal_masuk }}</td>
                         </tr>
                         @endforeach
+                        @endif
                     </tbody>
             </table>
         </div>

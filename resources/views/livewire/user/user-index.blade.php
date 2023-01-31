@@ -27,6 +27,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if ($users->count() <= 0)
+                        <tr class="text-center">
+                            <td colspan="6" style="font-size: 16px">User Kosong</td>
+                        </tr>
+                    @else                        
                     @foreach ($users as $user)                    
                     <tr class="">
                         <td class="px-3 py-2">
@@ -43,6 +48,7 @@
                         </td>
                     </tr>
                     @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

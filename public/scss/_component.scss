@@ -89,7 +89,9 @@ ol {
    &.input-form-lg {
       height: 40px;
    }
-
+   &.input-form-xl {
+      height: 44px;
+   }
 }
 
 .select-form {
@@ -102,6 +104,19 @@ ol {
    height: 36px;
    color: $my-neutral-90;
    padding: 6px 12px;
+
+   &.select-sm {
+    height: 32px;
+   }
+   &.select-md {
+    height: 38px;
+   }
+   &.select-lg {
+    height: 40px;
+   }
+   &.select-xl {
+    height: 44px;
+   }
 }
 
 .group-form {

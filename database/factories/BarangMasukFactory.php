@@ -24,7 +24,7 @@ class BarangMasukFactory extends Factory
             'satuan' => 'Pcs / Buah',
             'kategori_id' => 1,
             'tanggal_masuk' => fake()->dateTimeInInterval('-1 week', '+1 days'),
-            'qty' => mt_rand(1,3),
+            'qty' => 15,
             'supplier_id' => 1
         ];
     }

@@ -22,8 +22,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($suppliers as $supplier)                    
-                    <tr class="">
+                    @if ($suppliers->count() <= 0) 
+                    <tr class="text-center">
+                        <td colspan="5" style="font-size: 16px">Supplier Kosong</td>
+                    </tr>
+                    @else 
+                    @foreach ($suppliers as $supplier)
+                    <tr>
                         <td class="px-3 py-2">
                             {{ $supplier->nama_supplier }}
                         </td>
@@ -31,11 +36,13 @@
                         <td class="px-2">{{ $supplier->no_tlp }}</td>
                         <td class="px-2">{{ $supplier->alamat }}</td>
                         <td style="max-width: 50px;">
-                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editBarang({{ $supplier->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2">
+                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editBarang({{ $supplier->id }})' data-bs-toggle="modal"
+                                data-bs-target="#modalEditDataBarang" class="mx-2">
                             <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteBarang({{ $supplier->id }})'>
                         </td>
                     </tr>
                     @endforeach
+                    @endif 
                 </tbody>
             </table>
         </div>
@@ -43,8 +50,8 @@
 </div>
 
 @push('script-livewire')
-    <script>
-        Livewire.on('page-change', function () {
+<script>
+    Livewire.on('page-change', function () {
             const tag = document.querySelector('#pageChanger');
             const value = tag.value;
             const pageName = "page";
@@ -64,5 +71,5 @@
             const params = ['merek', value];
             Livewire.emit('setFilter', params);
         });
-    </script>
+</script>
 @endpush
