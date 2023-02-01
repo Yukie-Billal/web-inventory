@@ -34,6 +34,7 @@ class BarangIndex extends Component
         'setFilter',
         'next-page' => 'next',
         'previous-page' => 'previous',
+        'setDelete' => 'deleteBarang'
     ];
 
     public function next($page)
@@ -80,20 +81,18 @@ class BarangIndex extends Component
         $this->emit('getBarang', $barangEdit);
     }
 
+    public function deleteConfirm($id)
+    {
+        $this->emit('swalDelete', $id);
+    }
+
     public function deleteBarang($id)
     {
         $barang = Barang::find($id);
-        // $barangkeluar = BarangKeluar::where('barang_id', $barang->id)->get();
-        // $barangMasuk = BarangMasuk::where('barang_id', $barang->id)->get();
-
-        // if ($barangkeluar->count() > 0 || $barangMasuk->count() > 0) {
-        //     session()->flash('message', 'Gagal Menghapus Data');
-        // } else {
-            if ($barang) {
-                Barang::destroy($id);
-            }
-            session()->flash('message', 'Berhasil Menghapus Data');
-        // }
+        if ($barang) {
+            Barang::destroy($id);
+        }
+        $this->emit('deleted');
         $this->render();
     }
 

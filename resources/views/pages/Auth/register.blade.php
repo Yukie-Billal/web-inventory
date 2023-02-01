@@ -11,16 +11,17 @@
     <title>Login - Web Inventory</title>
     @livewireStyles
 </head>
-<body style="background-color: #f5f5f5">
-    <div class="container" style="height: 100vh; background-color: #f5f5f5">
+<body>
+    <img src="{{ asset('img/login1.jpg') }}" alt=".." class="my-img">
+    <div class="container" style="height: 100vh; ">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-12">
                 <div class="card bg-white shadow-lg border-0">
                     <div class="card-body p-0 d-flex">
-                        <div class="col-6 bg-dark rounded-1">
-                            <img src="" alt="..">
+                        <div class="col-6 rounded-1">
+                            <img src="{{ asset('img/login1.jpg') }}" alt=".." class="w-100 h-100 img-fluid rounded-1" style="object-fit: cover;">
                         </div>
-                        <div class="col-6 my-5 p-4">
+                        <div class="col-6 my-4 p-4">
                             <div class="row justify-content-center">
                                 <div class="col-8">
                                     <div class="row justify-content-center align-items-center mb-5">

@@ -21,7 +21,7 @@
 </div>
 
 <div class="row my-5">
-    <div class="col-11">
+    <div class="col-11 p-2">
         <livewire:peminjaman.peminjaman-history />
     </div>
 </div>

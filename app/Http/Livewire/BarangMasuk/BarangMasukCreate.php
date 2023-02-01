@@ -18,7 +18,7 @@ class BarangMasukCreate extends Component
     public $warna;
     public $kategori;
     public $satuan;
-    public $qty;
+    public $qty = 1;
     public $namaSupplier;
     public $alamatSupplier;
     public $noTlp;
@@ -62,9 +62,9 @@ class BarangMasukCreate extends Component
         $this->serialNumber = null;
         $this->merek = null;
         $this->warna = null;
-        $this->kategori = null;
-        $this->satuan = null;
-        $this->qty = null;
+        // $this->kategori = null;
+        // $this->satuan = null;
+        $this->qty = 1;
         $this->namaSupplier = null;
         $this->alamatSupplier = null;
         $this->noTlp = null;
@@ -74,7 +74,7 @@ class BarangMasukCreate extends Component
 
     public function submit()
     {
-        $barcode = Str::limit($this->namaBarang, 1) . date('Y') . Str::limit($this->merek, 1) . date('m') . date('d');
+        $barcode = Str::limit($this->namaBarang, 1, '') . date('Y') . Str::limit($this->merek, 1, '') . date('m') . date('d');
         $barang = Barang::create([
             'serial_number' => $this->serialNumber,
             'barcode' => $barcode,
@@ -95,7 +95,7 @@ class BarangMasukCreate extends Component
             ]);
         }
 
-        if ($barang && $supplier ) {
+        if ($barang && $supplier) {
             $barangMasuk = BarangMasuk::create([
                 'serial_number' => $this->serialNumber,
                 'barcode' => $barcode,
@@ -108,9 +108,26 @@ class BarangMasukCreate extends Component
                 'tanggal_masuk' => date('Y-m-d'),
                 'supplier_id' => $supplier->id
             ]);
+            $message = 'Berhasil Menambah Data';
+            // session()->flash('successAdd', 'Berhasil Menambah Data');
+            // $this->dispatchBrowserEvent('swal:modal', [
+            //     'type' => 'success',
+            //     'title' => 'success Add Data',
+            //     'button' => false,
+            //     'timer' => 4000,
+            // ]);
+        } else {
+            session()->flash('error', 'Terjadi Kesalahan');
+            $message = "Terjadi Kesalahan";
         }
-        $this->emit('barangMasukAdded');
+        $this->emit('barangMasukAdded', $message);
         $this->clear();
+    }
+
+    public function showAlert()
+    {
+        dd('good');
+        $this->emit('barangMasukAdded');
     }
 
     public function render()

@@ -54,4 +54,13 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
+    public function FunctionName(Request $request)
+    {
+        $validate = $request->validate([
+            'nama' => 'required'
+        ]);
+
+        user::create($validateData);
+    }
 }

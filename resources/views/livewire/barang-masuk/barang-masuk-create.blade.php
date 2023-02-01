@@ -60,6 +60,15 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-2 pe-2">
+                                <div class="form-group">
+                                    <label for="jumlah" class="text-m-regular">Jumlah</label>
+                                    <input type="number" wire:model.defer='qty' id="jumlah" class="input-form w-100 placeholder-m-m" style="height: 36px" placeholder="QTY" value="1">
+                                    @error('qty')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="col-5 pe-2">
                                 <div class="form-group">
                                     <label>Satuan</label>
@@ -72,16 +81,7 @@
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                            </div>
-                            <div class="col-2 pe-2">
-                                <div class="form-group">
-                                    <label for="jumlah" class="text-m-regular">Jumlah</label>
-                                    <input type="number" wire:model.defer='qty' id="jumlah" class="input-form w-100 placeholder-m-m" style="height: 36px" placeholder="QTY" value="1">
-                                    @error('qty')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>
@@ -141,6 +141,7 @@
     </div>
 </form>
 
+
 @push('body-script')
     <script>
         const inputJumlah = document.querySelector('#jumlah');
@@ -152,12 +153,15 @@
         inputJumlah.addEventListener('keyup', cekQty);
         inputJumlah.addEventListener('change', cekQty);
     </script>
+    {{-- @if (session()->has('successAdd')) --}}
+    
+    {{-- @endif --}}
 @endpush
 
 @push('script-livewire')
     <script>
         Livewire.on('kategoriCovery', function () {
-            const value = document.querySelector('#kategori').value;            
+            const value = document.querySelector('#kategori').value;
             const params = [value];
             Livewire.emit('setKategori', params);
         });
@@ -166,6 +170,17 @@
             const value = document.querySelector('#satuan').value;
             const params = [value];
             Livewire.emit('setSatuan', params);
-        })
+        });
+    </script>
+    <script>
+        Livewire.on('barangMasukAdded', (params) => {
+            console.log(params);
+            Swal.fire({
+                icon: 'success',
+                title: params,
+                showConfirmButton: false,
+                timer: 5000
+            });    
+        })        
     </script>
 @endpush
