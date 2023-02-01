@@ -414,3 +414,16 @@
       font: $my-text-l-medium;
    }
 }
+
+.hover-n-40 {
+   transition: .2s;
+
+   &:hover {
+      background-color: $my-neutral-40;
+      border-radius: 10px;
+   }
+}
+
+.inner-shadow {
+   @include shadow-inner;
+}

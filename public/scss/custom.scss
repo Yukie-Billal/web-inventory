@@ -5,7 +5,23 @@
 @import 'component';
 
 body {
-   background: $my-neutral-30;
+   // background: url("/img/login1.jpg");
+   background: rgba(158, 158, 158, 0.6);
+}
+
+.my-img {
+   background: rgba(158, 158, 158, 0.6);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(30%);
+  filter: brightness(0.8);
+  filter: opacity(30%);
+  filter: contrast(30%);
+}
+
+hr {
+   background: $my-neutral-40;
 }
 
 td {

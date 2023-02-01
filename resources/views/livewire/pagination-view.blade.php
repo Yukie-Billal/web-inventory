@@ -17,3 +17,11 @@
         </form>
     </div>
 </div>
+
+{{-- @push('script-livewire')
+    <script>
+        Livewire.on('previous-page', function () {
+            
+        });
+    </script>
+@endpush --}}

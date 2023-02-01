@@ -8,15 +8,17 @@ class Breadcrumb extends Component
 {
     public $parent;
     public $where;
+    public $header;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($parent, $where)
+    public function __construct($parent, $where, $header = 'm')
     {
         $this->parent = $parent;
         $this->where = $where;
+        $this->header = $header;
     }
 
     /**

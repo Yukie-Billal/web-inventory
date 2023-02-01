@@ -512,6 +512,19 @@
   font: 500 16px/24px "Inter", sans-serif;
 }
 
+.hover-n-40 {
+  transition: 0.2s;
+}
+.hover-n-40:hover {
+  background-color: #E0E0E0;
+  border-radius: 10px;
+}
+
+.inner-shadow {
+  border: 1px solid #C2C2C2;
+  box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
+}
+
 .card {
   min-height: 250px;
 }
@@ -597,9 +610,9 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 .select-form {
   width: 100%;
   background-color: #FFFFFF;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #C2C2C2;
   border-radius: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1215686275);
+  box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
   height: 36px;
   color: #424242;
   padding: 6px 12px;
@@ -987,7 +1000,22 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 
 body {
-  background: #EDEDED;
+  background: rgba(158, 158, 158, 0.6);
+}
+
+.my-img {
+  background: rgba(158, 158, 158, 0.6);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(30%);
+  filter: brightness(0.8);
+  filter: opacity(30%);
+  filter: contrast(30%);
+}
+
+hr {
+  background: #E0E0E0;
 }
 
 td {

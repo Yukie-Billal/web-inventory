@@ -31,7 +31,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/barang-masuks', [PageController::class, 'barangMasuk']);
     Route::get('/pinjams-kembalis', [PageController::class, 'pinjam_kembali']);
     Route::get('/suppliers-users', [PageController::class, 'supplier_user']);
-    // Route::get('/users', [PageController::class, 'user']);
 
     Route::get('/peminjamans', [PageController::class, 'peminjaman']);
     Route::get('/pengembalians', [PageController::class, 'pengembalian']);
