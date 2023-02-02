@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+Use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+Use PDF;
 
 class PageController extends Controller
 {
@@ -49,5 +51,5 @@ class PageController extends Controller
     public function masuk_barang()
     {
         return view('pages.kegiatan.masuk-barang');
-    }
+    }    
 }

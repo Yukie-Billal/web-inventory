@@ -23,6 +23,30 @@ class BarangEdit extends Component
         'setKategori',
     ];
 
+    protected $rules = [
+        'namaBarang' => 'required',
+        'merek' => 'required',
+        'warna' => 'required',
+        'satuan' => 'required',
+        'kategoriId' => 'required',
+        'stok' => 'required|numeric'
+    ];
+
+    protected $message = [
+        'namaBarang.required' => ':attribute Harus Di isi',
+        'merek.required' => ':attribute Harus Di isi',
+        'warna.required' => ':attribute Harus Di isi',
+        'satuan.required' => ':attribute Harus Di isi',
+        'kategoriId.required' => ':attribute Harus Di isi',
+        'stok.required' => ':attribute Harus Di isi',
+        'stok.numeric' => ':attribute Harus Number'
+    ];
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public function setKategori($params)
     {
         dd($params);

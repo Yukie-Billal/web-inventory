@@ -9,6 +9,7 @@ use App\Models\Kategori;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class BarangIndex extends Component
 {

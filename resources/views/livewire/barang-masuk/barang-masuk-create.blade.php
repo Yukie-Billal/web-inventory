@@ -51,7 +51,7 @@
                         <div class="col-8 d-flex justify-content-between">
                             <div class="col-5 pe-2">
                                 <div class="form-group">
-                                    <label>Kategori</label>
+                                    <label for="kategori">Kategori</label>
                                     <select class="select-form" id="kategori" wire:change="$emit('kategoriCovery')">
                                         <option selected disabled>-- Pilih Kategori --</option>
                                         @foreach ($kategoris as $kategori)
@@ -174,7 +174,6 @@
     </script>
     <script>
         Livewire.on('barangMasukAdded', (params) => {
-            console.log(params);
             Swal.fire({
                 icon: 'success',
                 title: params,

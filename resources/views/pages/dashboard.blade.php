@@ -2,7 +2,7 @@
 
 @section('content')
 
-@push('link-css')
+@push('links')
 	<style>
 		#idx-calendar {
 		    margin: 0 auto;

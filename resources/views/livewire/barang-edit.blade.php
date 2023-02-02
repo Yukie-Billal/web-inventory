@@ -11,14 +11,20 @@
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
                     <label for="sn" class="text-neutral-90 text-m-medium">Serial Number</label>
-                    <input type="text" wire:model.defer='serialNumber' class="input-form text-m-medium placeholder-m-m" id="sn" placeholder="Serial Number">
-                    <input type="hidden" wire:model.defer='idBarang'>
+                    <input type="text" wire:model.lazy='serialNumber' class="input-form text-m-medium placeholder-m-m" id="sn" placeholder="Serial Number">
+                    @error('serialNumber')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                    <input type="hidden" wire:model.lazy='idBarang'>
                 </div>
             </div>
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
                     <label for="nama" class="text-neutral-90 text-m-medium">Nama Barang</label>
-                    <input type="text" wire:model.defer='namaBarang' class="input-form text-m-medium placeholder-m-m" id="nama" placeholder="Nama Barang">
+                    <input type="text" wire:model='namaBarang' class="input-form text-m-medium placeholder-m-m" id="nama" placeholder="Nama Barang">
+                    @error('namaBarang')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -26,13 +32,19 @@
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
                     <label for="merek" class="text-neutral-90 text-m-medium">Merek Barang</label>
-                    <input type="text" wire:model.defer='merek' class="input-form text-m-medium placeholder-m-m" id="merek" placeholder="Merek Barang">
+                    <input type="text" wire:model.lazy='merek' class="input-form text-m-medium placeholder-m-m" id="merek" placeholder="Merek Barang">
+                    @error('merek')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
             </div>
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
                     <label for="warna" class="text-neutral-90 text-m-medium">Warna Barang</label>
-                    <input type="text" wire:model.defer='warna' class="input-form text-m-medium placeholder-m-m" id="warna" placeholder="Warna Barang">
+                    <input type="text" wire:model.lazy='warna' class="input-form text-m-medium placeholder-m-m" id="warna" placeholder="Warna Barang">
+                    @error('warna')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -46,12 +58,15 @@
                             <option value="{{ $kategori->id }}" {{ $kategoriId == $kategori->id ? 'selected' : '' }}>{{ $kategori->nama_kategori }}</option>
                         @endforeach
                     </select>
+                    @error('kategoriId')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
             </div>
             <div class="col-2 p-0 d-flex justify-content-center px-1">
                 <div class="form-group w-100 px-2">
                     <label for="stokEdit" class="text-m-regular">Stok</label>
-                    <input type="text" wire:model.defer='stok' id="stokEdit" class="input-form text-m-medium placeholder-m-m" placeholder="stok">
+                    <input type="text" wire:model.lazy='stok' id="stokEdit" class="input-form text-m-medium placeholder-m-m" placeholder="stok">
                     @error('stok')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -75,7 +90,10 @@
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
                     <label for="barcode" class="text-neutral-90 text-m-medium">Kode Barcode</label>
-                    <input type="text" wire:model.defer='barcode' class="input-form text-m-medium placeholder-m-m" id="barcode" placeholder="Stok Barang">
+                    <input type="text" wire:model.lazy='barcode' class="input-form text-m-medium placeholder-m-m" id="barcode" placeholder="Stok Barang">
+                    @error('serialNumber')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
             </div>
             <div class="col-6 p-0 d-flex justify-content-center">
@@ -90,7 +108,20 @@
     </form>
 </div>
 
-@push('body-script')
+@push('script-livewire')
+    <script>
+        Livewire.on('kategoriCovery', function () {
+            const value = document.querySelector('#kategori').value;            
+            const params = [value];
+            Livewire.emit('setKategori', params);
+        });
+
+        Livewire.on('satuanCovery', function () {
+            const value = document.querySelector('#satuan').value;
+            const params = [value];
+            Livewire.emit('setSatuan', params);
+        })
+    </script>
     <script>
         var huruf = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","`","~","!","@","#","$","%","^","&","*","(",")","-","_","=","+","|","]","[","{","}","'",'"',";",":","/",",","<",">",".","?"];
         var angka = [1,2,3,4,5,6,7,8,9,0];
@@ -123,21 +154,5 @@
         inputJumlah.addEventListener('keyup', cekQty);
         inputJumlah.addEventListener('keydown', cekQty);
         inputJumlah.addEventListener('change', cekQty);
-    </script>
-@endpush
-
-@push('script-livewire')
-    <script>
-        Livewire.on('kategoriCovery', function () {
-            const value = document.querySelector('#kategori').value;            
-            const params = [value];
-            Livewire.emit('setKategori', params);
-        });
-
-        Livewire.on('satuanCovery', function () {
-            const value = document.querySelector('#satuan').value;
-            const params = [value];
-            Livewire.emit('setSatuan', params);
-        })
     </script>
 @endpush

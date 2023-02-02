@@ -1104,3 +1104,10 @@ a {
 }
 
 /*# sourceMappingURL=custom.css.map */
+
+
+@media (max-width: 700px) {
+  .container-fluid {
+    width: 10px;
+  }
+}

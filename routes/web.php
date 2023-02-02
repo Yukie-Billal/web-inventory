@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\PrinterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +27,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [PageController::class, 'index'])->name('home');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::get('/barangs', [PageController::class, 'barang']);
     Route::get('/barang-masuks', [PageController::class, 'barangMasuk']);
@@ -36,3 +38,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pengembalians', [PageController::class, 'pengembalian']);
     Route::get('/masuk-barangs', [PageController::class, 'masuk_barang']);
 });
+
+Route::get('/pdf/barcode/{barang}/', [ExportController::class, 'barcode_pdf']);
+Route::get('/print/barcode/{barang}', [PrinterController::class, 'print_barcode']);
