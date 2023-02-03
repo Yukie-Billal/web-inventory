@@ -542,6 +542,12 @@
 .card .card-body .border-neutral-40-2 {
   min-height: 250px;
 }
+.card .card-body .form-group .border {
+  min-height: 250px;
+}
+.card .card-body .form-group .border-neutral-40-2 {
+  min-height: 250px;
+}
 
 .table thead tr th {
   font: 500 14px/20px "Inter", sans-serif;
@@ -605,6 +611,34 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .input-form.input-form-xl {
   height: 44px;
+}
+.input-form ~ .input-option {
+  width: inherit;
+  min-height: 10vh;
+  overflow-y: scroll;
+  padding: 5px 12px;
+  position: absolute;
+  background: #FFFFFF;
+  z-index: 10000;
+}
+.input-form ~ .input-option.border-neutral-40-2#option {
+  max-height: 15vh;
+}
+.input-form ~ .input-option.rounded#option {
+  max-height: 15vh;
+}
+.input-form ~ .input-option option {
+  margin: 5px 0;
+}
+.input-form ~ datalist {
+  background: #F5F5F5;
+}
+.input-form ~ datalist option {
+  margin: 4px 0;
+}
+
+.form-group {
+  position: relative;
 }
 
 .select-form {
@@ -938,7 +972,6 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   border: 1px solid #B8DBCA;
 }
 
-/* Component */
 .sidebar {
   border-right: 2px solid #C2C2C2;
 }
@@ -1104,10 +1137,3 @@ a {
 }
 
 /*# sourceMappingURL=custom.css.map */
-
-
-@media (max-width: 700px) {
-  .container-fluid {
-    width: 10px;
-  }
-}

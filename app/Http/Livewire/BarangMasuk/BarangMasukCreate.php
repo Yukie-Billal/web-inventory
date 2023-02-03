@@ -44,6 +44,7 @@ class BarangMasukCreate extends Component
     protected $listeners = [
         'setKategori',
         'setSatuan',
+        'setSupplier' => 'getSupplier',
     ];
 
     public function setKategori($params)
@@ -124,6 +125,18 @@ class BarangMasukCreate extends Component
         $this->clear();
     }
 
+    public function getSupplier($params)
+    {
+        dd($params);
+        $supplier = Supplier::where('nama_supplier', $params[0])->get();
+
+        if ($supplier->count() > 0) {
+            $this->buat_supplier = false;
+        } else {
+            $this->buat_supplier = true;
+        }
+    }
+
     public function showAlert()
     {
         dd('good');
@@ -134,6 +147,7 @@ class BarangMasukCreate extends Component
     {
         return view('livewire.barang-masuk.barang-masuk-create', [
             'kategoris' => Kategori::orderByDesc('nama_kategori')->get(),
+            'suppliers' => Supplier::orderByDesc('nama_supplier')->orderByDesc('created_at')->get(),
         ]);
     }
 }

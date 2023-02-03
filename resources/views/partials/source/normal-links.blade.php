@@ -1,3 +1,5 @@
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+
 <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
 

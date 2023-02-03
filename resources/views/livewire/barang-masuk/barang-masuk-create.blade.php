@@ -1,3 +1,8 @@
+{{-- @push('links')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+@endpush --}}
 <form wire:submit.prevent='submit'>
     <div class="row">
         <div class="col-12">
@@ -88,7 +93,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="row mt-5 mb-2">
         <div class="col-12">
             <div class="card flex-fill border-0">
@@ -99,10 +104,34 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6">
+                            {{-- CHOOSE ONE --}}
+                            {{-- <div class="form-group">
+                                <label for="namaSupplier" class="text-m-regular">Nama Supplier</label>
+                                <input type="text" wire:model.lazy='namaSupplier' wire:keyup="$emit('getSupplier')" id="namaSupplier" class="input-form placeholder-m-m" style="height: 40px" placeholder="ketik Manual Dulu" list="supplier">
+                                <datalist id="supplier">
+                                    @foreach ($suppliers as $supplier)
+                                        <option value="{{ $supplier->nama_supplier }}">
+                                    @endforeach
+                                </datalist>
+                                
+                            </div> --}}
                             <div class="form-group">
                                 <label for="namaSupplier" class="text-m-regular">Nama Supplier</label>
-                                <input type="text" wire:model.lazy='namaSupplier' id="namaSupplier" class="input-form w-100 placeholder-m-m" style="height: 40px" placeholder="ketik Manual Dulu">
+                                <input type="text" wire:model.lazy='namaSupplier' id="namaSupplier" class="input-form placeholder-m-m" style="height: 40px" placeholder="ketik Manual Dulu" list="supplier">
+                                <div class="input-option w-100 border-neutral-40-2 rounded" id="option">
+                                    @foreach ($suppliers as $supplier)
+                                        <option value="{{ $supplier->id }}">{{ $supplier->nama_supplier }}</option>
+                                    @endforeach
+                                </div>
                             </div>
+                            {{-- <div class="form-group">
+                                <label for="select-state"></label>
+                                <select id="select-state" placeholder="Pick a state...">
+                                    @foreach ($suppliers as $supplier)
+                                        <option value="{{ $supplier->id }}">{{ $supplier->nama_supplier }}</option>
+                                    @endforeach
+                                </select>
+                            </div> --}}
                         </div>
                         <div class="col-6">
                             <div class="form-group">
@@ -141,25 +170,14 @@
     </div>
 </form>
 
-
-@push('body-script')
-    <script>
-        const inputJumlah = document.querySelector('#jumlah');
-        function cekQty() {
-            if (inputJumlah.value <= 0 || inputJumlah.value == '') {
-                inputJumlah.value = 1;
-            }
-        }
-        inputJumlah.addEventListener('keyup', cekQty);
-        inputJumlah.addEventListener('change', cekQty);
-    </script>
-    {{-- @if (session()->has('successAdd')) --}}
-    
-    {{-- @endif --}}
-@endpush
-
 @push('script-livewire')
+    {{-- For Livewire --}}
     <script>
+          $(document).ready(function () {
+              $('select').selectize({
+                  sortField: 'text'
+              });
+          });
         Livewire.on('kategoriCovery', function () {
             const value = document.querySelector('#kategori').value;
             const params = [value];
@@ -171,8 +189,6 @@
             const params = [value];
             Livewire.emit('setSatuan', params);
         });
-    </script>
-    <script>
         Livewire.on('barangMasukAdded', (params) => {
             Swal.fire({
                 icon: 'success',
@@ -180,6 +196,26 @@
                 showConfirmButton: false,
                 timer: 5000
             });    
-        })        
+        });
+
+        Livewire.on('getSupplier', () => {
+            const input = document.querySelector('#namaSupplier')
+            const value = input.value;
+            console.log(input + "  " + value);
+            const params = [value];
+            Livewire.emit('setSupplier', $params);
+        });
     </script>
+    {{-- Non Livewire --}}
+    <script>
+        const inputJumlah = document.querySelector('#jumlah');
+        function cekQty() {
+            if (inputJumlah.value <= 0 || inputJumlah.value == '') {
+                inputJumlah.value = 1;
+            }
+        }
+        inputJumlah.addEventListener('keyup', cekQty);
+        inputJumlah.addEventListener('change', cekQty);        
+    </script>
+
 @endpush

@@ -70,13 +70,13 @@
                             </td>
                             <td>
                                 <a href="/print/barcode/{{ $barang->id }}" class="button button-primary text-white px-0">
-                                    Cetak 
+                                    Cetak
                                     <i class="fa fa-barcode"></i>
-                                </a>
+                                </a>{{-- 
                                 <a href="/pdf/barcode/{{ $barang->id }}" target="_blank" class="button button-primary text-white px-0">
                                     Cetak 
                                     <i class="fa fa-barcode"></i>
-                                </a>
+                                </a> --}}
                             </td>
                             {{-- <td> --}}
                                 {{-- {{ $barang->nama_barang }}        
