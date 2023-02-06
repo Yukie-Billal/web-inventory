@@ -51,5 +51,5 @@ class PageController extends Controller
     public function masuk_barang()
     {
         return view('pages.kegiatan.masuk-barang');
-    }    
+    }
 }

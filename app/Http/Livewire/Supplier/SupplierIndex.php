@@ -31,6 +31,12 @@ class SupplierIndex extends Component
         $this->previousPage($page);
     }
 
+    public function editSupplier($id)
+    {
+        $supplier = Supplier::find($id);
+        $this->emit('getSupplier', $supplier);        
+    }
+
     public function render()
     {
         $suppliers = Supplier::orderByDesc('created_at')->orderByDesc('nama_supplier');

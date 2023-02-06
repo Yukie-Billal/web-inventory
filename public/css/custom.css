@@ -543,10 +543,10 @@
   min-height: 250px;
 }
 .card .card-body .form-group .border {
-  min-height: 250px;
+  min-height: 20vh;
 }
 .card .card-body .form-group .border-neutral-40-2 {
-  min-height: 250px;
+  min-height: 20vh;
 }
 
 .table thead tr th {
@@ -593,6 +593,9 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 .input-form:focus {
   outline: 3px solid rgba(76, 77, 220, 0.2);
 }
+.input-form:focus ~ .input-option {
+  display: block;
+}
 .input-form::placeholder {
   color: #757575;
   font: 500 12px/16px "Inter", sans-serif;
@@ -613,28 +616,32 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   height: 44px;
 }
 .input-form ~ .input-option {
+  display: none;
   width: inherit;
-  min-height: 10vh;
+  max-height: 10vh;
   overflow-y: scroll;
-  padding: 5px 12px;
+  padding: 1px 2px;
   position: absolute;
   background: #FFFFFF;
   z-index: 10000;
 }
 .input-form ~ .input-option.border-neutral-40-2#option {
+  min-height: 0;
   max-height: 15vh;
 }
 .input-form ~ .input-option.rounded#option {
+  min-height: 0;
   max-height: 15vh;
 }
 .input-form ~ .input-option option {
-  margin: 5px 0;
+  margin: 3px 0;
+  padding: 8px 10px;
 }
-.input-form ~ datalist {
-  background: #F5F5F5;
+.input-form ~ .input-option option:hover {
+  background: #EDEDED;
 }
-.input-form ~ datalist option {
-  margin: 4px 0;
+.input-form ~ .input-option option.new-option:hover {
+  background: #DFE0F3;
 }
 
 .form-group {

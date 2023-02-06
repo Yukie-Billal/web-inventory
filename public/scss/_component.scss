@@ -20,10 +20,10 @@
 
         .form-group {
             .border {
-               min-height: 15vh;
+               min-height: 20vh;
            }
            .border-neutral-40-2 {
-               min-height: 15vh;
+               min-height: 20vh;
            }
         }
     }
@@ -76,6 +76,10 @@ ol {
 
    &:focus {
       outline: 3px solid $my-primary-focus;
+
+      & ~ .input-option {
+         display: block;
+      }
    }
 
    &::placeholder {
@@ -103,37 +107,48 @@ ol {
    }
 
    & ~ .input-option {
+      display: none;
       width: inherit;
-      min-height: 10vh;
+      max-height: 10vh;
       overflow-y: scroll;
-      padding: 5px 12px;
+      padding: 1px 2px;
       position: absolute;
       background: $my-neutral-10;
       // background: transparent;
       z-index: 10000;
 
       &.border-neutral-40-2#option {
+         min-height: 0;
          max-height: 15vh;
       }
       &.rounded#option {
+         min-height: 0;
          max-height: 15vh;
       }
 
-      &.show {
-         // display: ;
+      option {
+         margin: 3px 0;
+         padding: 8px 10px;
+         &:hover {
+            background: $my-neutral-30;
+         }
+         &.new-option {
+            &:hover {
+               background: $my-primary-surface;
+            }
       }
 
-      option {
-         margin: 5px 0;
       }
    }
 
-   & ~ datalist {
-      background: $my-neutral-20;
-      option {
-         margin: 4px 0;
-      }
-   }
+   // & ~ datalist {
+   //    background: $my-neutral-20;
+   //    option {
+   //       margin: 4px 0;
+
+
+   //    }
+   // }
 }
 
 .form-group {

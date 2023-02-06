@@ -14,4 +14,12 @@
         <livewire:user.user-index />
     </div>
 
+    <div class="modal fade" id="modalEditSupplier">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-1" style="width: 627px; padding:20px;">
+                <livewire:supplier.supplier-edit >
+            </div>
+        </div>
+    </div>    
+
 @endsection

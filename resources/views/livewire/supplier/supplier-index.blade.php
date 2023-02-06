@@ -36,9 +36,19 @@
                         <td class="px-2">{{ $supplier->no_tlp }}</td>
                         <td class="px-2">{{ $supplier->alamat }}</td>
                         <td style="max-width: 50px;">
-                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editBarang({{ $supplier->id }})' data-bs-toggle="modal"
-                                data-bs-target="#modalEditDataBarang" class="mx-2">
-                            <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteBarang({{ $supplier->id }})'>
+                            <img 
+                                src="{{ asset('icon/edit.png') }}" alt=".."
+                                style="height: 18px; width: 18px; cursor: pointer;"
+                                wire:click='editSupplier({{ $supplier->id }})'
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalEditSupplier"
+                                class="mx-2"
+                            >
+                            <img 
+                                src="{{ asset('icon/delete.png') }}" alt=".."
+                                style="height: 18px; width: 18px; cursor: pointer;"
+                                wire:click='deleteBarang({{ $supplier->id }})'
+                            >
                         </td>
                     </tr>
                     @endforeach

@@ -6,7 +6,7 @@
 		<div class="sidebar-menu">
 			<div class="menu">
 				<img src="{{ asset('icon/home.png') }}" alt=".." class="me-2" style="width: 20px; height: 20px;">
-				<a href="/home" class="text-dark">Halaman Utama</a>
+				<a href="/home" class="{{ Request::is('home') ? 'text-primary' : 'text-dark' }}">Halaman Utama</a>
 			</div>
 		</div>
 		<div class="sidebar-menu d-flex flex-column align-items-start">

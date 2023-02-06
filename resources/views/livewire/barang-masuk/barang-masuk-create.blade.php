@@ -113,23 +113,126 @@
                                         <option value="{{ $supplier->nama_supplier }}">
                                     @endforeach
                                 </datalist>
-                                
                             </div> --}}
-                            <div class="form-group">
-                                <label for="namaSupplier" class="text-m-regular">Nama Supplier</label>
-                                <input type="text" wire:model.lazy='namaSupplier' id="namaSupplier" class="input-form placeholder-m-m" style="height: 40px" placeholder="ketik Manual Dulu" list="supplier">
-                                <div class="input-option w-100 border-neutral-40-2 rounded" id="option">
-                                    @foreach ($suppliers as $supplier)
-                                        <option value="{{ $supplier->id }}">{{ $supplier->nama_supplier }}</option>
-                                    @endforeach
+                            {{-- <div x-data="{ open: false }">
+
+                                <button type="button" @click="open = true">Show More...</button>
+
+                                <ul x-show="open" @click.outside="open = false" x-transition>
+                                    <li><button wire:click="archive">Archive</button></li>
+                                    <li><button wire:click="delete">Delete</button></li>
+                                </ul>
+
+                            </div>
+
+                            @php
+                            $data = [];
+                                foreach ($suppliers as $supplier) {
+                                    $data[] = $supplier->nama_supplier;
+                                }
+                            @endphp                            
+                            <div x-data="{
+                                    search: '',
+
+                                    items: ['Yukie M Billal'],
+                                    get filteredItems() {
+                                        return this.items.filter(
+                                            i => i.startsWith(this.search)
+                                        )
+                                    }
+                                }"
+                            >
+                                <input x-model="search" placeholder="Search...">
+                             
+                                <ul>
+                                    <template x-for="item in filteredItems" :key="item">
+                                        <li x-text="item.nama_supplier"></li>
+                                    </template>
+                                    <li>New Data</li>
+                                </ul>
+                            </div> --}}
+
+                            <div x-data="{
+                                    open: true,
+                                    value: null
+                                }"
+                                class="form-group"
+                                {{-- @click.outside="open = false" --}}
+                            >
+                                <label for="namaSupplier">Nama Supplier</label>
+                                <input
+                                    type="text"
+                                    {{-- x-on:focus="open = true" --}}
+                                    {{-- x-on:click="open = true" --}}
+                                    x-on:blur="open = false"
+                                    x-model='value'
+                                    wire:model="namaSupplier"
+                                    x-on:input="$wire.emit('updateValue', value)"
+                                    id="namaSupplier"
+                                    class="input-form input-form-lg placeholder-m-m" 
+                                    placeholder="Ketik Manual Dulu"
+                                    autocomplete="off"                    
+                                >
+
+                                <div
+                                    x-show="open"
+                                    class="input-option w-100 border-neutral-40-2 rounded"
+                                >
+                                        @foreach ($suppliers as $supplier)
+                                            <option
+                                                x-data="{ option : '{{ $supplier->nama_supplier }}' }"
+                                                x-on:click="$wire.emit('updateValue', option)"
+                                                x-on:click="console.log('tekan')"
+                                                {{-- x-on:click.stop --}}
+                                                {{-- wire:click='$emit("getSupplier")' --}}
+                                                data-id="{{ $supplier->id }}">
+                                                {{ $supplier->nama_supplier }}
+                                            </option>
+                                        @endforeach
+                                    <option 
+                                        data-id="new"
+                                        wire:click='$emit("getSupplier")'
+                                        class="text-primary text-center new-option">
+                                        ++ Buat Baru ++
+                                    </option>
                                 </div>
                             </div>
+                            {{-- Harusnya --}}
+                            {{-- @if ($s_baru == false || $s_baru == null)
+                                <div X-data="{ open = false }" class="form-group">
+                                    <input @click="open = true" type="text" wire:model='namaSupplier' wire:change='$emit("changeSupplier")' id="namaSupplier" class="input-form placeholder-m-m" style="height: 40px" placeholder="ketik Manual Dulu" autocomplete="off">
+                                    <label for="namaSupplier" class="text-m-regular">Nama Supplier</label>
+                                    <div x-show="open" @click.outside="open = false" class="input-option w-100 border-neutral-40-2 rounded" id="option">
+                                        @foreach ($suppliers as $supplier)
+                                            <option value="{{ $supplier->id }}" option-id="{{ $supplier->id }}" wire:click="$emit('getSupplier')">{{ $supplier->nama_supplier }}</option>
+                                        @endforeach
+                                        <option value="new" wire:click='setSupplier("new")' class="text-primary text-center new-option">++ Buat  Baru ++</option>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="form-group">
+                                    <label for="newSupplierName" class="text-m-regular">Nama Supplier</label>
+                                    <input type="text" wire:model.lazy='namaSupplier' id="newSupplierName" class="input-form placeholder-m-m input-form-lg" placeholder="Nama Supplier Baru" autocomplete="off">
+                                </div>
+                            @endif --}}
+
                             {{-- <div class="form-group">
                                 <label for="select-state"></label>
                                 <select id="select-state" placeholder="Pick a state...">
                                     @foreach ($suppliers as $supplier)
                                         <option value="{{ $supplier->id }}">{{ $supplier->nama_supplier }}</option>
                                     @endforeach
+                                </select>
+                            </div> --}}
+
+                            {{-- Yang Gampang --}}
+                            {{-- <div class="form-group">
+                                <label for="namaSupplier">nama Supplier</label>
+                                <select class="select-form" name="namaSupplier" id="namaSupplier">
+                                    <option selected>--</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
                                 </select>
                             </div> --}}
                         </div>
@@ -173,11 +276,6 @@
 @push('script-livewire')
     {{-- For Livewire --}}
     <script>
-          $(document).ready(function () {
-              $('select').selectize({
-                  sortField: 'text'
-              });
-          });
         Livewire.on('kategoriCovery', function () {
             const value = document.querySelector('#kategori').value;
             const params = [value];
@@ -198,13 +296,30 @@
             });    
         });
 
-        Livewire.on('getSupplier', () => {
-            const input = document.querySelector('#namaSupplier')
-            const value = input.value;
-            console.log(input + "  " + value);
-            const params = [value];
-            Livewire.emit('setSupplier', $params);
+        Livewire.on('updateValue', function (value) {
+            console.log(value);
         });
+
+        Livewire.on('getSupplier', () => {
+            const input = document.querySelector('#namaSupplier');
+            const nama = input.value;
+            // const id = document.querySelector('[option-id]');
+            const params = [false, nama, "siap"];
+            console.log(params);
+            Livewire.emit('setSupplier', params);
+        });
+
+        const input = document.querySelector('#namaSupplier');
+        const option = document.querySelectorAll('.input-option option');
+
+        // option.forEach((item) => {
+        //     var parent = item.parentNode;
+        //     item.addEventListener('mousedown', show(parent, "block"));            
+        // });
+
+        // function show(element, display) {
+        //      element.style.display = display;
+        // }
     </script>
     {{-- Non Livewire --}}
     <script>

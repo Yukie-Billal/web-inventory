@@ -33,9 +33,9 @@
     {{-- @include('partials.footer') --}}
 
     @include('partials.source.normal-script')
-
-    @livewireScripts
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @livewireScripts    
     @stack('script-livewire')
-    @stack('body-script')
+    @stack('body-script')    
 </body>
 </html>
