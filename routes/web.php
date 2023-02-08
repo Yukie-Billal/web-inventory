@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/peminjamans', [PageController::class, 'peminjaman']);
     Route::get('/pengembalians', [PageController::class, 'pengembalian']);
     Route::get('/masuk-barangs', [PageController::class, 'masuk_barang']);
+    Route::get('/cetak-barcodes', [PageController::class, 'cetak_barcode']);
 });
 
 Route::get('/pdf/barcode/{barang}/', [ExportController::class, 'barcode_pdf']);

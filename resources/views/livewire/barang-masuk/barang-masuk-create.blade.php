@@ -16,18 +16,18 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="namaBarang" class="text-m-regular">Nama Barang</label>
-                                <input type="text" wire:model.lazy='namaBarang' id="namaBarang" class="input-form w-100 placeholder-m-m" style="height: 40px" placeholder="Masukan Nama Barang">
+                                <input type="text" wire:model.lazy='namaBarang' id="namaBarang" class="input-form w-100 placeholder-m-m @error('namaBarang') is-invalid @enderror" style="height: 40px" placeholder="Masukan Nama Barang">
                                 @error('namaBarang')
-                                    <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-danger text-s-medium">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="serialNumber" class="text-m-regular">Serial Number</label>
-                                <input type="text" wire:model.lazy='serialNumber' id="serialNumber" class="input-form w-100 placeholder-m-m" style="height: 40px" placeholder="Masukan Number Serial">
+                                <input type="text" wire:model.lazy='serialNumber' id="serialNumber" class="input-form placeholder-m-m @error('serialNumber') is-invalid @enderror" style="height: 40px" placeholder="Masukan Number Serial">
                                 @error('serialNumber')
-                                    <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-danger text-s-medium">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
@@ -36,18 +36,18 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="merek" class="text-m-regular">Merek Barang</label>
-                                <input type="text" wire:model.lazy='merek' id="merek" class="input-form w-100 placeholder-m-m" style="height: 40px" placeholder="Masukan Merek Barang">
+                                <input type="text" wire:model.lazy='merek' id="merek" class="input-form placeholder-m-m @error('merek') is-invalid @enderror" style="height: 40px" placeholder="Masukan Merek Barang">
                                 @error('merek')
-                                    <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-danger text-s-medium">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="warna" class="text-m-regular">Warna Barang</label>
-                                <input type="text" wire:model.lazy='warna' id="warna" class="input-form w-100 placeholder-m-m" style="height: 40px" placeholder="Masukkan Warna Barang">
+                                <input type="text" wire:model.lazy='warna' id="warna" class="input-form placeholder-m-m @error('warna') is-invalid @enderror" style="height: 40px" placeholder="Masukkan Warna Barang">
                                 @error('warna')
-                                    <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-danger text-s-medium">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
@@ -57,33 +57,36 @@
                             <div class="col-5 pe-2">
                                 <div class="form-group">
                                     <label for="kategori">Kategori</label>
-                                    <select class="select-form" id="kategori" wire:change="$emit('kategoriCovery')">
+                                    <select class="select-form @error('kategori') is-invalid @enderror" id="kategori" wire:change="$emit('kategoriCovery')">
                                         <option selected disabled>-- Pilih Kategori --</option>
                                         @foreach ($kategoris as $kategori)
                                             <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                                         @endforeach
                                     </select>
+                                    @error('kategori')
+                                        <small class="text-danger text-s-medium">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-2 pe-2">
                                 <div class="form-group">
                                     <label for="jumlah" class="text-m-regular">Jumlah</label>
-                                    <input type="number" wire:model.defer='qty' id="jumlah" class="input-form w-100 placeholder-m-m" style="height: 36px" placeholder="QTY" value="1">
+                                    <input type="number" wire:model.defer='qty' id="jumlah" class="input-form placeholder-m-m @error('qty') is-invalid @enderror " style="height: 36px" placeholder="QTY" value="1">
                                     @error('qty')
-                                        <small class="text-danger">{{ $message }}</small>
+                                        <small class="text-danger text-s-medium">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-5 pe-2">
                                 <div class="form-group">
                                     <label>Satuan</label>
-                                    <select class="select-form" id="satuan" wire:change='$emit("satuanCovery")'>
+                                    <select class="select-form @error('satuan') is-invalid @enderror" id="satuan" wire:change='$emit("satuanCovery")'>
                                         <option selected disabled>-- Pilih Satuan --</option>
                                         <option value="Pcs / Buah">Pcs / Buah</option>
                                         <option value="Box / Dus">Box / Dus</option>
                                     </select>
                                     @error('satuan')
-                                        <small class="text-danger">{{ $message }}</small>
+                                        <small class="text-danger text-s-medium">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>                            
@@ -103,143 +106,32 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-6" wire:ignore>
                             {{-- CHOOSE ONE --}}
-                            {{-- <div class="form-group">
+                            <div class="form-group"
+                                id="namaParent" 
+                                x-data="{ message: '' }"
+                            >
                                 <label for="namaSupplier" class="text-m-regular">Nama Supplier</label>
-                                <input type="text" wire:model.lazy='namaSupplier' wire:keyup="$emit('getSupplier')" id="namaSupplier" class="input-form placeholder-m-m" style="height: 40px" placeholder="ketik Manual Dulu" list="supplier">
-                                <datalist id="supplier">
-                                    @foreach ($suppliers as $supplier)
-                                        <option value="{{ $supplier->nama_supplier }}">
-                                    @endforeach
-                                </datalist>
-                            </div> --}}
-                            {{-- <div x-data="{ open: false }">
-
-                                <button type="button" @click="open = true">Show More...</button>
-
-                                <ul x-show="open" @click.outside="open = false" x-transition>
-                                    <li><button wire:click="archive">Archive</button></li>
-                                    <li><button wire:click="delete">Delete</button></li>
-                                </ul>
-
-                            </div>
-
-                            @php
-                            $data = [];
-                                foreach ($suppliers as $supplier) {
-                                    $data[] = $supplier->nama_supplier;
-                                }
-                            @endphp                            
-                            <div x-data="{
-                                    search: '',
-
-                                    items: ['Yukie M Billal'],
-                                    get filteredItems() {
-                                        return this.items.filter(
-                                            i => i.startsWith(this.search)
-                                        )
-                                    }
-                                }"
-                            >
-                                <input x-model="search" placeholder="Search...">
-                             
-                                <ul>
-                                    <template x-for="item in filteredItems" :key="item">
-                                        <li x-text="item.nama_supplier"></li>
-                                    </template>
-                                    <li>New Data</li>
-                                </ul>
-                            </div> --}}
-
-                            <div x-data="{
-                                    open: true,
-                                    value: null
-                                }"
-                                class="form-group"
-                                {{-- @click.outside="open = false" --}}
-                            >
-                                <label for="namaSupplier">Nama Supplier</label>
-                                <input
-                                    type="text"
-                                    {{-- x-on:focus="open = true" --}}
-                                    {{-- x-on:click="open = true" --}}
-                                    x-on:blur="open = false"
-                                    x-model='value'
-                                    wire:model="namaSupplier"
-                                    x-on:input="$wire.emit('updateValue', value)"
-                                    id="namaSupplier"
-                                    class="input-form input-form-lg placeholder-m-m" 
-                                    placeholder="Ketik Manual Dulu"
-                                    autocomplete="off"                    
+                                <select id="namaSupplier"
+                                    class="select-form @error('namaSupplier') is-invalid @enderror"
+                                    placeholder="Nama Supplier"
+                                    onchange="getInput()" 
                                 >
-
-                                <div
-                                    x-show="open"
-                                    class="input-option w-100 border-neutral-40-2 rounded"
-                                >
-                                        @foreach ($suppliers as $supplier)
-                                            <option
-                                                x-data="{ option : '{{ $supplier->nama_supplier }}' }"
-                                                x-on:click="$wire.emit('updateValue', option)"
-                                                x-on:click="console.log('tekan')"
-                                                {{-- x-on:click.stop --}}
-                                                {{-- wire:click='$emit("getSupplier")' --}}
-                                                data-id="{{ $supplier->id }}">
-                                                {{ $supplier->nama_supplier }}
-                                            </option>
-                                        @endforeach
-                                    <option 
-                                        data-id="new"
-                                        wire:click='$emit("getSupplier")'
-                                        class="text-primary text-center new-option">
-                                        ++ Buat Baru ++
-                                    </option>
-                                </div>
-                            </div>
-                            {{-- Harusnya --}}
-                            {{-- @if ($s_baru == false || $s_baru == null)
-                                <div X-data="{ open = false }" class="form-group">
-                                    <input @click="open = true" type="text" wire:model='namaSupplier' wire:change='$emit("changeSupplier")' id="namaSupplier" class="input-form placeholder-m-m" style="height: 40px" placeholder="ketik Manual Dulu" autocomplete="off">
-                                    <label for="namaSupplier" class="text-m-regular">Nama Supplier</label>
-                                    <div x-show="open" @click.outside="open = false" class="input-option w-100 border-neutral-40-2 rounded" id="option">
-                                        @foreach ($suppliers as $supplier)
-                                            <option value="{{ $supplier->id }}" option-id="{{ $supplier->id }}" wire:click="$emit('getSupplier')">{{ $supplier->nama_supplier }}</option>
-                                        @endforeach
-                                        <option value="new" wire:click='setSupplier("new")' class="text-primary text-center new-option">++ Buat  Baru ++</option>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="form-group">
-                                    <label for="newSupplierName" class="text-m-regular">Nama Supplier</label>
-                                    <input type="text" wire:model.lazy='namaSupplier' id="newSupplierName" class="input-form placeholder-m-m input-form-lg" placeholder="Nama Supplier Baru" autocomplete="off">
-                                </div>
-                            @endif --}}
-
-                            {{-- <div class="form-group">
-                                <label for="select-state"></label>
-                                <select id="select-state" placeholder="Pick a state...">
                                     @foreach ($suppliers as $supplier)
-                                        <option value="{{ $supplier->id }}">{{ $supplier->nama_supplier }}</option>
+                                        <option value="{{ $supplier->id }}" class="text-m-regular">{{ $supplier->nama_supplier }}</option>
                                     @endforeach
                                 </select>
-                            </div> --}}
-
-                            {{-- Yang Gampang --}}
-                            {{-- <div class="form-group">
-                                <label for="namaSupplier">nama Supplier</label>
-                                <select class="select-form" name="namaSupplier" id="namaSupplier">
-                                    <option selected>--</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
-                            </div> --}}
+                                <span x-text="message">
+                            </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="namaPeruhasaan" class="text-m-regular">Nama Perusahaan</label>
-                                <input type="text" wire:model.lazy='namaPeruhasaan' id="namaPeruhasaan" class="input-form w-100 placeholder-m-m" style="height: 40px" placeholder="Ketik Manual Dulu">
+                                <label for="namaPerusahaan" class="text-m-regular">Nama Perusahaan</label>
+                                <input type="text" wire:model.lazy='namaPerusahaan' id="namaPerusahaan" class="input-form placeholder-m-m @error('namaPerusahaan') is-invalid @enderror" style="height: 40px" placeholder="Ketik Manual Dulu" {{ $s_baru == false ? 'disabled':''}}>
+                                @error('namaPerusahaan')
+                                    <small class="text-danger text-s-medium">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -247,15 +139,21 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="noTlp" class="text-m-regular">No Telephone</label>
-                                <input type="text" wire:model.lazy='noTlp' id="noTlp" class="input-form w-100 placeholder-m-m" style="height: 40px" placeholder="+62 812 7062 5012">
-                                <small class="text-muted">Boleh Kosong !!</small>
+                                <input type="text" wire:model.lazy='noTlp' id="noTlp" class="input-form placeholder-m-m @error('noTlp') is-invalid @enderror" style="height: 40px" placeholder="+62 812 7062 5012" {{ $s_baru == false ? 'disabled':''}}>
+                                @error('noTlp')
+                                    <small class="text-danger text-s-medium">{{ $message }}</small>
+                                @enderror
+                                <small class="text-muted text-s-medium">Boleh Kosong !!</small>
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="form-group">
-                              <label for="alamatSupplier">Alamat</label>
-                              <textarea class="form-control placeholder-m-m" wire:model.defer='alamatSupplier' id="alamatSupplier" rows="3" placeholder="Alamat Lengkap Supplier"></textarea>
-                              <small class="text-muted">Boleh Kosong !!</small>
+                                <label for="alamatSupplier" class="text-m-regular">Alamat</label>
+                                <textarea class="placeholder-m-m text-area-form @error('text-area-form') is-invalid @enderror" wire:model.defer='alamatSupplier' id="alamatSupplier" rows="3" placeholder="Alamat Lengkap Supplier" {{ $s_baru == false ? 'disabled':''}}></textarea>
+                                @error('alamatSupplier')
+                                    <small class="text-danger text-s-medium">{{ $message }}</small>
+                                @enderror
+                                <small class="text-muted text-s-medium">Boleh Kosong !!</small>
                             </div>
                         </div>
                     </div>
@@ -275,7 +173,14 @@
 
 @push('script-livewire')
     {{-- For Livewire --}}
-    <script>
+    <script>        
+        $(document).ready(function() {
+            $('#namaSupplier').select2({
+                tags: true,
+                placeholder: "Masukkan Nama Supplier",
+                dropdownParent: $('#namaParent'),
+            });
+        });
         Livewire.on('kategoriCovery', function () {
             const value = document.querySelector('#kategori').value;
             const params = [value];
@@ -296,15 +201,10 @@
             });    
         });
 
-        Livewire.on('updateValue', function (value) {
-            console.log(value);
-        });
-
         Livewire.on('getSupplier', () => {
             const input = document.querySelector('#namaSupplier');
             const nama = input.value;
-            // const id = document.querySelector('[option-id]');
-            const params = [false, nama, "siap"];
+            const params = [false, input, nama];
             console.log(params);
             Livewire.emit('setSupplier', params);
         });
@@ -312,14 +212,10 @@
         const input = document.querySelector('#namaSupplier');
         const option = document.querySelectorAll('.input-option option');
 
-        // option.forEach((item) => {
-        //     var parent = item.parentNode;
-        //     item.addEventListener('mousedown', show(parent, "block"));            
-        // });
-
-        // function show(element, display) {
-        //      element.style.display = display;
-        // }
+        function getInput() {
+            var id = input.value;
+            Livewire.emit('setSupplier', id);
+        }
     </script>
     {{-- Non Livewire --}}
     <script>
@@ -330,7 +226,7 @@
             }
         }
         inputJumlah.addEventListener('keyup', cekQty);
-        inputJumlah.addEventListener('change', cekQty);        
+        inputJumlah.addEventListener('change', cekQty);
     </script>
 
 @endpush

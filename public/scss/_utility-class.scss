@@ -394,7 +394,7 @@
    border: 2px solid $my-neutral-10;
 }
 
-.input-form {
+.input-form, textarea, input, .text-area-form, .select-form, {
    &.placeholder-s-r::placeholder{
       font: $my-text-s-regular;
    }

@@ -73,19 +73,7 @@ ol {
    transition: .03s;
    outline: none;
    color: $my-neutral-90;
-
-   &:focus {
-      outline: 3px solid $my-primary-focus;
-
-      & ~ .input-option {
-         display: block;
-      }
-   }
-
-   &::placeholder {
-      color: $my-neutral-70;
-      font: $my-text-s-medium;
-   }
+   font: $my-text-m-regular;
 
    &.input-form-sm {
       height: 28px;
@@ -136,19 +124,60 @@ ol {
             &:hover {
                background: $my-primary-surface;
             }
-      }
-
+         }
       }
    }
 
-   // & ~ datalist {
-   //    background: $my-neutral-20;
-   //    option {
-   //       margin: 4px 0;
+   &:focus {
+      outline: 3px solid $my-primary-focus;
 
+      & ~ .input-option {
+         display: block;
+      }
+   }
 
-   //    }
-   // }
+   &::placeholder {
+      color: $my-neutral-70;
+      font: $my-text-s-medium;
+   }
+
+   &[disabled] {
+      background-color: $my-neutral-20;
+
+      &::placeholder {
+         color: $my-neutral-100;
+      }
+   }
+}
+
+.text-area-form {
+   @include flex-box(start, center, row);
+   padding: 6px 12px;
+   gap: 4px;
+
+   width: 100%;
+   height: 120px;
+   border: 1px solid $my-neutral-50;
+   box-shadow: $my-shadow-3;
+   border-radius: 6px;
+   transition: .03s;
+   outline: none;
+   color: $my-neutral-90;
+   font: $my-text-m-regular;
+
+   background: white;
+
+   &[disabled=""] {
+      background: $my-neutral-20;
+
+      &::placeholder {
+         color: $my-neutral-100;
+      }
+   }
+
+   &::placeholder {
+         color: $my-neutral-70;
+      }
 }
 
 .form-group {
@@ -165,6 +194,7 @@ ol {
    height: 36px;
    color: $my-neutral-90;
    padding: 6px 12px;
+   font: $my-text-m-regular;
 
    &.select-sm {
     height: 32px;
@@ -178,6 +208,41 @@ ol {
    &.select-xl {
     height: 44px;
    }
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+   height:100%;
+   position:absolute;
+   top:1px;
+   right:10px;
+   width:20px
+}
+.select2-container--default .select2-selection--single {
+   display: flex;
+   align-items: center;
+   width: 100%;
+   background-color: #FFFFFF;
+   border: 1px solid #C2C2C2;
+   border-radius: 6px;
+   box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
+   height: 100%;
+   color: #424242;
+   padding: 0 4px;
+   background-color:#fff;
+   border:1px solid #aaa;
+   border-radius:4px
+}
+.select2-container {
+   width: 100%;
+   background-color: #FFFFFF;
+   border-radius: 6px;
+   height: 40px;
+   color: #424242;
+   box-sizing:border-box;
+   display:inline-block;
+   margin:0;
+   position:relative;
+   vertical-align:middle;
 }
 
 .group-form {

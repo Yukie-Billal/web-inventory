@@ -22,44 +22,68 @@ class BarangMasukCreate extends Component
     public $namaSupplier;
     public $alamatSupplier;
     public $noTlp;
-    public $namaPeruhasaan;
-    public $s_baru = null;
+    public $namaPerusahaan;
+    public $s_baru = false;
     public $supplierId;
 
     protected $rules = [
+        'namaBarang' => 'required|min:2',
         'kategori' => 'required|numeric',
         'serialNumber' => 'required|numeric|min:3',
-        'namaSupplier' => 'required|min:5',
+        'qty' => 'required|numeric',
+        'namaSupplier' => 'required|min:2',
+        'namaPerusahaan' => 'required|min:2',
+        'merek' => 'required|min:2',
+        'warna' => 'required|min:2'
     ];
 
     protected $messages = [
-        'kategori.required' => 'Kategori Wajib Di Isi',
-        'serialNumber.required' => 'Serial Number Wajib Diisi',
-        'serialNumber.numeric' => 'Serial Number Hanya Berisi Angka',
+        'namaBarang.required' => 'Nama Barang harus diisi',
+        'namaBarang.min' => 'Nama Barang harus lebih dari :min karakter',
+        'kategori.required' => 'Kategori wajib di isi',
+        'kategori.numeric' => 'Terjadi Kesalahan, silahkan pilih ulang',
+        'serialNumber.required' => 'Serial number wajib diisi',
+        'serialNumber.numeric' => 'Serial number hanya berisi angka',
+        'qty.required' => 'Jumlah harus diisi',
+        'qty.numeric' => 'Jumlah hanya boleh berupa angka',
+        'namaSupplier.required' => 'Nama Supplier tidak boleh kosong',
+        'namaSupplier.min' => 'Nama Supplier harus lebih dari :min karakter',
+        'namaPerusahaan.required' => 'Nama Perusahaan tidak boleh kosong',
+        'namaPerusahaan.min' => 'Nama Perusahaan harus lebih dari :min karakter',
+        'merek.required' => 'Merek tidak boleh kosong',
+        'merek.min' => 'Merek harus lebih dari :min karakter',
+        'warna.required' => 'Warna tidak boleh kosong',
+        'warna.min' => 'Warna harus lebih dari :min karakter',
     ];
 
     public function updated($propertyName)
     {
-        if ($propertyName == "namaSupplier") {
-            $supplier = Supplier::where('nama_supplier', 'like', '%'. $this->namaSupplier .'%')->get()->count();
-            $cek = Supplier::where('nama_supplier', $this->namaSupplier)->get()->count();
-            if ($supplier <= 0) {
-                $this->s_baru = false;
-            } elseif ($cek == 0) {
-                // $this->s_baru = true;
-            } else {
-                $this->s_baru = false;
-            }
-        }
         $this->validateOnly($propertyName);
     }
 
     protected $listeners = [
         'setKategori',
         'setSatuan',
-        'setSupplier',
         'setStatus',
+        'setSupplier',
     ];
+
+    public function setSupplier($id)
+    {
+        $supplier = Supplier::find($id);
+
+        if ($supplier) {
+            $this->supplierId = $supplier->id;
+            $this->namaSupplier = $supplier->nama_supplier;
+            $this->namaPerusahaan = $supplier->nama_perusahaan;
+            $this->alamatSupplier = $supplier->alamat;
+            $this->noTlp = $supplier->no_tlp;
+            $this->s_baru = false;
+        } else {
+            $this->clear('supp');
+            $this->s_baru = true;
+        }
+    }
 
     public function setKategori($params)
     {
@@ -71,43 +95,23 @@ class BarangMasukCreate extends Component
         $this->satuan = $params[0];
     }
 
-    public function clear()
+    public function clear($params)
     {
-        $this->namaBarang = null;
-        $this->serialNumber = null;
-        $this->merek = null;
-        $this->warna = null;
-        // $this->kategori = null;
-        // $this->satuan = null;
-        $this->qty = 1;
-        $this->namaSupplier = null;
-        $this->alamatSupplier = null;
-        $this->noTlp = null;
-        $this->namaPeruhasaan = null;
-        $this->render();
-    }
-
-    public function setSupplier($params)
-    {
-        if ($params[0] == false) {
-            $this->supplierId = $params[1];
-            $this->namaSupplier = $params[2];
-            $supplier = Supplier::where('nama_supplier', $params[2])->get();
-            $cek = Supplier::find($params[1]);
-
-            if ($supplier->count() > 0 && $cek) {
-                $this->s_baru = false;
-            } else {
-                // dd($this->namaSupplier);
-                $this->s_baru = true;
-                $this->supplierId = '';
-                $this->namaSupplier = '';
-            }
+        if ($params == 'supp') {
+            $this->namaSupplier = null;
+            $this->alamatSupplier = null;
+            $this->noTlp = null;
+            $this->namaPerusahaan = null;
         } else {
-            if ($params[0] == true) {
-                $this->supplierId = '';
-                $this->namaSupplier = '';
-            }
+            $this->namaBarang = null;
+            $this->serialNumber = null;
+            $this->merek = null;
+            $this->warna = null;
+            $this->qty = 1;
+            $this->namaSupplier = null;
+            $this->alamatSupplier = null;
+            $this->noTlp = null;
+            $this->namaPerusahaan = null;
         }
         $this->render();
     }
@@ -119,6 +123,7 @@ class BarangMasukCreate extends Component
 
     public function submit()
     {
+        $this->validate();
         $barcode = Str::limit($this->namaBarang, 1, '') . date('Y') . Str::limit($this->merek, 1, '') . date('m') . date('d');
         $barang = Barang::create([
             'serial_number' => $this->serialNumber,
@@ -135,19 +140,19 @@ class BarangMasukCreate extends Component
             if ($this->s_baru == null || $this->s_baru == true) {
                 $supplier = Supplier::create([
                     'nama_supplier' => $this->namaSupplier,
-                    'nama_perusahaan' => $this->namaPeruhasaan,
+                    'nama_perusahaan' => $this->namaPerusahaan,
                     'no_tlp' => $this->noTlp,
                     'alamat' => $this->alamatSupplier
                 ]);
             } elseif ($this->s_baru == false) {
                 $supplier = Supplier::where('nama_supplier', $this->namaSupplier)->get();
             } else {
-                
+                $supplier = '';
             }
             
         }
 
-        if ($barang && $supplier) {
+        if ($barang && $supplier) {            
             $barangMasuk = BarangMasuk::create([
                 'serial_number' => $this->serialNumber,
                 'barcode' => $barcode,
@@ -173,16 +178,16 @@ class BarangMasukCreate extends Component
             $message = "Terjadi Kesalahan";
         }
         $this->emit('barangMasukAdded', $message);
-        $this->clear();
+        $this->clear('all');
     }
 
     public function render()
     {
         $suppliers = Supplier::orderByDesc('nama_supplier')->orderByDesc('created_at');
 
-        if ($this->namaSupplier != null) {
-            $suppliers->where('nama_supplier', 'like', '%'. $this->namaSupplier .'%');
-        }
+        // if ($this->namaSupplier != null) {
+        //     $suppliers->where('nama_supplier', 'like', '%'. $this->namaSupplier .'%');
+        // }
 
         return view('livewire.barang-masuk.barang-masuk-create', [
             'kategoris' => Kategori::orderByDesc('nama_kategori')->get(),

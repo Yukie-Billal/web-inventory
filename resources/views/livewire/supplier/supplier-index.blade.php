@@ -47,7 +47,7 @@
                             <img 
                                 src="{{ asset('icon/delete.png') }}" alt=".."
                                 style="height: 18px; width: 18px; cursor: pointer;"
-                                wire:click='deleteBarang({{ $supplier->id }})'
+                                wire:click='delSupplier({{ $supplier->id }})'
                             >
                         </td>
                     </tr>
@@ -81,5 +81,32 @@
             const params = ['merek', value];
             Livewire.emit('setFilter', params);
         });
+
+        Livewire.on('deleted', function (message) {
+            Swal.fire({
+                icon: 'success',
+                title: message,
+                showConfirmButton: false,
+                timer: 4000
+            });   
+        });
+
+        Livewire.on('showAlert', function (params) {
+            Swal.fire({
+                icon: params[0],
+                title: params[1],
+                showConfirmButton: false,
+                timer: 2000,
+            })
+        });
+
+        Livewire.on('supEdited', function (params) {            
+            Swal.fire({
+                icon: params[0],
+                title: params[1],
+                showConfirmButton: false,
+                timer: 2000,
+            })       
+        })
 </script>
 @endpush

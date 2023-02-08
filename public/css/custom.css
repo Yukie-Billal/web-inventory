@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 .bg-neutral-100 {
   background-color: #0A0A0A;
 }
@@ -493,22 +494,22 @@
   border: 2px solid #FFFFFF;
 }
 
-.input-form.placeholder-s-r::placeholder {
+.input-form.placeholder-s-r::placeholder, textarea.placeholder-s-r::placeholder, input.placeholder-s-r::placeholder, .text-area-form.placeholder-s-r::placeholder, .select-form.placeholder-s-r::placeholder {
   font: 400 12px/16px "Inter", sans-serif;
 }
-.input-form.placeholder-s-m::placeholder {
+.input-form.placeholder-s-m::placeholder, textarea.placeholder-s-m::placeholder, input.placeholder-s-m::placeholder, .text-area-form.placeholder-s-m::placeholder, .select-form.placeholder-s-m::placeholder {
   font: 500 12px/16px "Inter", sans-serif;
 }
-.input-form.placeholder-m-r::placeholder {
+.input-form.placeholder-m-r::placeholder, textarea.placeholder-m-r::placeholder, input.placeholder-m-r::placeholder, .text-area-form.placeholder-m-r::placeholder, .select-form.placeholder-m-r::placeholder {
   font: 400 14px/20px "Inter", sans-serif;
 }
-.input-form.placeholder-m-m::placeholder {
+.input-form.placeholder-m-m::placeholder, textarea.placeholder-m-m::placeholder, input.placeholder-m-m::placeholder, .text-area-form.placeholder-m-m::placeholder, .select-form.placeholder-m-m::placeholder {
   font: 500 14px/20px "Inter", sans-serif;
 }
-.input-form.placeholder-l-r::placeholder {
+.input-form.placeholder-l-r::placeholder, textarea.placeholder-l-r::placeholder, input.placeholder-l-r::placeholder, .text-area-form.placeholder-l-r::placeholder, .select-form.placeholder-l-r::placeholder {
   font: 400 16px/24px "Inter", sans-serif;
 }
-.input-form.placeholder-l-m::placeholder {
+.input-form.placeholder-l-m::placeholder, textarea.placeholder-l-m::placeholder, input.placeholder-l-m::placeholder, .text-area-form.placeholder-l-m::placeholder, .select-form.placeholder-l-m::placeholder {
   font: 500 16px/24px "Inter", sans-serif;
 }
 
@@ -589,16 +590,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   transition: 0.03s;
   outline: none;
   color: #424242;
-}
-.input-form:focus {
-  outline: 3px solid rgba(76, 77, 220, 0.2);
-}
-.input-form:focus ~ .input-option {
-  display: block;
-}
-.input-form::placeholder {
-  color: #757575;
-  font: 500 12px/16px "Inter", sans-serif;
+  font: 400 14px/20px "Inter", sans-serif;
 }
 .input-form.input-form-sm {
   height: 28px;
@@ -643,6 +635,50 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 .input-form ~ .input-option option.new-option:hover {
   background: #DFE0F3;
 }
+.input-form:focus {
+  outline: 3px solid rgba(76, 77, 220, 0.2);
+}
+.input-form:focus ~ .input-option {
+  display: block;
+}
+.input-form::placeholder {
+  color: #757575;
+  font: 500 12px/16px "Inter", sans-serif;
+}
+.input-form[disabled] {
+  background-color: #F5F5F5;
+}
+.input-form[disabled]::placeholder {
+  color: #0A0A0A;
+}
+
+.text-area-form {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  padding: 6px 12px;
+  gap: 4px;
+  width: 100%;
+  height: 120px;
+  border: 1px solid #C2C2C2;
+  box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  transition: 0.03s;
+  outline: none;
+  color: #424242;
+  font: 400 14px/20px "Inter", sans-serif;
+  background: white;
+}
+.text-area-form[disabled=""] {
+  background: #F5F5F5;
+}
+.text-area-form[disabled=""]::placeholder {
+  color: #0A0A0A;
+}
+.text-area-form::placeholder {
+  color: #757575;
+}
 
 .form-group {
   position: relative;
@@ -657,6 +693,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   height: 36px;
   color: #424242;
   padding: 6px 12px;
+  font: 400 14px/20px "Inter", sans-serif;
 }
 .select-form.select-sm {
   height: 32px;
@@ -669,6 +706,43 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .select-form.select-xl {
   height: 44px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+  position: absolute;
+  top: 1px;
+  right: 10px;
+  width: 20px;
+}
+
+.select2-container--default .select2-selection--single {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #C2C2C2;
+  border-radius: 6px;
+  box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  color: #424242;
+  padding: 0 4px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.select2-container {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 6px;
+  height: 40px;
+  color: #424242;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  vertical-align: middle;
 }
 
 .group-form {

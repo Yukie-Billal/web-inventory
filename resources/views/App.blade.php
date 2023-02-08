@@ -7,11 +7,10 @@
     <title>Web - Inventory</title>
 
     @include('partials.source.normal-links')
-
     @stack('links')
     @livewireStyles
 </head>
-<body>
+<body>    
     <div class="container-fluid" style="min-height: calc(100vh - 80px);">
         <div class="row h-100">
             <div class="col-2 p-0 bg-white">

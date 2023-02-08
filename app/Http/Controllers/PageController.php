@@ -52,4 +52,9 @@ class PageController extends Controller
     {
         return view('pages.kegiatan.masuk-barang');
     }
+
+    public function cetak_barcode()
+    {
+        return view('pages.kegiatan.cetak-barcode');
+    }
 }

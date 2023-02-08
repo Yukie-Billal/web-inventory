@@ -20,6 +20,8 @@ class SupplierIndex extends Component
     protected $listeners = [
         'next-page' => 'next',
         'previous-page' => 'previous',
+        'showAlert',
+        'supEdited' => 'render',
     ];
 
     public function next($page)
@@ -35,6 +37,18 @@ class SupplierIndex extends Component
     {
         $supplier = Supplier::find($id);
         $this->emit('getSupplier', $supplier);        
+    }
+
+    public function delSupplier($id)
+    {
+        $supplier = Supplier::find($id);
+
+        if ($supplier) {
+            $supplier->delete();
+            $this->emit('deleted', 'Data Supplier Berhasil Di Hapus');
+        } else {
+            $this->emit('ok');
+        }
     }
 
     public function render()

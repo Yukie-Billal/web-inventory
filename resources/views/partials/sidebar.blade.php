@@ -37,7 +37,7 @@
 				<span>Kegiatan</span>
 				<i class="fa-solid fa-chevron-down"></i>		
 			</div>
-			@if (Request::is('peminjamans') || Request::is('masuk-barangs') || Request::is('pengembalians'))
+			@if (Request::is('peminjamans') || Request::is('masuk-barangs') || Request::is('pengembalians') || Request::is('cetak-barcodes'))
 				@php
 					$kegiatan = '';
 				@endphp
@@ -48,8 +48,9 @@
 			@endif
 			<div class="sub-menu {{ $kegiatan }}">
 				<a href="/peminjamans" class="{{ Request::is('peminjamans') ? 'text-primary' : '' }}">Peminjaman</a>
-				<a href="/pengembalians"  class="{{ Request::is('pengembalians') ? 'text-primary' : '' }}">Pengembalian</a>
-				<a href="/masuk-barangs"  class="{{ Request::is('masuk-barangs') ? 'text-primary' : '' }}">Masuk Barang</a>
+				<a href="/pengembalians" class="{{ Request::is('pengembalians') ? 'text-primary' : '' }}">Pengembalian</a>
+				<a href="/masuk-barangs" class="{{ Request::is('masuk-barangs') ? 'text-primary' : '' }}">Masuk Barang</a>
+				<a href="/cetak-barcodes" class="{{ Request::is('masuk-barangs') ? 'text-primary' : '' }}">Cetak Barcode</a>
 			</div>
 		</div>
 	</div>
