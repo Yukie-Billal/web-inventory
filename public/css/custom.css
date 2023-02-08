@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
 .bg-neutral-100 {
   background-color: #0A0A0A;
 }
@@ -712,7 +711,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   height: 100%;
   position: absolute;
   top: 1px;
-  right: 10px;
+  right: 8px;
   width: 20px;
 }
 
@@ -721,15 +720,12 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   align-items: center;
   width: 100%;
   background-color: #FFFFFF;
-  border: 1px solid #C2C2C2;
+  border: 1px solid #E0E0E0;
   border-radius: 6px;
   box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
   height: 100%;
   color: #424242;
   padding: 0 4px;
-  background-color: #fff;
-  border: 1px solid #aaa;
-  border-radius: 4px;
 }
 
 .select2-container {
@@ -743,6 +739,19 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   margin: 0;
   position: relative;
   vertical-align: middle;
+  font: 500 14px/20px "Inter", sans-serif;
+}
+.select2-container.select-sm {
+  height: 32px;
+}
+.select2-container.select-md {
+  height: 38px;
+}
+.select2-container.select-lg {
+  height: 40px;
+}
+.select2-container.select-xl {
+  height: 44px;
 }
 
 .group-form {
@@ -799,6 +808,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   border: none;
   transition: 0.3s;
   cursor: pointer;
+  outline: 2px solid #E0E0E0;
 }
 .button.button-sm {
   height: 28px;
@@ -814,6 +824,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-primary {
   background-color: #4C4DDC;
+  outline: 2px solid #DFE0F3;
 }
 .button.button-primary:hover {
   background-color: #3334CC;
@@ -823,6 +834,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-success {
   background-color: #43936C;
+  outline: 2px solid #F7F7F7;
 }
 .button.button-success:hover {
   background-color: #367A59;
@@ -832,6 +844,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-warning {
   background-color: #CD7B2E;
+  outline: 2px solid #FFF9F2;
 }
 .button.button-warning:hover {
   background-color: #BF6919;
@@ -841,6 +854,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-danger {
   background-color: #CB3A31;
+  outline: 2px solid #FFF4F2;
 }
 .button.button-danger:hover {
   background-color: #BD251C;
@@ -850,6 +864,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-info {
   background-color: #3267E3;
+  outline: 2px solid #F0F3FF;
 }
 .button.button-info:hover {
   background-color: #114CD6;
@@ -859,6 +874,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-dark {
   background-color: #424242;
+  outline: 2px solid #C2C2C2;
 }
 .button.button-dark:hover {
   background-color: rgba(10, 10, 10, 0.8666666667);
@@ -868,6 +884,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-light {
   background-color: #E0E0E0;
+  outline: 2px solid #ededed;
 }
 .button.button-light:hover {
   background-color: #d1d1d1;

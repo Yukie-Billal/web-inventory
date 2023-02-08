@@ -214,23 +214,20 @@ ol {
    height:100%;
    position:absolute;
    top:1px;
-   right:10px;
+   right:8px;
    width:20px
 }
 .select2-container--default .select2-selection--single {
    display: flex;
    align-items: center;
    width: 100%;
-   background-color: #FFFFFF;
-   border: 1px solid #C2C2C2;
+   background-color: $my-neutral-10;
+   border: 1px solid $my-neutral-40;
    border-radius: 6px;
-   box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
+   box-shadow: $my-shadow-3;
    height: 100%;
    color: #424242;
    padding: 0 4px;
-   background-color:#fff;
-   border:1px solid #aaa;
-   border-radius:4px
 }
 .select2-container {
    width: 100%;
@@ -243,6 +240,20 @@ ol {
    margin:0;
    position:relative;
    vertical-align:middle;
+   font: $my-text-m-medium;
+
+   &.select-sm {
+    height: 32px;
+   }
+   &.select-md {
+    height: 38px;
+   }
+   &.select-lg {
+    height: 40px;
+   }
+   &.select-xl {
+    height: 44px;
+   }
 }
 
 .group-form {
@@ -302,6 +313,7 @@ ol {
     border: none;
     transition: .3s;
     cursor: pointer;
+    outline: 2px solid $my-neutral-40;
 
     &.button-sm {
         height: 28px;
@@ -318,6 +330,7 @@ ol {
 
     &.button-primary {
         background-color: $my-primary-main;
+        outline: 2px solid $my-primary-surface;
 
         &:hover {
             background-color: $my-primary-hover;
@@ -329,6 +342,7 @@ ol {
     }
     &.button-success {
         background-color: $my-success-main;
+        outline: 2px solid $my-success-surface;
 
         &:hover {
             background-color: $my-success-hover;
@@ -339,6 +353,7 @@ ol {
     }
     &.button-warning {
         background-color: $my-warning-main;
+        outline: 2px solid $my-warning-surface;
 
         &:hover {
             background-color: $my-warning-hover;
@@ -349,6 +364,7 @@ ol {
     }
     &.button-danger {
         background-color: $my-danger-main;
+        outline: 2px solid $my-danger-surface;
 
         &:hover {
             background-color: $my-danger-hover;
@@ -359,6 +375,7 @@ ol {
     }
     &.button-info {
         background-color: $my-info-main;
+        outline: 2px solid $my-info-surface;
 
         &:hover {
             background-color: $my-info-hover;
@@ -369,6 +386,7 @@ ol {
     }
     &.button-dark {
         background-color: $my-dark-main;
+        outline: 2px solid $my-dark-surface;
 
         &:hover {
             background-color: $my-dark-hover;
@@ -379,6 +397,7 @@ ol {
     }
     &.button-light {
         background-color: $my-neutral-40;
+        outline: 2px solid lighten($my-neutral-40, 5);
 
         &:hover {
             background-color: darken($my-neutral-40, 6);

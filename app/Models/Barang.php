@@ -37,4 +37,9 @@ class Barang extends Model
     {
         return $this->hasMany(PengembalianKeranjang::class);
     }
+
+    public function barcodekeranjang()
+    {
+        return $this->hasMany(BarcodeKeranjang::class);
+    }
 }

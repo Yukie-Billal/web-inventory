@@ -50,8 +50,8 @@
 				<a href="/peminjamans" class="{{ Request::is('peminjamans') ? 'text-primary' : '' }}">Peminjaman</a>
 				<a href="/pengembalians" class="{{ Request::is('pengembalians') ? 'text-primary' : '' }}">Pengembalian</a>
 				<a href="/masuk-barangs" class="{{ Request::is('masuk-barangs') ? 'text-primary' : '' }}">Masuk Barang</a>
-				<a href="/cetak-barcodes" class="{{ Request::is('masuk-barangs') ? 'text-primary' : '' }}">Cetak Barcode</a>
+				<a href="/cetak-barcodes" class="{{ Request::is('cetak-barcodes') ? 'text-primary' : '' }}">Cetak Barcode</a>
 			</div>
 		</div>
-	</div>
+	</div>	
 </div>

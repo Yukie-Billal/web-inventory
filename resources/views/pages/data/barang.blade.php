@@ -1,5 +1,9 @@
 @extends('App')
 
+@section('title')
+    Data Barang
+@endsection  
+
 @section('content')
 
     <x-breadcrumb parent='Data' where='Barang' />

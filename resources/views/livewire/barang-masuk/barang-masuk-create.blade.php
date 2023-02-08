@@ -1,8 +1,3 @@
-{{-- @push('links')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
-@endpush --}}
 <form wire:submit.prevent='submit'>
     <div class="row">
         <div class="col-12">
@@ -108,9 +103,9 @@
                     <div class="row">
                         <div class="col-6" wire:ignore>
                             {{-- CHOOSE ONE --}}
-                            <div class="form-group"
-                                id="namaParent" 
-                                x-data="{ message: '' }"
+                            <div 
+                                class="form-group"
+                                id="namaParent"
                             >
                                 <label for="namaSupplier" class="text-m-regular">Nama Supplier</label>
                                 <select id="namaSupplier"
