@@ -42,3 +42,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/pdf/barcode/{barang}/', [ExportController::class, 'barcode_pdf']);
 Route::get('/print/barcode/{barang}', [PrinterController::class, 'print_barcode']);
+
+Route::get('/coba', function ()
+{
+    return view('coba');
+});

@@ -11,6 +11,19 @@ class BarcodePreview extends Component
         'fresh' => 'render'
     ];
 
+    public function deleteItem($id)
+    {
+        $item = BarcodeKeranjang::find($id);
+
+        if ($item) {
+            $item->delete();
+            $this->emit('200', 'Berhasil Menghapus');
+        } else {
+            $this->emit('400', 'Item Tidak Ditemukan');
+        }
+        $this->render();
+    }
+
     public function render()
     {
         return view('livewire.barcode-preview', [

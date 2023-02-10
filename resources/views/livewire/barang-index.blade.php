@@ -46,7 +46,7 @@
                 <tbody>
                     @if ($barangs->count() == 0)
                         <tr class="text-center">
-                            <td colspan="8" style="font-size: 16px;">Barang Kosong</td>
+                            <td colspan="9" style="font-size: 16px;">Barang Kosong</td>
                         </tr>
                     @else
                         @foreach ($barangs as $barang)

@@ -49,11 +49,17 @@
                     </div>
                     <div class="row">
                         <div class="col-8 d-flex justify-content-between">
-                            <div class="col-5 pe-2">
-                                <div class="form-group">
-                                    <label for="kategori">Kategori</label>
-                                    <select class="select-form @error('kategori') is-invalid @enderror" id="kategori" wire:change="$emit('kategoriCovery')">
-                                        <option selected disabled>-- Pilih Kategori --</option>
+                            <div class="col-5 pe-2" wire:ignore>
+                                <div 
+                                    class="form-group" 
+                                    id="parentKategori"
+                                >
+                                    <label for="kategori" class="text-m-regular">Kategori</label>
+                                    <select 
+                                        class="select-form @error('kategori') is-invalid @enderror"
+                                        id="kategori"
+                                        onchange="getKategori()"
+                                    >
                                         @foreach ($kategoris as $kategori)
                                             <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                                         @endforeach
@@ -74,7 +80,7 @@
                             </div>
                             <div class="col-5 pe-2">
                                 <div class="form-group">
-                                    <label>Satuan</label>
+                                    <label class="text-m-regular">Satuan</label>
                                     <select class="select-form @error('satuan') is-invalid @enderror" id="satuan" wire:change='$emit("satuanCovery")'>
                                         <option selected disabled>-- Pilih Satuan --</option>
                                         <option value="Pcs / Buah">Pcs / Buah</option>
@@ -105,18 +111,20 @@
                             {{-- CHOOSE ONE --}}
                             <div 
                                 class="form-group"
-                                id="namaParent"
+                                id="parentSupplier"
                             >
                                 <label for="namaSupplier" class="text-m-regular">Nama Supplier</label>
                                 <select id="namaSupplier"
                                     class="select-form @error('namaSupplier') is-invalid @enderror"
-                                    placeholder="Nama Supplier"
                                     onchange="getInput()" 
                                 >
                                     @foreach ($suppliers as $supplier)
                                         <option value="{{ $supplier->id }}" class="text-m-regular">{{ $supplier->nama_supplier }}</option>
                                     @endforeach
                                 </select>
+                                @error('namaSupplier')
+                                    <small class="text-danger text-s-medium">{{ $message }}</small>
+                                @enderror
                                 <span x-text="message">
                             </div>
                         </div>
@@ -144,7 +152,7 @@
                         <div class="col-8">
                             <div class="form-group">
                                 <label for="alamatSupplier" class="text-m-regular">Alamat</label>
-                                <textarea class="placeholder-m-m text-area-form @error('text-area-form') is-invalid @enderror" wire:model.defer='alamatSupplier' id="alamatSupplier" rows="3" placeholder="Alamat Lengkap Supplier" {{ $s_baru == false ? 'disabled':''}}></textarea>
+                                <textarea class="placeholder-m-m text-area-form @error('text-area-form') is-invalid @enderror" wire:model.lazy='alamatSupplier' id="alamatSupplier" rows="3" placeholder="Alamat Lengkap Supplier" {{ $s_baru == false ? 'disabled':''}}></textarea>
                                 @error('alamatSupplier')
                                     <small class="text-danger text-s-medium">{{ $message }}</small>
                                 @enderror
@@ -173,14 +181,18 @@
             $('#namaSupplier').select2({
                 tags: true,
                 placeholder: "Masukkan Nama Supplier",
-                dropdownParent: $('#namaParent'),
+                dropdownParent: $('#parentSupplier'),
+            });
+            $('#kategori').select2({
+                tags: true,
+                placeholder: "Buat / Pilih Kategori",
+                dropdownParent: $('#parentKategori'),
             });
         });
-        Livewire.on('kategoriCovery', function () {
+        function getKategori() {
             const value = document.querySelector('#kategori').value;
-            const params = [value];
-            Livewire.emit('setKategori', params);
-        });
+            Livewire.emit('setKategori', value);
+        }
 
         Livewire.on('satuanCovery', function () {
             const value = document.querySelector('#satuan').value;
@@ -209,6 +221,7 @@
 
         function getInput() {
             var id = input.value;
+            console.log(id);
             Livewire.emit('setSupplier', id);
         }
     </script>

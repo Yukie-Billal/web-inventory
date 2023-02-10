@@ -10,7 +10,10 @@
     @stack('links')
     @livewireStyles
 </head>
-<body>    
+<body>
+    <div class="load-state" id="loader">
+        <i class="fa-solid fa-spinner load-state-item"></i>
+    </div>
     <div class="container-fluid" style="min-height: calc(100vh - 80px);">
         <div class="row h-100">
             <div class="col-2 p-0 bg-white">
@@ -30,9 +33,9 @@
         </div>
     </div>
     {{-- @include('partials.footer') --}}
+    
 
     @include('partials.source.normal-script')
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @livewireScripts    
     @stack('script-livewire')
     @stack('script')  

@@ -28,7 +28,7 @@ class BarangMasukCreate extends Component
 
     protected $rules = [
         'namaBarang' => 'required|min:2',
-        'kategori' => 'required|numeric',
+        'kategori' => 'required',
         'serialNumber' => 'required|numeric|min:3',
         'qty' => 'required|numeric',
         'namaSupplier' => 'required|min:2',
@@ -41,7 +41,6 @@ class BarangMasukCreate extends Component
         'namaBarang.required' => 'Nama Barang harus diisi',
         'namaBarang.min' => 'Nama Barang harus lebih dari :min karakter',
         'kategori.required' => 'Kategori wajib di isi',
-        'kategori.numeric' => 'Terjadi Kesalahan, silahkan pilih ulang',
         'serialNumber.required' => 'Serial number wajib diisi',
         'serialNumber.numeric' => 'Serial number hanya berisi angka',
         'qty.required' => 'Jumlah harus diisi',
@@ -81,13 +80,14 @@ class BarangMasukCreate extends Component
             $this->s_baru = false;
         } else {
             $this->clear('supp');
+            $this->namaSupplier = $id;            
             $this->s_baru = true;
         }
     }
 
-    public function setKategori($params)
+    public function setKategori($value)
     {
-        $this->kategori = $params[0];
+        $this->kategori = $value;
     }
 
     public function setSatuan($params)
@@ -121,9 +121,42 @@ class BarangMasukCreate extends Component
         $this->emit('barangMasukAdded');
     }
 
+    public function kategoriCek($value)
+    {
+        $data = Kategori::find($value);
+        if ($data) {
+            $this->kategori = $data->id;
+        } else {
+            $create = Kategori::Create([
+                'nama_kategori' => $value,
+            ]);
+            $this->kategori = $create->id;
+        }
+    }
+
+    public function cekSupplier($value)
+    {
+        dd($value);
+        $data = Supplier::find($value);
+
+        if ($data) {
+            $this->namaSupplier = $data->nama_supplier;
+        } else {
+            $create = Supplier::create([
+                'nama_supplier' => $value,
+                'nama_perusahaan' => $this->namaPerusahaan,
+            ]);
+            $this->supplierId = $create->id;
+            $this->namaSupplier = $create->nama_supplier;
+        }
+    }
+
     public function submit()
     {
+        // dd($this->namaBarang);
         $this->validate();
+        $this->kategoriCek($this->kategori);
+
         $barcode = Str::limit($this->namaBarang, 1, '') . date('Y') . Str::limit($this->merek, 1, '') . date('m') . date('d');
         $barang = Barang::create([
             'serial_number' => $this->serialNumber,
@@ -148,8 +181,7 @@ class BarangMasukCreate extends Component
                 $supplier = Supplier::where('nama_supplier', $this->namaSupplier)->get();
             } else {
                 $supplier = '';
-            }
-            
+            }            
         }
 
         if ($barang && $supplier) {            

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama_supplier');
             $table->string('nama_perusahaan');
-            $table->string('no_tlp');
-            $table->text('alamat');
+            $table->string('no_tlp')->nullable();
+            $table->text('alamat')->nullable();
             $table->timestamps();
         });
     }

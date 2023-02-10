@@ -222,7 +222,7 @@ ol {
    align-items: center;
    width: 100%;
    background-color: $my-neutral-10;
-   border: 1px solid $my-neutral-40;
+   border: 1px solid $my-neutral-50;
    border-radius: 6px;
    box-shadow: $my-shadow-3;
    height: 100%;
@@ -613,7 +613,13 @@ background-color: #3131a3;
 
 
 .sidebar {
-   border-right: 2px solid $my-neutral-50;
+   // border-right: 2px solid $my-neutral-50;
+   // background: #55D0FF; 
+   background: #3a7bd5;
+   // background-color: lighten($my-primary-hover, 10);
+   border-radius: 0 25px 25px 0; 
+   // border: 2px solid #C2C2C2; 
+   // border-left: 0;
 
    .sidebar-header {
       @include flex-box(center, center, row);
@@ -621,7 +627,8 @@ background-color: #3131a3;
 
    .sidebar-body {
       font: $my-text-m-medium;
-      padding: 20px 8px;
+      padding: 20px 0;
+      color: $my-neutral-20;
 
       .sidebar-menu {
          position: relative;
@@ -629,8 +636,8 @@ background-color: #3131a3;
          flex-direction: column;
          align-items: center;
          font: $my-text-m-medium;
-         padding: 2px 12px;
-         margin: 3px 0;
+         padding: 2px 0;
+         margin: 3px 0;         
 
          .menu {
             position: relative;
@@ -639,8 +646,12 @@ background-color: #3131a3;
             align-items: center;
             height: 40px;
             width: 100%;
-            padding: 0 6px 0 6px;
+            padding: 0 20px;
             cursor: pointer;
+
+            img {
+                filter: invert(100%);
+            }
 
             span {
                display: flex;
@@ -650,26 +661,107 @@ background-color: #3131a3;
                max-width: 85%;
                height: 100%;
             }
+
+            a {
+                color: $my-neutral-20;
+
+                &:hover {
+                    color: $my-neutral-100;
+                }
+            }
+
+            &:hover {
+               @include side-menu(false);
+               & img {
+                filter: invert(0%);
+               }
+            }
          }
 
          .sub-menu {
             @include flex-box(start, start, column);
             width: 100%;
-            padding: 6px 0 0 42px;
+            padding: 10px 0 14px 12px;
             overflow: hidden;
+            gap: 2px;
 
             a {
-               color: $my-neutral-100;
+               width: 100%;
+               height: 100%;
+               padding: 5px 0 5px 46px;
+               color: $my-neutral-20;
                font: $my-text-m-regular;
-               margin: 8px 0;
+               border-radius: 10px 0 0 10px;
+               transition: .3s;
+
+               &:hover{
+                  @include side-menu(false);
+               }
+
+               &.active {
+                  @include side-menu(true);
+
+                  &::before {
+                    content: "";  
+                    right: -9.5px;
+                    top: -30px;
+                    display: block;
+                    position: absolute;
+                    border-right: 9px solid #fff;
+                    border-bottom: 9px solid #fff;
+                    width: 39px;
+                    height: 39px;
+                    border-bottom-right-radius: 30px;
+                  }
+                  
+                  &::after {
+                    content: "";
+                    right: -11.5px;
+                    bottom: -30px;
+                    display: block;
+                    position: absolute;
+                    background: ta;
+                    border-right: 9px solid #fff;
+                    border-top: 9px solid #fff;
+                    width: 39px;
+                    height: 39px;
+                    border-top-right-radius: 30px;
+                  }
+               }
             }
 
             &.hide {
                display: none;
                overflow: hidden;
                animation: hide 3s;
-            }                
+            }            
          }
       }
    }
+}
+
+.load-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999999;
+    background-color: $my-primary-surface;
+
+    .load-state-item {
+        color: $my-neutral-90;
+        font-size: 40px;
+        animation: rotate 2s infinite;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

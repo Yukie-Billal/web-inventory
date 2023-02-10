@@ -170,7 +170,7 @@
 </iframe> --}}
 {{-- <livewire:barang-keluar.barang-keluar-home> --}}
 
-@push('body-script')
+@push('script')
 	<script>
 		function displayCalendar(month, year){
     

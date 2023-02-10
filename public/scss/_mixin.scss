@@ -9,3 +9,19 @@
     border: 1px solid $my-neutral-50;
     box-shadow: $my-shadow-3;
 }
+
+@mixin side-menu($active : true) {
+    // if($condition, $if-true, $if-false)
+    @if $active == true {
+        background-color: $my-neutral-10;
+        color: $my-neutral-100;        
+    } @else if $active == false {
+        background-color: $my-neutral-10;
+        color: $my-neutral-100;        
+    } @else {
+        background-color: $my-neutral-10;
+        color: $my-neutral-100;        
+    }
+    position: relative;
+    border-radius: 25px 0 0 25px;
+}

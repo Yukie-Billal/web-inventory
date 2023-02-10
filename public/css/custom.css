@@ -720,7 +720,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   align-items: center;
   width: 100%;
   background-color: #FFFFFF;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #C2C2C2;
   border-radius: 6px;
   box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
   height: 100%;
@@ -1071,7 +1071,8 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 
 .sidebar {
-  border-right: 2px solid #C2C2C2;
+  background: #3a7bd5;
+  border-radius: 0 25px 25px 0;
 }
 .sidebar .sidebar-header {
   display: flex;
@@ -1081,7 +1082,8 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .sidebar .sidebar-body {
   font: 500 14px/20px "Inter", sans-serif;
-  padding: 20px 8px;
+  padding: 20px 0;
+  color: #F5F5F5;
 }
 .sidebar .sidebar-body .sidebar-menu {
   position: relative;
@@ -1089,7 +1091,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   flex-direction: column;
   align-items: center;
   font: 500 14px/20px "Inter", sans-serif;
-  padding: 2px 12px;
+  padding: 2px 0;
   margin: 3px 0;
 }
 .sidebar .sidebar-body .sidebar-menu .menu {
@@ -1099,8 +1101,11 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   align-items: center;
   height: 40px;
   width: 100%;
-  padding: 0 6px 0 6px;
+  padding: 0 20px;
   cursor: pointer;
+}
+.sidebar .sidebar-body .sidebar-menu .menu img {
+  filter: invert(100%);
 }
 .sidebar .sidebar-body .sidebar-menu .menu span {
   display: flex;
@@ -1110,19 +1115,76 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   max-width: 85%;
   height: 100%;
 }
+.sidebar .sidebar-body .sidebar-menu .menu a {
+  color: #F5F5F5;
+}
+.sidebar .sidebar-body .sidebar-menu .menu a:hover {
+  color: #0A0A0A;
+}
+.sidebar .sidebar-body .sidebar-menu .menu:hover {
+  background-color: #FFFFFF;
+  color: #0A0A0A;
+  position: relative;
+  border-radius: 25px 0 0 25px;
+}
+.sidebar .sidebar-body .sidebar-menu .menu:hover img {
+  filter: invert(0%);
+}
 .sidebar .sidebar-body .sidebar-menu .sub-menu {
   display: flex;
   justify-content: start;
   align-items: start;
   flex-direction: column;
   width: 100%;
-  padding: 6px 0 0 42px;
+  padding: 10px 0 14px 12px;
   overflow: hidden;
+  gap: 2px;
 }
 .sidebar .sidebar-body .sidebar-menu .sub-menu a {
-  color: #0A0A0A;
+  width: 100%;
+  height: 100%;
+  padding: 5px 0 5px 46px;
+  color: #F5F5F5;
   font: 400 14px/20px "Inter", sans-serif;
-  margin: 8px 0;
+  border-radius: 10px 0 0 10px;
+  transition: 0.3s;
+}
+.sidebar .sidebar-body .sidebar-menu .sub-menu a:hover {
+  background-color: #FFFFFF;
+  color: #0A0A0A;
+  position: relative;
+  border-radius: 25px 0 0 25px;
+}
+.sidebar .sidebar-body .sidebar-menu .sub-menu a.active {
+  background-color: #FFFFFF;
+  color: #0A0A0A;
+  position: relative;
+  border-radius: 25px 0 0 25px;
+}
+.sidebar .sidebar-body .sidebar-menu .sub-menu a.active::before {
+  content: "";
+  right: -9.5px;
+  top: -30px;
+  display: block;
+  position: absolute;
+  border-right: 9px solid #fff;
+  border-bottom: 9px solid #fff;
+  width: 39px;
+  height: 39px;
+  border-bottom-right-radius: 30px;
+}
+.sidebar .sidebar-body .sidebar-menu .sub-menu a.active::after {
+  content: "";
+  right: -11.5px;
+  bottom: -30px;
+  display: block;
+  position: absolute;
+  background: ta;
+  border-right: 9px solid #fff;
+  border-top: 9px solid #fff;
+  width: 39px;
+  height: 39px;
+  border-top-right-radius: 30px;
 }
 .sidebar .sidebar-body .sidebar-menu .sub-menu.hide {
   display: none;
@@ -1130,6 +1192,30 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   animation: hide 3s;
 }
 
+.load-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999999;
+  background-color: #DFE0F3;
+}
+.load-state .load-state-item {
+  color: #424242;
+  font-size: 40px;
+  animation: rotate 2s infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 body {
   background: rgba(158, 158, 158, 0.6);
 }

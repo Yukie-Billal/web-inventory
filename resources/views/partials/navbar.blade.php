@@ -12,9 +12,9 @@
             <i class="fa fa-user-friends d-flex align-items-center me-2 mb-1" aria-hidden="true" style="font-size: 28px;"></i>
             <span class="text-dark text-l-medium">
                 @if(auth()->user() == null)
-                Nama User
+                    Nama Saya
                 @else
-                {{ auth()->user()->nama }}
+                    {{ auth()->user()->nama }}
                 @endif
             </span>
         </div>
