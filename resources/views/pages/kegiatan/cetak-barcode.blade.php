@@ -29,6 +29,7 @@
 	<iframe id="printing-frame" name="print_frame" src="about:blank" style="display: none;"></iframe>
 
 @endsection
+
 @push('script')
 	<script>
 		function printBarcode() {

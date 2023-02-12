@@ -5,21 +5,25 @@
     <form wire:submit.prevent="addKeranjang">
         <div class="card-body p-0">
             <div class="row">
-                <div class="col-6" wire:ignore>
+                {{-- <div class="col-12" wire:ignore>
                     <div class="form-group" id="serialParent" wire:ignore>
                         <label for="serialNumber" class="text-m-regular">Serial Number</label>
-                        {{-- <input type="text" id="" wire:model.lazy="serialNumber" class="input-form input-form-lg placeholder-m-m" placeholder="Masukkan Serial Number"> --}}
-
                         <select class="select-form" id="serialNumber" onchange="getSerialNum()">
                             @foreach ($barangs as $barang)
                                 <option value="{{ $barang->serial_number }}">{{ $barang->serial_number }}</option>
                             @endforeach
                         </select>
+                    </div>
+                </div>  --}}
+                <div class="col-12">
+                    <div class="form-group p-0">
+                        <label for=""></label>
+                        <input id="autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off" maxlength="2048" tabindex="1">
                         @error('serialNumber')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="row my-4">
                 <div class="col-12" wire:ignore>
@@ -53,20 +57,66 @@
     </form>    
 </div>
 
+@foreach ($barangs as $barang)
+    <input type="hidden" class="barangList input-form" value="{{ $barang->barcode .'  --  '. $barang->nama_barang .'  --  '.$barang->serial_number }}">
+@endforeach
 
 @push('script')
-    <script>
-        $(document).ready(function() {
-            $('#searchNamaBarang').select2({
-                dropdownParent: $('#namaParent'),
-            });
-
-            $('#serialNumber').select2({
-                tags: true,
-                dropdownParent: $('#serialParent'),
-            });
+    <script>            
+        var dataList = document.querySelectorAll('input.barangList');
+        var array = [];
+        dataList.forEach((item) => {
+            array.push(item.value);
         });
-
+        const autoCompleteJS = new autoComplete({ 
+            selector: "#autoComplete",
+            placeHolder: "Search for Food...",
+            data: {
+                src: array,
+                cache: true,
+            },
+            resultsList: {
+                element: (list, data) => {
+                    if (!data.results.length) {
+                        // Create "No Results" message element
+                        const message = document.createElement("div");
+                        // Add class to the created element
+                        message.setAttribute("class", "no_result");
+                        // Add message text content
+                        message.innerHTML = `<span>Found No Results for "${data.query}"</span>`;
+                        // Append message element to the results list
+                        list.prepend(message);
+                    }
+                },
+                element: (list, data) => {
+                    if (!data.results.length) {
+                        // Create "No Results" message list element
+                        const message = document.createElement("div");
+                        message.setAttribute("class", "no_result");
+                        // Add message text content
+                        message.innerHTML = `<span>Found No Results for "${data.query}"</span>`;
+                        // Add message list element to the list
+                        list.appendChild(message);
+                    }
+                },
+                noResults: true,
+            },
+            resultItem: {
+                highlight: true
+            },
+            
+            events: {
+                input: {
+                    selection: (event) => {
+                        const selection = event.detail.selection.value;
+                        autoCompleteJS.input.value = selection;
+                        console.log(selection);
+                    }
+                }
+            }
+         });
+    </script>
+    <script>
         function getSerialNum() {
             const value = document.querySelector('#serialNumber').value;
             const params = ['serial', value];

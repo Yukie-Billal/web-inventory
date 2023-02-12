@@ -1,5 +1,6 @@
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script defer src="{{ asset('vendor/alpinejs/alpine.min.js') }}"></script>
+<script src="{{ asset('vendor/sweetAlert/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('vendor/autoCompleteJs/autoComplete.min.js') }}"></script>
 
 <script type="text/javascript">
   let menu = document.querySelectorAll('.sidebar-menu .menu');
@@ -23,7 +24,7 @@
   // menu.forEach((item) => {
   //     item.addEventListener('click', myFunction);
   // });
-
+  
   const loader  = document.querySelector('#loader');
   setTimeout(() => {    
     loader.style.display = 'none';

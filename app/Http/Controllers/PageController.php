@@ -13,7 +13,10 @@ class PageController extends Controller
 {
     public function index()
     {
-        // return Http::get('https://laravel.com');
+        $response =  Http::get('https://api.rajaongkir.com/starter/city?key=44002ba3da0066f14333896a3ec6c9f2');
+
+        $response->json()['rajaongkir'];
+
         return view('pages.dashboard');
     }   
 
