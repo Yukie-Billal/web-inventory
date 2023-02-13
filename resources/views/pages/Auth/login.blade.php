@@ -45,7 +45,6 @@
         @livewireScripts
 
         @if (session()->has('registered'))
-            {{ session('registered')->nama }}
             @php
                 $nama = session('registered')->nama;
                 $email = session('registered')->email;

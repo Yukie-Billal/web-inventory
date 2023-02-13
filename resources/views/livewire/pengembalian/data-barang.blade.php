@@ -2,9 +2,10 @@
     <div class="card-header bg-white border-0">
         <span class="header-s mb-2">Barang Yang Baru Di Pinjam</span>
     </div>
-    <div class="card-body p-0 border-neutral-40-2 rounded">
-        <table class="table table-hover table-responsive">
-            <thead class="border-neutral-40">
+    <div class="card-body p-0">
+      <div class="col-12 p-0 rounded border-neutral-40-2">
+         <table class="table table-hover table-responsive">
+            <thead>
                <tr>
                   <th>Serial Number</th>
                   <th>Nama Barang</th>
@@ -31,5 +32,6 @@
                @endforeach
             </tbody>
          </table>
+      </div>
     </div>
 </div>

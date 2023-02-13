@@ -427,3 +427,13 @@
 .inner-shadow {
    @include shadow-inner;
 }
+
+.mh-md {
+  min-height: 150px;
+}
+.mh-lg {
+  min-height: 250px;
+}
+.mh-xl {
+  min-height: 350px;
+}

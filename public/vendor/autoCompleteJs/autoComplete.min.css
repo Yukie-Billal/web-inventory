@@ -60,6 +60,7 @@
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
+    font: 400 16px/20px "Inter", sans-serif;
     transition:all .2s ease
 }
 .autoComplete_wrapper>ul>li::selection{

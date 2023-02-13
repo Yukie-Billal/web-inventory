@@ -525,9 +525,18 @@
   box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.08);
 }
 
-.card {
+.mh-md {
+  min-height: 150px;
+}
+
+.mh-lg {
   min-height: 250px;
 }
+
+.mh-xl {
+  min-height: 350px;
+}
+
 .card .table {
   height: 100%;
 }
@@ -824,7 +833,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-primary {
   background-color: #4C4DDC;
-  outline: 2px solid #DFE0F3;
+  outline: none;
 }
 .button.button-primary:hover {
   background-color: #3334CC;
@@ -834,7 +843,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-success {
   background-color: #43936C;
-  outline: 2px solid #F7F7F7;
+  outline: none;
 }
 .button.button-success:hover {
   background-color: #367A59;
@@ -844,7 +853,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-warning {
   background-color: #CD7B2E;
-  outline: 2px solid #FFF9F2;
+  outline: none;
 }
 .button.button-warning:hover {
   background-color: #BF6919;
@@ -854,7 +863,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-danger {
   background-color: #CB3A31;
-  outline: 2px solid #FFF4F2;
+  outline: none;
 }
 .button.button-danger:hover {
   background-color: #BD251C;
@@ -864,7 +873,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-info {
   background-color: #3267E3;
-  outline: 2px solid #F0F3FF;
+  outline: none;
 }
 .button.button-info:hover {
   background-color: #114CD6;
@@ -874,17 +883,17 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-dark {
   background-color: #424242;
-  outline: 2px solid #C2C2C2;
+  outline: none;
 }
 .button.button-dark:hover {
   background-color: rgba(10, 10, 10, 0.8666666667);
 }
 .button.button-dark:focus {
-  background-color: #9E9E9E;
+  background-color: rgba(10, 10, 10, 0.8666666667);
 }
 .button.button-light {
   background-color: #E0E0E0;
-  outline: 2px solid #ededed;
+  outline: none;
 }
 .button.button-light:hover {
   background-color: #d1d1d1;

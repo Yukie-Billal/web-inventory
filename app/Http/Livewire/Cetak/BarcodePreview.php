@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Cetak;
 use Livewire\Component;
 use App\Models\BarcodeKeranjang;
 
-class BarcodePrint extends Component
+class BarcodePreview extends Component
 {
     public $jumlah = 1;
 
@@ -15,7 +15,7 @@ class BarcodePrint extends Component
 
     public function render()
     {
-        return view('livewire.cetak.barcode-print', [
+        return view('livewire.cetak.barcode-preview', [
             'barcodes' => BarcodeKeranjang::all()
         ]);
     }

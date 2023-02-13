@@ -36,7 +36,7 @@
     
 
     @include('partials.source.normal-script')
-    @livewireScripts    
+    @livewireScripts
     @stack('script-livewire')
     @stack('script')  
 </body>

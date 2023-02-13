@@ -14,26 +14,35 @@
 		</div>
 	</div>
 
-	<hr class="text-neutral-50 my-4">
+	<hr class="text-neutral-50 my-2">
 
-	<livewire:barcode-preview />
-
-	{{-- This Livewire Component Will Print where cetak is clicked --}}
-	<div class="modal fade" id="modalPrintBarcode">
-	  <div class="modal-dialog modal-xl">
-	      <livewire:cetak.barcode-print />
-	  </div>
-	</div>
+	<livewire:cetak.keranjang-barcode />
 
 	{{-- <a href="javascript:printBarcode()" class="button button-info">Print</a> --}}
-	<iframe id="printing-frame" name="print_frame" src="about:blank" style="display: none;"></iframe>
+	<div class="row justify-content-center">
+		<div class="col-10 d-flex mb-3" style="gap: 3px;">
+			<button type="button" x-on:click="$wire.emit('404')" class="button button-info text-white">
+				Update
+			</button>
+			<button type="button" x-on:click="$wire.emit('404')" class="button button-danger text-white">
+				Reset
+			</button>
+			<button type="button" onclick="printBarcode()" class="button button-success text-white">
+				Print
+			</button>
+		</div>
+		<div class="col-10 border-neutral-40-2 d-flex justify-content-center bg-danger" id="previewBarcode">
+		   	<livewire:cetak.barcode-preview />
+		</div>
+	</div>
+	<iframe id="printing-frame" class="d-none" name="print_frame"></iframe>
 
 @endsection
 
 @push('script')
 	<script>
 		function printBarcode() {
-			var isi = document.querySelector('#modalPrintBarcode .modal-dialog').innerHTML;
+			var isi = document.querySelector('#previewBarcode').innerHTML;
 			window.frames["print_frame"].document.title = document.title;
 			window.frames["print_frame"].document.body.innerHTML = isi;
 			window.frames["print_frame"].window.focus();

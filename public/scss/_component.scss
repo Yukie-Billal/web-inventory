@@ -1,5 +1,4 @@
 .card {
-    min-height: 250px;
     .table {
         height: 100%;
         tr:last-child td {
@@ -330,79 +329,87 @@ ol {
 
     &.button-primary {
         background-color: $my-primary-main;
-        outline: 2px solid $my-primary-surface;
-
+        outline: none;
+        
         &:hover {
+
             background-color: $my-primary-hover;
         }
 
         &:focus {
+            // outline: 2px solid rgba($my-primary-hover, .5);
             background-color: $my-primary-hover;
         }
     }
     &.button-success {
         background-color: $my-success-main;
-        outline: 2px solid $my-success-surface;
+        outline: none;
 
         &:hover {
             background-color: $my-success-hover;
         }
         &:focus {
+            // outline: 2px solid rgba($my-success-hover, .5);
             background-color: $my-success-hover;
         }
     }
     &.button-warning {
         background-color: $my-warning-main;
-        outline: 2px solid $my-warning-surface;
+        outline: none;
 
         &:hover {
             background-color: $my-warning-hover;
         }
         &:focus {
+            // outline: 2px solid rgba($my-warning-hover, .5);
             background-color: $my-warning-hover;
         }
     }
     &.button-danger {
         background-color: $my-danger-main;
-        outline: 2px solid $my-danger-surface;
+        outline: none;
 
         &:hover {
             background-color: $my-danger-hover;
         }
         &:focus {
+            // outline: 2px solid rgba($my-danger-hover, .5);
             background-color: $my-danger-hover;
         }
     }
     &.button-info {
         background-color: $my-info-main;
-        outline: 2px solid $my-info-surface;
+        outline: none;
 
         &:hover {
             background-color: $my-info-hover;
         }
         &:focus {
+            // outline: 2px solid rgba($my-info-hover, .5);
             background-color: $my-info-hover;
         }
     }
     &.button-dark {
         background-color: $my-dark-main;
-        outline: 2px solid $my-dark-surface;
+        outline: none;
 
         &:hover {
             background-color: $my-dark-hover;
         }
         &:focus {
-            background-color: $my-neutral-60;
+            // outline: 2px solid rgba($my-dark-hover, .5);
+            background-color: $my-dark-hover;
         }
     }
     &.button-light {
         background-color: $my-neutral-40;
-        outline: 2px solid lighten($my-neutral-40, 5);
+        outline: none;
 
         &:hover {
             background-color: darken($my-neutral-40, 6);
         }
         &:focus {
+            // outline: 2px solid lighten($my-neutral-40, 5);
             background-color: darken($my-neutral-40, 6);
         }
     }

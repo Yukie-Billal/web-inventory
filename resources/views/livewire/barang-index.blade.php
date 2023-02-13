@@ -40,7 +40,6 @@
                         <th>Satuan</th>
                         <th>Stok</th>
                         <th style="min-width: 30px;"></th>
-                        <th style="min-width: 30px;"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,21 +67,6 @@
                                 <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editBarang({{ $barang->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2">
                                 <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteConfirm({{ $barang->id }})'>
                             </td>
-                            <td>
-                                <a href="/print/barcode/{{ $barang->id }}" class="button button-primary text-white px-0">
-                                    Cetak
-                                    <i class="fa fa-barcode"></i>
-                                </a>{{-- 
-                                <a href="/pdf/barcode/{{ $barang->id }}" target="_blank" class="button button-primary text-white px-0">
-                                    Cetak 
-                                    <i class="fa fa-barcode"></i>
-                                </a> --}}
-                            </td>
-                            {{-- <td> --}}
-                                {{-- {{ $barang->nama_barang }}        
-                                {!! '<img src="data:image/png,' . DNS1D::getBarcodePNG('4', 'C39+') . '" alt="barcode"   />' !!}
-                                <div>{{ $barang->barcode }}</div> --}}
-                            {{-- </td> --}}
                         </tr>
                         @endforeach
                     @endif

@@ -6,16 +6,12 @@ use Livewire\Component;
 use App\Models\Barang;
 use App\Models\BarcodeKeranjang;
 use App\Models\Supplier;
+use Illuminate\Support\Str;
 
 class BarcodeCreate extends Component
 {
     public $barangId;
     public $kodeBarang;
-    public $namaBarang;
-    public $merek;
-    public $kategori;
-    public $warna;
-    public $satuan;
     public $serialNumber;
     public $jumlah = 1;
 
@@ -26,44 +22,15 @@ class BarcodeCreate extends Component
     public function setBarcode($params)
     {
         if ($params[0] == 'serial' ) {
-            $data = Barang::where('serial_number', $params[1])->get();
-
-            if ($data == '[]') {
-                $this->emit("404", 'Barang Tidak Ditemukan');
+            $idBarang = Str::afterLast($params[1], '-');
+            $data = Barang::find($idBarang);
+            if ($data) {
+                $this->barangId = $data->id;
             } else {
-                $serial = $data[0];
-
-                $create = BarcodeKeranjang::create([
-                    'barang_id' => $serial->id,
-                    'barcode' => $serial->barcode,
-                    'jumlah' => $this->jumlah,
-                ]);
-                if ($create) {
-                    $this->emit('200', 'Berhasil Disimpan');
-                } else {
-                    $this->emit('500', 'Terjadi Kelasahan');
-                }
+                $this->emit("404", 'Barang Tidak Ditemukan');
             }
         } else {
-            if ($params[0] == 'nama') {    
-                $barang = Barang::find($id);
-                if ($barang) {
-                    if ($barang->kategori == '' || $barang->kategori == '[]') {
-                        $this->emit('500', 'Terjadi Kesalahan Server, Tunggu Beberapa saat');
-                    } else {
-                        $this->barangId = $id;
-                        $this->serialNumber = $barang->serial_number;
-                        $this->kodeBarang = $barang->barcode;
-                        $this->namaBarang = $barang->nama_barang;
-                        $this->merek = $barang->merek;
-                        $this->warna = $barang->warna;
-                        $this->kategori = $barang->kategori->nama_kategori;
-                        $this->satuan = $barang->satuan;
-                    }
-                } else {
-                    $this->emit("404", 'Barang Tidak Ditemukan');
-                }
-            }
+            $this->emit('404', 'Barang Tidak Ditemukan');
         }
     }
 
@@ -73,8 +40,6 @@ class BarcodeCreate extends Component
         $this->serialNumber = '';
         $this->kodeBarang = '';
         $this->namaBarang = '';
-        $this->merek = '';
-        $this->warna = '';
         $this->kategori = '';
         $this->satuan = '';
     }
@@ -82,7 +47,6 @@ class BarcodeCreate extends Component
     public function addKeranjang()
     {
         $barang = Barang::find($this->barangId);
-
         if ($barang) {
             $create = BarcodeKeranjang::create([
                 'barang_id' => $barang->id,
@@ -90,21 +54,20 @@ class BarcodeCreate extends Component
                 'jumlah' => $this->jumlah,
             ]);
             if ($create) {
-                $this->emit('200', 'Berhasil Disimpan');
+                $this->emit('200');
             } else {
                 $this->emit('500', 'Terjadi Kelasahan');
             }
         } else {
             $this->emit('400', 'Barang Tidak Ada, Silahkan Isi kembali');
         }
-
-        $this->clear();
+        // $this->clear();
     }
 
     public function render()
     {
         return view('livewire.cetak.barcode-create', [
-            'barangs' => Barang::orderByDesc('nama_barang')->get(),
+            'barangs' => Barang::orderByDesc('created_at')->orderByDesc('nama_barang')->get(),
             'suppliers' => Supplier::all(),
         ]);
     }

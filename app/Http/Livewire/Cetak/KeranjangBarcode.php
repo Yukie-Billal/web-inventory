@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Cetak;
 
 use Livewire\Component;
 use App\Models\BarcodeKeranjang;
 
-class BarcodePreview extends Component
+class KeranjangBarcode extends Component
 {
     protected $listeners = [
-        'fresh' => 'render'
+        'fresh' => 'render',
+        'deleteItem',
     ];
 
     public function deleteItem($id)
@@ -26,7 +27,7 @@ class BarcodePreview extends Component
 
     public function render()
     {
-        return view('livewire.barcode-preview', [
+        return view('livewire.cetak.keranjang-barcode', [
             'barcodes' => BarcodeKeranjang::orderByDesc('created_at')->get(),
         ]);
     }
