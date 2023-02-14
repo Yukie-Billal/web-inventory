@@ -10,12 +10,12 @@
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                <td2v>
+                </div>
             </div>
             <div class="row justify-content-end mt-3 pe-0">
                 <div class="col-3 d-flex justify-content-end pe-4">
-                    <button class="button button-success text-white text-m-medium">
-                        <i class="fa fa-plus me-2"></i>
+                    <button class="button button-success">
+                        <img src="{{ asset('icon/konfirmasi.png') }}" alt=".." height="20px" width="20px">
                         Tambah
                     </button>
                 </div>
@@ -25,7 +25,7 @@
 </div>
 
 @foreach ($barangs as $barang)
-    <input type="hidden" class="barangList input-form" value="{{ $barang->barcode .'  --  '. $barang->nama_barang .'  --  '.$barang->serial_number .'  -'.$barang->id }}">
+    <input type="hidden" class="barangList input-form" value="{{ $barang->kode_barang .'  --  '. $barang->nama_barang .'  --  '.$barang->serial_number .'  -'.$barang->id }}">
 @endforeach
 
 @push('script')

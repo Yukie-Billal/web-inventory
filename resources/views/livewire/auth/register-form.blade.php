@@ -29,7 +29,7 @@
     </div>
     <div class="form-group">
         <label for="confirmPassword" class="ms-1 mb-1 text-m-regular">Konfirmasi Password</label>
-        <input type="confirmPassword" wire:model.lazy='confirmPassword' name="confirmPassword" class="input-form input-form-md placeholder-m-r @error('confirmPassword') is-invalid @enderror" placeholder="Konfirmasi Password Anda">
+        <input type="password" wire:model.lazy='confirmPassword' name="confirmPassword" class="input-form input-form-md placeholder-m-r @error('confirmPassword') is-invalid @enderror" placeholder="Konfirmasi Password Anda">
         @error('confirmPassword')
         <div class="invalid-feedback text-s-regular">
           {{ $message }}

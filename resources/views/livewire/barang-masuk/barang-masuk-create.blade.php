@@ -116,7 +116,7 @@
                                 <label for="namaSupplier" class="text-m-regular">Nama Supplier</label>
                                 <select id="namaSupplier"
                                     class="select-form @error('namaSupplier') is-invalid @enderror"
-                                    onchange="getInput()" 
+                                    onchange="getSupplier()" 
                                 >
                                     @foreach ($suppliers as $supplier)
                                         <option value="{{ $supplier->id }}" class="text-m-regular">{{ $supplier->nama_supplier }}</option>
@@ -208,20 +208,11 @@
             });    
         });
 
-        Livewire.on('getSupplier', () => {
-            const input = document.querySelector('#namaSupplier');
-            const nama = input.value;
-            const params = [false, input, nama];
-            console.log(params);
-            Livewire.emit('setSupplier', params);
-        });
-
         const input = document.querySelector('#namaSupplier');
         const option = document.querySelectorAll('.input-option option');
 
-        function getInput() {
+        function getSupplier() {
             var id = input.value;
-            console.log(id);
             Livewire.emit('setSupplier', id);
         }
     </script>

@@ -79,9 +79,22 @@ class BarangMasukCreate extends Component
             $this->noTlp = $supplier->no_tlp;
             $this->s_baru = false;
         } else {
-            $this->clear('supp');
-            $this->namaSupplier = $id;            
-            $this->s_baru = true;
+
+            $cekNama = Supplier::where('nama_supplier', $id)->get();
+
+            if ($cekNama->count() >= 1) {
+                $supplier = $cekNama[0];
+                $this->supplierId = $supplier->id;
+                $this->namaSupplier = $supplier->nama_supplier;
+                $this->namaPerusahaan = $supplier->nama_perusahaan;
+                $this->alamatSupplier = $supplier->alamat;
+                $this->noTlp = $supplier->no_tlp;
+                $this->s_baru = false;
+            } else {
+                $this->clear('supp');
+                $this->namaSupplier = $id;
+                $this->s_baru = true;            
+            }
         }
     }
 
@@ -157,10 +170,10 @@ class BarangMasukCreate extends Component
         $this->validate();
         $this->kategoriCek($this->kategori);
 
-        $barcode = Str::limit($this->namaBarang, 1, '') . date('Y') . Str::limit($this->merek, 1, '') . date('m') . date('d');
+        $barcode = Str::limit($this->namaBarang, 1, '') . date('Y') .'-'. Str::limit($this->merek, 1, '') . date('m') . date('d');
         $barang = Barang::create([
             'serial_number' => $this->serialNumber,
-            'barcode' => $barcode,
+            'kode_barang' => $barcode,
             'nama_barang' => $this->namaBarang,
             'merek' => $this->merek,
             'warna' => $this->warna,
@@ -187,7 +200,7 @@ class BarangMasukCreate extends Component
         if ($barang && $supplier) {            
             $barangMasuk = BarangMasuk::create([
                 'serial_number' => $this->serialNumber,
-                'barcode' => $barcode,
+                'kode_barang' => $barcode,
                 'nama_barang' => $this->namaBarang,
                 'merek' => $this->merek,
                 'warna' => $this->warna,

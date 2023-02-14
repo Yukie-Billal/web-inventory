@@ -10,7 +10,7 @@
                                 <th>Merek</th>
                                 <th>Warna</th>
                                 <th>Kategori</th>
-                                <th>Jumlah</th>
+                                <th class="text-center" style="max-width: 40px;">Jumlah</th>
                                 <th style="min-width: 10px;"></th>
                             </tr>
                         </thead>

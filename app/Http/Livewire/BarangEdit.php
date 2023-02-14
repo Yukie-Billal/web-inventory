@@ -69,7 +69,7 @@ class BarangEdit extends Component
     {
         $this->idBarang = $barangEdit['id'];
         $this->serialNumber = $barangEdit['serial_number'];
-        $this->barcode = $barangEdit['barcode'];
+        $this->barcode = $barangEdit['kode_barang'];
         $this->namaBarang = $barangEdit['nama_barang'];
         $this->merek = $barangEdit['merek'];
         $this->warna = $barangEdit['warna'];
@@ -84,7 +84,7 @@ class BarangEdit extends Component
 
         $barang->update([
             'serial_number' => $this->serialNumber,
-            'barcode' => $this->barcode,
+            'kode_barang' => $this->barcode,
             'nama_barang' => $this->namaBarang,
             'merek' => $this->merek,
             'warna' => $this->warna,

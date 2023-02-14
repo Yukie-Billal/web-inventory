@@ -18,25 +18,24 @@
 
 	<livewire:cetak.keranjang-barcode />
 
-	{{-- <a href="javascript:printBarcode()" class="button button-info">Print</a> --}}
 	<div class="row justify-content-center">
 		<div class="col-10 d-flex mb-3" style="gap: 3px;">
-			<button type="button" x-on:click="$wire.emit('404')" class="button button-info text-white">
-				Update
+			<button type="button" id="buttonUpdate"  class="button button-info">
+				<i class="fa-solid fa-rotate-right me-1"></i>
+			  	Update
 			</button>
-			<button type="button" x-on:click="$wire.emit('404')" class="button button-danger text-white">
-				Reset
+			<button type="button" id="buttonReset" class="button button-danger">
+				<i class="fa-solid fa-power-off me-1"></i>
+			   Reset
 			</button>
-			<button type="button" onclick="printBarcode()" class="button button-success text-white">
-				Print
+			<button type="button" id="buttonPrint" class="button button-success">
+				<i class="fa fa-print me-1"></i>
+			   Print
 			</button>
 		</div>
-		<div class="col-10 border-neutral-40-2 d-flex justify-content-center bg-danger" id="previewBarcode">
-		   	<livewire:cetak.barcode-preview />
-		</div>
+		<livewire:cetak.barcode-preview />
 	</div>
 	<iframe id="printing-frame" class="d-none" name="print_frame"></iframe>
-
 @endsection
 
 @push('script')
@@ -49,7 +48,18 @@
 			window.frames["print_frame"].window.print();
 		}
 
-		// document.querySelector('#buttonPrint').onclick = printBarcode();
-		$('#buttonPrint').on('click', printBarcode);
+		$(document).ready(function(e) {
+			$('#buttonPrint').on('click', printBarcode);
+			$('#buttonUpdate').on('click', function(e) {
+				e.preventDefault();
+				Livewire.emit('updatePreview');
+			});
+			$('#buttonReset').on('click', function(e) {
+				e.preventDefault();
+				setTimeout(() => {
+					Livewire.emit('resetBarcode');
+				}, 500);
+			});
+		});
 	</script>
 @endpush

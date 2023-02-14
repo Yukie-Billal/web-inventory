@@ -313,6 +313,7 @@ ol {
     transition: .3s;
     cursor: pointer;
     outline: 2px solid $my-neutral-40;
+    font: $my-text-m-medium;
 
     &.button-sm {
         height: 28px;
@@ -330,6 +331,7 @@ ol {
     &.button-primary {
         background-color: $my-primary-main;
         outline: none;
+        color: white;
         
         &:hover {
 
@@ -344,6 +346,7 @@ ol {
     &.button-success {
         background-color: $my-success-main;
         outline: none;
+        color: white;
 
         &:hover {
             background-color: $my-success-hover;
@@ -356,6 +359,7 @@ ol {
     &.button-warning {
         background-color: $my-warning-main;
         outline: none;
+        color: white;
 
         &:hover {
             background-color: $my-warning-hover;
@@ -368,6 +372,7 @@ ol {
     &.button-danger {
         background-color: $my-danger-main;
         outline: none;
+        color: white;
 
         &:hover {
             background-color: $my-danger-hover;
@@ -380,6 +385,7 @@ ol {
     &.button-info {
         background-color: $my-info-main;
         outline: none;
+        color: white;
 
         &:hover {
             background-color: $my-info-hover;
@@ -392,6 +398,7 @@ ol {
     &.button-dark {
         background-color: $my-dark-main;
         outline: none;
+        color: white;
 
         &:hover {
             background-color: $my-dark-hover;
@@ -404,6 +411,7 @@ ol {
     &.button-light {
         background-color: $my-neutral-40;
         outline: none;
+        color: white;
 
         &:hover {
             background-color: darken($my-neutral-40, 6);
@@ -655,6 +663,7 @@ background-color: #3131a3;
             width: 100%;
             padding: 0 20px;
             cursor: pointer;
+            border-radius: 10px 0 0 10px;
 
             img {
                 filter: invert(100%);
@@ -667,30 +676,27 @@ background-color: #3131a3;
                min-width: 80%;
                max-width: 85%;
                height: 100%;
-            }
-
-            a {
-                color: $my-neutral-20;
-
-                &:hover {
-                    color: $my-neutral-100;
-                }
+               color: $my-neutral-20;                
             }
 
             &:hover {
                @include side-menu(false);
+
                & img {
                 filter: invert(0%);
                }
+                & span {
+                  color: $my-neutral-100;
+                }
             }
          }
 
          .sub-menu {
             @include flex-box(start, start, column);
             width: 100%;
-            padding: 10px 0 14px 12px;
+            padding: 14px 0 14px 12px;
             overflow: hidden;
-            gap: 2px;
+            gap: 2px;            
 
             a {
                width: 100%;

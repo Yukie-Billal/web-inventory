@@ -17,6 +17,7 @@ class BarcodeCreate extends Component
 
     protected $listeners = [
         'setBarcode',
+        'barcodeReseted'
     ];
 
     public function setBarcode($params)
@@ -32,6 +33,11 @@ class BarcodeCreate extends Component
         } else {
             $this->emit('404', 'Barang Tidak Ditemukan');
         }
+    }
+
+    public function barcodeReseted()
+    {
+        // code...
     }
 
     public function clear()
@@ -50,7 +56,7 @@ class BarcodeCreate extends Component
         if ($barang) {
             $create = BarcodeKeranjang::create([
                 'barang_id' => $barang->id,
-                'barcode' => $barang->barcode,
+                'barcode' => $barang->kode_barang,
                 'jumlah' => $this->jumlah,
             ]);
             if ($create) {

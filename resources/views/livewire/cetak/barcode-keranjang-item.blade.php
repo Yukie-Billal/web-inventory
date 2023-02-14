@@ -7,8 +7,8 @@
     @else
     <td><i>Null</i></td>
     @endif
-    <td style="max-width: 12px;">
-        <input type="text" wire:model.debounce.500ms='jumlah' style="background: transparent; border: none; width: 50%;" value="{{ $barcode->jumlah }}">
+    <td style="max-width: 40px;">
+        <input type="text" wire:model.debounce.500ms='jumlah' class="input-form border-neutral-40-1 bg-white text-center" style="background: transparent; width: 100%; height: 20px" value="{{ $barcode->jumlah }}">
     </td>
     <td style="max-width: 40px;">
         <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='$emit("confirmDelete", {{ $barcode->id }})'>

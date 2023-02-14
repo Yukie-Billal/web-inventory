@@ -29,21 +29,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    Route::get('/barangs', [PageController::class, 'barang']);
-    Route::get('/barang-masuks', [PageController::class, 'barangMasuk']);
-    Route::get('/pinjams-kembalis', [PageController::class, 'pinjam_kembali']);
-    Route::get('/suppliers-users', [PageController::class, 'supplier_user']);
+    // Route::middleware(['IsAdmin'])->group(function () {
+        Route::get('/barangs', [PageController::class, 'barang']);
+        Route::get('/barang-masuks', [PageController::class, 'barangMasuk']);
+        Route::get('/pinjams-kembalis', [PageController::class, 'pinjam_kembali']);
+        Route::get('/suppliers-users', [PageController::class, 'supplier_user']);
 
-    Route::get('/peminjamans', [PageController::class, 'peminjaman']);
-    Route::get('/pengembalians', [PageController::class, 'pengembalian']);
-    Route::get('/masuk-barangs', [PageController::class, 'masuk_barang']);
-    Route::get('/cetak-barcodes', [PageController::class, 'cetak_barcode']);
-});
+        Route::get('/peminjamans', [PageController::class, 'peminjaman']);
+        Route::get('/pengembalians', [PageController::class, 'pengembalian']);
+        Route::get('/masuk-barangs', [PageController::class, 'masuk_barang']);
+        Route::get('/cetak-barcodes', [PageController::class, 'cetak_barcode']);
 
-Route::get('/pdf/barcode/{barang}/', [ExportController::class, 'barcode_pdf']);
-Route::get('/print/barcode/{barang}', [PrinterController::class, 'print_barcode']);
-
-Route::get('/coba', function ()
-{
-    return view('coba');
+        Route::get('/pdf/barcode/{barang}/', [ExportController::class, 'barcode_pdf']);
+        Route::get('/print/barcode/{barang}', [PrinterController::class, 'print_barcode']);
+    // });
 });

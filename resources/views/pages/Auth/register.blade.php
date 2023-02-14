@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
-    <title>Login - Web Inventory</title>
+    <title>Register - Web Inventory</title>
     @livewireStyles
 </head>
 <body>

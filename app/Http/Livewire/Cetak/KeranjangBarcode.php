@@ -10,7 +10,13 @@ class KeranjangBarcode extends Component
     protected $listeners = [
         'fresh' => 'render',
         'deleteItem',
+        'barcodeReseted',
     ];
+
+    public function barcodeReseted()
+    {
+        // code...
+    }
 
     public function deleteItem($id)
     {
@@ -18,7 +24,7 @@ class KeranjangBarcode extends Component
 
         if ($item) {
             $item->delete();
-            $this->emit('200', 'Berhasil Menghapus');
+            $this->emit('deletedItem', 'Berhasil Menghapus');            
         } else {
             $this->emit('400', 'Item Tidak Ditemukan');
         }
@@ -28,7 +34,7 @@ class KeranjangBarcode extends Component
     public function render()
     {
         return view('livewire.cetak.keranjang-barcode', [
-            'barcodes' => BarcodeKeranjang::orderByDesc('created_at')->get(),
+            'barcodes' => BarcodeKeranjang::orderBy('created_at', 'asc')->get(),
         ]);
     }
 }

@@ -1,29 +1,24 @@
-<table class="table table-responsive">
-    <tr style="border: none;">
+<div class="col-10 border-neutral-40-2 d-flex flex-column   align-items-center py-4" style="min-height: 300px;" id="previewBarcode">
     @foreach ($barcodes as $barcode)
-        @for ($i = 0; $i < $barcode->jumlah; $i++)
-            <td style="padding: 10px; border: none;">{!! DNS1D::getBarcodeSVG($barcode->barcode, 'C39', 1, 66) !!}</td>
-            @if (($i+1) % 4 == 0)
-                </tr><tr>
-            @endif
-        @endfor
+    <div class="card-flex-fill boder-0">
+        <div class="card-header bg-white border-0">
+            <p class="header-s text-center">{{ $barcode->barang->nama_barang . ' - ' . $barcode->barang->merek }}</p>
+        </div>
+        <div class="card-body border-0">
+            <table class="table table-responsive">
+                <tr style="border: none;">
+                    @for ($i = 0; $i < $barcode->jumlah; $i++)
+                        <td style="padding: 10px; border: none;" class="text-center text-m-regular">
+                            {{ $barcode->barang->nama_barang }}
+                            {!! DNS1D::getBarcodeSVG($barcode->barcode, 'C39', .85, 66) !!}
+                        </td>
+                        @if (($i+1) % 4 == 0)
+                            </tr><tr>
+                        @endif
+                    @endfor
+                </tr>
+            </table>
+        </div>
+    </div>
     @endforeach
-    </tr>
-</table>
-
-{{-- @foreach ($barcodes as $barcode)
-    @for ($i = 0; $i < $barcode->jumlah; $i++)
-            {!! DNS1D::getBarcodeSVG($barcode->barcode, 'C39', 1, 66) !!}
-        @if (($i+1) % 4 == 0)
-            
-        @endif
-    @endfor
-@endforeach --}}
-
-@push('script')
-    <script>
-        Livewire.on('200', function () {
-           Livewire.emit('addBarcode'); 
-        });
-    </script>
-@endpush
+</div>
