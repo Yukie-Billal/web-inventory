@@ -61,7 +61,12 @@ class BarangIndex extends Component
             $this->render();
         }
         if ($params[0] == 'kategori') {
-            $this->filter_kategori = $params[1];
+            if ($params[1] == true) {
+                $this->filter_kategori = $params[1];
+            } else {
+                $this->filter_kategori = '';
+            }
+            $this->filter_merek = '';
         }
         if ($params[0] == 'merek') {
             $this->filter_merek = $params[1];
@@ -105,12 +110,12 @@ class BarangIndex extends Component
         $barangs = Barang::orderByDesc('nama_barang')->orderByDesc('created_at');
 
         // Filter
-        if ($this->filter_merek != null) {
-            $barangs->where('merek', $this->filter_merek);
-        }
         if ($this->filter_kategori != null) {
             $barangs->where('kategori_id', $this->filter_kategori);
             $merek->where('kategori_id', $this->filter_kategori);
+        }
+        if ($this->filter_merek != null) {
+            $barangs->where('merek', $this->filter_merek);
         }
 
         if ($this->search != null) {

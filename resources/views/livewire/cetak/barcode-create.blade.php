@@ -25,7 +25,7 @@
 </div>
 
 @foreach ($barangs as $barang)
-    <input type="hidden" class="barangList input-form" value="{{ $barang->kode_barang .'  --  '. $barang->nama_barang .'  --  '.$barang->serial_number .'  -'.$barang->id }}">
+    <input type="hidden" class="barangList input-form" value="{{ $barang->kode_barang .' -- '. $barang->nama_barang .' -- '.$barang->serial_number .' -- '. $barang->merek .' -- '. $barang->warna .'  -'.$barang->id }}">
 @endforeach
 
 @push('script')

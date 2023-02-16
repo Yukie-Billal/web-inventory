@@ -6,7 +6,7 @@
                     <div class="col-6 pe-2">
                         <select class="select-form" id="filterKategori" wire:change='$emit("filter-kategori")'>
                             <option selected disabled>-- Pilih Kategori --</option>
-                            <option value="">All</option>
+                            <option value="">Semua</option>
                             @foreach ($kategoris as $kategori)
                                 <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                             @endforeach                            
@@ -15,6 +15,7 @@
                     <div class="col-6 ps-2">
                         <select class="select-form" id="filterMerek" wire:change='$emit("filter-merek")'>
                             <option selected disabled>-- Pilih Merek --</option>
+                            <option value="">Semua</option>
                             @foreach ($barang_mereks as $merek)
                                 <option value="{!! $merek->merek !!}">{!! $merek->merek !!}</option>
                             @endforeach                            

@@ -18,7 +18,7 @@
                 @endif
             </span>
         </div>
-        <div class="col-3 h-100 d-flex align-items-center justify-content-end pe-4">
+        <div class="col-3 h-100 d-flex align-items-center justify-content-end pe-5">
             <a href="/logout" class="d-flex align-items-center justify-content-center text-decoration-none text-m-medium text-neutral-90">
                 Log Out
                 <img src="{{ asset('icon/logout.png') }}" alt="..." width="20px" height="20px" class="ms-2">

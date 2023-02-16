@@ -1,5 +1,7 @@
 @extends('App')
 
+@push('title') Home @endpush
+
 @section('content')
 
 @push('links')
@@ -104,71 +106,67 @@
 	</style>
 @endpush
 
-<x-breadcrumb parent='Halaman Utama' where='parent' header='s' />
+@can('IsAdmin')
+	<x-breadcrumb parent='Halaman Utama' where='parent' header='s' />
 
-<hr class="text-neutral-60">
+	<hr class="text-neutral-60">
 
-<div class="col-12">
-	<div class="card border-0 flex-fill">
-		<div class="card-header bg-white border-0">
-			<p class="header-s">
-				<>Perhatian<>
-			</p>
-		</div>
-		<div class="card-body border-0">
-			<ul class="d-flex justify-content-around align-items-start flex-column" style="height: 180px;">
-				<li class="text-m-medium">Jika ada yang mau meminjam silahkan menuju ke halaman<a href=""> Peminjaman </a>pada menu Kegiatan untuk mendata siapa dan barang apa saja yang di pinjam </li>
-				<li class="text-m-medium">Jika ada barang yang datang silahkan menuju ke halaman<a href=""> Masuk Barang </a>pada menu kegiatan untuk mendata barang apa dan dan darimana barang itu dikirim</li>
-				<li class="text-m-medium">Jika ada yang ingin mengembalikan barang silahkan menuju halaman<a href=""> Pengembalian </a>pada menu kegiatan untuk mengkonfirmasi barang yang hendak dikembalikan</li>
-			</ul>
-			<p class="text-l-medium fw-semibold text-center">Jika ada yang dipertanyakan silahkan hubungi <a href="https://github.com/Rizky-Nov" target="_blank">Fauzi Rizky</a> Selaku pembuat aplikasi, Terima Kasih !!</p>
-		</div>
-	</div>
-</div>
-
-<hr class="text-neutral-60">
-
-<div class="row">
-	<div class="col-9">
-		<div class="col-11">
-			<livewire:dashboard.pinjam-history />
-		</div>
-	</div>
-	<div class="col-3">
-		<div id="idx-calendar">
-			<div id="calendar-control" class="border-0">
-			  	<div id="monthNow" class="border-0 text-l-medium">Januari 2014</div>
-			  	<div id="nextMonth" class="d-flex align-items-center justify-content-center border-0">
-			  		<i class="fa fa-chevron-right"></i>
-			  	</div>
-			  	<div id="prevMonth" class="d-flex align-items-center justify-content-center border-0">
-			  		<i class="fa fa-chevron-left"></i>
-			  	</div>
-		 	</div>
-		 	<div id="dayNames" class="border border-bottom-0 rounded-top text-m-medium">
-			  	<ul>
-				   <li>Su</li>
-				   <li>Mo</li>
-				   <li>Tu</li>
-				   <li>We</li>
-				   <li>Th</li>
-				   <li>Fr</li>
-				   <li>Sa</li>
-			  	</ul>
+	<div class="col-12">
+		<div class="card border-0 flex-fill">
+			<div class="card-header bg-white border-0">
+				<p class="header-s">
+					<>Perhatian<>
+				</p>
 			</div>
-			<div id="daysNum" class="border border-top-0 rounded-bottom text-m-regular">
-		 	</div>
+			<div class="card-body border-0">
+				<ul class="d-flex justify-content-around align-items-start flex-column" style="height: 180px;">
+					<li class="text-m-medium">Jika ada yang mau meminjam silahkan menuju ke halaman<a href=""> Peminjaman </a>pada menu Kegiatan untuk mendata siapa dan barang apa saja yang di pinjam </li>
+					<li class="text-m-medium">Jika ada barang yang datang silahkan menuju ke halaman<a href=""> Masuk Barang </a>pada menu kegiatan untuk mendata barang apa dan dan darimana barang itu dikirim</li>
+					<li class="text-m-medium">Jika ada yang ingin mengembalikan barang silahkan menuju halaman<a href=""> Pengembalian </a>pada menu kegiatan untuk mengkonfirmasi barang yang hendak dikembalikan</li>
+				</ul>
+				<p class="text-l-medium fw-semibold text-center">Jika ada yang dipertanyakan silahkan hubungi <a href="https://github.com/Rizky-Nov" target="_blank">Fauzi Rizky</a> Selaku pembuat aplikasi, Terima Kasih !!</p>
+			</div>
 		</div>
 	</div>
-</div>
 
-{{-- <iframe id="inlineFrameExample"
-    title="Inline Frame Example"
-    width="300"
-    height="200"
-    src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
-</iframe> --}}
-{{-- <livewire:barang-keluar.barang-keluar-home> --}}
+	<hr class="text-neutral-60">
+
+	<div class="row">
+		<div class="col-9">
+			<div class="col-11">
+				<livewire:dashboard.pinjam-history />
+			</div>
+		</div>
+		<div class="col-3">
+			<div id="idx-calendar">
+				<div id="calendar-control" class="border-0">
+				  	<div id="monthNow" class="border-0 text-l-medium">Januari 2014</div>
+				  	<div id="nextMonth" class="d-flex align-items-center justify-content-center border-0">
+				  		<i class="fa fa-chevron-right"></i>
+				  	</div>
+				  	<div id="prevMonth" class="d-flex align-items-center justify-content-center border-0">
+				  		<i class="fa fa-chevron-left"></i>
+				  	</div>
+			 	</div>
+			 	<div id="dayNames" class="border border-bottom-0 rounded-top text-m-medium">
+				  	<ul>
+					   <li>Su</li>
+					   <li>Mo</li>
+					   <li>Tu</li>
+					   <li>We</li>
+					   <li>Th</li>
+					   <li>Fr</li>
+					   <li>Sa</li>
+				  	</ul>
+				</div>
+				<div id="daysNum" class="border border-top-0 rounded-bottom text-m-regular">
+			 	</div>
+			</div>
+		</div>
+	</div>
+@endcan
+
+<livewire:dashboard.user-dashboard />
 
 @push('script')
 	<script>
@@ -230,16 +228,12 @@
 		    document.getElementById("monthNow").innerHTML= monthNames[month]+" "+ year ;
 		    document.getElementById("daysNum").innerHTML= "<ul id="+monthNum[month]+" class="+year+">"+htmlContent+"</ul>";
 		}
-
-
 		(function() {
 		    var dateNow = new Date();
 		    var month = dateNow.getMonth();
 		    var year = dateNow.getFullYear();
 		    displayCalendar(month,year)
 		})(window);
-
-
 		document.getElementById("nextMonth").onclick = function(){
 		    var idmonth = document.getElementById("daysNum");
 		    var month = idmonth.getElementsByTagName("ul")[0].id;
@@ -251,8 +245,6 @@
 		    }
 		    displayCalendar(nextMonth,nextYear);
 		}
-
-
 		document.getElementById("prevMonth").onclick = function(){
 		    var idmonth = document.getElementById("daysNum");
 		    var month = idmonth.getElementsByTagName("ul")[0].id;

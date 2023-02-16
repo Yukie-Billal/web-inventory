@@ -1153,7 +1153,6 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   flex-direction: column;
   width: 100%;
   padding: 14px 0 14px 12px;
-  overflow: hidden;
   gap: 2px;
 }
 .sidebar .sidebar-body .sidebar-menu .sub-menu a {
@@ -1201,11 +1200,6 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   width: 39px;
   height: 39px;
   border-top-right-radius: 30px;
-}
-.sidebar .sidebar-body .sidebar-menu .sub-menu.hide {
-  display: none;
-  overflow: hidden;
-  animation: hide 3s;
 }
 
 .load-state {
