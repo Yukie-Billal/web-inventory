@@ -21,7 +21,7 @@ class RoleSeeder extends Seeder
         ]);
         Role::create([
             'nama_role' => 'User',
-            'role_token' => 'User',
+            'role_token' => 'USER',
         ]);
     }
 }

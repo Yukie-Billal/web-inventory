@@ -18,6 +18,8 @@ class IsUser
     {
         if (auth()->user()->role->nama_role == 'User') {
             return $next($request);
+        } elseif (auth()->user()->role_id == 2) {
+            return $next($request);
         }
         return redirect('/home');
     }

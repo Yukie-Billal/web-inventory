@@ -29,8 +29,6 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:4'
         ]);
-        // $level = User::where('email', $credentials['email'])->get('level');
-        // $credentials['level'] = $level;
        
         if (Auth::attempt($credentials)) {
 
@@ -38,7 +36,7 @@ class AuthController extends Controller
             return redirect()->intended('/')->with('message', 'Selamat Berhasil Login');
 
         } elseif (Auth::check()) {
-            return redirect('/');            
+            return redirect('/');
         }
         
         return redirect('/')->with('failed','Login Failed, Username or Pasword wrong');
@@ -46,21 +44,9 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
-        
+        Auth::logout();        
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
-    }
-
-    public function FunctionName(Request $request)
-    {
-        $validate = $request->validate([
-            'nama' => 'required'
-        ]);
-
-        user::create($validateData);
     }
 }

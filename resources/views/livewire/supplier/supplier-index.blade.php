@@ -59,7 +59,7 @@
     </div>
 </div>
 
-@push('script-livewire')
+@push('scripts')
 <script>
     Livewire.on('page-change', function () {
             const tag = document.querySelector('#pageChanger');

@@ -32,7 +32,7 @@
     </div>
 </div>
 
-@push('script')
+@push('scripts')
     <script>
         Livewire.on('200',function (message) {
             Livewire.emit('fresh');

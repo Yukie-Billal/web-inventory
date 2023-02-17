@@ -38,7 +38,7 @@
   </div>
 </div>
 
-@push('script-livewire')
+@push('scripts')
    <script>
       Livewire.on('getPengembali', function () {
          const value = document.querySelector('#pengembali').value;

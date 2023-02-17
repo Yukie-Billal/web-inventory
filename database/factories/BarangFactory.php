@@ -19,7 +19,7 @@ class BarangFactory extends Factory
     {
         return [
             'serial_number' => fake()->unique()->randomNumber(6, false),
-            'barcode' => fake()->unique()->numerify('L####-A####'),
+            'kode_barang' => fake()->unique()->numerify('L####-A####'),
             'nama_barang' => 'Laptop ' . fake()->unique()->randomNumber(2, false),
             'merek' => 'Asus',
             'warna' => 'Hitam',

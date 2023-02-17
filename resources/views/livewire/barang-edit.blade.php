@@ -108,7 +108,7 @@
     </form>
 </div>
 
-@push('script-livewire')
+@push('scripts')
     <script>
         Livewire.on('kategoriCovery', function () {
             const value = document.querySelector('#kategori').value;            

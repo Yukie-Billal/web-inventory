@@ -19,7 +19,7 @@ class BarangIndex extends Component
     public $pageName = 'page';
     public $filter_kategori;
     public $filter_merek;
-    public $search;    
+    public $search;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -33,19 +33,11 @@ class BarangIndex extends Component
         'barangAdded',
         'barangEdited',
         'setFilter',
-        'next-page' => 'next',
-        'previous-page' => 'previous',
-        'setDelete' => 'deleteBarang'
+        'next-page' => 'nextPage',
+        'previous-page' => 'previousPage',
+        'setDelete' => 'deleteBarang',
+        'pageTo' => "gotoPage"
     ];
-
-    public function next($page)
-    {
-        $this->nextPage($page);
-    }
-    public function previous($page)
-    {
-        $this->previousPage($page);
-    }
     
     public function barangAdded()
     {
@@ -78,7 +70,6 @@ class BarangIndex extends Component
     {
         $page = $params[0];
         $pageName = $params[1];
-        $this->gotoPage($page, $pageName);
     }
 
     public function editBarang($id)
@@ -104,8 +95,6 @@ class BarangIndex extends Component
 
     public function render()
     {
-        // $this->paginate_pageCount();
-
         $merek = DB::table('barangs')->select('merek')->groupBy('merek');
         $barangs = Barang::orderByDesc('nama_barang')->orderByDesc('created_at');
 

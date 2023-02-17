@@ -28,7 +28,7 @@
     <input type="hidden" class="barangList input-form" value="{{ $barang->kode_barang .' -- '. $barang->nama_barang .' -- '.$barang->serial_number .' -- '. $barang->merek .' -- '. $barang->warna .'  -'.$barang->id }}">
 @endforeach
 
-@push('script')
+@push('scripts')
     <script>
         var dataList = document.querySelectorAll('input.barangList');
         var arrayData = [];

@@ -12,16 +12,23 @@
         Go To
     </div>
     <div class="col-{{ $input }}">
-        <form wire:submit.prevent="$emit('page-change')">
-            <input type="text" id="pageChanger" name="page" class="input-form w-100" placeholder="Page">
+        <form wire:submit.prevent="$emit('getPageTo')">
+            <input type="text" data-page-count="{{ $pageCount }}" id="pageChanger" name="page" class="input-form w-100" placeholder="Page">
         </form>
     </div>
 </div>
 
-{{-- @push('script-livewire')
+@push('scripts')
     <script>
-        Livewire.on('previous-page', function () {
-            
-        });
+        Livewire.on('getPageTo', function () {
+            const input = document.querySelector('#pageChanger');
+            var value = input.value;
+            var lastPage = input.getAttribute('data-page-count');
+            if (value > lastPage) {
+                value = lastPage;
+            }
+            Livewire.emit('pageTo', value);
+            input.removeAttribute('readonly');
+        })
     </script>
-@endpush --}}
+@endpush

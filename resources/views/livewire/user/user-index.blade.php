@@ -55,20 +55,7 @@
     </div>
 </div>
 
-@push('body-script')
-    @if (session()->has('message'))        
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: '{{ session('message') }}',
-                showConfirmButton: false,
-                timer: 5000
-            })
-        </script>
-    @endif
-@endpush
-
-@push('script-livewire')
+@push('scripts')
     <script>
         Livewire.on('page-change', function () {
             const tag = document.querySelector('#pageChanger');

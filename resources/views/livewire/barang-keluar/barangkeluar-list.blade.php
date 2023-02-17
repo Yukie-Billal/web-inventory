@@ -76,7 +76,7 @@
     </div>
 </div>
 
-@push('script-livewire')
+@push('scripts')
     <script>
         Livewire.on('change-status', postId => {
             var value = document.querySelector('[data-id="'+postId+'"]').value

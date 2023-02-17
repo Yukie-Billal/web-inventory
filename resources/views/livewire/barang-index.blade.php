@@ -31,7 +31,7 @@
     <div class="card-body p-0">
         <div class="col-12 p-0 rounded border-neutral-40-2">
             <table class="table table-hover table-responsive mb-0">
-                <thead class="">
+                <thead>
                     <tr>
                         <th class="px-3">Serial Number</th>
                         <th>Nama Barang</th>
@@ -77,17 +77,8 @@
     </div>
 </div>
 
-@push('script-livewire')
+@push('scripts')
     <script>
-        Livewire.on('page-change', () => {
-            const tag = document.querySelector('#pageChanger');
-            const value = tag.value;
-            const pageName = "page";
-            const params = [value, pageName];
-            console.log(parseInt(value));
-            Livewire.emit('pageSet', params);
-        });
-
         Livewire.on('filter-kategori', () => {
             const value = document.querySelector('#filterKategori').value;
             const params = ['kategori', value];
@@ -115,6 +106,7 @@
                 }
             })
         });
+
         Livewire.on('deleted', () => {
             swal.fire({
                 icon: 'success',
@@ -123,6 +115,7 @@
                 timer: 1800
             });
         });
+
         Livewire.on('setBarcode', kode => {
             console.log(kode);
         });
