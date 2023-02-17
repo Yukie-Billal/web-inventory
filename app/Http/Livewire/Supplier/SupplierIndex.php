@@ -11,27 +11,19 @@ class SupplierIndex extends Component
     use WithPagination;
 
     public $pageCount;
-    public $pageName = 'sp';
+    public $pageName = 'supplierPage';
 
     protected $queryString = [
         'page' => ['except' => '', 'as' => 'supplierPage'],
     ];
 
     protected $listeners = [
-        'next-page' => 'next',
-        'previous-page' => 'previous',
-        'showAlert',
         'supEdited' => 'render',
+        'next-page' => 'nextPage',
+        'previous-page' => 'previousPage',
+        'pageTo' => "gotoPage",
+        'deleteSupplier'
     ];
-
-    public function next($page)
-    {
-        $this->nextPage($page);
-    }
-    public function previous($page)
-    {
-        $this->previousPage($page);
-    }
 
     public function editSupplier($id)
     {
@@ -39,7 +31,13 @@ class SupplierIndex extends Component
         $this->emit('getSupplier', $supplier);        
     }
 
-    public function delSupplier($id)
+    public function confirmDelete($id)
+    {
+        $params = ['question', 'Hapus Supplier ?', true, 'deleteSupplier', $id];
+        $this->emit('alertConfirm', $params);
+    }
+
+    public function deleteSupplier($id)
     {
         $supplier = Supplier::find($id);
 

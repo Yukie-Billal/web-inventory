@@ -11,7 +11,13 @@ class PinjamIndex extends Component
     use WithPagination;
 
     public $pageName = 'page';
-    public $pageCount = 2;
+    public $pageCount = 1;
+
+    protected $listeners = [
+        'next-page' => 'nextPage',
+        'previous-page' => 'previousPage',
+        'pageTo' => "gotoPage",
+    ];
 
     public function render()
     {

@@ -15,6 +15,9 @@
 <link rel="stylesheet" href="{{ asset('vendor/sweetAlert/sweetalert2.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('vendor/autoCompleteJs/autoComplete.min.css') }}">
+
+<link rel="stylesheet" href="{{ asset('vendor/toastify/toastify.min.css') }}">
+
 <style>
     table tbody tr {
         height: 36px;

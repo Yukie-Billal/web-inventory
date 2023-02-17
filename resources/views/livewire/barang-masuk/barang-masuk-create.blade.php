@@ -216,15 +216,6 @@
             const params = [value];
             Livewire.emit('setSatuan', params);
         });
-        Livewire.on('barangMasukAdded', (params) => {
-            Swal.fire({
-                icon: 'success',
-                title: params,
-                showConfirmButton: false,
-                timer: 5000
-            });    
-        });
-
         const input = document.querySelector('#namaSupplier');
         function getSupplier() {
             var id = input.value;
@@ -240,3 +231,5 @@
         inputJumlah.addEventListener('change', cekQty);
     </script>
 @endpush
+
+<x-alert.sweet-alert />

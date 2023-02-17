@@ -47,7 +47,7 @@
                             <img 
                                 src="{{ asset('icon/delete.png') }}" alt=".."
                                 style="height: 18px; width: 18px; cursor: pointer;"
-                                wire:click='delSupplier({{ $supplier->id }})'
+                                wire:click='confirmDelete({{ $supplier->id }})'
                             >
                         </td>
                     </tr>
@@ -59,54 +59,4 @@
     </div>
 </div>
 
-@push('scripts')
-<script>
-    Livewire.on('page-change', function () {
-            const tag = document.querySelector('#pageChanger');
-            const value = tag.value;
-            const pageName = "page";
-            const params = [value, pageName];
-            console.log(params);
-            Livewire.emit('pageSet', params);
-        });
-
-        Livewire.on('filter-kategori', function () {
-            const value = document.querySelector('#filterKategori').value;
-            const params = ['kategori', value];
-            Livewire.emit('setFilter', params);
-        });
-
-        Livewire.on('filter-merek', function () {
-            const value = document.querySelector('#filterMerek').value;
-            const params = ['merek', value];
-            Livewire.emit('setFilter', params);
-        });
-
-        Livewire.on('deleted', function (message) {
-            Swal.fire({
-                icon: 'success',
-                title: message,
-                showConfirmButton: false,
-                timer: 4000
-            });   
-        });
-
-        Livewire.on('showAlert', function (params) {
-            Swal.fire({
-                icon: params[0],
-                title: params[1],
-                showConfirmButton: false,
-                timer: 2000,
-            })
-        });
-
-        Livewire.on('supEdited', function (params) {            
-            Swal.fire({
-                icon: params[0],
-                title: params[1],
-                showConfirmButton: false,
-                timer: 2000,
-            })       
-        })
-</script>
-@endpush
+<x-alert.sweet-alert />

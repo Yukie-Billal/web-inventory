@@ -5,6 +5,7 @@ namespace App\Http\Livewire\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
+// use App\Helper\AppHelper;
 
 class UserIndex extends Component
 {
@@ -18,21 +19,43 @@ class UserIndex extends Component
     ];
 
     protected $listeners = [
-        'next-page' => 'next',
-        'previous-page' => 'previous',
+        'next-page' => 'nextPage',
+        'previous-page' => 'previousPage',
+        'pageTo' => "gotoPage",
+        'deleteUser',
     ];
 
-    public function next($page)
+    public function confirmDelete($id)
     {
-        $this->nextPage($page);
-    }
-    public function previous($page)
-    {
-        $this->previousPage($page);
+        $params = ['question', 'Hapus User ?', true, 'deleteUser', $id];
+        $this->emit('alertConfirm', $params);
     }
 
-    public function render()
+    public function deleteUser($id)
     {
+        $user = User::find($id);
+
+        if ($user) {
+            $user->delete();
+        } else {
+            $params = ['error', 'User Tidak Ditemukan', 2000];
+            $this->emit('alertShow', $params);
+        }
+    }
+
+    public function getUser($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            $this->emit('editUser',$user);
+        } else {
+            $this->emit('alertShow', ['error', 'Data Tidak Ditemukan']);
+        }
+    }
+    
+    public function render()
+    {        
         $users = User::orderByDesc('created_at')->orderByDesc('email');
         // Counting Page
         $all = $users->count();

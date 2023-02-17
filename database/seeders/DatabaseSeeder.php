@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Kategori;
+use App\Models\User;
 use App\Models\Supplier;
 use App\Models\Barang;
 use App\Models\Barangkeluar;
@@ -57,6 +58,8 @@ class DatabaseSeeder extends Seeder
             'stok' => 25,
         ]);
 
-        Barang::factory(14)->create();
+        Barang::factory(35)->create();
+        Supplier::factory(25)->create();
+        User::factory(25)->create();
     }
 }

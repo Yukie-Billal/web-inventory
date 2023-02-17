@@ -21,9 +21,6 @@ class BarangIndex extends Component
     public $filter_merek;
     public $search;
 
-    protected $paginationTheme = 'bootstrap';
-
-    
     protected $queryString = [
         'search' => ['except' => ''],
         'page' => ['except' => '1'],
@@ -35,8 +32,8 @@ class BarangIndex extends Component
         'setFilter',
         'next-page' => 'nextPage',
         'previous-page' => 'previousPage',
+        'pageTo' => "gotoPage",
         'setDelete' => 'deleteBarang',
-        'pageTo' => "gotoPage"
     ];
     
     public function barangAdded()
@@ -66,12 +63,6 @@ class BarangIndex extends Component
         $this->render();
     }
 
-    public function pageSet($params)
-    {
-        $page = $params[0];
-        $pageName = $params[1];
-    }
-
     public function editBarang($id)
     {
         $barangEdit = Barang::find($id);
@@ -80,7 +71,8 @@ class BarangIndex extends Component
 
     public function deleteConfirm($id)
     {
-        $this->emit('swalDelete', $id);
+        $params = ['question', 'Hapus Data ?', true, 'setDelete', $id];
+        $this->emit('alertConfirm', $id);
     }
 
     public function deleteBarang($id)
@@ -88,13 +80,17 @@ class BarangIndex extends Component
         $barang = Barang::find($id);
         if ($barang) {
             Barang::destroy($id);
+            $params = ['success', 'Berhasil Menghapus Data', 2000];
+        } else {
+            $params = ['error', 'Data Tidak Ditemukan', 2000];
         }
-        $this->emit('deleted');
+        $this->emit('alertShow', $params);
         $this->render();
     }
 
     public function render()
     {
+        // dd($this->paginators);
         $merek = DB::table('barangs')->select('merek')->groupBy('merek');
         $barangs = Barang::orderByDesc('nama_barang')->orderByDesc('created_at');
 
@@ -106,7 +102,6 @@ class BarangIndex extends Component
         if ($this->filter_merek != null) {
             $barangs->where('merek', $this->filter_merek);
         }
-
         if ($this->search != null) {
             $barangs = $barangs->where('nama_barang', 'like', '%' .$this->search. '%')->orWhere('kode', 'like', '%' .$this->search. '%')->orWhere('stok', 'like', '%' .$this->search. '%');
         }

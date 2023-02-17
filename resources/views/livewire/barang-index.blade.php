@@ -76,6 +76,7 @@
         </div>
     </div>
 </div>
+<button id="toastButton">Toast Click</button>
 
 @push('scripts')
     <script>
@@ -91,33 +92,22 @@
             Livewire.emit('setFilter', params);
         });
 
-        Livewire.on('swalDelete', id => {
-            console.log(id)
-            Swal.fire({
-                icon: 'question',
-                title: 'Hapus Barang ?',
-                showDenyButton: true,
-                confirmButtonText: 'Hapus',
-                denyButtonText: `Batalkan`,
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                    Livewire.emit('setDelete', id);
-                }
-            })
-        });
-
-        Livewire.on('deleted', () => {
-            swal.fire({
-                icon: 'success',
-                title: "Berhasil Menghapus Data",
-                showConfirmButton: false,
-                timer: 1800
-            });
-        });
-
-        Livewire.on('setBarcode', kode => {
-            console.log(kode);
+        $('#toastButton').on('click', function(event) {
+            event.preventDefault();
+            Toastify({
+                text: "Data Not Found",
+                duration: 5000,
+                newWindow: true,
+                close: true,
+                stopOnFocus: true,
+                className: "text-l-medium",
+                style: {
+                    background: "lightblue",
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();            
         });
     </script>
 @endpush
+
+<x-alert.sweet-alert />

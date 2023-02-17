@@ -13,11 +13,6 @@ class AuthController extends Controller
         return view('pages.Auth.register');
     }
 
-    public function register_act(Request $request, User $user)
-    {
-        dd($user);
-    }
-
     public function login()
     {
         return view('pages.Auth.login');

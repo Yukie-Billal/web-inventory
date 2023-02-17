@@ -38,21 +38,32 @@ class BarangMasukCreate extends Component
     ];
 
     protected $messages = [
-        'namaBarang.required' => 'Nama Barang harus diisi',
-        'namaBarang.min' => 'Nama Barang harus lebih dari :min karakter',
-        'kategori.required' => 'Kategori wajib di isi',
-        'serialNumber.required' => 'Serial number wajib diisi',
-        'serialNumber.numeric' => 'Serial number hanya berisi angka',
-        'qty.required' => 'Jumlah harus diisi',
-        'qty.numeric' => 'Jumlah hanya boleh berupa angka',
-        'namaSupplier.required' => 'Nama Supplier tidak boleh kosong',
-        'namaSupplier.min' => 'Nama Supplier harus lebih dari :min karakter',
-        'namaPerusahaan.required' => 'Nama Perusahaan tidak boleh kosong',
-        'namaPerusahaan.min' => 'Nama Perusahaan harus lebih dari :min karakter',
-        'merek.required' => 'Merek tidak boleh kosong',
-        'merek.min' => 'Merek harus lebih dari :min karakter',
-        'warna.required' => 'Warna tidak boleh kosong',
-        'warna.min' => 'Warna harus lebih dari :min karakter',
+        'namaBarang.required' => ':attribute harus diisi',
+        'namaBarang.min' => ':attribute harus lebih dari :min karakter',
+        'kategori.required' => ':attribute wajib di isi',
+        'serialNumber.required' => ':attribute wajib diisi',
+        'serialNumber.numeric' => ':attribute hanya berisi angka',
+        'qty.required' => ':attribute harus diisi',
+        'qty.numeric' => ':attribute hanya boleh berupa angka',
+        'namaSupplier.required' => ':attribute tidak boleh kosong',
+        'namaSupplier.min' => ':attribute harus lebih dari :min karakter',
+        'namaPerusahaan.required' => ':attribute tidak boleh kosong',
+        'namaPerusahaan.min' => ':attribute harus lebih dari :min karakter',
+        'merek.required' => ':attribute tidak boleh kosong',
+        'merek.min' => ':attribute harus lebih dari :min karakter',
+        'warna.required' => ':attribute tidak boleh kosong',
+        'warna.min' => ':attribute harus lebih dari :min karakter',
+    ];
+
+    protected $validationAttributes = [
+        'namaBarang' => 'Nama Barang',
+        'kategori' => 'Kategori',
+        'serialNumber' => 'Serial Number',
+        'qty' => 'Jumlah',
+        'namaSupplier' => 'Nama Supplier',
+        'namaPerusahaan' => 'Nama Perusahaan',
+        'merek' => 'Merek',
+        'warna' => 'Warna',        
     ];
 
     public function updated($propertyName)
@@ -70,7 +81,6 @@ class BarangMasukCreate extends Component
     public function setSupplier($id)
     {
         $supplier = Supplier::find($id);
-
         if ($supplier) {
             $this->supplierId = $supplier->id;
             $this->namaSupplier = $supplier->nama_supplier;
@@ -79,9 +89,7 @@ class BarangMasukCreate extends Component
             $this->noTlp = $supplier->no_tlp;
             $this->s_baru = false;
         } else {
-
             $cekNama = Supplier::where('nama_supplier', $id)->get();
-
             if ($cekNama->count() >= 1) {
                 $supplier = $cekNama[0];
                 $this->supplierId = $supplier->id;
@@ -127,11 +135,6 @@ class BarangMasukCreate extends Component
             $this->namaPerusahaan = null;
         }
         $this->render();
-    }
-
-    public function showAlert()
-    {
-        $this->emit('barangMasukAdded');
     }
 
     public function kategoriCek($value)
@@ -210,30 +213,17 @@ class BarangMasukCreate extends Component
                 'tanggal_masuk' => date('Y-m-d'),
                 'supplier_id' => $supplier->id
             ]);
-            $message = 'Berhasil Menambah Data';
-            // session()->flash('successAdd', 'Berhasil Menambah Data');
-            // $this->dispatchBrowserEvent('swal:modal', [
-            //     'type' => 'success',
-            //     'title' => 'success Add Data',
-            //     'button' => false,
-            //     'timer' => 4000,
-            // ]);
+            $params = ['success', 'Terjadi Kesalahan', 2000];
         } else {
-            session()->flash('error', 'Terjadi Kesalahan');
-            $message = "Terjadi Kesalahan";
+            $params = ['error', 'Terjadi Kesalahan', 2000];
         }
-        $this->emit('barangMasukAdded', $message);
+        $this->emit('alertShow', $params);
         $this->clear('all');
     }
 
     public function render()
     {
         $suppliers = Supplier::orderByDesc('nama_supplier')->orderByDesc('created_at');
-
-        // if ($this->namaSupplier != null) {
-        //     $suppliers->where('nama_supplier', 'like', '%'. $this->namaSupplier .'%');
-        // }
-
         return view('livewire.barang-masuk.barang-masuk-create', [
             'kategoris' => Kategori::orderByDesc('nama_kategori')->get(),
             'suppliers' => $suppliers->get(),

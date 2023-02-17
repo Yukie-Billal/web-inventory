@@ -819,6 +819,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   cursor: pointer;
   outline: 2px solid #E0E0E0;
   font: 500 14px/20px "Inter", sans-serif;
+  outline: none;
 }
 .button.button-sm {
   height: 28px;
@@ -919,6 +920,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-outline-primary:focus {
   background-color: #4C4DDC;
+  outline: 2px solid rgba(76, 77, 220, 0.2);
   color: white;
 }
 .button.button-outline-success {
@@ -931,6 +933,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-outline-success:focus {
   background-color: #43936C;
+  outline: 2px solid rgba(67, 147, 108, 0.2);
   color: white;
 }
 .button.button-outline-warning {
@@ -942,6 +945,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-outline-warning:focus {
   background-color: #CD7B2E;
+  outline: 2px solid rgba(205, 123, 46, 0.2);
 }
 .button.button-outline-info {
   background-color: #FFFFFF;
@@ -952,6 +956,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-outline-info:focus {
   background-color: #3267E3;
+  outline: 2px solid rgba(50, 103, 227, 0.2);
 }
 .button.button-outline-danger {
   background-color: #FFFFFF;
@@ -962,6 +967,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-outline-danger:focus {
   background-color: #CB3A31;
+  outline: 2px solid rgba(203, 58, 49, 0.2);
 }
 .button.button-outline-secondary {
   background-color: #FFFFFF;
@@ -972,6 +978,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-outline-secondary:focus {
   background-color: #9E9E9E;
+  outline: 2px solid #E0E0E0;
 }
 .button.button-outline-light {
   background-color: #FFFFFF;
@@ -982,6 +989,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-outline-light:focus {
   background-color: #d1d1d1;
+  outline: 2px solid #E0E0E0;
 }
 .button.button-outline-dark {
   background-color: #FFFFFF;
@@ -992,6 +1000,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 }
 .button.button-outline-dark:focus {
   background-color: #424242;
+  outline: 2px solid rgba(66, 66, 66, 0.2);
 }
 
 .btn-filter {
