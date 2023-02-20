@@ -3,12 +3,7 @@
         let availableType = ['success', 'error', 'warning', 'question', null];
         Livewire.on('swal', function (params) {
             if (Array.isArray(params)) {
-                var type, message, timer;
-                
-                type = params[0];
-                message = params[1];
-                timer = params[2] <= 1000 ? params[2] : 2000;
-
+                var [type, message, timer = 2000] = params;
                 swal.fire({
                     icon: type,
                     title: message,
@@ -18,13 +13,8 @@
             }
         });
         Livewire.on('swalConfirm', function (params) {
-            var type, message, callback, url, value;
+            var [type, message, callback, url, value] = params;
             if (Array.isArray(params) && params.length == 5) {
-                type = params[0];
-                message = params[1];
-                callback = params[2];
-                url = params[3];
-                value = params[4];
                 Swal.fire({
                     icon: type,
                     title: message,

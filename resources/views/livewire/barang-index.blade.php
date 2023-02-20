@@ -94,20 +94,22 @@
 
         $('#toastButton').on('click', function(event) {
             event.preventDefault();
-            Toastify({
-                text: "Data Not Found",
-                duration: 5000,
-                newWindow: true,
-                close: true,
-                stopOnFocus: true,
-                className: "text-l-medium",
-                style: {
-                    background: "lightblue",
-                },
-                onClick: function(){} // Callback after click
-            }).showToast();
+            Livewire.emit('toastify', ['danger', 'Not Found', 3500]);
+            // Toastify({
+            //     text: "Data Not Found",
+            //     duration: 10000,
+            //     newWindow: true,
+            //     close: true,
+            //     stopOnFocus: true,
+            //     className: "text-l-medium",
+            //     style: {
+            //         background: "",
+            //     },
+            //     onClick: function(){} // Callback after click
+            // }).showToast();
         });
     </script>
 @endpush
 
 <x-alert.sweet-alert />
+<x-toast />

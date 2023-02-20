@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    // Route::middleware(['IsAdmin'])->group(function () {
+    Route::middleware(['IsAdmin'])->group(function () {
         Route::get('/barangs', [PageController::class, 'barang']);
         Route::get('/barang-masuks', [PageController::class, 'barangMasuk']);
         Route::get('/pinjams-kembalis', [PageController::class, 'pinjam_kembali']);
@@ -41,5 +41,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/pdf/barcode/{barang}/', [ExportController::class, 'barcode_pdf']);
         Route::get('/print/barcode/{barang}', [PrinterController::class, 'print_barcode']);
-    // });
+    });
+
+    Route::middleware(['IsUser'])->group(function () {
+        Route::get('/daftar-barangs', [PageController::class, 'barang']);
+    })
 });

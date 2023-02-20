@@ -24,16 +24,10 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:4'
         ]);
-       
         if (Auth::attempt($credentials)) {
-
             $request->session()->regenerate();
             return redirect()->intended('/')->with('message', 'Selamat Berhasil Login');
-
-        } elseif (Auth::check()) {
-            return redirect('/');
         }
-        
         return redirect('/')->with('failed','Login Failed, Username or Pasword wrong');
     }
 

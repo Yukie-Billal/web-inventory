@@ -19,6 +19,7 @@ class IsAdmin
         if (auth()->user()->role->nama_role == 'Admin') {
             return $next($request);
         }
+
         return redirect('/home');
     }
 }

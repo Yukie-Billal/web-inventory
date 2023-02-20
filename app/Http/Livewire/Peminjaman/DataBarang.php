@@ -16,26 +16,19 @@ class DataBarang extends Component
 
     protected $listeners = [
         'addPeminjaman' => 'render'
+        'swal' => '$refresh'
     ];
 
     public function addPinjamKeranjang($id)
     {
         $barang = Barang::find($id);
-        // dd($barang->nama_barang);
-
-        if ($barang) {      
-            // $cek = PeminjamanKeranjang::where('barang_id', $id)->get();
-
-            // if ($cek->count() > 0) {
-                // dd($cek[0]->barang;
-                // $cek[0]->update(['jumlah' => ($cek[0]->jumlah + 1)]);
-            // } else {
+        if ($barang) {
                 PeminjamanKeranjang::create([
+                    'user_id' => auth()->user()->id,
                     'barang_id' => $id
-                ]);                
-            // }
+                ]);
         } else {
-            session()->flash('failed', 'Gagal menambah barang');
+            $this->emit('toastify', ['danger', 'Gagal Menambahkan Barang', 2000]);
         }
         $this->emit('addPinjamKeranjang');        
     }

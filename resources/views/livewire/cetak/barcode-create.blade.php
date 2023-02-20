@@ -57,6 +57,8 @@
                     }
                 },
                 noResults: true,
+                maxResults: 15,
+                tabSelect: true,
             },
             resultItem: {
                 highlight: true

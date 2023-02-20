@@ -49,11 +49,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-
-    /**
-     * Scope a query to only include 
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
 }
