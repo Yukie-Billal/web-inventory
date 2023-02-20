@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Helper\Trait\AppHelper as TraitAppHelper;
 use App\Models\Barang;
 use App\Models\BarangKeluar;
 use App\Models\BarangMasuk;
@@ -9,11 +10,11 @@ use App\Models\Kategori;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
-use PDF;
+use App\Traits\PaginateTrait;
 
 class BarangIndex extends Component
 {
-    use WithPagination;
+    use WithPagination, PaginateTrait;
 
     public $pageCount;
     public $pageName = 'page';
@@ -27,23 +28,12 @@ class BarangIndex extends Component
     ];
 
     protected $listeners = [
-        'barangAdded',
-        'barangEdited',
         'setFilter',
         'next-page' => 'nextPage',
         'previous-page' => 'previousPage',
         'pageTo' => "gotoPage",
         'setDelete' => 'deleteBarang',
     ];
-    
-    public function barangAdded()
-    {
-        session()->flash('message', 'Data Berhasil Ditambahkan');
-    }
-    public function barangEdited()
-    {
-        session()->flash('message', 'Data Berhasil Di Ubah');
-    }
     public function setFilter($params)
     {
         if ($params == null) {
@@ -71,8 +61,7 @@ class BarangIndex extends Component
 
     public function deleteConfirm($id)
     {
-        $params = ['question', 'Hapus Data ?', true, 'setDelete', $id];
-        $this->emit('alertConfirm', $id);
+        $this->emit('swalConfirm', ['question', 'Hapus Data ?', true, 'setDelete', $id]);
     }
 
     public function deleteBarang($id)
@@ -84,13 +73,12 @@ class BarangIndex extends Component
         } else {
             $params = ['error', 'Data Tidak Ditemukan', 2000];
         }
-        $this->emit('alertShow', $params);
+        $this->emit('swal', $params);
         $this->render();
     }
 
     public function render()
     {
-        // dd($this->paginators);
         $merek = DB::table('barangs')->select('merek')->groupBy('merek');
         $barangs = Barang::orderByDesc('nama_barang')->orderByDesc('created_at');
 
@@ -105,22 +93,8 @@ class BarangIndex extends Component
         if ($this->search != null) {
             $barangs = $barangs->where('nama_barang', 'like', '%' .$this->search. '%')->orWhere('kode', 'like', '%' .$this->search. '%')->orWhere('stok', 'like', '%' .$this->search. '%');
         }
-
-        // cek Barang
-        $barang_all = $barangs->count();
-        
         // Menghitung Page Dari Pagination
-        $sisa = $barang_all % 10;
-        if ($sisa <= 0) {
-            $count = 1;
-        } else if ($sisa >= 1) {
-            $count = (($barang_all - $sisa) / 10) + 1;
-        }
-        $this->pageCount = $count;
-        if ($this->page > $count) {
-            $this->pageCount = 1;
-        }
-
+        $this->pageCount = $this->countPage($barangs->count());
         return view('livewire.barang-index', [
             'barangs' => $barangs->paginate(10),
             'kategoris' => Kategori::orderByDesc('nama_kategori')->get(),

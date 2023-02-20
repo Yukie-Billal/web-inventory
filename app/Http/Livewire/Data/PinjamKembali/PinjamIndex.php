@@ -5,10 +5,11 @@ namespace App\Http\Livewire\Data\PinjamKembali;
 use App\Models\Pinjaman;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Traits\PaginateTrait;
 
 class PinjamIndex extends Component
 {
-    use WithPagination;
+    use WithPagination, PaginateTrait;
 
     public $pageName = 'page';
     public $pageCount = 1;
@@ -23,18 +24,7 @@ class PinjamIndex extends Component
     {
         $pinjams = Pinjaman::orderByDesc('created_at');
 
-        $barang_all = $pinjams->count();
-
-        $sisa = $barang_all % 10;
-        if ($sisa <= 0) {
-            $count = 1;
-        } else if ($sisa >= 1) {
-            $count = (($barang_all - $sisa) / 10) + 1;
-        }
-        $this->pageCount = $count;
-        if ($this->page > $count) {
-            $this->pageCount = 1;
-        }
+        $this->pageCount = $this->countPage($pinjams->count());
         
         return view('livewire.data.pinjam-kembali.pinjam-index', [
             'pinjams' => $pinjams->paginate(10, ['*'], 'pinjam'),

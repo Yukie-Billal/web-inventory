@@ -95,7 +95,7 @@ class BarangEdit extends Component
 
         $this->clearVariabel();
 
-        $this->emit('barangEdited');
+        $this->emit('swal', ['success', 'Barang Di Edit', 2000]);
     }
 
     public function render()

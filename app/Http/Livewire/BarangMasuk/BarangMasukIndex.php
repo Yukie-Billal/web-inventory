@@ -5,10 +5,11 @@ namespace App\Http\Livewire\BarangMasuk;
 use Livewire\Component;
 use App\Models\BarangMasuk;
 use Livewire\WithPagination;
+use App\Traits\PaginateTrait;
 
 class BarangMasukIndex extends Component
 {
-    use WithPagination;
+    use WithPagination, PaginateTrait;
 
     public $pageName = 'page';
     public $pageCount;
@@ -62,17 +63,7 @@ class BarangMasukIndex extends Component
         }
 
         // Menghitung Page Dari Pagination
-        $barang_all = $barangs->count();
-        $sisa = $barang_all % 10;
-        if ($sisa <= 0) {
-            $count = 1;
-        } else if ($sisa >= 1) {
-            $count = (($barang_all - $sisa) / 10) + 1;
-        }
-        $this->pageCount = $count;
-        if ($this->page > $count) {
-            $this->page = 1;
-        }
+        $this->pageCount = $this->countPage($barangs->count());
 
         return view('livewire.barang-masuk.barang-masuk-index',[
                 'barangMasuks' => $barangs->paginate(10)

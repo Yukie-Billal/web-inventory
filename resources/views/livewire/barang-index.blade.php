@@ -105,7 +105,7 @@
                     background: "lightblue",
                 },
                 onClick: function(){} // Callback after click
-            }).showToast();            
+            }).showToast();
         });
     </script>
 @endpush

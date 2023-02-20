@@ -19,16 +19,6 @@ class BarangController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -36,7 +26,11 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json([
+            'success' => false,
+            'data' => [],
+            'message' => 'Not Found'
+        ],404);
     }
 
     /**
@@ -47,18 +41,13 @@ class BarangController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $barang = Barang::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json([
+            'success' => 'true',
+            'data' => $barang,
+            'message' => 'Barang Ditemukan'
+        ]);
     }
 
     /**

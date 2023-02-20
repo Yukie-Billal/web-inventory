@@ -28,10 +28,10 @@ class BarcodeCreate extends Component
             if ($data) {
                 $this->barangId = $data->id;
             } else {
-                $this->emit("404", 'Barang Tidak Ditemukan');
+                $this->emit("swal", ['error','Barang Tidak Ditemukan', 2000]);
             }
         } else {
-            $this->emit('404', 'Barang Tidak Ditemukan');
+            $this->emit('swal', ['error', 'Terjadi kesalahan', 2000] );
         }
     }
 
@@ -42,12 +42,9 @@ class BarcodeCreate extends Component
 
     public function clear()
     {
-        $this->barangid = '';
+        $this->barangId = '';
         $this->serialNumber = '';
         $this->kodeBarang = '';
-        $this->namaBarang = '';
-        $this->kategori = '';
-        $this->satuan = '';
     }
 
     public function addKeranjang()
@@ -62,12 +59,11 @@ class BarcodeCreate extends Component
             if ($create) {
                 $this->emit('200');
             } else {
-                $this->emit('500', 'Terjadi Kelasahan');
+                $this->emit('swal', ['error', 'Terjadi Kesalahan', 2000]);
             }
         } else {
-            $this->emit('400', 'Barang Tidak Ada, Silahkan Isi kembali');
+            $this->emit('swal', ['error', 'Barang Tidak Ditemukan', 2000]);
         }
-        // $this->clear();
     }
 
     public function render()

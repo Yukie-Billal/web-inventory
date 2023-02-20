@@ -5,17 +5,17 @@ namespace App\Http\Livewire\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
-// use App\Helper\AppHelper;
+use App\Traits\PaginateTrait;
 
 class UserIndex extends Component
 {
-    use WithPagination;
+    use WithPagination, PaginateTrait;
 
     public $pageCount;
-    public $pageName;
+    public $pageName = 'page';
 
     protected $queryString = [
-        'page' => ['except' => '', 'as' => 'userPage'],
+        // 'userPage' => ['except' => ''],
     ];
 
     protected $listeners = [
@@ -23,52 +23,45 @@ class UserIndex extends Component
         'previous-page' => 'previousPage',
         'pageTo' => "gotoPage",
         'deleteUser',
+        'swal',
     ];
+
+    public function swal()
+    {
+        # code...
+    }
 
     public function confirmDelete($id)
     {
-        $params = ['question', 'Hapus User ?', true, 'deleteUser', $id];
-        $this->emit('alertConfirm', $params);
+        $this->emit('swalConfirm', ['question', 'Hapus User ?', true, 'deleteUser', $id]);
     }
 
     public function deleteUser($id)
     {
         $user = User::find($id);
-
         if ($user) {
             $user->delete();
+            $this->emit('swal', ['success', 'data user Di hapus', 2000]);
         } else {
-            $params = ['error', 'User Tidak Ditemukan', 2000];
-            $this->emit('alertShow', $params);
+            $this->emit('swal', ['error', 'User Tidak Ditemukan', 2000]);
         }
     }
 
     public function getUser($id)
     {
         $user = User::find($id);
-
         if ($user) {
             $this->emit('editUser',$user);
         } else {
-            $this->emit('alertShow', ['error', 'Data Tidak Ditemukan']);
+            $this->emit('swal', ['error', 'Data Tidak Ditemukan']);
         }
     }
     
     public function render()
     {        
         $users = User::orderByDesc('created_at')->orderByDesc('email');
-        // Counting Page
-        $all = $users->count();
-        $sisa = $all % 10;
-        if ($sisa <= 0) {
-            $count = 1;
-        } else if ($sisa >= 1) {
-            $count = (($all - $sisa) / 10) + 1;
-        }
-        $this->pageCount = $count;
-        if ($this->page > $count) {
-            $this->page = 1;
-        }
+
+        $this->pageCount = $this->countPage($users->count());
 
         return view('livewire.user.user-index', [
             'users' => $users->paginate(10)

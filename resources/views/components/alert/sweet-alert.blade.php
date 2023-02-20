@@ -1,18 +1,14 @@
 @push('scripts')
     <script>
         let availableType = ['success', 'error', 'warning', 'question', null];
-        Livewire.on('alertShow', function (params) {
+        Livewire.on('swal', function (params) {
             if (Array.isArray(params)) {
                 var type, message, timer;
-                if (params.length >= 4) {
-                    type = params[0];
-                    message = params[1];
-                    timer = params[2] <= 1000 ? params[2] : 2000;
-                } else {
-                    type = 'error';
-                    message = 'Terjasi Kesalahan, [Alert]';
-                    timer = 2000;
-                }
+                
+                type = params[0];
+                message = params[1];
+                timer = params[2] <= 1000 ? params[2] : 2000;
+
                 swal.fire({
                     icon: type,
                     title: message,
@@ -21,7 +17,7 @@
                 });
             }
         });
-        Livewire.on('alertConfirm', function (params) {
+        Livewire.on('swalConfirm', function (params) {
             var type, message, callback, url, value;
             if (Array.isArray(params) && params.length == 5) {
                 type = params[0];

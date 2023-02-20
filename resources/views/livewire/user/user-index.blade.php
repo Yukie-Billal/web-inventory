@@ -41,8 +41,8 @@
                         <td class="px-2 py-2">{{ $user->alamat }}</td>
                         <td class="px-2 py-2">{{ $user->role->nama_role }}</td>
                         <td style="max-width: 50px;">
-                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editBarang({{ $user->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2">
-                            <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteBarang({{ $user->id }})'>
+                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='getUser({{ $user->id }})' data-bs-toggle="modal" data-bs-target="#modalEditUser" class="mx-2">
+                            <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='confirmDelete({{ $user->id }})'>
                         </td>
                     </tr>
                     @endforeach

@@ -71,36 +71,7 @@
                     }
                 }
             }
-         });
-
-        Livewire.on('200', function (message) {
-            // document.querySelector('#serialNumber').value = '';
-        });
-        Livewire.on('400', function (message) {
-            Swal.fire({
-                icon: 'error',
-                title: message,
-                showConfirmButton: false,
-                timer: 2000,    
-            });
-        })
-
-        Livewire.on('404', function (message) {
-            Swal.fire({
-                icon: 'error',
-                title: message,
-                showConfirmButton: false,
-                timer: 2000,    
-            });  
-        });
-        Livewire.on('500', function (message) {
-            Swal.fire({
-                icon: 'error',
-                title: message,
-                showConfirmButton: false,
-                timer: 2000,    
-            });
-        })
+         });        
     </script>
     <script>
         const jml = document.querySelectorAll('.jml');

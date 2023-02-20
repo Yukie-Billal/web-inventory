@@ -5,16 +5,17 @@ namespace App\Http\Livewire\Supplier;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Supplier;
+use App\Traits\PaginateTrait;
 
 class SupplierIndex extends Component
 {
-    use WithPagination;
+    use WithPagination, PaginateTrait;
 
     public $pageCount;
-    public $pageName = 'supplierPage';
+    public $pageName = 's';
 
     protected $queryString = [
-        'page' => ['except' => '', 'as' => 'supplierPage'],
+        'page' => ['except' => '', 'as' => 's'],
     ];
 
     protected $listeners = [
@@ -33,8 +34,7 @@ class SupplierIndex extends Component
 
     public function confirmDelete($id)
     {
-        $params = ['question', 'Hapus Supplier ?', true, 'deleteSupplier', $id];
-        $this->emit('alertConfirm', $params);
+        $this->emit('swalConfirm', ['question', 'Hapus Supplier ?', true, 'deleteSupplier', $id]);
     }
 
     public function deleteSupplier($id)
@@ -43,7 +43,7 @@ class SupplierIndex extends Component
 
         if ($supplier) {
             $supplier->delete();
-            $this->emit('deleted', 'Data Supplier Berhasil Di Hapus');
+            $this->emit('swal', ['success', 'Data Supplier Berhasil Di Hapus', 2000]);
         } else {
             $this->emit('ok');
         }
@@ -53,20 +53,10 @@ class SupplierIndex extends Component
     {
         $suppliers = Supplier::orderByDesc('created_at')->orderByDesc('nama_supplier');
 
-        $all = $suppliers->count();
-        $sisa = $all % 10;
-        if ($sisa <= 0) {
-            $count = 1;
-        } else if ($sisa >= 1) {
-            $count = (($all - $sisa) / 10) + 1;
-        }
-        $this->pageCount = $count;
-        if ($this->page > $count) {
-            $this->page = 1;
-        }
+        $this->pageCount = $this->countPage($suppliers->count());
         
         return view('livewire.supplier.supplier-index', [
-            'suppliers' => $suppliers->paginate(5),
+            'suppliers' => $suppliers->paginate(5, ['*'], 's'),
         ]);
     }
 }

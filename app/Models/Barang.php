@@ -42,4 +42,15 @@ class Barang extends Model
     {
         return $this->hasMany(BarcodeKeranjang::class);
     }
+
+    /**
+     * Scope a query to only include 
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFilter($query, $value)
+    {
+        return $query->where('kategori_id', $value);
+    }
 }

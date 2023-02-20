@@ -13,11 +13,18 @@ class PageController extends Controller
 {
     public function index()
     {
-        $response =  Http::get('https://api.rajaongkir.com/starter/city?key=44002ba3da0066f14333896a3ec6c9f2');
+        // $response =  Http::get('https://api.rajaongkir.com/starter/city?key=44002ba3da0066f14333896a3ec6c9f2');
 
-        $response->json()['rajaongkir'];
-
-        return view('pages.dashboard');
+        // $data = $response->json()['rajaongkir'];
+        // $data = json_decode($response)->rajaongkir;
+        
+        // dd($data->rajaongkir->results);
+        // foreach ($data['results'] as $value) {
+        //     dd($value['province']);
+        // }
+        return view('pages.dashboard', [
+            // 'cities' => $data->results,
+        ]);
     }   
 
     public function barang()

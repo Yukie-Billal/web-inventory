@@ -22,4 +22,5 @@
             </div>
         </div>
     </div>
+    <x-alert.sweet-alert />
 </x-app-layout>

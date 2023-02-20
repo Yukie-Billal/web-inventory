@@ -6,7 +6,7 @@
             <hr class="mt-2 mb-1">
         </div>
     </div>
-    <form wire:submit.prevent='updateSupplier'>
+    <form wire:submit.prevent='updateUser'>
         <div class="row mb-3">
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
@@ -15,14 +15,13 @@
                     @error('namaUser')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
-                    <input type="hidden" wire:model.lazy='supplierId'>
                 </div>
             </div>
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
-                    <label for="nama" class="text-neutral-90 text-m-medium">Nama Perusahaan</label>
-                    <input type="text" wire:model='nama_perusahaan' class="input-form text-m-medium placeholder-m-m" id="nama" placeholder="Nama Perusahaan">
-                    @error('nama_perusahaan')
+                    <label for="email" class="text-neutral-90 text-m-medium">Email</label>
+                    <input type="email" wire:model.debounce.1000ms='email' class="input-form text-m-medium placeholder-m-m" id="email" placeholder="email">
+                    @error('email')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
@@ -32,7 +31,7 @@
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
                     <label for="no_tlp" class="text-neutral-90 text-m-medium">No Telephone</label>
-                    <input type="text" wire:model.lazy='no_tlp' class="input-form text-m-medium placeholder-m-m" id="no_tlp" placeholder="No Telephone">
+                    <input type="text" wire:model.lazy='noTlp' class="input-form text-m-medium placeholder-m-m" id="no_tlp" placeholder="No Telephone">
                     @error('no_tlp')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -41,7 +40,7 @@
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
                     <label for="alamat" class="text-neutral-90 text-m-medium">Alamat</label>
-                    <input type="text" wire:model.lazy='alamat' class="input-form text-m-medium placeholder-m-m" id="alamat" placeholder="Warna Barang">
+                    <input type="text" wire:model.lazy='alamat' class="input-form text-m-medium placeholder-m-m" id="alamat" placeholder="Alamat">
                     @error('alamat')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
