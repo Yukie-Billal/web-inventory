@@ -6,17 +6,18 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Barang;
 use App\Models\PeminjamanKeranjang;
+use App\Traits\PaginateTrait;
+use App\Traits\ListenerTrait;
 
 class DataBarang extends Component
 {
-    use WithPagination;
+    use WithPagination, PaginateTrait, ListenerTrait;
 
     public $pageName = 'page';
     public $pageCount;
 
     protected $listeners = [
-        'addPeminjaman' => 'render'
-        'swal' => '$refresh'
+        'addPeminjaman' => 'render',
     ];
 
     public function addPinjamKeranjang($id)
@@ -36,17 +37,8 @@ class DataBarang extends Component
     public function render()
     {
         $barangs = Barang::orderByDesc('created_at')->orderByDesc('nama_barang');
-        $barang_all = $barangs->count();
-        $sisa = $barang_all % 6;
-        if ($sisa <= 0) {
-            $count = 1;
-        } else if ($sisa >= 1) {
-            $count = (($barang_all - $sisa) / 6) + 1;
-        }
-        $this->pageCount = $count;
-        if ($this->page > $count) {
-            $this->page = 1;
-        }
+
+        $this->countPage($barangs->count());
 
         return view('livewire.peminjaman.data-barang', [
             'barangs' => $barangs->paginate(6),

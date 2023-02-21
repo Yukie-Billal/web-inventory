@@ -21,7 +21,6 @@
                 },
                 onClick: function(){} // Callback after click
             }).showToast();
-
             Livewire.emit('fresh');
         });
     </script>

@@ -76,7 +76,6 @@
         </div>
     </div>
 </div>
-<button id="toastButton">Toast Click</button>
 
 @push('scripts')
     <script>
@@ -90,23 +89,6 @@
             const value = document.querySelector('#filterMerek').value;
             const params = ['merek', value];
             Livewire.emit('setFilter', params);
-        });
-
-        $('#toastButton').on('click', function(event) {
-            event.preventDefault();
-            Livewire.emit('toastify', ['danger', 'Not Found', 3500]);
-            // Toastify({
-            //     text: "Data Not Found",
-            //     duration: 10000,
-            //     newWindow: true,
-            //     close: true,
-            //     stopOnFocus: true,
-            //     className: "text-l-medium",
-            //     style: {
-            //         background: "",
-            //     },
-            //     onClick: function(){} // Callback after click
-            // }).showToast();
         });
     </script>
 @endpush

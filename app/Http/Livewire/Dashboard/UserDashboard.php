@@ -6,26 +6,16 @@ use Livewire\Component;
 use App\Models\Barang;
 use Illuminate\Support\Str;
 use App\Models\PeminjamanKeranjang;
+use App\Traits\ListenerTrait;
 
 class UserDashboard extends Component
 {
+    use ListenerTrait;
+    
     public $barang;
-
     protected $listeners = [
-        'setBarang',
-        'addBarangPinjamList',
         'resetKeranjang',
-        'fresh',
     ];
-
-    public function fresh(){}
-
-    public function setBarang($value)
-    {
-        $value = Str::afterLast($value, '-');
-        $barang = Barang::find($value);
-        $this->barang = $barang;
-    }
 
     public function resetKeranjang()
     {
@@ -33,23 +23,8 @@ class UserDashboard extends Component
         foreach ($keranjangs as $keranjang) {
             $keranjang->delete();
         }
-
         $this->emit('toastify', ['danger', 'Reseted Item', 3000]);
-    }
-
-    public function addBarangPinjamList()
-    {
-        $pinjam = PeminjamanKeranjang::create([
-            'user_id' => auth()->user()->id,
-            'barang_id' => $this->barang->id,
-        ]);
-
-        if ($pinjam) {
-            $this->emit('toastify', ['success', 'Barang Ditambahkan Ke List Pinjaman', 3000]);
-        } else {
-            $this->emit('toastify', ['danger', 'Gagal Menmbahkan', 3000]);
-        }
-    }
+    }    
 
     public function deleteList($id)
     {
@@ -64,9 +39,8 @@ class UserDashboard extends Component
 
     public function render()
     {
-        return view('livewire.dashboard.user-dashboard', [
-            'barangs' => Barang::orderByDesc('nama_barang')->orderByDesc('created_at')->get(),
-            'keranjangs' => PeminjamanKeranjang::orderByDesc('created_at')->where('user_id', auth()->user()->id)->get()
-        ]);
+        // $this->addListener();
+        // dd($this->listeners);
+        return view('livewire.dashboard.user-dashboard');
     }
 }
