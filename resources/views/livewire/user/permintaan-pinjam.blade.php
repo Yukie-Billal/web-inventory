@@ -14,17 +14,17 @@
                 </tr>
             </thead>
             <tbody>
-                @if ($keranjangs->count() == 0)
+                @if ($permintaans->count() == 0)
                 <tr class="text-center">
                     <td colspan="8" style="font-size: 16px;">Kosong</td>
                 </tr>
                 @else
-                @foreach ($keranjangs as $keranjang)
+                @foreach ($permintaans as $item)
                     <tr>
-                        <td>{{ $keranjang->barang->nama_barang }}</td>
-                        <td>{{ $keranjang->barang->merek }}</td>
-                        <td>{{ $keranjang->barang->warna }}</td>
-                        <td>{{ $keranjang->barang->kategori->nama_kategori }}</td>
+                        <td>{{ $item->barang->nama_barang }}</td>
+                        <td>{{ $item->barang->merek }}</td>
+                        <td>{{ $item->barang->warna }}</td>
+                        <td>{{ $item->barang->kategori->nama_kategori }}</td>
                         <td>
                             <img src="{{ asset('icon/delete.png') }}" alt=".." width="20px" height="20px">
                         </td>

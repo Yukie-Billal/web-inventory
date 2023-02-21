@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <livewire:permintaan-pinjam />
+                <livewire:user.permintaan-pinjam />
             </div>
         </div>
     </div>
@@ -19,12 +19,6 @@
         <livewire:user.keranjang-pinjam-user />
     </div>
 </div>
-
-@push('scripts')
-    <script>
-        $('#resetButton').on('click', () => {Livewire.emit('resetKeranjang')});
-    </script>
-@endpush
 
 <x-alert.sweet-alert />
 <x-toast />

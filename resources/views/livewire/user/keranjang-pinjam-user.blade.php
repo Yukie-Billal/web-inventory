@@ -36,8 +36,17 @@
         </table>
     </div>
     <div class="d-flex justify-content-end w-100" style="gap: 4px; bottom: 0;">
-        <button class="button button-warning">Update</button>
+        <button class="button button-warning" id="updateButton">Update</button>
         <button class="button button-danger" id="resetButton">reset</button>
-        <button class="button button-success">Kirim Permintaan</button>
+        <button class="button button-success" id="kirimPermintaan" wire:click='kirimPermintaan'>Kirim Permintaan</button>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $('#updateButton').on('click', () => {
+            Livewire.emit('toastify', ['primary', 'Data Di Update', 3000]);
+        });
+        $('#resetButton').on('click', () => {Livewire.emit('resetKeranjang')});
+    </script>
+@endpush
