@@ -654,7 +654,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   font: 500 12px/16px "Inter", sans-serif;
 }
 .input-form[disabled] {
-  background-color: #F5F5F5;
+  background-color: #F5F5F5 !important;
 }
 .input-form[disabled]::placeholder {
   color: #0A0A0A;
@@ -1225,6 +1225,22 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   color: #424242;
   font-size: 40px;
   animation: rotate 2s infinite;
+}
+
+.indicator-read {
+  display: inline-block;
+  background: #E0E0E0;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+.indicator-unread {
+  display: inline-block;
+  background: #43936C;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
 }
 
 @keyframes rotate {

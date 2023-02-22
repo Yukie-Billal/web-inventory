@@ -1,5 +1,4 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
-{{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
 {{-- select 2 --}}
 <link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}">

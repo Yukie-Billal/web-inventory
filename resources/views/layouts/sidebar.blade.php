@@ -38,6 +38,7 @@
 						<a href="/pengembalians" class="{{ Request::is('pengembalians') ? 'active' : '' }}">Pengembalian</a>
 						<a href="/masuk-barangs" class="{{ Request::is('masuk-barangs') ? 'active' : '' }}">Masuk Barang</a>
 						<a href="/cetak-barcodes" class="{{ Request::is('cetak-barcodes') ? 'active' : '' }}">Cetak Barcode</a>
+						<a href="/permintaan-pinjamans" class="{{ Request::is('permintaan-pinjamans') ? 'active' : '' }}">Permintaan Pinjaman</a>
 					</div>
 				</div>
 			</div>

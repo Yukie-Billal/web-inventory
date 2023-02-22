@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/pengembalians', [PageController::class, 'pengembalian']);
         Route::get('/masuk-barangs', [PageController::class, 'masuk_barang']);
         Route::get('/cetak-barcodes', [PageController::class, 'cetak_barcode']);
+        Route::get('/permintaan-pinjamans', [PageController::class, 'minta_permen']);
 
         Route::get('/pdf/barcode/{barang}/', [ExportController::class, 'barcode_pdf']);
         Route::get('/print/barcode/{barang}', [PrinterController::class, 'print_barcode']);
@@ -45,5 +46,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['IsUser'])->group(function () {
         Route::get('/daftar-barangs', [PageController::class, 'barang']);
-    })
+    });
 });

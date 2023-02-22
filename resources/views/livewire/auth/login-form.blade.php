@@ -29,3 +29,5 @@
         Jika Belum Punya Akun Silahkan Buat <a href="/register" class="text-decoration-none">Disini!!</a>
     </div>
 </form>
+
+<x-toast />

@@ -22,6 +22,8 @@
                     confirmButtonText: 'Hapus',
                     denyButtonText: 'Batalkan',
                     focusConfirm: false,
+                    html:
+                        '',
                 }).then((result) => {
                     if (result.isConfirmed && callback == true) {
                         Livewire.emit(url, value);

@@ -141,7 +141,7 @@ ol {
    }
 
    &[disabled] {
-      background-color: $my-neutral-20;
+      background-color: $my-neutral-20 !important;
 
       &::placeholder {
          color: $my-neutral-100;
@@ -770,6 +770,21 @@ background-color: #3131a3;
         font-size: 40px;
         animation: rotate 2s infinite;
     }
+}
+
+.indicator-read {
+    display: inline-block;
+    background: $my-neutral-40;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+.indicator-unread {
+    display: inline-block;
+    background: $my-success-main;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
 }
 
 @keyframes rotate {

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->dateTime('tanggal_pengajuan')->default(date('Y-m-d'));
             $table->foreignId('barang_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('status')->default('Di Ajukan');
+            $table->boolean('read')->default(0);
             $table->timestamps();
         });
     }

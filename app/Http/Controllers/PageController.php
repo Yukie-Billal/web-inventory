@@ -67,4 +67,8 @@ class PageController extends Controller
     {
         return view('pages.kegiatan.cetak-barcode');
     }
+    public function minta_permen()
+    {
+        return view('pages.kegiatan.permintaan-pinjaman');
+    }
 }
