@@ -603,7 +603,7 @@ background-color: #3131a3;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 2px 8px;
+    padding: 3px 8px;
     gap: 10px;
 
     height: 20px;
@@ -774,10 +774,11 @@ background-color: #3131a3;
 
 .indicator-read {
     display: inline-block;
-    background: $my-neutral-40;
+    background: $my-neutral-70;
     border-radius: 50%;
     width: 10px;
     height: 10px;
+    box-shadow: $my-shadow-2;
 }
 .indicator-unread {
     display: inline-block;
@@ -785,6 +786,7 @@ background-color: #3131a3;
     border-radius: 50%;
     width: 10px;
     height: 10px;
+    box-shadow: $my-shadow-2;
 }
 
 @keyframes rotate {

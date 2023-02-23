@@ -7,6 +7,7 @@ Use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use App\Models\permintaanPinjaman;
 Use PDF;
 
 class PageController extends Controller
@@ -70,5 +71,12 @@ class PageController extends Controller
     public function minta_permen()
     {
         return view('pages.kegiatan.permintaan-pinjaman');
+    }
+    public function show_permintaan(permintaanPinjaman $permintaanPinjaman)
+    {
+        $permintaanPinjaman->update(['read' => 1]);
+        return view('pages.kegiatan.permintaan-pinjaman-detail', [
+            'permintaan' => $permintaanPinjaman,
+        ]);
     }
 }

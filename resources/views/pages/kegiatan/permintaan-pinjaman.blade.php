@@ -4,7 +4,7 @@
 
 	<div class="row">
 		<div class="col-12">
-			<livewire:kegiatan.permintaan-pinjaman.daftar-permintaan />			
+			<livewire:kegiatan.permintaan-pinjaman.daftar-permintaan />
 		</div>
 	</div>
 

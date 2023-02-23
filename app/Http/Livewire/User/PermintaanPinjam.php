@@ -29,13 +29,11 @@ class PermintaanPinjam extends Component
             $this->emit('hapusPermintaan', $id);
         }
     }
-
     public function toggleAlert()
     {
         dd($this->tampilkanAlert);
         $this->tampilkanAlert = !$this->tampilkanAlert;
     }
-
     public function hapusPermintaan($id)
     {
         $permintaan = PermintaanPinjaman::find($id);
@@ -46,7 +44,6 @@ class PermintaanPinjam extends Component
             $this->emit('toastify', ['danger', 'Permintaan Tidak Di Temukan', 3000]);
         }
     }
-
     public function render()
     {
         return view('livewire.user.permintaan-pinjam', [

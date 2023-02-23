@@ -14,7 +14,7 @@
                     <th style="min-width: 10px;"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody wire:poll.visible.3000ms>
                 @if ($permintaans->count() == 0)
                 <tr class="text-center">
                     <td colspan="8" style="font-size: 16px;">Kosong</td>
@@ -26,9 +26,11 @@
                         <td>{{ $permintaan->barang->merek }}</td>
                         <td>{{ $permintaan->barang->warna }}</td>
                         <td>{{ $permintaan->barang->kategori->nama_kategori }}</td>
-                        <td class="d-flex align-items-center">
-                            <span class="tags tags-primary px-0 w-75">{{ $permintaan->status }}</span>
-                            <i class="ms-2 indicator-{{ $permintaan->read ? 'read' : 'unread' }}"></i>
+                        <td>
+                            <div class="d-flex align-items-center">                                
+                                <span class="tags tags-primary px-0 w-75">{{ $permintaan->status }}</span>
+                                <i class="ms-2 indicator-{{ $permintaan->read ? 'read' : 'unread' }}"></i>
+                            </div>
                         </td>
                         <td>
                             <img src="{{ asset('icon/delete.png') }}" alt=".." style="width:20px; height:20px" wire:click="deleteConfirm({{ $permintaan->id }})">

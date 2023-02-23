@@ -14,11 +14,11 @@
                         <th>Merek</th>
                         <th>Warna</th>
                         <th>Kategori</th>
-                        <th>Stok</th>
-                        {{-- <th style="min-width: 30px;"></th> --}}
+                        <th class="text-center">Status</th>
+                        <th style="min-width: 30px;"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody wire:poll.visible wire:poll.3000ms>
                     @if ($permintaans->count() == 0)
                         <tr class="text-center">
                             <td colspan="9" style="font-size: 16px;">Tidak Ada Ajuan Pinjaman</td>
@@ -37,10 +37,16 @@
                             @else
                                 <td class="px-2 py-2">Tidak Ada</td>
                             @endif
-                            <td class="px-2 py-2">{{ $permintaan->barang->stok }}</td>
+                            <td >
+                                <div class="d-flex align-items-center w-100 h-100">
+                                    <span class="tags tags-primary px-0 w-75">{{ $permintaan->status }}</span>
+                                    <i class="ms-2 indicator-{{ $permintaan->read ? 'read' : 'unread' }}"></i>
+                                </div>
+                            </td>
                             <td style="max-width: 50px;" class="py-2">
-                                <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editBarang({{ $permintaan->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2">
-                                <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteConfirm({{ $permintaan->id }})'>
+                                <a href="/permintaan-pinjamans/{{ $permintaan->id }}" class="button button-info" style="height: 20px; width: 20px;">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             </td>
                         </tr>
                         @endforeach

@@ -3,22 +3,17 @@
 </div>
 
 <div class="row m-0 p-0 justify-content-between">
-    <div class="col-7 p-0 pe-3">
-        <div class="row">
-            <div class="col-12">
-                <livewire:user.user-search />
-            </div>
+    <div class="col-7 p-0 pe-3 pb-4">
+        <div class="col-12">
+            <livewire:user.user-search />
         </div>
-        <div class="row">
-            <div class="col-12">
-                <livewire:user.permintaan-pinjam />
-            </div>
+        <div class="col-12">
+            <livewire:user.permintaan-pinjam />
         </div>
     </div>
     <div class="col-5 p-0 ps-3">
         <livewire:user.keranjang-pinjam-user />
     </div>
 </div>
-
 <x-alert.sweet-alert />
 <x-toast />

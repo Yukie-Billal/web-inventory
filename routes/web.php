@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [PageController::class, 'index'])->name('home');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/profile', [AuthController::class, 'profile']);
+
 
     Route::middleware(['IsAdmin'])->group(function () {
         Route::get('/barangs', [PageController::class, 'barang']);
@@ -39,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/masuk-barangs', [PageController::class, 'masuk_barang']);
         Route::get('/cetak-barcodes', [PageController::class, 'cetak_barcode']);
         Route::get('/permintaan-pinjamans', [PageController::class, 'minta_permen']);
+        Route::get('/permintaan-pinjamans/{permintaanPinjaman}', [PageController::class, 'show_permintaan']);
 
         Route::get('/pdf/barcode/{barang}/', [ExportController::class, 'barcode_pdf']);
         Route::get('/print/barcode/{barang}', [PrinterController::class, 'print_barcode']);

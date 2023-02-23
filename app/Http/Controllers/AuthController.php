@@ -31,6 +31,11 @@ class AuthController extends Controller
         return redirect('/')->with('failed','Login Failed, Username or Pasword wrong');
     }
 
+    public function profile()
+    {
+        return view('pages.Auth.profile');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();        
@@ -38,4 +43,5 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
+
 }

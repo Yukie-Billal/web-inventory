@@ -1070,7 +1070,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 2px 8px;
+  padding: 3px 8px;
   gap: 10px;
   height: 20px;
   border-radius: 6px;
@@ -1229,10 +1229,11 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 
 .indicator-read {
   display: inline-block;
-  background: #E0E0E0;
+  background: #757575;
   border-radius: 50%;
   width: 10px;
   height: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1019607843);
 }
 
 .indicator-unread {
@@ -1241,6 +1242,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   border-radius: 50%;
   width: 10px;
   height: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1019607843);
 }
 
 @keyframes rotate {
