@@ -35,8 +35,7 @@
 				window.frames["print_frame"].window.focus();
 				window.frames["print_frame"].window.print();
 			}
-
-			$(document).ready(function(e) {
+			$(document).ready(function() {
 				$('#buttonPrint').on('click', printBarcode);
 				$('#buttonUpdate').on('click', function(e) {
 					e.preventDefault();
@@ -51,4 +50,7 @@
 			});
 		</script>
 	@endpush
+
+	<x-toast />
+	<x-alert.sweet-alert />
 </x-app-layout>

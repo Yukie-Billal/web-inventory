@@ -10,7 +10,7 @@ class DaftarPermintaan extends Component
     public function render()
     {
         return view('livewire.kegiatan.permintaan-pinjaman.daftar-permintaan', [
-            'permintaans'=>PermintaanPinjaman::orderByDesc('created_at')->get(),
+            'permintaans'=>PermintaanPinjaman::with(['user', 'barang'])->orderByDesc('created_at')->get(),
         ]);
     }
 }

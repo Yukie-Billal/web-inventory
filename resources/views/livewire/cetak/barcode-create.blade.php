@@ -3,7 +3,7 @@
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-12">
-                    <div class="form-group p-0" wire:ignore>
+                    <div class="form-group p-0">
                         <label for="" class="text-m-regular">Cari Berdasarkan Serial Number Atau Nama Barang</label>
                         <input id="serialNumber" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off" maxlength="2048" tabindex="1">
                         @error('serialNumber')
@@ -54,6 +54,7 @@
                         message.innerHTML = `<span>Found No Results for "${data.query}"</span>`;
                         // Append message element to the results list
                         list.prepend(message);
+                        Livewire.emit('toastify', ['warning', 'Barang Tidak Ditemukan', 2500]);
                     }
                 },
                 noResults: true,
@@ -67,13 +68,22 @@
                 input: {
                     selection: (event) => {
                         const selection = event.detail.selection.value;
-                        autoCompleteJS.input.value = selection;
                         const params = ['serial', selection];
-                        Livewire.emit('setBarcode', params);
+                        Livewire.emit('setBarcode', params);   
+                        autoCompleteJS.input.value = selection;                     
                     }
                 }
             }
-         });        
+         });
+        Livewire.on('setBarcode', function (params) {
+            setTimeout(()=>{                
+                autoCompleteJS.input.value = params[1];
+            }, 1500)
+        });
+        Livewire.on('200', function () {
+            autoCompleteJS.input.value = '';
+            Livewire.emit('toastify', ['success','Ditambahkan', 2000]);
+        })
     </script>
     <script>
         const jml = document.querySelectorAll('.jml');

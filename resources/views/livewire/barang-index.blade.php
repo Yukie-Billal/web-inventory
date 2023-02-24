@@ -18,19 +18,19 @@
                             <option value="">Semua</option>
                             @foreach ($barang_mereks as $merek)
                                 <option value="{!! $merek->merek !!}">{!! $merek->merek !!}</option>
-                            @endforeach                            
+                            @endforeach
                         </select>
                     </div>
                 </div>              
             </div>
         </div>
-        <div class="row justify-content-end align-items-center">        
+        <div class="row justify-content-end align-items-center">
             <livewire:pagination-view :col="9" :pageCount='$pageCount' :page='$page' :pageName='$pageName' :wire:key='$page'/>
         </div>
     </div>
     <div class="card-body p-0">
         <div class="col-12 p-0 rounded border-neutral-40-2">
-            <table class="table table-hover table-responsive mb-0">
+            <table class="table table-hover table-responsive mb-0 align-middle">
                 <thead>
                     <tr>
                         <th class="px-3">Serial Number</th>

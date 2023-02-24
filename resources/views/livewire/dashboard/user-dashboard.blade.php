@@ -15,5 +15,11 @@
         <livewire:user.keranjang-pinjam-user />
     </div>
 </div>
+
+<div class="row pb-3">
+    <div class="col-12">
+        <livewire:user.history-pinjaman />
+    </div>
+</div>
 <x-alert.sweet-alert />
 <x-toast />

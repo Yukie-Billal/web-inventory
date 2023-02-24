@@ -4,7 +4,7 @@
         <p class="text-center text-s-medium p-0 mt-0">Daftar Barang Yang Akan Dipinjam !!</p>
     </div>
     <div class="row mb-3" style="min-height: 48vh;">
-        <table class="table table-hover mb-0 w-100 h-100">
+        <table class="table table-hover mb-0 w-100 h-100 align-middle">
             <thead>
                 <tr>
                     <th>Nama Barang</th>

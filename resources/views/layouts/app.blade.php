@@ -53,6 +53,6 @@
 
     @include('layouts.source.normal-script')
     @livewireScripts
-    @stack('scripts')  
+    @stack('scripts')
 </body>
 </html>

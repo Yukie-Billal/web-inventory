@@ -3,7 +3,7 @@
         History / Barang Yang Di Sedang Dinjam
     </div>
     <div class="card-body p-0 border-0 ">
-        <table class="table table-hover mb-0 w-100 h-100">
+        <table class="table table-hover mb-0 w-100 h-100 align-middle">
             <thead>
                 <tr>
                     <th>Nama Barang</th>

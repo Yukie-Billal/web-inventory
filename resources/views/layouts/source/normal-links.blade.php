@@ -18,10 +18,19 @@
 <link rel="stylesheet" href="{{ asset('vendor/toastify/toastify.min.css') }}">
 
 <style>
+    table thead tr {
+        height: 40px;
+    }
+    table thead tr th {
+        height: 40px;
+    }
     table tbody tr {
-        height: 36px;
+        height: 40px;
     }
     table tbody tr td {
-        height: 36px;
+        height: 40px;
+    }
+    table tbody tr td:first-child {
+        padding: 0 0 0 10px;
     }
 </style>

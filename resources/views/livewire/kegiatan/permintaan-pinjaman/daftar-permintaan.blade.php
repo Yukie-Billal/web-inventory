@@ -18,7 +18,7 @@
                         <th style="min-width: 30px;"></th>
                     </tr>
                 </thead>
-                <tbody wire:poll.visible wire:poll.3000ms>
+                <tbody wire:poll.3000ms>
                     @if ($permintaans->count() == 0)
                         <tr class="text-center">
                             <td colspan="9" style="font-size: 16px;">Tidak Ada Ajuan Pinjaman</td>
