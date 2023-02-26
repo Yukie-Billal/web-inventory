@@ -16,8 +16,8 @@
     </div>
 </div>
 
-<div class="row pb-3">
-    <div class="col-12">
+<div class="row m-0 my-4 p-0">
+    <div class="col-12 p-0">
         <livewire:user.history-pinjaman />
     </div>
 </div>

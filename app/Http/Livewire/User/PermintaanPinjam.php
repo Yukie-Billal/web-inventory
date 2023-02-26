@@ -5,6 +5,8 @@ namespace App\Http\Livewire\User;
 use Livewire\Component;
 use App\Traits\ListenerTrait;
 use App\Models\PermintaanPinjaman;
+use App\Models\Pinjaman;
+use Illuminate\Support\Str;
 
 class PermintaanPinjam extends Component
 {
@@ -29,11 +31,37 @@ class PermintaanPinjam extends Component
             $this->emit('hapusPermintaan', $id);
         }
     }
-    public function toggleAlert()
+    
+    public function tandaiSelesai($id)
     {
-        dd($this->tampilkanAlert);
-        $this->tampilkanAlert = !$this->tampilkanAlert;
+        $permintaan = PermintaanPinjaman::find($id);
+
+        if ($permintaan) {
+            if (Str::lower($permintaan->status) == "di terima") {                
+                $pinjaman = Pinjaman::create([
+                    'user_id' => auth()->user()->id,
+                    'nama_peminjam' => auth()->user()->nama,
+                    'no_tlp' => auth()->user()->no_tlp,
+                    'alamat' => auth()->user()->alamat,
+                    'barang_id' => $permintaan->barang_id,
+                    'tanggal_pinjam' => date('Y-m-d'),
+                    'status' => 'Di Pinjam'
+                ]);
+
+                if ($pinjaman) {
+                    $this->emit('toastify', ['success','Ditandai Sudah Di Pinjam', 3000]);
+                    $permintaan->delete();
+                } else {
+                    $this->emit('toastify', ['danger','Gagal Menandai', 3000]);
+                }
+            } else {
+                $this->emit('toastify', ['danger','Permintaan Belum Disetujui', 3000]);
+            }
+        } else {
+            $this->emit('toastify', ['danger','Permintaan Tidak Ditemukan', 3000]);
+        }
     }
+
     public function hapusPermintaan($id)
     {
         $permintaan = PermintaanPinjaman::find($id);
