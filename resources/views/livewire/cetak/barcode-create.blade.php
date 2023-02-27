@@ -63,14 +63,14 @@
             },
             resultItem: {
                 highlight: true
-            },            
+            },
             events: {
                 input: {
                     selection: (event) => {
                         const selection = event.detail.selection.value;
                         const params = ['serial', selection];
-                        Livewire.emit('setBarcode', params);   
-                        autoCompleteJS.input.value = selection;                     
+                        Livewire.emit('setBarcode', params);
+                        autoCompleteJS.input.value = selection;
                     }
                 }
             }

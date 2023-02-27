@@ -13,7 +13,7 @@ class AuthController extends Controller
         return view('pages.Auth.register');
     }
 
-    public function login()
+    public function login()                 
     {
         return view('pages.Auth.login');
     }
@@ -34,6 +34,13 @@ class AuthController extends Controller
     public function profile()
     {
         return view('pages.Auth.profile');
+    }
+
+    public function profile_user(User $user)
+    {
+        return view('pages.auth.profile', [
+            "user" =>$user
+        ]);
     }
 
     public function logout(Request $request)
