@@ -39,7 +39,11 @@
                             @endif
                             <td >
                                 <div class="d-flex align-items-center w-100 h-100">
-                                    <span class="tags tags-primary px-0 w-75">{{ $permintaan->status }}</span>
+                                    @php
+                                        $permintaan->status == "Di Tolak" ? $warna="danger" : $warna="success";
+                                        $permintaan->status == 'Di Ajukan' ? $warna = "primary" : '';
+                                    @endphp
+                                    <div class="tags tags-{{ $warna }} px-0 w-75">{{ $permintaan->status }}</div>
                                     <i class="ms-2 indicator-{{ $permintaan->read ? 'read' : 'unread' }}"></i>
                                 </div>
                             </td>
