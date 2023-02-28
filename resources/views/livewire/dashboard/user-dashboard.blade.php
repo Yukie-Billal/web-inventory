@@ -3,7 +3,7 @@
 </div>
 
 <div class="row m-0 p-0 justify-content-between">
-    <div class="col-7 p-0 pe-3 pb-4">
+    <div class="col-7 p-0 pe-3 pb-0">
         <div class="col-12">
             <livewire:user.user-search />
         </div>
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<div class="row m-0 my-4 p-0">
+<div class="row m-0 my-3 p-0">
     <div class="col-12 p-0">
         <livewire:user.history-pinjaman />
     </div>
