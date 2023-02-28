@@ -75,6 +75,9 @@ class Profile extends Component
         if ($this->edit == false) {
             $this->setUser($this->userId);
         }
+        if ((auth()->user()->role->nama_role == "User" && auth()->user()->id != $this->userId)) {
+            return abort(403);
+        }
         return view('livewire.auth.profile');
     }
 }

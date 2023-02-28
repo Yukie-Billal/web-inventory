@@ -7,22 +7,17 @@
             </button>
         </div>
     </div>
-    <div class="col-6 d-flex justify-content-end align-items-center h-75">
-        <div class="col d-flex justify-content-end pe-4 h-100 align-items-center cursor-pointer" style="border-right: 2px solid #d0d0d0;" onclick='window.location = "/profile/{{ auth()->user()->id }}"'>
-            <i class="fa fa-user-friends d-flex align-items-center me-2 mb-1" aria-hidden="true" style="font-size: 28px;"></i>
-            <span class="text-dark text-l-medium">
-                @if(auth()->user() == null)
-                    Nama Saya
-                @else
-                    {{ auth()->user()->nama }}
-                @endif
-            </span>
-        </div>
-        <div class="col-3 h-100 d-flex align-items-center justify-content-end pe-5">
-            <a href="/logout" class="d-flex align-items-center justify-content-center text-decoration-none text-m-medium text-neutral-90">
-                Log Out
-                <img src="{{ asset('icon/logout.png') }}" alt="..." width="20px" height="20px" class="ms-2">
-            </a>
-        </div>
-    </div>
+    <livewire:auth.foto-profile />
 </div>
+
+@push('scripts')
+    <script>
+        $('.profile-link').each(function(index, item) {
+            item.style.cursor = "pointer";
+            $(item).on('click', function(e) {
+                item.style.background = "red";
+                window.location = "/profile/{{ auth()->user()->id }}"
+            });
+        });
+    </script>
+@endpush
