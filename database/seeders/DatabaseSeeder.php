@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
+            GlobalSearchSeeder::class,
         ]);
         \App\Models\User::create([
             'nama' => 'Email',
