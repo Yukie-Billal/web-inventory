@@ -1098,6 +1098,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 
 .sidebar {
   background: #3a7bd5;
+  border-radius: 0 25px 25px 0;
 }
 .sidebar .sidebar-header {
   display: flex;
