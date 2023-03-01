@@ -43,6 +43,11 @@ class Barang extends Model
         return $this->hasMany(BarcodeKeranjang::class);
     }
 
+    public function permintaanPinjaman()
+    {
+        return $this->hasMany(permintaanPinjaman::class);
+    }
+
     /**
      * Scope a query to only include 
      *

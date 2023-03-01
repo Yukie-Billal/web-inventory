@@ -654,7 +654,7 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   font: 500 12px/16px "Inter", sans-serif;
 }
 .input-form[disabled] {
-  background-color: #F5F5F5;
+  background-color: #F5F5F5 !important;
 }
 .input-form[disabled]::placeholder {
   color: #0A0A0A;
@@ -1067,38 +1067,37 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
 
 .tags {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 2px 8px;
+  flex-direction: row;
+  padding: 3px 8px;
   gap: 10px;
   height: 20px;
   border-radius: 6px;
 }
 .tags.tags-primary {
-  background-color: #DFE0F3;
+  background-color: rgba(76, 77, 220, 0.2);
   border: 1px solid #F5F5FF;
 }
 .tags.tags-danger {
-  background-color: #FFF4F2;
+  background-color: rgba(203, 58, 49, 0.2);
   border: 1px solid #EEB4B0;
 }
 .tags.tags-warning {
-  background-color: #FFF9F2;
+  background-color: rgba(205, 123, 46, 0.2);
   border: 1px solid #EECEB0;
 }
 .tags.tags-info {
-  background-color: #F0F3FF;
+  background-color: rgba(50, 103, 227, 0.2);
   border: 1px solid #B1C5F6;
 }
 .tags.tags-success {
-  background-color: #F7F7F7;
+  background-color: rgba(67, 147, 108, 0.2);
   border: 1px solid #B8DBCA;
 }
 
 .sidebar {
   background: #3a7bd5;
-  border-radius: 0 25px 25px 0;
 }
 .sidebar .sidebar-header {
   display: flex;
@@ -1225,6 +1224,24 @@ ol.my-breadcumb .my-breadcrumb-item.parent {
   color: #424242;
   font-size: 40px;
   animation: rotate 2s infinite;
+}
+
+.indicator-read {
+  display: inline-block;
+  background: #757575;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1019607843);
+}
+
+.indicator-unread {
+  display: inline-block;
+  background: #43936C;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1019607843);
 }
 
 @keyframes rotate {

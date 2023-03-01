@@ -32,6 +32,23 @@
     </div>
 </div>
 
+<div class="row justify-content-center">
+    <div class="col-10">
+        <div class="card flex-fill border-0 bg-transparent">
+            <div class="card-body border-0">
+                <span class="text-l-medium">
+                    Ukuran Barcode
+                </span>
+                <select class="select-form" id="ukuranBarcode" wire:change='$emit("ukuran-barcode")'>
+                    <option value=".85, 66">Kecil</option>
+                    <option value="1, 66">Sedang</option>
+                    <option value="1.4, 77">Besar</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
 @push('scripts')
     <script>
         Livewire.on('200',function (message) {

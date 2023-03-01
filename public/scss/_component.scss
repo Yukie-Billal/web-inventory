@@ -141,7 +141,7 @@ ol {
    }
 
    &[disabled] {
-      background-color: $my-neutral-20;
+      background-color: $my-neutral-20 !important;
 
       &::placeholder {
          color: $my-neutral-100;
@@ -599,38 +599,35 @@ background-color: #3131a3;
 }
 
 .tags {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 2px 8px;
+    @include flex-box(center, center, row);
+    padding: 3px 8px;
     gap: 10px;
 
     height: 20px;
     border-radius: 6px;
 
     &.tags-primary {
-        background-color: $my-primary-surface;
+        background-color: $my-primary-focus;
         border: 1px solid $my-primary-border;
     }
 
     &.tags-danger {
-        background-color: $my-danger-surface;
+        background-color: $my-danger-focus;
         border: 1px solid $my-danger-border;      
     }
 
     &.tags-warning {
-        background-color: $my-warning-surface;
+        background-color: $my-warning-focus;
         border: 1px solid $my-warning-border;      
     }
 
     &.tags-info {
-        background-color: $my-info-surface;
+        background-color: $my-info-focus;
         border: 1px solid $my-info-border;      
     }
 
     &.tags-success {
-        background-color: $my-success-surface;
+        background-color: $my-success-focus;
         border: 1px solid $my-success-border;      
     }
 }
@@ -641,7 +638,7 @@ background-color: #3131a3;
    // background: #55D0FF; 
    background: #3a7bd5;
    // background-color: lighten($my-primary-hover, 10);
-   border-radius: 0 25px 25px 0; 
+   // border-radius: 0 25px 25px 0; 
    // border: 2px solid #C2C2C2; 
    // border-left: 0;
 
@@ -770,6 +767,23 @@ background-color: #3131a3;
         font-size: 40px;
         animation: rotate 2s infinite;
     }
+}
+
+.indicator-read {
+    display: inline-block;
+    background: $my-neutral-70;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    box-shadow: $my-shadow-2;
+}
+.indicator-unread {
+    display: inline-block;
+    background: $my-success-main;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    box-shadow: $my-shadow-2;
 }
 
 @keyframes rotate {

@@ -1,5 +1,4 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
-{{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
 {{-- select 2 --}}
 <link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}">
@@ -19,10 +18,19 @@
 <link rel="stylesheet" href="{{ asset('vendor/toastify/toastify.min.css') }}">
 
 <style>
+    table thead tr {
+        height: 40px;
+    }
+    table thead tr th {
+        height: 40px;
+    }
     table tbody tr {
-        height: 36px;
+        height: 40px;
     }
     table tbody tr td {
-        height: 36px;
+        height: 40px;
+    }
+    table tbody tr td:first-child {
+        padding: 0 0 0 10px;
     }
 </style>

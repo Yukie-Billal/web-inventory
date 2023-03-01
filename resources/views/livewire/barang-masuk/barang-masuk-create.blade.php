@@ -120,7 +120,7 @@
                 <div class="card-header bg-white border-0 d-flex flex-column">
                     <span class="header-m mb-2">Data Supplier</span>
                     <p class="text-m-medium">Harap Isi data dibawah ini sebelum mengkonfirmasi barang masuk !!!</p>
-                </div>
+            </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6" wire:ignore>

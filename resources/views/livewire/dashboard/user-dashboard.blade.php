@@ -3,16 +3,12 @@
 </div>
 
 <div class="row m-0 p-0 justify-content-between">
-    <div class="col-7 p-0 pe-3">
-        <div class="row">
-            <div class="col-12">
-                <livewire:user.user-search />
-            </div>
+    <div class="col-7 p-0 pe-3 pb-0">
+        <div class="col-12">
+            <livewire:user.user-search />
         </div>
-        <div class="row">
-            <div class="col-12">
-                <livewire:permintaan-pinjam />
-            </div>
+        <div class="col-12" id="#permintaan-pinjam">
+            <livewire:user.permintaan-pinjam />
         </div>
     </div>
     <div class="col-5 p-0 ps-3">
@@ -20,11 +16,10 @@
     </div>
 </div>
 
-@push('scripts')
-    <script>
-        $('#resetButton').on('click', () => {Livewire.emit('resetKeranjang')});
-    </script>
-@endpush
-
+<div class="row m-0 my-3 p-0">
+    <div class="col-12 p-0" id="history-pinjaman">
+        <livewire:user.history-pinjaman />
+    </div>
+</div>
 <x-alert.sweet-alert />
 <x-toast />

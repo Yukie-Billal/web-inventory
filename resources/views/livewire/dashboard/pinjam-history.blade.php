@@ -15,7 +15,7 @@
     </div>
     <div class="card-body border-0">
         <div class="col-12 p-0 border-neutral-40-2 rounded">
-            <table class="table table-responsive table-hover mb-0">
+            <table class="table table-responsive table-hover mb-0 align-middle">
                 <thead>
                     <tr>
                         <th>Nama Peminjam</th>

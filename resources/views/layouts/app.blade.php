@@ -11,9 +11,9 @@
     @livewireStyles
 </head>
 <body>
-    <div class="load-state" id="loader">
+    {{-- <div class="load-state" id="loader">
         <i class="fa-solid fa-spinner load-state-item"></i>
-    </div>
+    </div> --}}
 
     @can('IsAdmin')        
         <div class="container-fluid" style="min-height: calc(100vh - 80px);">
@@ -53,6 +53,6 @@
 
     @include('layouts.source.normal-script')
     @livewireScripts
-    @stack('scripts')  
+    @stack('scripts')
 </body>
 </html>

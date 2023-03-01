@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('alamat')->nullable();
             $table->string('no_tlp')->nullable();
+            $table->string('foto')->nullable();
             $table->foreignId('role_id')->default(2)->constrained()->cascadeOnUpdate();
             $table->timestamps();
         });
