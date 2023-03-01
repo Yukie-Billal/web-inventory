@@ -35,7 +35,7 @@
                         <td class="px-2">{{ $supplier->nama_perusahaan }}</td>
                         <td class="px-2">{{ $supplier->no_tlp }}</td>
                         <td class="px-2">{{ $supplier->alamat }}</td>
-                        <td style="max-width: 50px;">
+                        <td style="max-width: 100px;">
                             <img 
                                 src="{{ asset('icon/edit.png') }}" alt=".."
                                 style="height: 18px; width: 18px; cursor: pointer;"

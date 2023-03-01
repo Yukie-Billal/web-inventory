@@ -149,7 +149,6 @@
                                     placeholder="Nama Perusahaan"
                                     :disabled="!$s_baru"
                                 />
-                                {{ $s_baru  .'---'. !$s_baru}}
                                 @error('namaPerusahaan')
                                     <small class="text-danger text-s-medium">{{ $message }}</small>
                                 @enderror

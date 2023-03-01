@@ -45,5 +45,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['IsUser'])->group(function () {
         Route::get('/daftar-barangs', [PageController::class, 'barang']);
-    })
+    });
 });

@@ -18,7 +18,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="noTlp" class="text-m-regular">No Telephone</label>
-                        <input type="text" wire:model.lazy='no_tlp' id="noTlp" class="input-form w-100 placeholder-m-m input-form-xl" placeholder="Masukan Nama Lengkap">
+                        <input type="text" wire:model.lazy='no_tlp' id="noTlp" class="input-form w-100 placeholder-m-m input-form-xl" placeholder="0812 2344 7812">
                     </div>
                 </div>
             </div>

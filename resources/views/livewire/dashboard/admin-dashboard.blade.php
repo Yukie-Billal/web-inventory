@@ -113,11 +113,11 @@
         </div>
         <div class="card-body border-0">
             <ul class="d-flex justify-content-around align-items-start flex-column" style="height: 180px;">
-                <li class="text-m-medium">Jika ada yang mau meminjam silahkan menuju ke halaman<a href=""> Peminjaman </a>pada menu Kegiatan untuk mendata siapa dan barang apa saja yang di pinjam </li>
-                <li class="text-m-medium">Jika ada barang yang datang silahkan menuju ke halaman<a href=""> Masuk Barang </a>pada menu kegiatan untuk mendata barang apa dan dan darimana barang itu dikirim</li>
-                <li class="text-m-medium">Jika ada yang ingin mengembalikan barang silahkan menuju halaman<a href=""> Pengembalian </a>pada menu kegiatan untuk mengkonfirmasi barang yang hendak dikembalikan</li>
+                <li class="text-m-medium">Jika ada yang mau meminjam silahkan menuju ke halaman<a href="/peminjamans" style="color: #4ca1af"> Peminjaman </a>pada menu Kegiatan untuk mendata siapa dan barang apa saja yang di pinjam </li>
+                <li class="text-m-medium">Jika ada barang yang datang silahkan menuju ke halaman<a href="/masuk-barangs" style="color: #4ca1af"> Masuk Barang </a>pada menu kegiatan untuk mendata barang apa dan dan darimana barang itu dikirim</li>
+                <li class="text-m-medium">Jika ada yang ingin mengembalikan barang silahkan menuju halaman<a href="/masuk-barangs" style="color: #4ca1af"> Pengembalian </a>pada menu kegiatan untuk mengkonfirmasi barang yang hendak dikembalikan</li>
             </ul>
-            <p class="text-l-medium fw-semibold text-center">Jika ada yang dipertanyakan silahkan hubungi <a href="https://github.com/Rizky-Nov" target="_blank">Fauzi Rizky</a> Selaku pembuat aplikasi, Terima Kasih !!</p>
+            {{-- <p class="text-l-medium fw-semibold text-center">Jika ada yang dipertanyakan silahkan hubungi <a href="https://github.com/Rizky-Nov" target="_blank" style="color: #4ca1af">No-Name</a> Selaku pembuat aplikasi, Terima Kasih !!</p> --}}
         </div>
     </div>
 </div>

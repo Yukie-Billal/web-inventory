@@ -1,4 +1,4 @@
-<div class="sidebar h-100 col-2 fixed-top p-0">
+<div class="sidebar h-100 col-2 fixed-top p-0" style="background: #4ca1af">
 	<div class="sidebar-header" style="height: 80px;">
 		<span class="text-dark fw-semibold header-l text-white">Inventory</span>
 	</div>

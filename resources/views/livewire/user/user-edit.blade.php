@@ -31,7 +31,7 @@
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
                     <label for="no_tlp" class="text-neutral-90 text-m-medium">No Telephone</label>
-                    <input type="text" wire:model.lazy='noTlp' class="input-form text-m-medium placeholder-m-m" id="no_tlp" placeholder="No Telephone">
+                    <input type="text" wire:model.lazy='noTlp' class="input-form text-m-medium placeholder-m-m" id="no_tlp" placeholder="0812 7421 0212">
                     @error('no_tlp')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -40,7 +40,7 @@
             <div class="col-6 p-0 d-flex justify-content-center">
                 <div class="form-group w-100 px-2">
                     <label for="alamat" class="text-neutral-90 text-m-medium">Alamat</label>
-                    <input type="text" wire:model.lazy='alamat' class="input-form text-m-medium placeholder-m-m" id="alamat" placeholder="Alamat">
+                    <input type="text" wire:model.lazy='alamat' class="input-form text-m-medium placeholder-m-m" id="alamat" placeholder="Alamat Lengkap">
                     @error('alamat')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror

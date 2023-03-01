@@ -3,28 +3,6 @@
 <script src="{{ asset('vendor/autoCompleteJs/autoComplete.min.js') }}"></script>
 
 <script type="text/javascript">
-  let menu = document.querySelectorAll('.sidebar-menu .menu');
-  // function myFunction() {
-  //     menu.forEach((item) => {
-  //         const sidebarMenuItem = item.parentNode;
-  //         const subMenuItem = sidebarMenuItem.querySelector('.sub-menu');
-  //         if(subMenuItem != null) {
-  //             subMenuItem.classList.add('hide');
-  //         }
-  //     });
-  //     const sidebarMenu = this.parentNode;
-  //     const subMenu = sidebarMenu.querySelector('.sub-menu');
-  //     // setTimeout(() => {
-  //         if(subMenu != null) {
-  //             subMenu.classList.toggle('hide');
-  //             subMenu.classList.toggle('show');
-  //         }
-  //     // }, 300);
-  // }
-  // menu.forEach((item) => {
-  //     item.addEventListener('click', myFunction);
-  // });
-  
   const loader  = document.querySelector('#loader');
   setTimeout(() => {    
     loader.style.display = 'none';
