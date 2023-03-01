@@ -1,15 +1,15 @@
 <div class="card flex-fill border-0">
     <div class="card-header border-0 p-3">                  
         <div class="row justify-content-between">
-            <div class="col-8 d-flex align-items-center ps-4" style="gap: 3px;">
+            <div class="col-9 d-flex align-items-center ps-4" style="gap: 3px;">
                 @if (auth()->user()->foto)
-                @php
-                    $ukuran = "50px";
-                    $edit ? $ukuran = "70px" : '';
-                @endphp
-                <div class="img-fluid rounded-circle me-2" style="overflow: hidden; width: {{ $ukuran }};">
-                    <img src="{{ asset('storage/'. auth()->user()->foto) }}" alt="P" style="height: 50px; width: 50px; object-fit: cover;">
-                </div>
+                    @php
+                        $ukuran = "50px";
+                        $edit ? $ukuran = "70px" : '';
+                    @endphp
+                    <div class="img-fluid rounded-circle me-2" style="overflow: hidden; width: {{ $ukuran }};">
+                        <img src="{{ asset('storage/'. auth()->user()->foto) }}" alt="P" style="height: 50px; width: 50px; object-fit: cover;">
+                    </div>
                 @else            
                     <i class="fa fa-user d-flex align-items-center me-2 mb-1" aria-hidden="true" style="font-size: 28px;"></i>
                 @endif
@@ -20,7 +20,7 @@
                     <span class="text-l-medium">{{ $nama }}</span>
                 @endif
             </div>
-            <div class="col-4 d-flex justify-content-end align-items-center" style="gap: 3px;">
+            <div class="col-3 d-flex justify-content-end align-items-center" style="gap: 3px;">
                 @if ($user->id == auth()->user()->id)
                     @if ($edit)
                         <button class="button button-success" wire:click="updateProfile">Simpan</button>

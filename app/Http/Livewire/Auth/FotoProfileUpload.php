@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\User;
 use App\Traits\ListenerTrait;
+use Illuminate\Support\Facades\Storage;
 
 class FotoProfileUpload extends Component
 {
@@ -23,16 +24,16 @@ class FotoProfileUpload extends Component
         $this->validate([
             'foto' => 'image|max:2048', // 2MB Max
         ]);
-
-        // dd($this->foto);
         $url = $this->foto->store('profile');
 
         $user= User::find($this->userId);
+        if ($user->foto != null) {
+            Storage::delete($user->url);
+        }
         $user->update([
             'foto' => $url
         ]);
-
-        $this->emit('uploaded');
+        $this->emit('toastify', ['success', 'Foto Profil Di Ganti', 3500]);
     }
     public function render()
     {
