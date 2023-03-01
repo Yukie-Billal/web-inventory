@@ -7,7 +7,7 @@
         <div class="col-12">
             <livewire:user.user-search />
         </div>
-        <div class="col-12">
+        <div class="col-12" id="#permintaan-pinjam">
             <livewire:user.permintaan-pinjam />
         </div>
     </div>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="row m-0 my-3 p-0">
-    <div class="col-12 p-0">
+    <div class="col-12 p-0" id="history-pinjaman">
         <livewire:user.history-pinjaman />
     </div>
 </div>
