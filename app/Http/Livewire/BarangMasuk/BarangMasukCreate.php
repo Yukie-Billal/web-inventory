@@ -25,6 +25,7 @@ class BarangMasukCreate extends Component
     public $namaPerusahaan;
     public $s_baru = false;
     public $supplierId;
+    public $tanggalMasuk;
 
     protected $rules = [
         'namaBarang' => 'required|min:2',
@@ -133,6 +134,7 @@ class BarangMasukCreate extends Component
             $this->alamatSupplier = null;
             $this->noTlp = null;
             $this->namaPerusahaan = null;
+            $this->tanggalMasuk = date('Y-m-d');
         }
         $this->render();
     }
@@ -210,7 +212,7 @@ class BarangMasukCreate extends Component
                 'satuan' => $this->satuan,
                 'qty' => $this->qty,
                 'kategori_id' => $this->kategori,
-                'tanggal_masuk' => date('Y-m-d'),
+                'tanggal_masuk' => $this->tanggalMasuk,
                 'supplier_id' => $supplier->id
             ]);
             $params = ['success', 'Terjadi Kesalahan', 2000];
@@ -223,6 +225,9 @@ class BarangMasukCreate extends Component
 
     public function render()
     {
+        if ($this->tanggalMasuk == null) {
+            $this->tanggalMasuk = date('Y-m-d');
+        }
         $suppliers = Supplier::orderByDesc('nama_supplier')->orderByDesc('created_at');
         return view('livewire.barang-masuk.barang-masuk-create', [
             'kategoris' => Kategori::orderByDesc('nama_kategori')->get(),

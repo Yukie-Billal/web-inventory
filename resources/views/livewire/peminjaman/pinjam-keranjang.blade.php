@@ -40,7 +40,7 @@
                         <td class="px-2 py-2">{{ $pinjam_keranjang->barang->satuan }}</td>
                         {{-- <td class="px-2 py-2">{{ $pinjam_keranjang->barang->stok }}</td> --}}
                         <td style="max-width: 40px;" class="py-2">
-                            <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editKeranjangPinjam({{ $pinjam_keranjang->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2">
+                            {{-- <img src="{{ asset('icon/edit.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='editKeranjangPinjam({{ $pinjam_keranjang->id }})' data-bs-toggle="modal" data-bs-target="#modalEditDataBarang" class="mx-2"> --}}
                             <img src="{{ asset('icon/delete.png') }}" alt=".." style="height: 18px; width: 18px; cursor: pointer;" wire:click='deleteKeranjangPinjam({{ $pinjam_keranjang->id }})'>
                         </td>
                     </tr>

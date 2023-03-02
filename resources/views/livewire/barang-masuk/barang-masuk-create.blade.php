@@ -177,6 +177,14 @@
                             </x-forms.group>
                         </div>
                     </div>
+                    <div class="row justify-content-end">
+                        <div class="col-4">
+                            <x-forms.group>
+                                <label for="tanggalMasuk">Tanggal Masuk Barang</label>
+                                <input type="date" wire:model.lazy="tanggalMasuk" class="input-form input-form-lg @error("tanggalMasuk") is-invalid @enderror" id="tanggalMasuk">
+                            </x-forms.group>
+                        </div>
+                    </div>
                     <div class="row justify-content-end mt-3">
                         <div class="col-2">
                             <button class="button button-success">

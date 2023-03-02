@@ -3,7 +3,6 @@
         <span class="header-s mb-2">Barang Yang Baru Di Pinjam</span>
     </div>
     <div class="card-body p-0 border-neutral-40-2 rounded">
-        {{-- <x-table /> --}}
         <table class="table table-hover table-responsive align-middle">
             <thead class="border-neutral-40">
                <tr>
@@ -12,7 +11,6 @@
                   <th>Warna</th>
                   <th>Nama Peminjam</th>
                   <th>No Telepon</th>
-                  {{-- <th>Alamat</th> --}}
                   <th>tanggal pinjam</th>
                   <th>Status</th>
                </tr>

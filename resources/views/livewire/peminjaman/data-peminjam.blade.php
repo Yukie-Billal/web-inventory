@@ -25,15 +25,14 @@
             <div class="row mt-3">
                 <div class="col-8">
                     <div class="form-group">
-                        <label for="alamat" class="text-m-regular">Alamat</label>
-                        <input type="date" class="input-form input-form-lg">
+                        <label for="alamat" class="text-m-regular">Tanggal Pinjam</label>
+                        <input type="date" wire:model.lazy="tanggalPinjam" class="input-form input-form-lg">
                     </div>
                 </div>
             </div>
             <div class="row justify-content-end my-3">
                 <div class="col-2">
                     <button class="button button-success text-white">
-                        {{-- <i class="fa fa-clipboard me-1" aria-hidden="true"></i> --}}
                         <img src="{{ asset('icon/konfirmasi.png') }}" alt=".." style="width: 16px; height: 16px;">
                         Konfirmasi
                     </button>

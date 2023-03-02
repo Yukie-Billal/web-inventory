@@ -3,7 +3,7 @@
         <span class="header-s mb-2">Data Barang Yang Baru Ditambahkan</span>
     </div>
     <div class="card-body p-0 border-neutral-40-2 rounded">
-        <table class="table table-hover table-responsive">
+        <table class="table table-hover table-responsive align-middle">
             <thead class="border-neutral-40">
                <tr>
                   <th>Serial Number</th>

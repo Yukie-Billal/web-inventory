@@ -14,6 +14,7 @@ class DataPeminjam extends Component
     public $no_tlp;
     public $alamat;
     public $perusahaan;
+    public $tanggalPinjam;
 
     public function clearVariabel()
     {
@@ -43,7 +44,7 @@ class DataPeminjam extends Component
                     'no_tlp' => $this->no_tlp,
                     // 'alamat' => $this->alamat,
                     'barang_id' => $item->barang->id,
-                    'tanggal_pinjam' => date('Y-m-d'),
+                    'tanggal_pinjam' => $this->tanggalPinjam,
                     'status' => 'Pinjam'
                 ]);
 
@@ -61,6 +62,9 @@ class DataPeminjam extends Component
 
     public function render()
     {
+        if ($this->tanggalPinjam == null) {
+            $this->tanggalPinjam = date('Y-m-d');
+        }
         return view('livewire.peminjaman.data-peminjam');
     }
 }
