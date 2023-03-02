@@ -4,7 +4,7 @@
     </div>
     <div class="card-body p-0 border-neutral-40-2 rounded">
         {{-- <x-table /> --}}
-        <table class="table table-hover table-responsive">
+        <table class="table table-hover table-responsive align-middle">
             <thead class="border-neutral-40">
                <tr>
                   <th>Nama Barang</th>

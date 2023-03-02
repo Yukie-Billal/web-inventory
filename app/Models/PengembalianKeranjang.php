@@ -15,4 +15,9 @@ class PengembalianKeranjang extends Model
     {
         return $this->belongsTo(Barang::class);
     }
+
+    public function pinjam()
+    {
+        return $this->belongsTo(Pinjam::class);
+    }
 }

@@ -36,6 +36,8 @@
             arrayData.push(item.value);
         });
 
+        let ketik = 2;
+
         const autoCompleteJS = new autoComplete({
             selector: "#serialNumber",
             placeHolder: "Search Kode Barang ... Nama Barang ... Serial Number ...",
@@ -54,7 +56,11 @@
                         message.innerHTML = `<span>Found No Results for "${data.query}"</span>`;
                         // Append message element to the results list
                         list.prepend(message);
-                        Livewire.emit('toastify', ['warning', 'Barang Tidak Ditemukan', 2500]);
+                        if (ketik == 3) {
+                            Livewire.emit('toastify', ['warning', 'Barang Tidak Ditemukan', 2500]);
+                            ketik = 0;
+                        }
+                        ketik++;
                     }
                 },
                 noResults: true,

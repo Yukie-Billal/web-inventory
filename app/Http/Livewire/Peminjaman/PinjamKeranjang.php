@@ -4,18 +4,16 @@ namespace App\Http\Livewire\Peminjaman;
 
 use Livewire\Component;
 use App\Models\PeminjamanKeranjang;
+use App\Traits\ListenerTrait;
 
 class PinjamKeranjang extends Component
 {
+    use ListenerTrait;
+    
     protected $listeners = [
-        'addPinjamKeranjang',
+        'toastify','swal','fresh',
         'addPeminjaman' => 'render'
     ];
-
-    public function addPinjamKeranjang()
-    {
-        // code...
-    }
 
     public function deleteKeranjangPinjam($id)
     {

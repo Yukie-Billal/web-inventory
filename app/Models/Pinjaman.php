@@ -17,4 +17,9 @@ class Pinjaman extends Model
     {
         return $this->belongsTo(Barang::class);
     }
+
+    public function pengembalianKeranjang()
+    {
+        return $this->hasMany(PengembalianKeranjang::class);
+    }
 }

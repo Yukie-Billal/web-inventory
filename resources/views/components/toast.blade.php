@@ -8,12 +8,14 @@
             'secondary' : ''
         }
         Livewire.on('toastify', function (params) {
-            let [color = "primary", text = 'Parameter Kosong', timer = 2500] = params;
+            let [color = "primary", text = 'Parameter Kosong', timer = 2500, vertikal="top", horizontal="right"] = params;
             Toastify({
                 text: text,
                 duration: timer,
                 newWindow: true,
                 stopOnFocus: true,
+                grafity: vertikal,
+                position: horizontal,
                 className: 'text-l-medium rounded mt-5 me-5',
                 style: {
                     background: toastColor[color],

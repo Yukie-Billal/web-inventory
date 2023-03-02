@@ -4,19 +4,23 @@
 			<div class="col-12 d-flex justify-content-center align-items-end pb-2">
 				<div class="col-6 d-flex justify-content-center">
 					<div class="col-5 pe-2 d-flex align-items-end">
-						<div class="form-group">
-							<label for="barcode" class="text-s-medium">Scan Barcode</label>
-							<input type="text" id="barcode" class="input-form text-m-regular input-form-sm" placeholder="Masukkan Kode">
-						</div>
+						<form wire:submit.prevent="cariBarcode">							
+							<div class="form-group">
+								<label for="barcode" class="text-s-medium">Scan Barcode</label>
+								<input type="text" wire:model="barcode" id="barcode" class="input-form text-m-regular input-form-sm" placeholder="Masukkan Kode">
+							</div>
+						</form>
 					</div>
 					<div class="col-1 d-flex align-items-end justify-content-center text-m-medium pb-2" style="height: inherit;">
 						OR
 					</div>
 					<div class="col-5 ps-2 d-flex align-items-end">
-						<div class="form-group">
-							<label for="serialNumber" class="text-s-medium">Serial Number</label>
-							<input type="text" id="serialNumber" class="input-form text-m-regular input-form-sm" placeholder="Masukkan Kode">
-						</div>
+						<form wire:submit.prevent="cariSerial">
+							<div class="form-group">
+								<label for="serialNumber" class="text-s-medium">Serial Number</label>
+								<input type="text" wire:model="serial" id="serialNumber" class="input-form text-m-regular input-form-sm" placeholder="Masukkan Kode">
+							</div>
+						</form>
 					</div>
 				</div>
 				<livewire:pagination-view :col='6' :page='$page' :pageName='$pageName' :pageCount='$pageCount' />
@@ -25,7 +29,7 @@
 	</div>
 	<div class="card-body p-0">
 		<div class="col-12 p-0 rounded border-neutral-40-2">
-			<table class="table table-hover table-responsive mb-0">
+			<table class="table table-hover table-responsive mb-0 align-middle">
 				<thead>
 					<tr>
 						<th>Nama Barang</th>

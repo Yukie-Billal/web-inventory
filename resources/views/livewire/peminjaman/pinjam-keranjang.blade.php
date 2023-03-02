@@ -5,7 +5,7 @@
     </div>
     <div class="card-body p-0">
         <div class="col-12 p-0 rounded border-neutral-40-2">
-            <table class="table table-hover table-responsive mb-0">
+            <table class="table table-hover table-responsive mb-0 align-middle">
                 <thead>
                     <tr>
                         <th class="px-3">Serial Number</th>
@@ -24,7 +24,7 @@
                         <td colspan="7" style="font-size: 16px">Keranjang Kosong</td>
                     </tr>
                     @else
-                    @foreach ($pinjam_keranjangs as $pinjam_keranjang)                    
+                    @foreach ($pinjam_keranjangs as $pinjam_keranjang)
                     <tr>
                         <td class="px-3 py-2">
                             {{ $pinjam_keranjang->barang->serial_number }}
@@ -36,7 +36,7 @@
                             <td class="px-2 py-2">{{ $pinjam_keranjang->barang->kategori->nama_kategori }}</td>
                         @else
                             <td class="px-2 py-2">Tidak Ada</td>
-                        @endif                        
+                        @endif
                         <td class="px-2 py-2">{{ $pinjam_keranjang->barang->satuan }}</td>
                         {{-- <td class="px-2 py-2">{{ $pinjam_keranjang->barang->stok }}</td> --}}
                         <td style="max-width: 40px;" class="py-2">

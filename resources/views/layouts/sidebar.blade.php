@@ -32,7 +32,7 @@
 					<i class="fa-solid fa-chevron-down"></i>		
 				</div>
 				
-				<div class="collapse w-100  class="{{ Request::is('peminjamans') || Request::is('pengembalians') || Request::is('masuk-barangs') ||Request::is('cetak-barcodes*') ? 'show' : '' }} id="kegiatanSubMenu">
+				<div class="collapse w-100 {{ Request::is('peminjamans') || Request::is('pengembalians') || Request::is('masuk-barangs') ||Request::is('cetak-barcodes*') ? 'show' : '' }}" id="kegiatanSubMenu">
 					<div class="sub-menu">						
 						<a href="/peminjamans" class="{{ Request::is('peminjamans*') ? 'active' : '' }}">Peminjaman</a>
 						<a href="/pengembalians" class="{{ Request::is('pengembalians*') ? 'active' : '' }}">Pengembalian</a>

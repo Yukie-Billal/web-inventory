@@ -22,8 +22,8 @@
           </div>
           <div class="col-6">
               <div class="form-group">
-                  <label for="namaLengkap" class="text-m-regular">Lama Pinjam</label>
-                  <input type="text" wire:model.lazy='lama' id="namaLengkap" class="input-form w-100 placeholder-m-m input-form-lg" placeholder="5 Hari">
+                  <label for="tanggalKembali" class="text-m-regular">Tanggal Kembali</label>
+                  <input type="date" wire:model.lazy='tanggalKembali' id="tanggalKembali" class="input-form w-100 placeholder-m-m input-form-lg">
               </div>
           </div>
       </div>

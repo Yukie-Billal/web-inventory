@@ -16,22 +16,57 @@ class DataBarang extends Component
     public $pageName = 'page';
     public $pageCount;
 
+    public $barcode;
+    public $serial;
+
     protected $listeners = [
+        'toastify','swal','fresh',
         'addPeminjaman' => 'render',
     ];
+
+    public function bersih()
+    {
+        $this->barcode = '';
+        $this->serial = '';
+    }
 
     public function addPinjamKeranjang($id)
     {
         $barang = Barang::find($id);
         if ($barang) {
-                PeminjamanKeranjang::create([
-                    'user_id' => auth()->user()->id,
-                    'barang_id' => $id
-                ]);
+            PeminjamanKeranjang::create([
+                'user_id' => auth()->user()->id,
+                'barang_id' => $id
+            ]);
+            $this->emit('toastify',['success','Ditambahkan Ke Keranjang', 3000]);
+            $this->bersih();
         } else {
             $this->emit('toastify', ['danger', 'Gagal Menambahkan Barang', 2000]);
         }
-        $this->emit('addPinjamKeranjang');        
+    }
+
+    public function cariBarcode()
+    {
+        $barang = Barang::where('kode_barang', $this->barcode)->first();
+
+        if ($barang) {
+            $this->addPinjamKeranjang($barang->id);
+            $this->emit('toastify',['success','Barang Ditemukan', 2500]);
+        } else {
+            $this->emit('swal', ['error', 'Barang Tidak Ditemukan', 2500]);
+        }
+    }
+
+    public function cariSerial()
+    {
+        $barang = Barang::where('serial_number', $this->serial)->first();
+
+        if ($barang) {
+            $this->addPinjamKeranjang($barang->id);
+            $this->emit('toastify',['success','Barang Ditemukan', 2500]);
+        } else {
+            $this->emit('toastify',['danger', 'Barang Tidak Ditemukan', 2500]);
+        }
     }
 
     public function render()
@@ -39,7 +74,7 @@ class DataBarang extends Component
         $barangs = Barang::orderByDesc('created_at')->orderByDesc('nama_barang');
 
         $this->countPage($barangs->count());
-
+        
         return view('livewire.peminjaman.data-barang', [
             'barangs' => $barangs->paginate(6),
         ]);

@@ -17,4 +17,6 @@
             <livewire:peminjaman.peminjaman-history />
         </div>
     </div>
+    <x-alert.sweet-alert />
+    <x-toast />
 </x-app-layout>

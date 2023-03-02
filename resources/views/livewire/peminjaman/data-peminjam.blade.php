@@ -9,7 +9,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="namaLengkap" class="text-m-regular">Nama Peminjam</label>
-                        <input type="text" wire:model.lazy='nama' id="namaLengkap" class="input-form w-100 placeholder-m-m input-form-xl" placeholder="Masukan Nama Lengkap">
+                        <input type="text" wire:model.lazy='nama' id="namaLengkap" class="input-form input-form-xl" placeholder="Masukan Nama Lengkap">
                         @error('nama')                        
                             <small class="invalid-feedback">{{ $message }}</small>
                         @enderror
@@ -18,19 +18,18 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="noTlp" class="text-m-regular">No Telephone</label>
-                        <input type="text" wire:model.lazy='no_tlp' id="noTlp" class="input-form w-100 placeholder-m-m input-form-xl" placeholder="0812 2344 7812">
+                        <input type="text" wire:model.lazy='no_tlp' id="noTlp" class="input-form input-form-xl" placeholder="0812 2344 7812">
                     </div>
                 </div>
             </div>
-            {{-- <div class="row mt-3">
+            <div class="row mt-3">
                 <div class="col-8">
                     <div class="form-group">
                         <label for="alamat" class="text-m-regular">Alamat</label>
-                        <textarea class="form-control" wire:model.lazy='alamat' id="alamat" rows="3" aria-describedby="helpId" placeholder="Alamat Lengkap"></textarea>
-                        <small id="helpId" class="text-neutral-80 text-s-regular">Boleh Kosong !!</small>
+                        <input type="date" class="input-form input-form-lg">
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <div class="row justify-content-end my-3">
                 <div class="col-2">
                     <button class="button button-success text-white">
