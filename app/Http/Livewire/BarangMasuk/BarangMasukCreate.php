@@ -9,9 +9,12 @@ use App\Models\Supplier;
 use App\Models\BarangMasuk;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Traits\ListenerTrait;
 
 class BarangMasukCreate extends Component
 {
+    use ListenerTrait;
+
     public $namaBarang;
     public $serialNumber;
     public $merek;
@@ -73,6 +76,7 @@ class BarangMasukCreate extends Component
     }
 
     protected $listeners = [
+        'toastify','fresh','swal',
         'setKategori',
         'setSatuan',
         'setStatus',
@@ -109,7 +113,7 @@ class BarangMasukCreate extends Component
 
     public function setKategori($value)
     {
-        $this->kategori = $value;
+        $this->kategori = $value;        
     }
 
     public function setSatuan($params)
@@ -149,12 +153,12 @@ class BarangMasukCreate extends Component
                 'nama_kategori' => $value,
             ]);
             $this->kategori = $create->id;
+            $this->emit('toastify',['success','Kategori Baru',3000]);
         }
     }
 
     public function cekSupplier($value)
     {
-        dd($value);
         $data = Supplier::find($value);
 
         if ($data) {
@@ -166,6 +170,7 @@ class BarangMasukCreate extends Component
             ]);
             $this->supplierId = $create->id;
             $this->namaSupplier = $create->nama_supplier;
+            $this->emit('toastify',['success','Supplier Baru',3000]);
         }
     }
 
@@ -219,7 +224,7 @@ class BarangMasukCreate extends Component
         } else {
             $params = ['error', 'Terjadi Kesalahan', 2000];
         }
-        $this->emit('alertShow', $params);
+        $this->emit('swal', $params);
         $this->clear('all');
     }
 

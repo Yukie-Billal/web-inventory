@@ -34,11 +34,11 @@
 				
 				<div class="collapse w-100 {{ Request::is('peminjamans') || Request::is('pengembalians') || Request::is('masuk-barangs') ||Request::is('cetak-barcodes*') ? 'show' : '' }}" id="kegiatanSubMenu">
 					<div class="sub-menu">						
-						<a href="/peminjamans" class="{{ Request::is('peminjamans*') ? 'active' : '' }}">Peminjaman</a>
-						<a href="/pengembalians" class="{{ Request::is('pengembalians*') ? 'active' : '' }}">Pengembalian</a>
 						<a href="/masuk-barangs" class="{{ Request::is('masuk-barangs*') ? 'active' : '' }}">Masuk Barang</a>
 						<a href="/cetak-barcodes" class="{{ Request::is('cetak-barcodes*') ? 'active' : '' }}">Cetak Barcode</a>
+						<a href="/peminjamans" class="{{ Request::is('peminjamans*') ? 'active' : '' }}">Peminjaman</a>
 						<a href="/permintaan-pinjamans" class="{{ Request::is('permintaan-pinjamans*') ? 'active' : '' }}">Permintaan Pinjaman</a>
+						<a href="/pengembalians" class="{{ Request::is('pengembalians*') ? 'active' : '' }}">Pengembalian</a>
 					</div>
 				</div>
 			</div>

@@ -5,7 +5,7 @@
             'warning' : 'linear-gradient(to right, #ffff80, #fdfc47)',
             'success' : 'linear-gradient(to right, #43936C, #43936C)',
             'primary' : '',
-            'secondary' : ''
+            'secondary' : 'linear-gradient(to right, #E0E0E0, #9E9E9E)'
         }
         Livewire.on('toastify', function (params) {
             let [color = "primary", text = 'Parameter Kosong', timer = 2500, vertikal="top", horizontal="right"] = params;

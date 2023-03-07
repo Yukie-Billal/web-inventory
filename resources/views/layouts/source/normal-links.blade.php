@@ -1,4 +1,5 @@
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+{{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script> --}}
+<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 
 {{-- select 2 --}}
 <link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}">

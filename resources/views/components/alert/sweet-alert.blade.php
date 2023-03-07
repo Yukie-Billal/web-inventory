@@ -11,6 +11,7 @@
                     timer: timer
                 });
             }
+            Livewire.emit('fresh');
         });
         Livewire.on('swalConfirm', function (params) {
             var [type, message, callback, url, value] = params;
@@ -37,6 +38,7 @@
                     timer: 2000
                 });
             }
+            Livewire.emit('fresh');
         })
     </script>
 @endpush

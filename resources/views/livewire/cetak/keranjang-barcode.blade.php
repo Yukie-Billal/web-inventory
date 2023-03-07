@@ -3,7 +3,7 @@
         <div class="card flex-fill border-0 bg-transparent">
             <div class="card-body border-0">
                 <div class="col-12 border-neutral-50-1 rounded shadow-2">                    
-                    <table class="table table-hover table-responsive mb-0">
+                    <table class="table table-hover table-responsive mb-0 align-middle">
                         <thead>
                             <tr>
                                 <th>Nama Barang</th>
@@ -39,10 +39,10 @@
                 <span class="text-l-medium">
                     Ukuran Barcode
                 </span>
-                <select class="select-form" id="ukuranBarcode" wire:change='$emit("ukuran-barcode")'>
-                    <option value=".85, 66">Kecil</option>
-                    <option value="1, 66">Sedang</option>
-                    <option value="1.4, 77">Besar</option>
+                <select class="select-form" id="ukuranBarcode" onchange="barcodeUkuran()">
+                    <option value=".85,66">Kecil</option>
+                    <option value="1,66">Sedang</option>
+                    <option value="1.4,77">Besar</option>
                 </select>
             </div>
         </div>
@@ -69,5 +69,10 @@
                 }
             })
         });
+
+        function barcodeUkuran() {
+            var value = $('#ukuranBarcode').val();
+            Livewire.emit('setUkuranBarcode', value);
+        };
     </script>
 @endpush
