@@ -52,9 +52,7 @@ class SupplierIndex extends Component
     public function render()
     {
         $suppliers = Supplier::orderByDesc('created_at')->orderByDesc('nama_supplier');
-
         $this->pageCount = $this->countPage($suppliers->count());
-        
         return view('livewire.supplier.supplier-index', [
             'suppliers' => $suppliers->paginate(5, ['*'], 's'),
         ]);

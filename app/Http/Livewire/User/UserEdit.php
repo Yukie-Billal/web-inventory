@@ -40,7 +40,7 @@ class UserEdit extends Component
 
     public function updateUser()
     {
-        // $this->validate();
+        $this->validate();
         $user = User::find($this->userId);
         if ($user) {
             $user->update([
@@ -48,7 +48,6 @@ class UserEdit extends Component
                 'email' => $this->email,
                 'alamat' => $this->alamat,
                 'no_tlp' => $this->noTlp,
-                // 'role_id' => $this->role,
             ]);
             $this->emit('swal', ['success', 'user Di Ubah', 2000]);
         } else {

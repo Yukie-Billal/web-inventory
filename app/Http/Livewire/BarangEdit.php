@@ -81,7 +81,6 @@ class BarangEdit extends Component
     public function updateBarang()
     {
         $barang = Barang::find($this->idBarang);
-
         $barang->update([
             'serial_number' => $this->serialNumber,
             'kode_barang' => $this->barcode,
@@ -92,9 +91,7 @@ class BarangEdit extends Component
             'kategoriId' => $this->kategoriId,
             'stok' => $this->stok,
         ]);
-
         $this->clearVariabel();
-
         $this->emit('swal', ['success', 'Barang Di Edit', 2000]);
     }
 

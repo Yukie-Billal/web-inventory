@@ -181,6 +181,7 @@ class BarangMasukCreate extends Component
         $this->kategoriCek($this->kategori);
 
         $barcode = Str::limit($this->namaBarang, 1, '') . date('Y') .'-'. Str::limit($this->merek, 1, '') . date('m') . date('d');
+
         $barang = Barang::create([
             'serial_number' => $this->serialNumber,
             'kode_barang' => $barcode,
@@ -224,6 +225,7 @@ class BarangMasukCreate extends Component
         } else {
             $params = ['error', 'Terjadi Kesalahan', 2000];
         }
+        
         $this->emit('swal', $params);
         $this->clear('all');
     }

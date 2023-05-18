@@ -60,9 +60,7 @@ class UserIndex extends Component
     public function render()
     {        
         $users = User::orderByDesc('created_at')->orderByDesc('email');
-
         $this->pageCount = $this->countPage($users->count());
-
         return view('livewire.user.user-index', [
             'users' => $users->paginate(10)
         ]);

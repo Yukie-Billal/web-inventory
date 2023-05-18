@@ -36,9 +36,7 @@ class RegisterForm extends Component
         ]);
 
         if ($user) {
-            // $this->emit('cek-login', $user);
             return redirect('/')->with('registered', $user);
-            // return view('pages.Auth.login');
         }
     }
 

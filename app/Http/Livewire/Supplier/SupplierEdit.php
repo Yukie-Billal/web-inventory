@@ -44,7 +44,6 @@ class SupplierEdit extends Component
                 'no_tlp' => $this->no_tlp,
                 'alamat' => $this->alamat,
             ]);
-
             $params = ['success', 'Data Supplier Berhasil Di Edit'];
             $this->emit('supEdited', $params);
         } else {
