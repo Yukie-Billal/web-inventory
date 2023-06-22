@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire\Auth;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class LoginForm extends Component
